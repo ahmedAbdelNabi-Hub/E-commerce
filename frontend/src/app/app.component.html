@@ -1,0 +1,4 @@
+<app-navbar *ngIf="!showNavbar"></app-navbar>
+<main [@routeAnimations]="outletRef.isActivated? outletRef.activatedRoute:''">
+    <router-outlet #outletRef="outlet"></router-outlet>
+</main>

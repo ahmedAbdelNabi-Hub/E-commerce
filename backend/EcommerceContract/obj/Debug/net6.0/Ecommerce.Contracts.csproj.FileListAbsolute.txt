@@ -1,0 +1,15 @@
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\bin\Debug\net6.0\Ecommerce.Contracts.deps.json
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\bin\Debug\net6.0\Ecommerce.Contracts.dll
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\bin\Debug\net6.0\Ecommerce.Contracts.pdb
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\Ecommerce.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\Ecommerce.Contracts.AssemblyInfoInputs.cache
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\Ecommerce.Contracts.AssemblyInfo.cs
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\Ecommerce.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\Ecommerce.Contracts.dll
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\refint\Ecommerce.Contracts.dll
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\Ecommerce.Contracts.pdb
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\ref\Ecommerce.Contracts.dll
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\bin\Debug\net6.0\Ecommerce.core.dll
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\bin\Debug\net6.0\Ecommerce.core.pdb
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\Ecommerce.Contracts.csproj.AssemblyReference.cache
+C:\Users\ahmed\source\repos\Ecommerce\EcommerceContract\obj\Debug\net6.0\Ecommerc.9A5B91CB.Up2Date

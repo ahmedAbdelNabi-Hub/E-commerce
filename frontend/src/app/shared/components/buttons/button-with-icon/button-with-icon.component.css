@@ -1,0 +1,10 @@
+.button {
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.764); /* Lighten background on hover */
+    transform: translateY(-1px); /* Slight lift effect */
+}

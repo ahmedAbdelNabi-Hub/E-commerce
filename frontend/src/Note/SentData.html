@@ -1,0 +1,23 @@
+When to Use Which Option
+Use static: true:
+
+When you need to perform actions in ngOnInit that require the child element.
+If the element you are querying is guaranteed to be present in the template when the component initializes.
+
+Use static: false:
+
+When the child element is created conditionally (e.g., inside an *ngIf).
+If the reference might not be available immediately during component initialization.
+
+
+
+
+Both [set] and [update] will trigger change detection and update the view when using ChangeDetectionStrategy.OnPush.
+Performance:
+If you are frequently changing values or need to maintain complex states, using update may provide a more efficient and
+less error-prone way to manage state changes.
+set is straightforward for replacing entire states, while update is ideal for modifying existing states.
+Conclusion
+Use set when you want to replace the signal value completely and you know the new state.
+Use update when you want to modify the current signal value based on its existing state, which may be more expressive
+and lead to clearer code in some cases.

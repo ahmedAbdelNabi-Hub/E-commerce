@@ -1,0 +1,12 @@
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\bin\Debug\net6.0\Ecommerce.core.deps.json
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\bin\Debug\net6.0\Ecommerce.core.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\bin\Debug\net6.0\Ecommerce.core.pdb
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\Ecommerce.core.csproj.AssemblyReference.cache
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\Ecommerce.core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\Ecommerce.core.AssemblyInfoInputs.cache
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\Ecommerce.core.AssemblyInfo.cs
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\Ecommerce.core.csproj.CoreCompileInputs.cache
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\Ecommerce.core.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\refint\Ecommerce.core.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\Ecommerce.core.pdb
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.core\obj\Debug\net6.0\ref\Ecommerce.core.dll

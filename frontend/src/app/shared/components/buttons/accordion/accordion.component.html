@@ -1,0 +1,17 @@
+<div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-header flex items-center justify-between" (click)="togglePanel(0)">
+      <h3 class="font-thin">{{ menu.name }}</h3> <!-- Display the Arabic name of the menu -->
+      <i class='bx bx-chevron-down text-2xl'></i> 
+
+    </div>
+
+    <div class="accordion-content" [@panelAnimation] *ngIf="openIndex === 0">
+      <div *ngFor="let link of menu.links">
+        <p>
+          <a class="font-thin text-[12px] my-2" [href]="link.url" target="_blank">{{ link.name }}</a> <!-- Link to the URL -->
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

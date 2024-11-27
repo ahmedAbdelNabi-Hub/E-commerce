@@ -1,0 +1,36 @@
+::ng-deep .p-panelmenu .p-panelmenu-header .p-panelmenu-header-content .p-panelmenu-header-action {
+    padding: 4px 8px !important;
+}
+
+.active {
+    background-color: #232222;
+    color: rgb(255, 255, 255);
+    transition: .3s linear;
+}
+
+::ng-deep .p-submenu-icon {
+    display: none !important;
+}
+
+::ng-deep .p-menuitem-text {
+    color: black !important;
+
+    font-weight: 400;
+    margin-inline-start: 15px !important;
+    padding: 0 !important;
+}
+
+::ng-deep .p-menuitem-icon {
+    width: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+ul{
+    overflow-x: hidden !important;
+}
+::ng-deep .p-menuitem-link {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    width: 150px !important;
+}

@@ -1,0 +1,57 @@
+<header class="w-full h-auto top-0 bg-white fixed z-40 py-2 ">
+    <nav class="relative flex justify-between items-center px-2 lg:px-1">
+        <!-- Logo and Language Change Section -->
+        <div class="flex items-center lg:px-2">
+            <!-- Logo -->
+            <div class="px-4 flex items-center flex-row">
+               <img class="w-full  h-7 " src="../../../../assets/logo-2.png" />
+            </div>
+            <!-- Navbar Items -->
+            <div class="items-center hidden xl:flex">
+                <ul class="flex items-center relative">
+                    <ng-container *ngFor="let navbar of Navbars; trackBy: trackByFn">
+                        <li class="relative group custom-item" [ariaLabel]="navbar.name"appHoverToggleMenu>
+                            <span>{{ navbar.name }}</span>
+                            <app-menu  *ngIf="navbar.menus && navbar.menus.length > 0" 
+                                [menuCategories]="navbar.menus" 
+                                class="max-h-0 overflow-hidden z-10 menu "></app-menu>
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Support and Other Icons -->
+        <div class="flex items-center">
+            <ul class="hidden items-center sm:flex">
+                <li class="text-[13px] font-semibold px-2 py-1.5 cursor-pointer" aria-label="Support">Support</li>
+                <li class="text-[13px] font-semibold px-2 py-1.5 cursor-pointer" aria-label="Business">Business</li>
+            </ul>
+            <div class="icon flex items-center justify-center md:px-5">
+                <i routerLink="checkout/cart" class='bx bx-search text-xl md:text-2xl font-extralight' aria-label="Search"></i>
+                <div class="relative flex items-center">
+                    <i routerLink="" class='bx bx-cart-alt text-xl cursor-pointer md:text-2xl font-extralight' aria-label="Shopping Cart"></i>
+                    <span  *ngIf="_basketService.numberOfItemInBasket$ | async" class="ml-2 absolute px-1 rounded-full bg-[#e1ffed] text-[9px] py-0.5 font-semibold text-black border -top-1">{{ _basketService.numberOfItemInBasket$ | async}}</span>
+                </div>
+
+                <i class='bx bx-user text-xl md:text-2xl font-extralight' aria-label="User Profile"></i>
+                <div *ngIf="!isOpenSideBar" (click)="toggleSidebar()" class="block lg:hidden" aria-label="Menu">
+                    <i class='bx bx-menu text-3xl'></i>
+                </div>
+                <div *ngIf="isOpenSideBar"  (click)="toggleSidebar()" class="flex items-center justify-end">
+                    <i class='bx bx-x text-3xl  border border-dashed'></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Render sidebar -->
+    <app-sidebar-mobile  class="sidebar"
+    (closeSidebar)="closeSidebar()"
+    *ngIf="isOpenSideBar" 
+    @sidebarAnimation 
+    [Navbar]="Navbars">
+    </app-sidebar-mobile>
+
+</header>
+
+

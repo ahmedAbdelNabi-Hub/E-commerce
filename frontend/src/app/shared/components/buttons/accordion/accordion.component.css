@@ -1,0 +1,24 @@
+
+  .accordion-item {
+    margin-top: 5px;
+  }
+  
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 11px;
+  }
+  
+  .accordion-header:hover {
+    background-color: #e0e0e0; /* Lighten on hover */
+    border : 1px solid dotted black
+  }
+  
+  .accordion-content {
+    
+    background-color: #fff;
+  }
+  

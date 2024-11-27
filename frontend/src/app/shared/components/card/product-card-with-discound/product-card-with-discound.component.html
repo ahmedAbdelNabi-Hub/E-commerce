@@ -1,0 +1,77 @@
+<div class="relative mt-5 h-auto flex flex-col bg-white border-r md:border-l"
+    [ariaLabel]="'product-title-'+productData.sku" role="article">
+
+    <div class="flex justify-center">
+        <div class="h-[120px] xs:h-[150px]">
+           
+                <img [src]="productData.linkImage" srcset="
+                    {{ productData.linkImage }} 300w, 
+                    {{ productData.linkImage }} 600w, 
+                    {{ productData.linkImage }} 1000w"
+                    sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px"
+                    alt="{{ productData.name }} - Image" width="300" height="200" style="height:100%;"
+                    class="object-contain max-w-44 hover:scale-[.94] hover:rotate-2 transition-transform cursor-pointer"
+                    loading="lazy" />
+        
+        </div>
+    </div>
+
+    <div class="py-1 px-4 md:px-5 md:py-1 overflow-hidden">
+        <a  [queryParams]="{sku:productData.id}" [routerLink]="['/product', productData.categoryName, productData.name]"
+            class="hover:underline transition-all" [attr.href]="'/product/' + productData.sku"
+            [attr.aria-label]="'View product ' + productData.name">
+            <h2 id="product-title-{{ productData.sku }}"
+                class="line-clamp-2 mt-2 text-gray-600 text-[12px] md:text-[13px] font-semibold h-[40px]">
+                {{ productData.description }}
+            </h2>
+        </a>
+
+        <div class="py-2 h-20">
+            <!-- Save Price Calculation -->
+            <p *ngIf="productData.discount > 0" class="text-red-500  text-[12px] font-extralight">Save {{
+                productData.discount }} جنيه</p>
+            <div *ngIf="productData.offerPrice! > 0" class="flex items-center">
+                <p class="text-[13px] xs:text-[18px] mx-1  ">
+                    {{ productData.offerPrice }} <span class="text-[11px]">جنيه</span>
+                </p>
+                <p class="text-[11px] xs:text-[14px] line-through text-gray-500">
+                    {{ productData.price }} <span class="text-[11px]">جنيه</span>
+                </p>
+            </div>
+            <p *ngIf="productData.offerPrice! <= 0" class="text-[15px] xs:text-[18px] mx-1  ">
+                {{ productData.price }} <span class="text-[11px]">جنيه</span>
+            </p>
+            <p *ngIf="productData.offerPrice! > 0" class="text-[10.5px]">
+                سينتهي في : {{ productData.offerEndDate | date }}
+            </p>
+        </div>
+
+        <div class="w-full relative py-1">
+            <button (click)="addToBasket(productData)"
+                class="flex items-center w-full justify-center border py-1 bg-[#fbfffa] text-sm shadow-sm">
+
+                <!-- Display loader while isLoading$ is true -->
+                <ng-container *ngIf="perform.isLoading$ | async">
+                    <div class="flex items-center space-x-4">
+                        <span class="mx-3">يتم الاضافه</span>
+                        <span class="loader"></span>
+                    </div>
+                </ng-container>
+
+                <!-- Display the icon when isLoading$ is false -->
+                <ng-container *ngIf="!(perform.isLoading$ | async)">
+                    <i class="text-xl mx-3 text-gray-600 font-semibold bx bxs-shopping-bags"></i>
+                    <p>Add To Cart</p>
+                </ng-container>
+
+            </button>
+
+
+            <!-- Show error if something went wrong -->
+            <div *ngIf="perform.hasError$ |async" class="text-red-500 text-sm mt-2">
+                Error adding item to basket. Please try again.
+            </div>
+
+        </div>
+    </div>
+</div>

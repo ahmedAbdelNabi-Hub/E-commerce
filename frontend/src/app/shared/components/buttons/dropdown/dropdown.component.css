@@ -1,0 +1,48 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .btn {
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+    opacity: 0; 
+    transform: translateY(-10px); 
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+    visibility: hidden; 
+  }
+  
+  .dropdown-menu.show {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move back to normal position */
+    visibility: visible; /* Show the menu */
+  }
+  
+  .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden; /* Hide the menu when not open */
+  }
+  
+  .dropdown-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-align: left;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+  }
+  

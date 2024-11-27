@@ -1,0 +1,42 @@
+textarea {
+    color: black; /* Ensure text color is visible */
+   height: 100px;
+   padding: 0;
+}
+
+::placeholder { /* Placeholder styling */
+    color: #999; /* Set placeholder text color */
+    opacity: 1; /* Ensure the placeholder is fully visible */
+}
+*{
+    font-family:Arial, Helvetica, sans-serif
+}
+select {
+    background-color: #ffffff; /* Background color */
+    border-radius: 4px; /* Rounded corners */
+    padding: 0.4rem; /* Padding */
+    width: 100%; /* Full width */
+  }
+  
+  select:focus {
+    border-color: rgb(229, 226, 226); /* Border color on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+
+/* You can also define styles specifically for Arabic text if needed */
+textarea::placeholder {
+    direction: rtl; /* Ensure proper direction for Arabic text */
+}
+
+.activeCategory {
+    border: 1px black dotted;
+    background-color: rgb(247, 247, 247);
+}
+.mainImage{
+    width: 50% !important;
+}
+.thumbnailUrl{
+    width: 50px;
+    height: 50px;
+}

@@ -1,0 +1,11 @@
+<div class=" flex bg-white text-gray-800 z-[1000] py-4 rounded-b-3xl shadow-sm border-x border-b">
+  <div class="mx-10 category" *ngFor="let category of menuCategories">
+    <h2 class="category-title py-4   text-sm">{{ category.name }}</h2>
+    <ul class="category-items flex flex-col space-y-4 ">
+      <li class="text-[12px] " *ngFor="let item of category.links"><a class="hover:underline-offset-1 hover:underline"
+          [href]="item.url">
+          {{ item.name }}
+        </a></li>
+    </ul>
+  </div>
+</div>

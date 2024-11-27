@@ -1,0 +1,144 @@
+<!-- Table Section -->
+<div *ngIf="!(perform.hasError$ | async)" class="max-w-[85rem] py-5 sm:px-6 lg:px-8 lg:py-4 mx-auto">
+    <div
+    class="px-6 py-2 my-1 border rounded-sm grid gap-3 md:flex md:justify-between md:items-center ">
+    <div>
+        <h2 class="text-xl font-semibold text-gray-800">
+            Products
+        </h2>
+        <p class="text-sm text-gray-600">
+            Add product, edit and more.
+        </p>
+    </div>
+    <div>
+        <div class="inline-flex gap-x-2">
+            <div class="flex flex-col space-y-2">
+                <label for="category" class="font-semibold text-[15px]">Category</label>
+                <select (ngModelChange)="changeCategory($event)" [(ngModel)]="categoryName"
+                    class="py-2 px-5 pe-20 block w-full bg-gray-100 border-transparent  text-sm outline-none">
+                    <option value="">All Categories</option>
+                    <option *ngFor="let category of categories()" [value]="category.categoryName">{{
+                        category.categoryName }}</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- error -->
+<div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+   <div [@fadeInOut] *ngFor="let product of productsWithPagination()?.data;let index=index" class="items-center border rounded-md shadow-sm flex ">        
+   <div class="flex flex-col ">
+    <div class="flex items-center relative">
+        <div class="basis-[30%]">
+            <img [src]="product.linkImage" alt="" loading="lazy">
+        </div>
+
+    <div class="flex flex-col basis-[70%] py-2">
+        <div class="flex flex-col  line-clamp-2">
+          <p class="text-[17px] line-clamp-1 font-semibold text-emerald-900">{{product.name}}</p>
+          <p class="text-[12px] text-gray-600 line-clamp-1 font-thin">{{product.description}}</p>
+        </div>
+        <div class="text-[10px] my-1 px-1"><p>{{product.sku}}</p></div>
+        <div class="flex flex-col px-2 py-2">
+            <div class="flex items-center text-sm">
+                <p class="text-gray-600">Price : </p>
+                <p class="font-semibold">{{product.price}}EGP</p>
+            </div>
+            <div class="flex items-center text-sm">
+                <p class="text-gray-600">Brand : </p>
+                <p class="font-semibold">{{product.brand}}</p>
+            </div>
+            <div class="flex items-center text-sm">
+                <p class="text-gray-600">Stock : </p>
+                <p class="font-semibold">{{product.stockQuantity}}</p>
+            </div>
+            <div class="flex items-center text-sm">
+                <p class="text-gray-600">Discount : </p>
+                <p class="font-semibold">{{product.discount}}</p>
+            </div>
+            <div class="flex items-center text-sm">
+                <p class="text-gray-600">OfferEndDate : </p>
+                <span class="font-semibold">{{product.offerEndDate | date:'yyyy-MM-dd'}}</span>
+            </div>
+        </div>
+    </div>
+     
+    <div class="absolute bottom-0 left-0 flex items-center">
+        <div class=" flex-col flex justify-center mx-1">
+            <button (click)="toggleDropdown(index)"
+                class="px-1 rounded-md py-1  text-black"><i
+                    class="bx p-2 rounded-full border bx-dots-vertical"></i></button>
+            <div [ngClass]="{'hidden ':isDropdownVisible==false || (isDropdownVisible==true && DropdownIndex!=index),
+       'block ': DropdownIndex===index
+       }" class="relative mt-1 ">
+                <ul
+                    class=" bg-[#fff] border rounded-lg flex flex-col justify-center py-1  text-black px-5 absolute">
+                    <li (click)="delete(product.id)" class="cursor-pointer text-[13px]"><i
+                            class=" text-xl bx bx-trash text-blue-600"></i></li>
+                    <li class="cursor-pointer text-[13px]"><i
+                            class="text-xl text-blue-600 bx bx-edit"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class=" whitespace-nowrap">
+            <div class=" flex items-center justify-center">
+                <button (click)="ShowstatusPopup(product.id) " class=""><i
+                        class='text-xl  text-gray-700 bx bx-list-plus'></i></button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+   </div> 
+           
+</div>
+</div>
+
+<div class="w-full flex items-center py-4 mt-1 px-5 border rounded-md">
+    <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+        <div>
+            <p class="text-sm text-gray-700">
+                Showing
+                <span class="font-medium">{{productsWithPagination()?.count}}</span>
+                results
+            </p>
+        </div>
+        <div>
+            <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                aria-label="Pagination">
+                <a href="#"
+                    class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                    <span class="sr-only">Previous</span>
+                    <svg class="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                        data-slot="icon">
+                        <path fill-rule="evenodd"
+                            d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <!-- Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" -->
+
+                <button [ngClass]="{'activePage':currentPage==page}" (click)="goToPage(page)"
+                    *ngFor="let page of pages" aria-current="page"
+                    class="relative z-10 inline-flex items-center outline-none px-4 py-2 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{page}}</button>
+                <button (click)="goToPage(currentPage+1)"
+                    class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+                    <span class="sr-only">Next</span>
+                    <svg class="size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                        data-slot="icon">
+                        <path fill-rule="evenodd"
+                            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- End Footer -->
+<app-loading class="fixed w-full h-full top-0 z-" *ngIf="perform.isLoading$ | async"></app-loading>
+<!-- End Table Section -->

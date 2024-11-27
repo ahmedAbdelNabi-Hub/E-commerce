@@ -1,0 +1,55 @@
+<section *ngIf="productsGrouped()" class=" latest-offers mt-9 px-4 xs:px-0">
+  <h2 class="text-xl lg:text-4xl mb-1 text-center font-[550] ">BEST OFFERS</h2>
+  <h2 class="text-2xl mb-4 text-center font-thin ">Deals of the season are here</h2>
+  <nav
+    class="text-[14px] justify-start md:justify-center snap-x snap-mandatory scrollbar-hidden xs:text-[14px] md:text-[18px] font-semibold flex mb-2 overflow-x-auto overflow-y-hidden scrollbar-hide flex-wrap ml-2">
+    <ul class="flex mb-2 px-2 items-start md:items-center py-1">
+      <li *ngFor="let category of productsGrouped(); let i = index" (click)="scrollToImage(i)"
+        [ngClass]="{'active': activeIndex() === i}"
+        class="capitalize snap-center p-1 flex-none mx-2 cursor-pointer border-b-2 border-transparent hover:border-black">
+        {{ category.key }}
+      </li>
+    </ul>
+  </nav>
+
+  <div class="flex space-x-20 flex-none overflow-x-auto scrollbar-hidden snap-x snap-mandatory scrollbar-none" #slider>
+    <div *ngFor="let category of productsGrouped()" class="flex-none w-full snap-center">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-2 xs:gap-4">
+        <div *ngIf="category.items && category.items.length"
+          class="border bg-[#ffffff] 
+          overflow-hidden flex 
+          flex-row items-center
+          md:col-span-2 md:flex-col rounded-3xl">
+              <img
+                [src]="category.items[0].linkImage"
+                srcset="
+                {{category.items[0].linkImage}} 300w, 
+                {{category.items[0].linkImage}} 600w, 
+                {{category.items[0].linkImage}} 1000w"
+                sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px" alt="{{ category.items[0].name }}"
+                width="300" height="200" class="object-contain max-w-md w-[50%] md:w-[80%] h-[100%] md:h-[80%]"loading="lazy" />
+                <div class="text-center text-[10px] md:text-xl font-semibold px-7 pb-5">
+                  Save up to $400 with Galaxy Watch Ultra
+                </div>
+                </div>
+
+
+        <!-- Offer Products Section -->
+        <div class="col-span-full md:col-span-2 gap-3 grid grid-cols-1 flex-none relative">
+          <div class="grid grid-cols-2 gap-2 md:gap-5">
+            <div *ngFor="let product of category.items.slice(1)"
+              class="max-h-[160px] md:max-h-[230px]  border rounded-3xl bg-white flex flex-col justify-center items-center">
+              <img [src]="product.linkImage" alt="" class="object-contain max-w-md w-[70%] h-[50%] md:h-[80%]" />
+              <div class="text-center  h-[20%] text-[10px] md:text-sm font-semibold px-7 pb-5">
+                Save up to $400 with Galaxy Watch Ultra
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

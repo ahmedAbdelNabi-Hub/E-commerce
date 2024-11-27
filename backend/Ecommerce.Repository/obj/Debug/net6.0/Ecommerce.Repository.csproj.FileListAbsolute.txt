@@ -1,0 +1,17 @@
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\bin\Debug\net6.0\Ecommerce.Repository.deps.json
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\bin\Debug\net6.0\Ecommerce.Repository.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\bin\Debug\net6.0\Ecommerce.Repository.pdb
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\bin\Debug\net6.0\Ecommerce.core.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\bin\Debug\net6.0\Ecommerce.core.pdb
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\Ecommerce.Repository.csproj.AssemblyReference.cache
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\Ecommerce.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\Ecommerce.Repository.AssemblyInfoInputs.cache
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\Ecommerce.Repository.AssemblyInfo.cs
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\Ecommerce.Repository.csproj.CoreCompileInputs.cache
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\Ecommerc.FFB2CA63.Up2Date
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\Ecommerce.Repository.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\refint\Ecommerce.Repository.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\Ecommerce.Repository.pdb
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\obj\Debug\net6.0\ref\Ecommerce.Repository.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\bin\Debug\net6.0\Ecommerce.Contracts.dll
+C:\Users\ahmed\source\repos\Ecommerce\Ecommerce.Repository\bin\Debug\net6.0\Ecommerce.Contracts.pdb

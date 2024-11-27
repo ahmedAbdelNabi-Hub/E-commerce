@@ -1,0 +1,8 @@
+
+<app-status-card  (statusId)="handleStatusSelection($event)" [Status]="groupedStatuses.admin" [assignableby]="'Assignable By Admin'"  ></app-status-card>
+<app-status-card (statusId)="handleStatusSelection($event)"  [Status]="groupedStatuses.system" [assignableby]="'Assignable By System'"  ></app-status-card>
+<app-table [statusId]="statusId"  @transformAnimation *ngIf="statusId"></app-table>
+
+
+
+ 

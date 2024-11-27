@@ -1,0 +1,9 @@
+<div *ngIf="productsSignal()" class="relative">
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let product of productsSignal()?.data; trackBy: trackByFn">
+      <ng-template carouselSlide [id]="product.name">
+        <app-product-card-with-discound [productData]="product"></app-product-card-with-discound>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>

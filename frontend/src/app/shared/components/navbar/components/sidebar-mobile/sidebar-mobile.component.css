@@ -1,0 +1,14 @@
+/*py-4 px-2 fixed top-0 left-0 w-[90%] bg-[#eee] h-full*/
+.sidebar{
+    padding: 15px 20px;
+    position: fixed;
+    top: 46px;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    background-color: #fbfafa;
+}
+
+.active {
+    border: 2px dotted black;
+  }

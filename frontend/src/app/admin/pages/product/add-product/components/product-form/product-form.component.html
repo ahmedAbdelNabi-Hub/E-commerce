@@ -1,0 +1,278 @@
+<form enctype="multipart/form-data" (ngSubmit)="submitForm()" [formGroup]="productForm">
+  <div class="container mx-auto mt-10 px-5">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <div class="h-10 rounded-md w-10 flex items-center justify-center border">
+          <i class='bx bx-left-arrow-alt text-xl text-gray-500'></i>
+        </div>
+        <p class="text-2xl">Add New Product</p>
+      </div>
+      <div class="">
+        <button type="submit" class="w-full  px-6 text-sm  bg-blue-700 text-white font-semibold py-1 ">
+          Save Product
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-7 gap-2 mt-1">
+      <div class="flex flex-col gap-1 md:px-10 py-4 col-span-1 md:col-span-4 rounded-md shadow-sm">
+        <!-- Product Name Field -->
+        <div class="flex flex-col justify-center space-y-1 mt-5">
+          <p class="text-[14px] md:text-[16px]">Product Name</p>
+          <input placeholder="Please enter the product name accurately..." type="text" formControlName="name"
+            class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" required />
+          <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('name')">{{
+            getErrorMessage('name') }}</div>
+        </div>
+
+        <!-- Product Description Field -->
+        <div class="flex flex-col justify-center space-y-1 mt-5">
+          <label class="text-[14px] md:text-[16px]" for="description">Product Description</label>
+          <textarea id="descriptionEn" formControlName="description"
+            class="bg-[#ffffff] border text-[15px] outline-none rounded-md "
+            placeholder="Enter a detailed description of the product..."
+            style="padding-top: 0.5rem; padding-left: 1rem;" maxlength="500"></textarea>
+          <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('description')">{{
+            getErrorMessage('description') }}</div>
+        </div>
+
+        <!-- Stock and Brand Fields -->
+        <div class="flex flex-col md:flex-row  mt-2 border py-5 px-3 rounded-md">
+          <div class="w-full md:basis-1/2  flex flex-col justify-center  mt-2">
+            <p class="font-semibold text-[14px]">Stock Quantity</p>
+            <span class="text-[10px] text-gray-400">Available stock quantity</span>
+            <input placeholder="Please enter the available stock quantity" type="number" min="0"
+              formControlName="stockQuantity" class="px-4 text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]"
+              required />
+            <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('stockQuantity')">{{
+              getErrorMessage('stockQuantity') }}</div>
+          </div>
+
+          <div class="w-full md:basis-1/2 mx-2 flex flex-col   mt-2">
+            <p class="font-semibold text-[14px]">Brand</p>
+            <span class="text-[10px] text-gray-400">Available brand</span>
+            <input placeholder="Please enter the brand name, e.g., 'Samsung'" type="text" formControlName="brand"
+              class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
+            <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('brand')">{{
+              getErrorMessage('brand') }}</div>
+          </div>
+        </div>
+
+        <!-- Pricing Fields -->
+        <div class=" border rounded-md p-4">
+          <h3 class="text-xl font-thin mb-4">Manage Pricing</h3>
+          <div class="flex flex-col space-y-4">
+            <!-- Regular Price and Discount -->
+            <div class="flex flex-col md:flex-row ">
+              <div class="flex flex-col w-full md:basis-1/2 md:mx-2">
+                <label class="text-[14px] my-2" for="regular-price">Regular Price</label>
+                <input id="regular-price" placeholder="Please enter the regular price of the product" type="number"
+                  min="0" formControlName="price"
+                  class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" required />
+                  <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('price')">{{
+                getErrorMessage('price') }}</div>
+
+              </div>
+              <div class="flex flex-col w-full md:basis-1/2">
+                <label class="text-[14px] my-2" for="discount">Discount Percentage (%)</label>
+                <input id="discount" placeholder="Please enter the discount percentage" type="number" min="0" max="100"
+                  formControlName="discount"
+                  class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
+                <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('discount')">{{
+                  getErrorMessage('discount') }}</div>
+              </div>
+            </div>
+
+            <div class="flex flex-col">
+              <label class="text-[14px] my-2" for="offer-start-date">Offer Start Date</label>
+              <input id="offer-start-date" type="date" formControlName="offerStartDate"
+                class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
+              <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('offerStartDate')">{{
+                getErrorMessage('offerStartDate') }}</div>
+
+            </div>
+
+            <div class="flex flex-col">
+              <label class="text-[14px] my-2" for="offer-end-date">Offer End Date</label>
+              <input id="offer-end-date" type="date" formControlName="offerEndDate"
+                class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
+              <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('offerEndDate')">{{
+                getErrorMessage('offerEndDate') }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Upload and Category Selection -->
+      <div class="col-span-1 md:col-span-3 py-3">
+        <!-- Main Image Upload -->
+        <div *ngIf="!productForm.get('ImageFile')?.value" class="flex justify-center w-full">
+          <label for="dropzone-file"
+            class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <svg class="w-8 h-8 mb-4 text-blue-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 20 16">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+              </svg>
+              <p class="mb-2 text-sm text-gray-900">
+                <span class="font-semibold">Click to upload</span> or drag and drop
+              </p>
+              <p class="text-xs text-gray-600">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+            </div>
+            <input (change)="setImageFile($event)" id="dropzone-file" type="file" class="hidden" accept="image/*" />
+          </label>
+    
+        </div>
+        <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('ImageFile')">{{
+            getErrorMessage('ImageFile') }}</div>
+
+
+        <div *ngIf="productForm.get('ImageFile')?.value" class="mt-4 flex flex-col relative">
+          <i class='bx bx-refresh text-2xl text-emerald-800 mx-3 cursor-pointer' (click)="clearImagePreview()"></i>
+          <div class="w-full flex justify-center">
+            <img [src]="selectedImage" class="rounded-md mainImage cursor-pointer" alt="Image Preview" />
+          </div>
+        </div>
+
+        <!-- Thumbnail Previews
+        <div *ngIf="productForm.get('ImageFile')?.value" class="mt-4 flex flex-wrap">
+          <div *ngFor="let thumbnail of thumbnailUrls" class="mt-2">
+            <img [src]="thumbnail" class="w-20 h-20 rounded-md" alt="Thumbnail Preview" />
+          </div>
+          <div class="flex items-center justify-center flex-row-reverse">
+            <label for="dropzone-file"
+              class="flex flex-col items-center justify-center w-14 h-14 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <i class="bx bx-plus text-3xl"></i>
+              </div>
+              <input id="dropzone-file" type="file" class="hidden" accept="image/*" (change)="setSubImage($event)" />
+            </label>
+          </div>
+        </div> -->
+
+        <div class="bg-[#f9f9f9] px-3 py-3 mt-5 rounded-md">
+          <div class="px-2">
+            <p class="font-thin py-1">Product Category</p>
+            <select formControlName="categoryId" class="border rounded-md w-full bg-[#ffffff] px-3 py-2">
+              <option *ngFor="let category of categories" [value]="category.id">{{ category.categoryName }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-col bg-[#f9f9f9] px-3 py-3  justify-center space-y-1 mt-5">
+          <p class="text-[14px] md:text-[16px]">Delivery Time In Days</p>
+          <input formControlName="deliveryTimeInDays" placeholder="Please enter the Delivery Time In Days "
+            type="number" class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
+          <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('deliveryTimeInDays')">{{
+            getErrorMessage('deliveryTimeInDays') }}</div>
+        </div>
+        <div class="flex  flex-col ">
+          <!-- Weight -->
+          <div class="w-full mx-2 flex flex-col justify-center space-y-1 mt-2">
+            <p class="font-semibold text-[14px]">Weight</p>
+            <span class="text-[10px] text-gray-400">
+              Weight in kg (e.g., 1.5)
+            </span>
+            <input placeholder="Enter product weight" type="number" min="0" step="0.01" formControlName="weight"
+              class="px-4 w-full text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]">
+            <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('deliveryTimeInDays')">{{
+              getErrorMessage('deliveryTimeInDays') }}</div>
+
+          </div>
+          <!-- Dimensions (Length, Width, Height) -->
+          <div class="w-full  mx-2 flex flex-col justify-center space-y-1 mt-2">
+            <p class="font-semibold text-[14px]">Dimensions</p>
+            <span class="text-[10px] text-gray-400">
+              Enter dimensions in cm (Length x Width x Height)
+            </span>
+            <div class="flex flex-col  gap-1 flex-shrink">
+              <input placeholder="Dimensions in the format 'Width x Height x Length'" type="text" min="0" step="0.1"
+                formControlName="dimensions"
+                class="px-4 w-full md:w-auto text-[12px] rounded-md outline-none py-2 bg-[#eeeeee] my-1" required>
+              <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('dimensions')">{{
+                getErrorMessage('dimensions') }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form (submit)="addAttrubute()" class="px-12 py-5  container mx-auto" [formGroup]="productAttributesFrom">
+      <div class="container mx-auto mt-5">
+        <div class="flex items-center md:flex-row flex-col py-3 md:my-5">
+          <div class="flex flex-col space-x-1 justify-center">
+            <span class="text-[10px] px-2 text-gray-400">Be careful! should be meaningful, like "Color" , "CPU" or
+              "Size".</span>
+            <h3 class=" text-2xl font-thin">
+              Attribute Properties
+            </h3>
+          </div>
+        </div>
+        <div class="flex md:flex-row flex-col items-center">
+          <!-- Attribute Name -->
+          <div class="w-full md:w-[40%] mx-2 flex flex-col justify-center space-y-1 mt-2">
+            <label for="attributeName" class="font-semibold text-[14px]">
+              Attribute Name
+            </label>
+            <span class="text-[10px] text-gray-400">
+              Enter attribute name (2-100 characters)
+            </span>
+            <input id="attributeName" placeholder="Enter attribute name" type="text" formControlName="attributeName"
+              class="px-4 text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]" minlength="3" maxlength="100" required>
+          </div>
+          <!-- Attribute Value -->
+          <div class="w-full md:w-[40%] mx-2 flex flex-col justify-center space-y-1 mt-2">
+            <label for="attributeValue" class="font-semibold text-[14px]">
+              Attribute Value
+            </label>
+            <span class="text-[10px] text-gray-400">
+              Enter attribute value (1-255 characters)
+            </span>
+            <input id="attributeValue" placeholder="Enter attribute value" type="text" formControlName="attributeValue"
+              class="px-4 text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]" minlength="2" maxlength="255" required>
+          </div>
+          <!-- buuton is save attribute -->
+          <button type="submit" class=" w-full md:w-auto px-5 py-1  mt-12 bg-blue-500 text-white text-sm">Add
+            attribute</button>
+        </div>
+      </div>
+    </form>
+    <div class="px-5 md:px-14" *ngIf="productAttributes.length">
+      <div class="flex flex-col">
+        <div class="-m-1.5 overflow-x-auto">
+          <div class="p-1.5 min-w-full inline-block align-middle">
+            <div class="overflow-hidden">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead>
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                      اسم
+                      الخاصية
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                      التفاصيل
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="odd:bg-white even:bg-gray-100 overflow-x-hidden"
+                    *ngFor="let attribute  of productAttributes ; let i =index">
+                    <td class="px-6 py-4 w-[50%] whitespace-nowrap text-sm font-medium text-gray-800">
+                      {{attribute.attributeName}}</td>
+                    <td class="px-6 py-4 w-[50%] whitespace-nowrap text-sm text-gray-800">
+                      {{attribute.attributeValue}}</td>
+
+                    <td> <button (click)="removeAttribute(i)"
+                        class="border border-dotted h-full px-4 py-1 text-black bg-sky-50 text-sm">Remove</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

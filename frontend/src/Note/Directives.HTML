@@ -1,0 +1,108 @@
+Structural Directives in Angular (Advanced Info)
+Structural directives in Angular are responsible:
+for altering the DOM structure by adding
+or removing elements based on the evaluation
+of expressions. These directives are prefixed
+with an asterisk , which is shorthand for Angular's
+structural syntax. Let’s dive deeper into how they
+work and explore some advanced aspects.
+
+(NgIf)
+
+<div *ngIf="isShow; else loggedOut">
+  Welcome, user!
+</div>
+
+<ng-template #loggedOut>
+  <p>Please log in.</p>
+</ng-template>
+
+
+<ng-container *ngIf="isVisible; then content; else noContent"></ng-container>
+
+<ng-template #content>
+  <div>Content is visible</div>
+</ng-template>
+<ng-template #noContent>
+  <div>Content is hidden</div>
+</ng-template>
+
+----------------------------------------------------------------------------
+
+(*ngFor)
+
+The trackBy function is essential in improving performance
+when rendering large lists. By default, Angular uses object identity to track changes, but this can lead to unnecessary
+re-rendering.
+
+How trackBy works: You define a custom function
+that tells Angular how to uniquely identify each item in the list. This helps Angular efficiently update the DOM only
+when necessary.
+
+<div *ngFor="let item of items; trackBy: trackByFn">
+  {{ item.name }}
+</div>
+
+trackByFn(index: number, item: any): number {
+return item.id; // or any unique identifier
+}
+
+
+
+---------------------------------------------------------
+
+
+*ngSwitch with Multiple Cases
+
+Angular's *ngSwitch directive can be extended to handle more
+complex logic by combining multiple ngSwitchCase and ngSwitchDefault.
+
+Handling Multiple Cases:
+
+html
+Copy code
+<div [ngSwitch]="dayOfWeek">
+  <div *ngSwitchCase="'Monday'">Start of the week</div>
+  <div *ngSwitchCase="'Wednesday'">Midweek</div>
+  <div *ngSwitchCase="'Friday'">Almost weekend!</div>
+  <div *ngSwitchDefault>Unknown day</div>
+</div>
+----------------------------------------------------------------------------
+ngClass in Angular: Behavior and Structure
+--A single class (as a string).
+--An array of classes.
+--An object where the keys are class names and the values are booleans
+(or expressions that evaluate to true or false)
+
+
+
+<div [ngClass]="'color-red'">
+  isShow is true , size-15 ,red
+</div>
+
+<div [ngClass]="isShow ? 'color-red':'color-blue'">
+  isShow is true , size-15 ,red
+</div>
+
+<div [ngClass]="['color-red','size-15']">
+  isShow is true , size-15 ,red
+</div>
+
+<div [ngClass]="{
+  'color-red':!isShow,
+  'size-20':!isShow,
+}">
+  isShow is true , size-15 ,red
+</div>
+
+
+
+---------------------------------------------------------
+(NgStyle)
+
+<div [ngStyle]="{
+  'color': isActive ? 'green' : 'red',
+  'font-weight': isBold ? 'bold' : 'normal'
+}">
+  Conditional styling
+</div>

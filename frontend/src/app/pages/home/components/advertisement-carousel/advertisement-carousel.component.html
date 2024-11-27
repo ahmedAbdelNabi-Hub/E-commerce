@@ -1,0 +1,77 @@
+<div [ngClass]="{'brightness-50': isHovered}" [ngStyle]="{'z-index':isHovered?'-10':'0'}"
+    class="mt-10 h-[90vh] screen-391:h-[133vh] xs:h-[47vh] md:h-[62vh] lg:h-[88vh]  w-full relative overflow-hidden"
+    (touchstart)="onTouchStart($event)"  (touchend)="onTouchEnd($event)">
+
+    <ng-container *ngFor="let image of imageSlider;trackBy:trackByFn; let i = index">
+        <div [ngStyle]="{
+        'backgroundColor': 'white',
+        'opacity': i === activeIndex ? '1' : '0',
+        'transition': 'opacity .5s ease-in-out'
+      }" class="w-full h-full absolute -z-10 left-0 top-0 bg-cover bg-no-repeat bg-center">
+
+<div class="flex items-center justify-center w-full h-full">
+    <img 
+        [src]="getImage(image)" 
+        [srcset]="getImage(image) + ' 300w, ' + getImage(image) + ' 600w, ' + getImage(image) + ' 1000w'" 
+        [alt]="image" 
+        loading="lazy" 
+        class="lazy-image" 
+        
+         />  
+       </div>
+        <div *ngIf="image?.title!='' && image?.description" [ngClass]="{
+        'direction-left': image.direction === 'left',
+        'direction-right': image.direction === 'right',
+        'direction-center': image.direction === 'center'
+      }" class="absolute  px-4 lg:px-2  w-full xs:max-w-[18rem] md:max-w-sm lg:max-w-[30rem] max-h-max flex flex-col ">
+                <div>
+                    <h3
+                        class="leading-2 max-bland line-clamp-2  lg:line-clamp-3 text-[#fffefe]  text-responsive-sm xs:text-responsive-xl md:text-[40px] font-[550] md:max-w-xl break-words">
+                        {{image?.subtitle}}</h3>
+                    <p class="max-bland text-[#b5b5b5]  mt-3   line-clamp-3 md:max-w-md xs:text-[15px] md:text-[1rem]">
+                        {{image?.description}}</p>
+                    <button class="bg-[#1d1a1a]  text-white  px-1 py-1 md:px-6 md:py-3 mt-4 xs:text-[12px] md:text-[13px]">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <button (click)="nextImage()"
+        class="hidden lg:flex max-bland button-left bg-[#ffffff] rounded-full w-10 h-10 px-2  items-center justify-center ">
+        <i class=' text-4xl bx bx-chevron-left'></i>
+    </button>
+    <button (click)="prevImage()"
+        class="hidden lg:flex max-bland button-right bg-[#ffffff] rounded-full w-10 h-10 px-2  items-center justify-center ">
+        <i class=' text-4xl bx bx-chevron-right'></i>
+    </button>
+
+    <div class="absolute  md:py-2  bottom-0  md:bottom-2 w-full flex flex-col items-center justify-center">
+        <div>
+            <p class="text-[10px] xs:text-[11px] md:text-[12px] max-bland  text-[#fffefe]">{{activeTitle}}</p>
+        </div>
+        <div class="flex items-center justify-center blur-glass bg-[#b0e0e797] my-2 rounded-md h-8 w-[280px]">
+            <div (click)="activeImage(i)" *ngFor="let image of imageSlider; let i = index"
+                class=" h-8 flex items-center justify-center" [ngClass]="{'animate-expand':activeIndex==i}">
+                <div [ngClass]="{'animate-expand':activeIndex==i}"
+                    class="max-bland  overflow-hidden w-2.5 h-2.5  rounded-full bg-[#25252568] mx-1 md:mx-2">
+                    <div class="bg-gray-50 h-2.5 rounded-full" [ngClass]="{
+              'w-0': activeIndex !== i ,
+              'w-20': activeIndex === i,
+              'w-2px': activeIndex === i && isPaused,
+              'animate-Innerexpand': activeIndex === i && !isPaused
+            }" [ngStyle]="{
+              width: activeIndex === i ? '100%' : '0'
+            }">
+                    </div>
+                </div>
+            </div>
+
+            <i class="text-4xl bx bx-pause cursor-pointer text-gray-50 max-bland" (click)="pauseSlide()"
+                *ngIf="!isPaused"></i>
+            <i class="bx bx-play text-4xl cursor-pointer text-gray-50 max-bland" (click)="playSlide()"
+                *ngIf="isPaused"></i>
+        </div>
+
+    </div>
+</div>
+
+

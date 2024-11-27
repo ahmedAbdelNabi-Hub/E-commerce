@@ -1,0 +1,5 @@
+.active{
+    background-color: black;
+    color: white !important;
+    transition: .2s linear;
+}

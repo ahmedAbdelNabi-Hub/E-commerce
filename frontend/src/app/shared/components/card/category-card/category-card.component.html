@@ -1,0 +1,26 @@
+<section class="white-mask relative my-5">
+    <div class="relative ml-2 ">
+        <div #link_container
+            class="z-10 hide-scrollbar px-1 bg-[#ffffff64] py-4 md:px-4  flex flex-nowrap overflow-x-auto justify-start items-center space-x-1 md:space-x-5">
+            <div *ngFor="let Category of categories"
+                class=" mx-1  flex-none cursor-pointer pb-2  space-y-3 flex w-28 md:w-32  items-center flex-col">
+                <a class="" [routerLink]="'/product/'+Category?.categoryName">
+                    <div
+                        class="bg-white px-3 md:px-4 py-2 rounded-full border  flex w-full h-20 md:h-28 items-center shadow-sm">
+                        <img class=" hover:scale-105 transition-transform  w-14 h-14 md:w-20  md:h-20"
+                            [src]="Category?.image" alt="">
+                    </div>
+                    <p class="text-[12px] text-center w-full  md:text-[15px] capitalize font-semibold">
+                        {{Category?.categoryName}}</p>
+                </a>
+            </div>
+            <!-- <button
+                class="border hidden md:block scroll-right absolute h-full -top-0 px-2 md:px-4 py-1 text-xl bg-[#fcfbfb] right-0 "
+                (click)="scrollRight()"><i class='bx bxs-chevron-right text-[#616161]   text-2xl'></i></button>
+            <button
+                class="border hidden md:block  scroll-right  absolute -top-0 px-3 h-full md:px-4 py-1 text-xl bg-[#fcfbfb] left-[-50px]  "
+                (click)="scrollLeft()" *ngIf="isleft"><i
+                    class='bx bxs-chevron-left text-2xl text-[#616161]   '></i></button> -->
+        </div>
+    </div>
+</section>

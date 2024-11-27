@@ -1,0 +1,45 @@
+<div class=" px-1 relative w-full bg-[#f7f7f7] rounded-lg">
+     <p class=" text-[22px]  py-4 merriweather-bold border-gray-300 border-b px-2">Order Summary</p>
+ 
+    <div class="px-2 py-4  border-gray-300 border-b">
+        <div class="flex flex-col justify-center space-y-3 ">
+            <h3 class="merriweather-bold ">Promo/Referral code</h3>
+           <div class="relative">
+            <button class="absolute top-2.5 right-3 text-gray-600">Apply</button>
+            <input 
+            placeholder="Enter promo code"
+            type="text" class="px-4 py-2.5 text-gray-600 border bg-white w-full ">
+           </div> 
+        </div>
+    </div>
+    <ul class="space-y-2 mt-5 px-2 py-2 border-gray-300 border-b font-semibold">
+        <li class="flex items-center justify-between">
+            <p class="text-sm ">Subtotal (1 item)</p>
+            <p>{{'2,299.99'}} <span class="text-[10px] font-semibold">ج.م</span></p>
+        </li>
+        <li class="flex items-center justify-between">
+            <p class="text-sm ">Shipping</p>
+             <span class="px-3 text-white bg-red-500 text-[14px] rounded-full">FREE</span>
+        </li>
+       
+        <li class="flex items-center justify-between">
+            <p class="text-sm ">Estimated tax</p>
+             <p class="text-sm">Will be calculated later</p>
+        </li>
+       
+       
+    </ul>
+    <ul class="space-y-2 mt-5 px-2 py-2 border-gray-300 border-b font-semibold">
+        <li class="flex items-center justify-between">
+            <p class="text-[22px] font-semibold ">    Estimated Total</p>
+            <p class="text-[22px]">{{'2,299.99'}} <span class="text-[10px] font-semibold">ج.م</span></p>
+        </li>
+        <li class="pt-2">
+            <button class="text-center bg-blue-500 text-white text-[15px] py-2 font-semibold rounded-full w-full">Checkout</button>
+        </li>
+        <li class="">
+            <button class="text-center bg-[#f2ba36] text-[20px] py-1 font-bold rounded-full w-full"><span class="text-[#002e80]">Pay</span><span class="text-[#0094d3]">Pal</span> </button>
+        </li>
+    </ul>    
+
+</div>

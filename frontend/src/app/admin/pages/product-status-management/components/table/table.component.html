@@ -1,0 +1,135 @@
+ <!-- Card -->
+ <div class="flex flex-col mt-5 px-5">
+    <div class="-m-1.5 overflow-x-auto">
+        <div class="p-1.5 min-w-full inline-block align-middle">
+            <div class="bg-white   shadow-sm overflow-hidden">
+        
+                <table *ngIf="!(preform.hasError$ | async)" class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="ps-8 lg:ps-8 xl:ps-8 pe-6 py-3 text-start">
+                                <div class="flex items-center gap-x-2">
+                                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                        Name
+                                    </span>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-start">
+                                <div class="flex items-center gap-x-2">
+                                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                        Price
+                                    </span>
+                                </div>
+                            </th>
+
+                            <th scope="col" class="px-6 py-3 text-start">
+                                <div class="flex items-center gap-x-2">
+                                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                        Stock
+                                    </span>
+                                </div>
+                            </th>
+
+
+
+                            <th scope="col" class="px-6 py-3 text-start">
+                                <div class="flex items-center gap-x-2">
+                                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                        Brand
+                                    </span>
+                                </div>
+                            </th>
+
+                            <th scope="col" class="px-6 py-3 text-start">
+                                <div class="flex items-center gap-x-2">
+                                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                        Discount
+                                    </span>
+                                </div>
+                            </th>
+
+
+                            <th scope="col" class="px-6 py-3 text-start">
+                                <div class="flex items-center gap-x-2">
+                                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                        offerEnd
+                                    </span>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-start">
+                                <div class="flex items-center gap-x-2">
+                                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800">
+                                        Statuses
+                                    </span>
+                                </div>
+                            </th>
+                           
+
+                        </tr>
+                    </thead>
+
+
+                    <tbody class="divide-y divide-gray-200">
+                        <tr [@fadeInOut] *ngFor="let product of products()?.data;let index=index">
+                            <td class=" whitespace-nowrap">
+                                <div class="ps-2 lg:ps-1 xl:ps-1 pe-16 py-3">
+                                    <div class="flex items-center w-[55%] md:w-[45%]">
+                                        <img class="inline-block w-[55%] max-w-sm mx-1 " [src]="product.linkImage"
+                                            alt="Avatar">
+                                        <div class="">
+                                            <p
+                                                class="w-[210px] block text-sm font-semibold text-gray-800 line-clamp-2">
+                                                {{product.name}}</p>
+                                            <span
+                                                class="block text-[10px] line-clamp-2 max-w-60 whitespace-nowrap text-gray-500">{{product.description}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="h-px  whitespace-nowrap">
+                                <div class="px-6 py-3">
+                                    <span class="block text-sm font-semibold text-gray-800">{{product.price}}
+                                        EGP</span>
+
+                                </div>
+                            </td>
+                            <td class="size-px whitespace-nowrap">
+                                <div class="px-6 py-3">
+                                    <span
+                                        class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-medium bg-teal-100 text-teal-800 ">
+                                        {{product.stockQuantity}}
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="size-px whitespace-nowrap">
+                                <div class="px-6 py-3">
+                                    <div class="flex items-center gap-x-3 text-sm ">
+                                        {{product.brand}}
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="size-px whitespace-nowrap">
+                                <div class="px-6 py-3">
+                                    <span class="text-sm text-gray-500">{{product.discount}}%</span>
+                                </div>
+                            </td>
+
+                            <td class=" whitespace-nowrap">
+                                <div class="px-6 py-1.5">
+                                    <span class="text-sm">{{product.offerEndDate | date:'yyyy-MM-dd'}}</span>
+                                </div>
+                            </td>
+                            <td class=" whitespace-nowrap">
+                                <div class="px-6 py-1.5">
+                                 <div (click)="deleteStatus(product.id)"  class="flex items-center  text-gray-800 border px-4 py-1 rounded-sm space-x-2">
+                                    <i class='bx bx-trash-alt'></i>
+                                    <p>Delete</p>
+                                 </div> 
+                                </div>
+                            </td>
+                          
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- End Table -->

@@ -1,0 +1,12 @@
+<div class="dropdown" (click)="toggleDropdown()">
+    <button class="btn btn-secondary dropdown-toggle" type="button">
+      {{ menu ? menu.name : 'Select an option' }}
+    </button>
+    
+    <div class="dropdown-menu" [ngClass]="{'show': isOpen, 'fade-in': isOpen, 'fade-out': !isOpen}">
+      <button class="dropdown-item" *ngFor="let option of Links" (click)="selectOption(option)">
+        {{ option.name }}
+      </button>
+    </div>
+  </div>
+  

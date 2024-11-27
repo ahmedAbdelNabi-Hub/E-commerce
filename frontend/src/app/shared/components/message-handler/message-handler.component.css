@@ -1,0 +1,22 @@
+.message {
+  position: fixed;
+  bottom: 20px; /* Slightly above the very bottom for better visibility */
+  font-size: 16px;
+  max-width: 400px;
+  margin: 0; 
+  text-align: center;
+  z-index: 1000; 
+  border-radius: 5px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  font-weight: 600; 
+}
+
+.success {
+  background-color: #28a745; /* Success green */
+  color: white; /* Text color for contrast */
+}
+
+.error {
+  background-color: #dc3545; /* Error red */
+  color: white; /* Text color for contrast */
+}

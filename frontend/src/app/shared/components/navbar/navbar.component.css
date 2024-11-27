@@ -1,0 +1,42 @@
+.active {
+    background: #000000;
+    color: white;
+    padding: 8px 8px 6px 6px;
+    border-radius: 20px;
+    transition: .2s linear;
+}
+.LOGO{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+li:hover {
+    background: #000000;
+    color: white;
+    border-radius: 20px;
+    transition: .2s linear;
+
+}
+
+.icon i {
+    margin-inline: 8px;
+}
+
+.custom-item {
+    font-size: 13px;
+    position: relative;
+    font-weight: 600;
+    padding: 0.375rem 0.5rem;
+    cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-90%, 2%);
+    white-space: nowrap;
+    transition: .2s linear;
+}
+
+.menu:hover {
+    max-height: 400px;
+}
