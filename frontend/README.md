@@ -1,27 +1,49 @@
-# ECommerce
+# E-commerce Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+The **E-commerce Frontend** is a modern and feature-rich application built with **Angular**, **Tailwind CSS**, and **PrimeNG**, providing a seamless shopping experience for users and powerful management tools for administrators. It supports advanced functionalities like product tracking, reviews, analytics, and advertisement management.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Key Features
 
-## Code scaffolding
+### **User Features**
+- **Add to Cart**: Add products to the cart for easy checkout.
+- **Order Products**: Complete secure transactions.
+- **Login & Logout**: Secure user authentication.
+- **Search**: Powerful search functionality to find products quickly.
+- **View Product Details**: Access detailed product information and images.
+- **Manage Account**: Edit personal details and account preferences.
+- **Add Reviews**: Submit product ratings and reviews.
+- **View All Products by Categories**: Explore products grouped into categories.
+- **Track Products**: Monitor order statuses and delivery progress.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### **Admin Features**
+- **Add New Product**: Upload new products with categories and details.
+- **Login & Logout**: Secure admin authentication.
+- **Manage Accounts**: Update or deactivate user and admin accounts.
+- **Add New Admin**: Grant admin privileges to team members.
+- **Manage Orders**: View, update, or cancel customer orders.
+- **Manage Order Status**: Set order statuses like "Processing" or "Delivered."
+- **Manage Products**: Edit product details, pricing, and availability.
+- **Reports and Analytics**: Generate insights into sales and user behavior.
+- **Add Advertisements**: Promote offers and highlight deals with ads.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technologies Used
 
-## Running unit tests
+- **Angular**: Framework for building a dynamic and modular frontend.
+- **Tailwind CSS**: Utility-first framework for responsive and modern UI design.
+- **RxJS**: Reactive programming library for managing asynchronous data streams.
+- **PrimeNG**: UI component library for building elegant and interactive interfaces.
+- **HTML & CSS**: Core technologies for structuring and styling the application.
+- **State Management**: Ensures efficient data flow across the application.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/ahmedAbdelNabi-Hub/e-commerce.git
+   cd e-commerce
