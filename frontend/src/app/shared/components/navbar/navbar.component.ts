@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.navbarSubscription = this.navbarService.getNavbars().pipe(
       tap(response => {
         this.Navbars = response;
+        console.log("nav",response)
       }),
       catchError(error => {
         console.error('Error fetching navbars:', error);

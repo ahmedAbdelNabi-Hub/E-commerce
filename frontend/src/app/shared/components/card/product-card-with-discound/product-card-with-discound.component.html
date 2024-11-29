@@ -1,6 +1,6 @@
 <div class="relative mt-5 h-auto flex flex-col bg-white border-r md:border-l"
     [ariaLabel]="'product-title-'+productData.sku" role="article">
-
+    <i *ngIf="productData.offerPrice" class='bx bxs-offer absolute top-2 left-2 text-2xl text-gray-600'></i>
     <div class="flex justify-center">
         <div class="h-[120px] xs:h-[150px]">
            
@@ -10,7 +10,7 @@
                     {{ productData.linkImage }} 1000w"
                     sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px"
                     alt="{{ productData.name }} - Image" width="300" height="200" style="height:100%;"
-                    class="object-contain max-w-44 hover:scale-[.94] hover:rotate-2 transition-transform cursor-pointer"
+                    class="object-contain max-w-44 hover:scale-[1.1]  transition-transform cursor-pointer"
                     loading="lazy" />
         
         </div>
@@ -21,34 +21,34 @@
             class="hover:underline transition-all" [attr.href]="'/product/' + productData.sku"
             [attr.aria-label]="'View product ' + productData.name">
             <h2 id="product-title-{{ productData.sku }}"
-                class="line-clamp-2 mt-2 text-gray-600 text-[12px] md:text-[13px] font-semibold h-[40px]">
+                class="line-clamp-2 mt-2 text-gray-600 text-[12px] h-[40px]">
                 {{ productData.description }}
             </h2>
         </a>
 
         <div class="py-2 h-20">
             <!-- Save Price Calculation -->
-            <p *ngIf="productData.discount > 0" class="text-red-500  text-[12px] font-extralight">Save {{
-                productData.discount }} جنيه</p>
+            <p *ngIf="productData.discount > 0" class="text-red-700  text-[12px] font-semibold">Save {{
+                productData.discount }} EGP</p>
             <div *ngIf="productData.offerPrice! > 0" class="flex items-center">
-                <p class="text-[13px] xs:text-[18px] mx-1  ">
-                    {{ productData.offerPrice }} <span class="text-[11px]">جنيه</span>
+                <p class="text-[13px] xs:text-[18px] mx-1 font-semibold ">
+                    {{ productData.offerPrice }} <span class="text-[11px]">EGP</span>
                 </p>
                 <p class="text-[11px] xs:text-[14px] line-through text-gray-500">
-                    {{ productData.price }} <span class="text-[11px]">جنيه</span>
+                    {{ productData.price }} <span class="text-[11px]">EGP</span>
                 </p>
             </div>
             <p *ngIf="productData.offerPrice! <= 0" class="text-[15px] xs:text-[18px] mx-1  ">
                 {{ productData.price }} <span class="text-[11px]">جنيه</span>
             </p>
             <p *ngIf="productData.offerPrice! > 0" class="text-[10.5px]">
-                سينتهي في : {{ productData.offerEndDate | date }}
+                End Of: {{ productData.offerEndDate | date }}
             </p>
         </div>
 
         <div class="w-full relative py-1">
             <button (click)="addToBasket(productData)"
-                class="flex items-center w-full justify-center border py-1 bg-[#fbfffa] text-sm shadow-sm">
+                class="flex items-center w-full justify-center border py-1 bg-[#fbfffa] text-sm shadow-sm hover:bg-black hover:text-white transition-all">
 
                 <!-- Display loader while isLoading$ is true -->
                 <ng-container *ngIf="perform.isLoading$ | async">
@@ -59,8 +59,8 @@
                 </ng-container>
 
                 <!-- Display the icon when isLoading$ is false -->
-                <ng-container *ngIf="!(perform.isLoading$ | async)">
-                    <i class="text-xl mx-3 text-gray-600 font-semibold bx bxs-shopping-bags"></i>
+                <ng-container class="" *ngIf="!(perform.isLoading$ | async)">
+                    <i class='bx bxs-cart-add text-xl mx-2 '></i> 
                     <p>Add To Cart</p>
                 </ng-container>
 

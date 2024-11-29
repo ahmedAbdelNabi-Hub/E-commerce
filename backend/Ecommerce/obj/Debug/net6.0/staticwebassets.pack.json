@@ -1,228 +1,276 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\01-hd01-Q6-KV-pc-1440x640.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\01-hd01-Q6-KV-pc-1440x640.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\01-hd01-Q6-KV-pc-1440x640.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\03-hd01-B6-KV-pc-1440x640.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\03-hd01-B6-KV-pc-1440x640.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\03-hd01-B6-KV-pc-1440x640.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\1440x64015.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1440x64015.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\1440x64015.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\1719996358620010cd07b49b148138b161c85821ff883.jpg.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1719996358620010cd07b49b148138b161c85821ff883.jpg.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\1719996358620010cd07b49b148138b161c85821ff883.jpg.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\2024-oled-tv-f03-manifesto-pc.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\2024-oled-tv-f03-manifesto-pc.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\2024-oled-tv-f03-manifesto-pc.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\22.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\22.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\22.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\3be9e27352d81c2d7f23a9c12f2e2d6f.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\3be9e27352d81c2d7f23a9c12f2e2d6f.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\3be9e27352d81c2d7f23a9c12f2e2d6f.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\720-x-10801.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\720-x-10801.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\720-x-10801.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Horizontal.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Horizontal.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\DA-Horizontal.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Vertical.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Vertical.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\DA-Vertical.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\Mobile.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\KV_MO_720x1080_Fridge.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\KV_MO_720x1080_Fridge.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\KV_PC_1440x600_Fridge.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\KV_PC_1440x600_Fridge.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\Mobile.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\Mobile.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_1440x640_Alt02_pc.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_1440x640_Alt02_pc.avif",
       "PackagePath": "staticwebassets\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_1440x640_Alt02_pc.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_720x1080_Alt02_mo.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_720x1080_Alt02_mo.avif",
       "PackagePath": "staticwebassets\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_720x1080_Alt02_mo.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Galaxy-Z_Curation-KV_1440x640_pc.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Galaxy-Z_Curation-KV_1440x640_pc.avif",
       "PackagePath": "staticwebassets\\image\\Advertisement\\New-PCD_Galaxy-Z_Curation-KV_1440x640_pc.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\PCD_Galaxy-S_Curation-KV_720x1080_mo.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\PCD_Galaxy-S_Curation-KV_720x1080_mo.avif",
       "PackagePath": "staticwebassets\\image\\Advertisement\\PCD_Galaxy-S_Curation-KV_720x1080_mo.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_DT_1440x640large.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_DT_1440x640large.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_DT_1440x640large.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_MB_720x1080small.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_MB_720x1080small.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_MB_720x1080small.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\Samsung-Symbol.png",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\Samsung-Symbol.png",
       "PackagePath": "staticwebassets\\image\\Advertisement\\Samsung-Symbol.png"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob-02.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob-02.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\banner-mob-02.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob4.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob4.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\banner-mob4.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-pc-02.jpg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-pc-02.jpg",
       "PackagePath": "staticwebassets\\image\\Advertisement\\banner-pc-02.jpg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-pc.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-pc.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\banner-pc.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\c645-banner-mo.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\c645-banner-mo.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\c645-banner-mo.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\c645-banner-pc.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\c645-banner-pc.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\c645-banner-pc.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\calaxyLarge.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\calaxyLarge.avif",
       "PackagePath": "staticwebassets\\image\\Advertisement\\calaxyLarge.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_lg.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_lg.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\collection_lg.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_sm.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_sm.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\collection_sm.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\galaxy-s23-ultra-common-introduction-banner.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\galaxy-s23-ultra-common-introduction-banner.avif",
       "PackagePath": "staticwebassets\\image\\Advertisement\\galaxy-s23-ultra-common-introduction-banner.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\galaxy_s23_sm.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\galaxy_s23_sm.avif",
       "PackagePath": "staticwebassets\\image\\Advertisement\\galaxy_s23_sm.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\homepage-banner-mob-5.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\homepage-banner-mob-5.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\homepage-banner-mob-5.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\homepage-banner-pc-5.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\homepage-banner-pc-5.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\homepage-banner-pc-5.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\honor-x9b-pc.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\honor-x9b-pc.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\honor-x9b-pc.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\original-70bc673e3aa555151eef133f8d71caff.jpg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\original-70bc673e3aa555151eef133f8d71caff.jpg",
       "PackagePath": "staticwebassets\\image\\Advertisement\\original-70bc673e3aa555151eef133f8d71caff.jpg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\original-8a6c53f6221567976298ccb8900928c1.png",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\original-8a6c53f6221567976298ccb8900928c1.png",
       "PackagePath": "staticwebassets\\image\\Advertisement\\original-8a6c53f6221567976298ccb8900928c1.png"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg",
       "PackagePath": "staticwebassets\\image\\Advertisement\\original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\Tablet.jpeg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\Tablet.jpeg",
       "PackagePath": "staticwebassets\\image\\Categories\\Tablet.jpeg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\air_conditioners.jpg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\air_conditioners.jpg",
       "PackagePath": "staticwebassets\\image\\Categories\\air_conditioners.jpg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\headPhone.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\headPhone.webp",
       "PackagePath": "staticwebassets\\image\\Categories\\headPhone.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\laptop.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\laptop.webp",
       "PackagePath": "staticwebassets\\image\\Categories\\laptop.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\microwave.jpg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\microwave.jpg",
       "PackagePath": "staticwebassets\\image\\Categories\\microwave.jpg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\refrigerators.jpeg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\refrigerators.jpeg",
       "PackagePath": "staticwebassets\\image\\Categories\\refrigerators.jpeg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\smartphone.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\smartphone.webp",
       "PackagePath": "staticwebassets\\image\\Categories\\smartphone.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\smartwatch.jpg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\smartwatch.jpg",
       "PackagePath": "staticwebassets\\image\\Categories\\smartwatch.jpg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\televisions.jpg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\televisions.jpg",
       "PackagePath": "staticwebassets\\image\\Categories\\televisions.jpg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\washingMachines.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\washingMachines.webp",
       "PackagePath": "staticwebassets\\image\\Categories\\washingMachines.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\00d7ec48-804b-4555-9503-c9925bb05be88f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\00d7ec48-804b-4555-9503-c9925bb05be88f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "PackagePath": "staticwebassets\\image\\Product\\14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\31f3745e-66fc-437d-ba42-d212b87026878f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\31f3745e-66fc-437d-ba42-d212b87026878f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3496d92b-0d46-48c0-b89b-c17d21d3312c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\3496d92b-0d46-48c0-b89b-c17d21d3312c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "PackagePath": "staticwebassets\\image\\Product\\395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif",
       "PackagePath": "staticwebassets\\image\\Product\\3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "PackagePath": "staticwebassets\\image\\Product\\41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\44a8eccd-4c21-4ebf-8067-bd24c10b4778200-200pro-mb.jpg",
+      "PackagePath": "staticwebassets\\image\\Product\\44a8eccd-4c21-4ebf-8067-bd24c10b4778200-200pro-mb.jpg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
       "PackagePath": "staticwebassets\\image\\Product\\505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\60c7beb5-ca8e-4677-af85-4f4c4b7ecff48f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\60c7beb5-ca8e-4677-af85-4f4c4b7ecff48f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
       "PackagePath": "staticwebassets\\image\\Product\\64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\68208711-514e-4347-9e6f-ad3e5d732f9dprocessed-image-1732906120318.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\68208711-514e-4347-9e6f-ad3e5d732f9dprocessed-image-1732906120318.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "PackagePath": "staticwebassets\\image\\Product\\73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
       "PackagePath": "staticwebassets\\image\\Product\\90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif",
       "PackagePath": "staticwebassets\\image\\Product\\9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Id": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "PackagePath": "staticwebassets\\image\\Product\\b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\bf8b2492-b84f-4021-a8db-ee7981a7f05b8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\bf8b2492-b84f-4021-a8db-ee7981a7f05b8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\d927df54-2608-4e78-880f-5d2d68aedd6c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\d927df54-2608-4e78-880f-5d2d68aedd6c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fbbfdb4e-7811-4d9b-9bc6-0104b0e0d0588f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\fbbfdb4e-7811-4d9b-9bc6-0104b0e0d0588f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fdc54aac-59ee-44ab-a94e-e75ce73b0a518f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\fdc54aac-59ee-44ab-a94e-e75ce73b0a518f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Ecommerce.Microsoft.AspNetCore.StaticWebAssets.props",

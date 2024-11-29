@@ -14,12 +14,13 @@
 
   <div class="flex space-x-20 flex-none overflow-x-auto scrollbar-hidden snap-x snap-mandatory scrollbar-none" #slider>
     <div *ngFor="let category of productsGrouped()" class="flex-none w-full snap-center">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-2 xs:gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
         <div *ngIf="category.items && category.items.length"
           class="border bg-[#ffffff] 
           overflow-hidden flex 
           flex-row items-center
-          md:col-span-2 md:flex-col rounded-3xl">
+          rounded-md
+          md:col-span-2 md:flex-col ">
               <img
                 [src]="category.items[0].linkImage"
                 srcset="
@@ -28,20 +29,24 @@
                 {{category.items[0].linkImage}} 1000w"
                 sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px" alt="{{ category.items[0].name }}"
                 width="300" height="200" class="object-contain max-w-md w-[50%] md:w-[80%] h-[100%] md:h-[80%]"loading="lazy" />
-                <div class="text-center text-[10px] md:text-xl font-semibold px-7 pb-5">
-                  Save up to $400 with Galaxy Watch Ultra
-                </div>
+                <div class="flex flex-col justify-center items-center">
+                  <p class="text-gray-800 font-semibold text-[12px] md:text-[20px] line-clamp-2">{{category.items[0].name}}</p>
+                  <p class="text-[10px] font-bold text-emerald-600">Save up to $400</p>
+                 </div>
                 </div>
 
 
         <!-- Offer Products Section -->
-        <div class="col-span-full md:col-span-2 gap-3 grid grid-cols-1 flex-none relative">
-          <div class="grid grid-cols-2 gap-2 md:gap-5">
+        <div class="col-span-full md:col-span-2 grid grid-cols-1 flex-none relative">
+          <div class="grid grid-cols-2 gap-2 ">
             <div *ngFor="let product of category.items.slice(1)"
-              class="max-h-[160px] md:max-h-[230px]  border rounded-3xl bg-white flex flex-col justify-center items-center">
-              <img [src]="product.linkImage" alt="" class="object-contain max-w-md w-[70%] h-[50%] md:h-[80%]" />
-              <div class="text-center  h-[20%] text-[10px] md:text-sm font-semibold px-7 pb-5">
-                Save up to $400 with Galaxy Watch Ultra
+              class="max-h-[170px] md:max-h-[230px]  border  rounded-md bg-white flex flex-col justify-center items-center">
+              <img [src]="product.linkImage" alt=""class="object-contain max-w-md w-[70%] h-[50%] md:h-[80%]" />
+              <div class="text-center h-[20%] px-7 pb-5">
+               <div class="flex flex-col">
+                <p class="text-gray-800 font-semibold text-[12px] line-clamp-2">{{product.name}}</p>
+                <p class="text-[9px] font-bold text-emerald-500">Save up to $400</p>
+               </div>
               </div>
             </div>
           </div>

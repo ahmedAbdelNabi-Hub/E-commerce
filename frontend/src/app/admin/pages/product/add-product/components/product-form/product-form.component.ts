@@ -164,6 +164,14 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     }
   }
 
+onImageFileChange(imageFile: File): void {  
+  if (imageFile) {
+    this.productForm.get('ImageFile')?.setValue(imageFile);
+    console.log('Selected image:', imageFile);
+  }
+}
+
+
   isControlInvalid(controlName: string): boolean | undefined {
     const control = this.productForm.get(controlName);
     return control?.invalid && (control?.touched || control?.dirty);

@@ -1,0 +1,48 @@
+<section class="my-5 py-5 bg-[#f9fafa] container mx-auto ">
+  <div class=" text-black py-4 rounded-lg">
+    <p class="text-sm font-thin text-blue-400 underline  text-center">See All</p>
+
+    <p class="text-center text-[7.22222222vw] md:text-2xl lg:text-4xl font-[600]">{{ Title }}</p>
+    <nav
+      class="text-[14px] mt-1 justify-start md:justify-center snap-x snap-mandatory scrollbar-hidden  flex overflow-x-auto overflow-y-hidden scrollbar-hide flex-wrap ">
+      <ul class="flex mb-2 px-2 items-start md:items-center py-1">
+        <li [ngClass]="{'active':activeIndex==i}"  (click)="getNextTag(i)" *ngFor="let category of (groupProductByNameData()); let i = index"
+          class="capitalize snap-center p-1 flex-none mx-2 cursor-pointer border-b-2 border-transparent hover:border-black">
+          {{ category.key }}
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+  <div class="flex  flex-none overflow-hidden scrollbar-hidden snap-x snap-mandatory scrollbar-none" #slider>
+    <div class="flex w-full flex-col items-center">
+      <!-- Image Animation -->
+      <div *ngIf="showAnimation" class="image flex justify-center w-full" [@imageAnimation]>
+        <img class="w-[90%] md:w-[35%]"
+          [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsWKMFPfzzwVZmI61E5G1ZEL31VIyddL5vBw&s'"
+          alt="Product Image">
+      </div>
+
+      <div *ngIf="showAnimation" class="mt-4" [@contentAnimation]>
+        <!-- Text Animation -->
+        <div class="text-center text-sm md:text-2xl font-semibold">
+          {{ containtTag()[0].name }}
+        </div>
+        <div class="text-[10px] text-center md:text-sm text-gray-600">
+          <p>Get up to $1,200 instant trade-in or up to $300 off. Plus, $300 off online exclusive colors.</p>
+        </div>
+      </div>
+      <div *ngIf="showAnimation" class="flex mt-4 items-center space-x-5" [@contentAnimation]>
+        <a class="text-gray-600 text-[14px]">Learn More</a>
+        <button class="text-yellow-50 bg-black px-5 py-1 rounded-full text-[15px]">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</section>

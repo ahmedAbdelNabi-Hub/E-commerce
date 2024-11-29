@@ -23,6 +23,8 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { ButtonWithIconComponent } from './components/buttons/button-with-icon/button-with-icon.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MessageHandlerComponent } from './components/message-handler/message-handler.component';
+import { TagNavigationComponent } from './components/tag-navigation/tag-navigation.component';
+import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { MessageHandlerComponent } from './components/message-handler/message-ha
     ButtonWithIconComponent,
     LoadingComponent,
     MessageHandlerComponent,
+    TagNavigationComponent,
+    ImageUploaderComponent,
 
   ],
   imports: [
@@ -54,8 +58,10 @@ import { MessageHandlerComponent } from './components/message-handler/message-ha
   ],
   exports: [MessageHandlerComponent,
     CountdownTimerComponent,
+    TagNavigationComponent,
     NavbarComponent,
     SearchComponent,
+    ImageUploaderComponent,
     DropdownComponent,
     AdminSidebarComponent,
     CategoryCardComponent,

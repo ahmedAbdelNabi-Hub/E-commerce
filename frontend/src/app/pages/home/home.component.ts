@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private dataSignal = signal<any>(null);
   private _basketService = inject(BasketService);
   private basketId = localStorage.getItem('basket_id');
-  constructor(public _productService: ProductService,public _productStatus:StatusService) { }
+  constructor(public _productService: ProductService, public _productStatus: StatusService) { }
 
   ngOnInit(): void {
     this.fetchNewArrivals();

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZY9Szo9fGILBzgzgBInn6wVvs3VhBEuEAOu85chyM/k=",
+  "Hash": "Y3l2etINyTj+B+vOolS3XdSSwjLz4cJVYd2d4s4SlDY=",
   "Source": "Ecommerce",
   "BasePath": "_content/Ecommerce",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Ecommerce\\wwwroot",
       "Source": "Ecommerce",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\01-hd01-Q6-KV-pc-1440x640.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\01-hd01-Q6-KV-pc-1440x640.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/01-hd01-Q6-KV-pc-1440x640.webp",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\01-hd01-Q6-KV-pc-1440x640.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\03-hd01-B6-KV-pc-1440x640.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\03-hd01-B6-KV-pc-1440x640.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/03-hd01-B6-KV-pc-1440x640.webp",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\03-hd01-B6-KV-pc-1440x640.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\1440x64015.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1440x64015.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/1440x64015.webp",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\1440x64015.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\1719996358620010cd07b49b148138b161c85821ff883.jpg.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1719996358620010cd07b49b148138b161c85821ff883.jpg.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/1719996358620010cd07b49b148138b161c85821ff883.jpg.webp",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\1719996358620010cd07b49b148138b161c85821ff883.jpg.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\2024-oled-tv-f03-manifesto-pc.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\2024-oled-tv-f03-manifesto-pc.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/2024-oled-tv-f03-manifesto-pc.webp",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\2024-oled-tv-f03-manifesto-pc.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\22.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\22.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/22.webp",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\22.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\3be9e27352d81c2d7f23a9c12f2e2d6f.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\3be9e27352d81c2d7f23a9c12f2e2d6f.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/3be9e27352d81c2d7f23a9c12f2e2d6f.webp",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\3be9e27352d81c2d7f23a9c12f2e2d6f.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\720-x-10801.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\720-x-10801.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/720-x-10801.webp",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\720-x-10801.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob-02.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob-02.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/banner-mob-02.webp",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\banner-mob-02.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob4.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob4.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/banner-mob4.webp",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\banner-mob4.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-pc.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-pc.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/banner-pc.webp",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\banner-pc.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-pc-02.jpg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-pc-02.jpg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/banner-pc-02.jpg",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\banner-pc-02.jpg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\c645-banner-mo.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\c645-banner-mo.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/c645-banner-mo.webp",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\c645-banner-mo.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\c645-banner-pc.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\c645-banner-pc.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/c645-banner-pc.webp",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\c645-banner-pc.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\calaxyLarge.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\calaxyLarge.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/calaxyLarge.avif",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\calaxyLarge.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_lg.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_lg.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/collection_lg.webp",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\collection_lg.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_sm.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_sm.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/collection_sm.webp",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\collection_sm.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Horizontal.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Horizontal.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/DA-Horizontal.webp",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\DA-Horizontal.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Vertical.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Vertical.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/DA-Vertical.webp",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\DA-Vertical.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\galaxy_s23_sm.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\galaxy_s23_sm.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/galaxy_s23_sm.avif",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\galaxy_s23_sm.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\galaxy-s23-ultra-common-introduction-banner.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\galaxy-s23-ultra-common-introduction-banner.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/galaxy-s23-ultra-common-introduction-banner.avif",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\galaxy-s23-ultra-common-introduction-banner.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\homepage-banner-mob-5.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\homepage-banner-mob-5.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/homepage-banner-mob-5.webp",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\homepage-banner-mob-5.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\homepage-banner-pc-5.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\homepage-banner-pc-5.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/homepage-banner-pc-5.webp",
       "AssetKind": "All",
@@ -473,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\homepage-banner-pc-5.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\honor-x9b-pc.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\honor-x9b-pc.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/honor-x9b-pc.webp",
       "AssetKind": "All",
@@ -492,10 +492,48 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\honor-x9b-pc.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\Mobile.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\KV_MO_720x1080_Fridge.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Advertisement/KV_MO_720x1080_Fridge.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Advertisement\\KV_MO_720x1080_Fridge.webp"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\KV_PC_1440x600_Fridge.webp",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Advertisement/KV_PC_1440x600_Fridge.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Advertisement\\KV_PC_1440x600_Fridge.webp"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\Mobile.webp",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/Mobile.webp",
       "AssetKind": "All",
@@ -511,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\Mobile.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_1440x640_Alt02_pc.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_1440x640_Alt02_pc.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/New-PCD_Ecosystem_Curation-KV_1440x640_Alt02_pc.avif",
       "AssetKind": "All",
@@ -530,10 +568,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_1440x640_Alt02_pc.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_720x1080_Alt02_mo.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_720x1080_Alt02_mo.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/New-PCD_Ecosystem_Curation-KV_720x1080_Alt02_mo.avif",
       "AssetKind": "All",
@@ -549,10 +587,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\New-PCD_Ecosystem_Curation-KV_720x1080_Alt02_mo.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Galaxy-Z_Curation-KV_1440x640_pc.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\New-PCD_Galaxy-Z_Curation-KV_1440x640_pc.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/New-PCD_Galaxy-Z_Curation-KV_1440x640_pc.avif",
       "AssetKind": "All",
@@ -568,10 +606,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\New-PCD_Galaxy-Z_Curation-KV_1440x640_pc.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\original-70bc673e3aa555151eef133f8d71caff.jpg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\original-70bc673e3aa555151eef133f8d71caff.jpg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/original-70bc673e3aa555151eef133f8d71caff.jpg",
       "AssetKind": "All",
@@ -587,10 +625,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\original-70bc673e3aa555151eef133f8d71caff.jpg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\original-8a6c53f6221567976298ccb8900928c1.png",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\original-8a6c53f6221567976298ccb8900928c1.png",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/original-8a6c53f6221567976298ccb8900928c1.png",
       "AssetKind": "All",
@@ -606,10 +644,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\original-8a6c53f6221567976298ccb8900928c1.png"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg",
       "AssetKind": "All",
@@ -625,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\PCD_Galaxy-S_Curation-KV_720x1080_mo.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\PCD_Galaxy-S_Curation-KV_720x1080_mo.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/PCD_Galaxy-S_Curation-KV_720x1080_mo.avif",
       "AssetKind": "All",
@@ -644,10 +682,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\PCD_Galaxy-S_Curation-KV_720x1080_mo.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\Samsung-Symbol.png",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\Samsung-Symbol.png",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/Samsung-Symbol.png",
       "AssetKind": "All",
@@ -663,10 +701,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\Samsung-Symbol.png"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_DT_1440x640large.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_DT_1440x640large.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/SDSAC-8354-Zfold6-HP_KV_DT_1440x640large.webp",
       "AssetKind": "All",
@@ -682,10 +720,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_DT_1440x640large.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_MB_720x1080small.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_MB_720x1080small.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Advertisement/SDSAC-8354-Zfold6-HP_KV_MB_720x1080small.webp",
       "AssetKind": "All",
@@ -701,10 +739,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\SDSAC-8354-Zfold6-HP_KV_MB_720x1080small.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\air_conditioners.jpg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\air_conditioners.jpg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/air_conditioners.jpg",
       "AssetKind": "All",
@@ -720,10 +758,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\air_conditioners.jpg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\headPhone.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\headPhone.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/headPhone.webp",
       "AssetKind": "All",
@@ -739,10 +777,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\headPhone.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\laptop.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\laptop.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/laptop.webp",
       "AssetKind": "All",
@@ -758,10 +796,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\laptop.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\microwave.jpg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\microwave.jpg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/microwave.jpg",
       "AssetKind": "All",
@@ -777,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\microwave.jpg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\refrigerators.jpeg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\refrigerators.jpeg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/refrigerators.jpeg",
       "AssetKind": "All",
@@ -796,10 +834,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\refrigerators.jpeg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\smartphone.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\smartphone.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/smartphone.webp",
       "AssetKind": "All",
@@ -815,10 +853,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\smartphone.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\smartwatch.jpg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\smartwatch.jpg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/smartwatch.jpg",
       "AssetKind": "All",
@@ -834,10 +872,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\smartwatch.jpg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\Tablet.jpeg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\Tablet.jpeg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/Tablet.jpeg",
       "AssetKind": "All",
@@ -853,10 +891,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\Tablet.jpeg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\televisions.jpg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\televisions.jpg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/televisions.jpg",
       "AssetKind": "All",
@@ -872,10 +910,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\televisions.jpg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Categories\\washingMachines.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\washingMachines.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Categories/washingMachines.webp",
       "AssetKind": "All",
@@ -891,10 +929,29 @@
       "OriginalItemSpec": "wwwroot\\image\\Categories\\washingMachines.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\00d7ec48-804b-4555-9503-c9925bb05be88f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/00d7ec48-804b-4555-9503-c9925bb05be88f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\00d7ec48-804b-4555-9503-c9925bb05be88f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "AssetKind": "All",
@@ -910,10 +967,48 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\31f3745e-66fc-437d-ba42-d212b87026878f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/31f3745e-66fc-437d-ba42-d212b87026878f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\31f3745e-66fc-437d-ba42-d212b87026878f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3496d92b-0d46-48c0-b89b-c17d21d3312c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/3496d92b-0d46-48c0-b89b-c17d21d3312c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\3496d92b-0d46-48c0-b89b-c17d21d3312c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "AssetKind": "All",
@@ -929,10 +1024,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif",
       "AssetKind": "All",
@@ -948,10 +1043,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "AssetKind": "All",
@@ -967,10 +1062,29 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\44a8eccd-4c21-4ebf-8067-bd24c10b4778200-200pro-mb.jpg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/44a8eccd-4c21-4ebf-8067-bd24c10b4778200-200pro-mb.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\44a8eccd-4c21-4ebf-8067-bd24c10b4778200-200pro-mb.jpg"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
       "AssetKind": "All",
@@ -986,10 +1100,29 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\60c7beb5-ca8e-4677-af85-4f4c4b7ecff48f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/60c7beb5-ca8e-4677-af85-4f4c4b7ecff48f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\60c7beb5-ca8e-4677-af85-4f4c4b7ecff48f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
       "AssetKind": "All",
@@ -1005,10 +1138,29 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\68208711-514e-4347-9e6f-ad3e5d732f9dprocessed-image-1732906120318.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/68208711-514e-4347-9e6f-ad3e5d732f9dprocessed-image-1732906120318.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\68208711-514e-4347-9e6f-ad3e5d732f9dprocessed-image-1732906120318.webp"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "AssetKind": "All",
@@ -1024,10 +1176,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
       "AssetKind": "All",
@@ -1043,10 +1195,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif",
       "AssetKind": "All",
@@ -1062,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\image\\Product\\9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif"
     },
     {
-      "Identity": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\image\\Product\\b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif",
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\wwwroot\\",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
       "BasePath": "_content/Ecommerce",
       "RelativePath": "image/Product/b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif",
       "AssetKind": "All",
@@ -1079,6 +1231,82 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\Product\\b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\bf8b2492-b84f-4021-a8db-ee7981a7f05b8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/bf8b2492-b84f-4021-a8db-ee7981a7f05b8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\bf8b2492-b84f-4021-a8db-ee7981a7f05b8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\d927df54-2608-4e78-880f-5d2d68aedd6c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/d927df54-2608-4e78-880f-5d2d68aedd6c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\d927df54-2608-4e78-880f-5d2d68aedd6c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fbbfdb4e-7811-4d9b-9bc6-0104b0e0d0588f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/fbbfdb4e-7811-4d9b-9bc6-0104b0e0d0588f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\fbbfdb4e-7811-4d9b-9bc6-0104b0e0d0588f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fdc54aac-59ee-44ab-a94e-e75ce73b0a518f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Product/fdc54aac-59ee-44ab-a94e-e75ce73b0a518f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Product\\fdc54aac-59ee-44ab-a94e-e75ce73b0a518f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
     }
   ]
 }

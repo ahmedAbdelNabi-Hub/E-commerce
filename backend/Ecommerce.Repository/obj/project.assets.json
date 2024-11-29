@@ -2492,11 +2492,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj",
+      "projectUniqueName": "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj",
       "projectName": "Ecommerce.Repository",
-      "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj",
+      "projectPath": "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj",
       "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\obj\\",
+      "outputPath": "E:\\E-commerce\\backend\\Ecommerce.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2514,11 +2514,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj": {
-              "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj"
+            "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj": {
+              "projectPath": "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj"
             },
-            "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj": {
-              "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj"
+            "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj": {
+              "projectPath": "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj"
             }
           }
         }

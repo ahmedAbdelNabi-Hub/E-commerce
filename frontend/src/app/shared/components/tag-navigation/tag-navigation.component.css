@@ -1,0 +1,77 @@
+.active {
+    border: 2px dotted rgb(0, 0, 0);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    transition: .2s linear;
+    
+  }
+  /* Style scrollbar for Webkit-based browsers (Chrome, Safari) */
+.scrollbar-visible::-webkit-scrollbar {
+    width: 2px; /* Adjust the width of the scrollbar */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .scrollbar-visible::-webkit-scrollbar-track {
+    background: #bababa; /* White background for the track */
+  }
+  
+  .scrollbar-visible::-webkit-scrollbar-thumb {
+    background: #000000cb; /* Black color for the thumb */
+    border-radius: 6px; /* Optional: rounded corners for the thumb */
+    padding: 10px;
+  }
+  .scrollbar-visible::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+  
+  .scrollbar-visible::-webkit-scrollbar-thumb {
+    background-color: rgba(153, 153, 153, 0.248);
+    border-radius: 10px;
+  }
+  /* Style scrollbar for Firefox */
+  .scrollbar-visible {
+    scrollbar-color: #92929226 #ffffff; 
+    scroll-behavior: smooth;
+    scrollbar-width:thin;
+    padding: 10px;
+  }
+  
+  /* Style scrollbar for IE and Edge */
+  .scrollbar-visible {
+    -ms-overflow-style: scrollbar; /* Ensure scrollbar is visible */
+  }
+  
+  
+  /* Hide scrollbar for Webkit-based browsers */
+  .scrollbar-hidden::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  
+  .scrollbar-hidden::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-hidden::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+  
+  /* Hide scrollbar for Firefox */
+  .scrollbar-hidden {
+    scrollbar-width: none;
+  }
+  .tree-gradient {
+    background: linear-gradient(180deg, #f2fbfc, #ffffff, #f8f8f8);
+    color: #333; /* Dark text for contrast */
+  }
+  
+  /* Hide scrollbar for IE and Edge */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+  }
+  
+  .no-touch-scroll {
+    touch-action: pan-x; /* Allows horizontal scrolling, disables vertical scrolling */
+  }
+  

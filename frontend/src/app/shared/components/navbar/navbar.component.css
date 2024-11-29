@@ -30,9 +30,9 @@ li:hover {
 
 .menu {
     position: absolute;
-    top: 85%;
+    top: 90%;
     left: 50%;
-    transform: translate(-90%, 2%);
+    transform: translate(-3%, 2%);
     white-space: nowrap;
     transition: .2s linear;
 }

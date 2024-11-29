@@ -15,6 +15,8 @@ namespace Ecommerce.core.Entities
         public string Subtitle { get; set; }
         public string Description { get; set; }
         public string Direction { get; set; }
+        public string TargetPage { get; set; } 
+        public string Section { get; set; } 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

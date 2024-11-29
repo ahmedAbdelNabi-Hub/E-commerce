@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\Ecommerce.csproj": {}
+    "E:\\E-commerce\\backend\\Ecommerce\\Ecommerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj": {
+    "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj",
+        "projectUniqueName": "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj",
         "projectName": "Ecommerce.Core",
-        "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj",
+        "projectPath": "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\obj\\",
+        "outputPath": "E:\\E-commerce\\backend\\Ecommerce.core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -75,14 +75,14 @@
         }
       }
     },
-    "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj": {
+    "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj",
+        "projectUniqueName": "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj",
         "projectName": "Ecommerce.Repository",
-        "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj",
+        "projectPath": "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\obj\\",
+        "outputPath": "E:\\E-commerce\\backend\\Ecommerce.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -100,11 +100,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj"
+              "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj"
               },
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj"
+              "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj"
               }
             }
           }
@@ -149,14 +149,14 @@
         }
       }
     },
-    "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.service\\Ecommerce.service.csproj": {
+    "E:\\E-commerce\\backend\\Ecommerce.service\\Ecommerce.service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.service\\Ecommerce.service.csproj",
+        "projectUniqueName": "E:\\E-commerce\\backend\\Ecommerce.service\\Ecommerce.service.csproj",
         "projectName": "Ecommerce.service",
-        "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.service\\Ecommerce.service.csproj",
+        "projectPath": "E:\\E-commerce\\backend\\Ecommerce.service\\Ecommerce.service.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.service\\obj\\",
+        "outputPath": "E:\\E-commerce\\backend\\Ecommerce.service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -174,11 +174,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj"
+              "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj"
               },
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj"
+              "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj"
               }
             }
           }
@@ -231,14 +231,14 @@
         }
       }
     },
-    "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj": {
+    "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj",
+        "projectUniqueName": "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj",
         "projectName": "Ecommerce.Contracts",
-        "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj",
+        "projectPath": "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\obj\\",
+        "outputPath": "E:\\E-commerce\\backend\\EcommerceContract\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -256,8 +256,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj"
+              "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj"
               }
             }
           }
@@ -302,14 +302,14 @@
         }
       }
     },
-    "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\Ecommerce.csproj": {
+    "E:\\E-commerce\\backend\\Ecommerce\\Ecommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\Ecommerce.csproj",
+        "projectUniqueName": "E:\\E-commerce\\backend\\Ecommerce\\Ecommerce.csproj",
         "projectName": "Ecommerce",
-        "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\Ecommerce.csproj",
+        "projectPath": "E:\\E-commerce\\backend\\Ecommerce\\Ecommerce.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce\\obj\\",
+        "outputPath": "E:\\E-commerce\\backend\\Ecommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -327,17 +327,17 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj"
+              "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj"
               },
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.Repository\\Ecommerce.Repository.csproj"
+              "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\Ecommerce.Repository\\Ecommerce.Repository.csproj"
               },
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.service\\Ecommerce.service.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.service\\Ecommerce.service.csproj"
+              "E:\\E-commerce\\backend\\Ecommerce.service\\Ecommerce.service.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\Ecommerce.service\\Ecommerce.service.csproj"
               },
-              "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj": {
-                "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\EcommerceContract\\Ecommerce.Contracts.csproj"
+              "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj": {
+                "projectPath": "E:\\E-commerce\\backend\\EcommerceContract\\Ecommerce.Contracts.csproj"
               }
             }
           }

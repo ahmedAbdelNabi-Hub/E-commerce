@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj": {}
+    "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj": {
+    "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj",
+        "projectUniqueName": "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj",
         "projectName": "Ecommerce.Core",
-        "projectPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\Ecommerce.Core.csproj",
+        "projectPath": "E:\\E-commerce\\backend\\Ecommerce.core\\Ecommerce.Core.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmed\\source\\repos\\Ecommerce\\Ecommerce.core\\obj\\",
+        "outputPath": "E:\\E-commerce\\backend\\Ecommerce.core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,45 +1,39 @@
 <div class="container px-0 w-full mx-auto">
     <app-advertisement-carousel></app-advertisement-carousel>
-  
+
 </div>
+
 <div class="container  mx-auto px-0 xs:px-4 md:px-16 lg:px-20 bg-white">
     <app-product-offers></app-product-offers>
-    <app-category-card ></app-category-card>
+    <app-category-card></app-category-card>
 
-    <div>
-        <div class="py-2 mt-1 bg-white ">
-            <p class=" text-[15px] md:text-[19px] font-semibold px-4 py-4 border-t">Newest Products</p>
-            <div class="overflow-hidden relative text-[12px] md:text-responsive-lg rounded-md font-semibold px-4 py-2 md:w-[30vw] shadow-sm text-black bg-[#eee]">Be the first to get it – New products available now
-                <i class='absolute right-2 overflow-hidden -top-1 text-[#000000b7] text-[65px] bx bxs-shopping-bag-alt'></i>
-            </div>
-        </div>
-        <app-owl-carousel
-        [service]="_productStatus"
-        [methodName]="'getProductWithStatus'"
-        [params]="{
-            CategoryName: '',
-            StatusId:20,
-            PageIndex: 1,
-            PageSize: 8,
-          }"
-      ></app-owl-carousel>
-      <div class="py-2 mt-1 bg-white ">
-        <p class=" text-[15px] md:text-[19px] font-semibold px-4 py-4 border-t">Coming soon</p>
-        <div class="overflow-hidden relative text-[12px] md:text-responsive-lg rounded-md font-semibold px-4 py-2 md:w-[30vw] shadow-sm text-black bg-[#eee]">Be the first to get it – New products available now
+    <div class="py-2 mt-1 bg-white ">
+        <p class=" text-[15px] md:text-[19px] font-semibold px-4 py-4 border-t">Newest Products</p>
+        <div
+            class="overflow-hidden relative text-[12px] md:text-responsive-lg rounded-md font-semibold px-4 py-2 md:w-[30vw] shadow-sm text-black bg-[#eee]">
+            Be the first to get it – New products available now
             <i class='absolute right-2 overflow-hidden -top-1 text-[#000000b7] text-[65px] bx bxs-shopping-bag-alt'></i>
         </div>
     </div>
-      <app-owl-carousel
-      [service]="_productStatus"
-      [methodName]="'getProductWithStatus'"
-      [params]="{
-          CategoryName: '',
-          StatusId:17,
-          PageIndex: 1,
-          PageSize: 8,
-        }"
-    ></app-owl-carousel>
-    </div>
-  
-</div>
+    <app-owl-carousel [service]="_productStatus" [methodName]="'getProductWithStatus'" [params]="{
+            CategoryName: '',
+            StatusId:17,
+            PageIndex: 1,
+            PageSize: 8,}"></app-owl-carousel>
+    <img src="../../../assets/llo.png" alt="">
+    <app-tag-navigation [TitleTagNevigation]="'Mobile & Computing'"></app-tag-navigation>
 
+    <div class="py-2 mt-1 bg-white ">
+        <p class=" text-[15px] md:text-[19px] font-semibold px-4 py-4 border-t">Newest Products</p>
+        <div
+            class="overflow-hidden relative text-[12px] md:text-responsive-lg rounded-md font-semibold px-4 py-2 md:w-[30vw] shadow-sm text-black bg-[#eee]">
+            Be the first to get it – New products available now
+            <i class='absolute right-2 overflow-hidden -top-1 text-[#000000b7] text-[65px] bx bxs-shopping-bag-alt'></i>
+        </div>
+    </div>
+    <app-owl-carousel [service]="_productStatus" [methodName]="'getProductWithStatus'" [params]="{
+    CategoryName: '',
+    StatusId:20,
+    PageIndex: 1,
+    PageSize: 8,}"></app-owl-carousel>
+</div>

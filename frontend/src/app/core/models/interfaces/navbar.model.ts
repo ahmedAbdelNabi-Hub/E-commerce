@@ -7,13 +7,13 @@ export interface Navbar {
   
   export interface Menu {
     id: number;
-    name: string;
+    nameEn: string;
     links: MenuLink[];
   }
   
   export interface MenuLink {
     id: number;
-    name: string;
+    nameAr: string;
     url: string;
   }
   
