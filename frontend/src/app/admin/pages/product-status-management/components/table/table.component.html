@@ -73,8 +73,8 @@
                         <tr [@fadeInOut] *ngFor="let product of products()?.data;let index=index">
                             <td class=" whitespace-nowrap">
                                 <div class="ps-2 lg:ps-1 xl:ps-1 pe-16 py-3">
-                                    <div class="flex items-center w-[55%] md:w-[45%]">
-                                        <img class="inline-block w-[55%] max-w-sm mx-1 " [src]="product.linkImage"
+                                    <div class="flex items-center w-[55%] md:w-[50%]">
+                                        <img loading="lazy" class="inline-block max-w-20  w-[20%] px-1 py-1 mx-2 bg-[#eee] shadow-md rounded-md  " [src]="product.imageUrl"
                                             alt="Avatar">
                                         <div class="">
                                             <p

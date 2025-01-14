@@ -4,7 +4,6 @@ import { ProductService } from '../../core/services/Product.service';
 import { IProduct } from '../../core/models/interfaces/IProduct';
 import { tap } from 'rxjs/operators';
 import { IProductSpecParams } from '../../core/models/interfaces/IProductSpecParams';
-
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',

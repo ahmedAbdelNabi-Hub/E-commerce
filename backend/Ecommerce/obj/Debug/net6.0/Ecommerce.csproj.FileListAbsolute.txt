@@ -195,3 +195,5 @@ E:\E-commerce\backend\Ecommerce\obj\Debug\net6.0\refint\Ecommerce.dll
 E:\E-commerce\backend\Ecommerce\obj\Debug\net6.0\Ecommerce.pdb
 E:\E-commerce\backend\Ecommerce\obj\Debug\net6.0\Ecommerce.genruntimeconfig.cache
 E:\E-commerce\backend\Ecommerce\obj\Debug\net6.0\ref\Ecommerce.dll
+E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\Microsoft.Bcl.TimeProvider.dll

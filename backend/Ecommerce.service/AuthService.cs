@@ -51,6 +51,7 @@ namespace Ecommerce.service
                 return AuthErrorResponse("password is not Correct");
 
             }
+
             return await _jwtService.CreateJwtToken(user);
         }
         public async Task<BaseApiResponse> RegisterAsync(RegisterDTO registerDto)
@@ -154,7 +155,7 @@ namespace Ecommerce.service
         {
             return new BaseApiResponse
             {
-                massage = message,
+                message = message,
                 statusCode = statusCode
             };
         }

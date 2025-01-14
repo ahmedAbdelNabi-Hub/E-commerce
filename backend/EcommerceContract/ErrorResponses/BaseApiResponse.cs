@@ -5,7 +5,7 @@ namespace EcommerceContract.ErrorResponses
 {
     public class BaseApiResponse  
     {
-        public string massage {  get; set; }    
+        public string message {  get; set; }    
         public int statusCode { get; set; }
         public BaseApiResponse()
         {
@@ -14,7 +14,7 @@ namespace EcommerceContract.ErrorResponses
         public BaseApiResponse(int statusCode, string? message = null)
         {
             this.statusCode = statusCode;
-            this.massage = message ?? GetDefaultMessageForStatusCode(this.statusCode); ;
+            this.message = message ?? GetDefaultMessageForStatusCode(this.statusCode); ;
 
         }
 

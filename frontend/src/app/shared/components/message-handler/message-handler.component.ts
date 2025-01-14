@@ -24,7 +24,7 @@ export class MessageHandlerComponent implements OnInit {
 
       setTimeout(() => {
         this.message = '';  // Clear the message after 5 seconds
-      }, 3000);
+      }, 5000);
     });
   }
 }

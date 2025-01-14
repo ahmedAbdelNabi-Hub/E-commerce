@@ -9,6 +9,9 @@ using Ecommerce.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Ecommerce.Contracts.Interfaces;
 using Ecommerce.service;
+using Ecommerce.Core.Repositories;
+using Ecommerce.Contracts.DTOs;
+using Ecommerce.Core;
 
 namespace EcommerceContract.Extensions
 {
@@ -22,6 +25,7 @@ namespace EcommerceContract.Extensions
             });
             Services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            Services.AddScoped<IProductAttributeRepository,ProductAttributeRepository>();
             Services.AddAutoMapper(typeof(MappingProfiles));
 
             Services.Configure<ApiBehaviorOptions>(options =>

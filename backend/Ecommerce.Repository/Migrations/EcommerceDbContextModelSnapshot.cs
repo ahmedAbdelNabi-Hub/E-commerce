@@ -359,14 +359,23 @@ namespace Ecommerce.Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("DateTime");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DateTime")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<bool>("IsFilterable")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<int?>("ProductId")
                         .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("DateTime");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DateTime")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.HasKey("id");
 

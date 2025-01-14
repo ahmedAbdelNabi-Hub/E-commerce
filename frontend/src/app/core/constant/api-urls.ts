@@ -7,5 +7,6 @@ export const API_URLS = {
     prodcut:'/api/Product/',
     category:'/api/Category/',
     Basket : '/api/Basket',
-    Status : '/api/ProductStatus/'
+    Status : '/api/ProductStatus/',
+    filter : '/api/ProductAttributes/filters'
 };

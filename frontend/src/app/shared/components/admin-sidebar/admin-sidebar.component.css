@@ -3,9 +3,21 @@
 }
 
 .active {
-    background-color: #232222;
-    color: rgb(255, 255, 255);
+    background-color: #eaf5f3;
+    color: rgb(0, 0, 0);
     transition: .3s linear;
+    border: .5px solid rgb(238, 238, 238);
+    border-radius: 0px 5px 5px 0px ;
+    position: relative;
+}
+.active::before{
+    content:'';
+    width: 5px;
+    border-radius:0px 5px 5px 0px ;
+    height: 100%;
+    position: absolute;
+    left: -1px;
+    background-color: #606060;
 }
 
 ::ng-deep .p-submenu-icon {

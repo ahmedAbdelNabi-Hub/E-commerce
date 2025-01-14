@@ -18,6 +18,7 @@ import { StatusPopupComponent } from './pages/product/all-product-list/component
 import { StatusCardComponent } from './pages/product-status-management/components/status-card/status-card.component';
 import { SwitchComponent } from './pages/product-status-management/components/switch/switch.component';
 import { TableComponent } from './pages/product-status-management/components/table/table.component';
+import { UploadFileAttributeComponent } from './pages/product/add-product/components/upload-file-attribute/upload-file-attribute.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TableComponent } from './pages/product-status-management/components/tab
     StatusCardComponent,
     SwitchComponent,
     TableComponent,
+    UploadFileAttributeComponent,
   ],
   imports: [
     CommonModule,

@@ -6,12 +6,14 @@ using Ecommerce.Contracts.Interfaces;
 using Ecommerce.core.Entities.identity;
 using EcommerceContract.ErrorResponses;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Text;
 using System.Web;
 
@@ -61,6 +63,26 @@ namespace Ecommerce.Controllers
             var response = await _authService.RestPasswordAsync(restPasswordDto);
             return HandleStatusCode(response);
 
+        }
+        [Authorize]
+        [HttpGet("GetCurrentUser")]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var currentUser = await _userManager.FindByEmailAsync(email);
+            var authResponse = await _jwtService.CreateJwtToken(currentUser);
+            
+            if (currentUser is not null)
+            {
+                var returnedCurrentUser = new UserDto()
+                {
+                    Email = currentUser.Email,
+                    Name = currentUser.FirstName + "" + currentUser.LastName,
+                    Token = authResponse.Token  
+                };
+                return returnedCurrentUser;
+            }
+            return new UserDto();
         }
 
         [HttpPost]

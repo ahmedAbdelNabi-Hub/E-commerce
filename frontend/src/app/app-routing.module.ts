@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   {
     path: "", component: HomeComponent,
   },
+  {path:'product/:category',component:ProductsComponent},
   { path: 'product/:category/:slug', loadChildren: () => import('./modules/product/product-detail/product-detail.module').then(m => m.ProductDetailModule) },
   { path: 'checkout/cart', loadChildren: () => import('./modules/shopping-cart/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }

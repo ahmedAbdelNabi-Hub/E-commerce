@@ -1,17 +1,18 @@
-<section class="white-mask relative my-5">
+<section class="white-mask relative mb-5">
     <div class="relative ml-2 ">
         <div #link_container
             class="z-10 hide-scrollbar px-1 bg-[#ffffff64] py-4 md:px-4  flex flex-nowrap overflow-x-auto justify-start items-center space-x-1 md:space-x-5">
             <div *ngFor="let Category of categories"
                 class=" mx-1  flex-none cursor-pointer pb-2  space-y-3 flex w-28 md:w-32  items-center flex-col">
-                <a class="" [routerLink]="'/product/'+Category?.categoryName">
-                    <div
-                        class="bg-white px-3 md:px-4 py-2 rounded-full border  flex w-full h-20 md:h-28 items-center shadow-sm">
-                        <img class=" hover:scale-105 transition-transform  w-14 h-14 md:w-20  md:h-20"
+                <a class="flex justify-between items-center flex-col" [routerLink]="'/product/'+Category?.categoryName">
+                    <div [routerLink]="['/product',Category.categoryName]"
+                        class="bg-white px-4 md:px-4 py-5 rounded-full border  flex w-full h-24 md:h-28 items-center shadow-sm">
+                        <img class=" hover:scale-105 transition-transform  w-16 h-16 md:w-20  md:h-20"
                             [src]="Category?.image" alt="">
                     </div>
                     <p class="text-[12px] text-center w-full  md:text-[15px] capitalize font-semibold">
                         {{Category?.categoryName}}</p>
+                    <p class="text-[10px] text-gray-400 font-thin">{{Category?.categoryType}}</p>
                 </a>
             </div>
             <!-- <button

@@ -10,6 +10,7 @@
     <PackageReference Include="MailKit" Version="4.7.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.33" />
     <PackageReference Include="MimeKit" Version="4.7.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.0" />
   </ItemGroup>
 
   <ItemGroup>

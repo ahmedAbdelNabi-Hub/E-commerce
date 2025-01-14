@@ -1,0 +1,121 @@
+<div *ngIf="!(performApi.isLoading$ | async)" class="container mx-auto px-0 md:px-10 lg:px-32 pt-4 bg-[#ffffff] mt-1 md:mt-10" >
+    <!-- image -->
+    <div class="w-full flex items-center justify-center">
+        <img class="object-cover"
+            [src]="'https://btech.com/media/amasty/ampromobanners/banner__Strip_Banner_EN_2x-100-min.jpg'" alt="">
+    </div>
+  
+    <div class="">
+        <div class="flex md:flex-row flex-col-reverse  gap-3 ">
+            <div class="hidden md:block  mt-7 bg-white basis-[25%]">
+            <app-filter [filterItem]="filters()!"></app-filter>
+            </div>
+            <!--  -->
+            <div class="md:py-4 bg-white basis-[75%]">
+                <div class="px-1 py-2">
+                    <div class="flex items-center justify-between pb-7 py-2 ">
+                        <p class="font-semibold text-[16px]">
+                            Sort By:<span class="ml-2 text-blue-400">Postion</span>
+                        </p>
+
+                        <div class="font-bold text-xl">
+                            <div class="flex items-center space-x-3">
+                                <i class='bx bxs-grid' ></i>
+                                <i class='bx bx-list-ul' ></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="block md:hidden w-full">
+                        <button type="button"
+                            class="py-1 w-full px-4 inline-flex items-center justify-center gap-x-2 text-sm font-semibold rounded-sm border border-gray-300  disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            data-hs-overlay="#hs-overlay-example">
+                            <span><i class='bx bx-filter-alt text-[15px]'></i></span> Filter
+                        </button>
+                    </div>
+                </div>
+                <div class="grid overflow-hidden grid-cols-2 lg:grid-cols-3 bg-white">
+                    <div *ngFor="let product of products()?.data">
+                        <app-product-card-with-discound [showWithRow]="true" [productData]="product"></app-product-card-with-discound>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="hs-overlay-example"
+    class="px-6 py-3 hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed top-0 start-0 transition-all duration-300 transform h-full max-w-xs w-full z-[80] bg-white border-e dark:bg-gray-800 dark:border-gray-700"
+    tabindex="-1">
+    <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
+        <h3 class="font-bold text-gray-800 dark:text-white">
+            Offcanvas title
+        </h3>
+        <button type="button"
+            class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            data-hs-overlay="#hs-overlay-example">
+            <span class="sr-only">Close modal</span>
+            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+            </svg>
+        </button>
+    </div>
+</div>
+<app-loading *ngIf="performApi.isLoading$ | async"></app-loading>
+
+
+<!-- 
+    grid-col-1
+    h-160
+    flex-row
+    h-[100%]
+
+ -->
+<!-- 
+     <div class="grid grid-cols-1  md:grid-cols-1 lg:grid-cols-1">
+                    <div *ngFor="let laptop of laptop"
+                        class="relative hover:shadow-md hover:cursor-pointer mt-5 h-[160px] flex  flex-row bg-white border-r-2  dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+                        <div
+                            class="absolute  top-2 right-2 cursor-pointer  bg-gray-100 text-black px-2 py-2 flex items-center justify-center rounded-full shadow-sm text-[15px] ">
+                            <i class='bx bx-heart hover:text-red-500 transition-colors'></i>
+                        </div>
+                        <div [routerLink]="laptop?.description"
+                            class="  w-[40%] flex h-[90%] justify-center">
+                            <img class="object-contain hover:scale-110 hover:rotate-2 transition-transform cursor-pointer max-w-full h-auto "
+                                src="{{laptop?.image}}" alt="">
+                        </div>
+                        <div class="p-4 md:p-5 w-[60%]">
+                            <a [routerLink]="laptop?.description" class="hover:underline transition-all">
+                                <p class="line-clamp-3  text-gray-500 text-[13px] font-semibold">
+                                    {{laptop?.description}}
+                                </p>
+                            </a>
+                            <div class="flex justify-center mt-8 leading-4 flex-col space-y-2  ">
+                                <div class=" text-[17px]  text-gray-500 flex items-center justify-between ">
+
+                                    <div>
+                                        <span class="text-black text-[23px] ">
+                                            {{laptop.price | number}}
+                                        </span>
+                                        <span class="text-black font-bold text-[14px]">EGP</span>
+                                    </div>
+
+                                </div>
+                                <div>
+                                    <div class=" text-[13px] ml-4">
+                                        <span class="text-gray-800 font-bold line-through">
+                                            {{laptop.price |number}}
+                                        </span>
+                                        <span class="text-red-600 font-bold text-[14px]">EGP</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center px-1">
+
+                            </div>
+                        </div>
+
+ -->

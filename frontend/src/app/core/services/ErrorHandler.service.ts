@@ -11,12 +11,24 @@ export class ErrorHandlerService {
 
     handleError(error: HttpErrorResponse): void {
         let errorMessage = '';
+
+        // Ensure error.error is an object before accessing its properties
         if (error.error instanceof ErrorEvent) {
+            // Client-side error
             errorMessage = `Client-side error: ${error.error.message}`;
         } else {
+            // Server-side error
+            if (error.error && error.error.message) {
+                // If error.error and error.error.message exist
+                errorMessage = ` ${error.error.message || 'An unknown error occurred'}`;
+            } else {
+                // Default message if error.error or error.error.message is undefined
+                errorMessage = `An unknown error occurred. Status: ${error.status}`;
+            }
+
             switch (error.status) {
                 case 400:
-                    errorMessage = ` ${error.error.massage || 'Bad Request'}`;
+                    errorMessage = `Bad Request: ${errorMessage}`;
                     break;
                 case 401:
                     errorMessage = 'Unauthorized. Please login again.';
@@ -25,15 +37,18 @@ export class ErrorHandlerService {
                     errorMessage = 'Access denied.';
                     break;
                 case 404:
-                    errorMessage = ` ${error.error.massage || 'Bad Request'}`;                    break;
+                    errorMessage = `Not Found: ${errorMessage}`;
+                    break;
                 case 500:
                     errorMessage = 'Internal server error. Please try again later.';
                     break;
                 default:
-                    errorMessage = `${error.error.massage || 'Bad Request'}`;
-                }
+                    errorMessage = `Unexpected error: ${errorMessage}`;
+            }
         }
-        this.errorMessageSubject.next(errorMessage);
+
+        console.error('Error handled:', errorMessage); // For debugging
+        this.errorMessageSubject.next(errorMessage); // Set the error message
     }
 
     handleComponentError(
@@ -42,16 +57,14 @@ export class ErrorHandlerService {
         hasErrorSignal: WritableSignal<boolean>,
         isLoadingSignal: WritableSignal<boolean>
     ): void {
-        this.handleError(error); // Delegate to core error handling logic
-        this.errorMessage$.subscribe((message) => {
-            errorMessageSignal.set(message);
-            hasErrorSignal.set(true);
-            isLoadingSignal.set(false);
-        });
+        this.handleError(error); // Call core error handler
+        const message = this.errorMessageSubject.getValue(); // Get the current error message
+        errorMessageSignal.set(message); // Set the error message in the component's signal
+        hasErrorSignal.set(true); // Indicate that there's an error
+        isLoadingSignal.set(false); // Set loading state to false
     }
 
     clearError(): void {
         this.errorMessageSubject.next('');
     }
 }
-

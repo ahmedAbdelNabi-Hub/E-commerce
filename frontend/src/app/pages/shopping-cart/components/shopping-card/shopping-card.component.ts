@@ -4,6 +4,7 @@ import { BasketService } from '../../../../core/services/shipping/Basket.service
 import { Perform } from '../../../../core/models/classes/Perform';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { MessageService } from '../../../../core/services/Message.service';
 
 @Component({
   selector: 'app-shopping-card',
@@ -18,6 +19,7 @@ export class ShoppingCardComponent implements OnDestroy, AfterViewInit {
   private _basketService = inject(BasketService);
   readonly _preFrom = new Perform();
   private router = inject(Router);
+  private messageService = inject(MessageService);
 
   selectQantity: number = 1;
   stockOptions: number[] = [];
@@ -39,7 +41,11 @@ export class ShoppingCardComponent implements OnDestroy, AfterViewInit {
   deleteItemFromBasket(item: IBasketItem) {
     this._preFrom.load(this._basketService.deleteItemFromBasket(item));
     this.isLoading.emit(this._preFrom.isLoading$)
-
+    this._preFrom.hasError$.subscribe(data => {
+      if (data != null) {
+        this.messageService.showSuccess("The Item Deleted Successfully")
+      }
+    })
   }
 
   ngOnDestroy(): void {

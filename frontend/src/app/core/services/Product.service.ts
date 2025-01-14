@@ -6,6 +6,7 @@ import { IProduct } from '../models/interfaces/IProduct';
 import { API_URLS } from '../constant/api-urls';
 import { IProductSpecParams } from '../models/interfaces/IProductSpecParams';
 import { IPaginationDto } from '../models/interfaces/IPaginationDto';
+import { IFilterationDto } from '../models/interfaces/IFilteration';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -53,17 +54,29 @@ export class ProductService {
     return this._Http.get<IPaginationDto>(`${API_URLS.Localhost + API_URLS.prodcut}all/prorduct/?CategoryName=${Params.CategoryName}&PageIndex=${Params.PageIndex}&PageSize=${Params.PageSize}`);
   }
 
+  getAllFilterWithCategoy(CategoryName: string): Observable<IFilterationDto[]> {
+    return this._Http.get<IFilterationDto[]>(`${API_URLS.Localhost + API_URLS.filter}?categoryName=${CategoryName}`);
+  }
+
   createProduct(productForm: FormData): Observable<any> {
     const apiUrl = `${API_URLS.Localhost + API_URLS.prodcut}Create`;
     console.log(apiUrl);
+    console.log([...productForm as any].map(([key, value]) => ({ key, value })));
+
     return this._Http.post(apiUrl, productForm);  // FormData content type will be set automatically
   }
   deleteProduct(productId: number): Observable<any> {
-    const apiUrl = `${API_URLS.Localhost + API_URLS.prodcut}${productId}/Delete`
+    const apiUrl = `${API_URLS.Localhost + API_URLS.prodcut}${productId}`
     return this._Http.delete(apiUrl);
   }
+
+  updateProduct(id: string, product: FormData): Observable<any> {  
+    return this._Http.post(`https://localhost:7197/api/Product/${id}/update`, product);
+  }
+  
   clearCache(): void {
     this.newArrivalsCache = null;
     this.dataCache = null;
   }
 }
+

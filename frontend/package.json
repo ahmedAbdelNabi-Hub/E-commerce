@@ -21,6 +21,7 @@
     "@canvasjs/charts": "^3.10.13",
     "apexcharts": "^3.54.1",
     "boxicons": "^2.1.4",
+    "browser-image-compression": "^2.0.2",
     "e-commerce": "file:",
     "moment-timezone": "^0.5.46",
     "ng-apexcharts": "^1.12.0",

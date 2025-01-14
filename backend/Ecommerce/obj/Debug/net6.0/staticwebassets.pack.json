@@ -157,6 +157,10 @@
       "PackagePath": "staticwebassets\\image\\Categories\\Tablet.jpeg"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\Tablet.webp",
+      "PackagePath": "staticwebassets\\image\\Categories\\Tablet.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\air_conditioners.jpg",
       "PackagePath": "staticwebassets\\image\\Categories\\air_conditioners.jpg"
     },
@@ -193,84 +197,36 @@
       "PackagePath": "staticwebassets\\image\\Categories\\washingMachines.webp"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\00d7ec48-804b-4555-9503-c9925bb05be88f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\00d7ec48-804b-4555-9503-c9925bb05be88f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\018e95915b53e440dd34c4f929d6049d2b24bfb9ea27fff22804cbb7e5d18264.jpeg",
+      "PackagePath": "staticwebassets\\image\\Product\\018e95915b53e440dd34c4f929d6049d2b24bfb9ea27fff22804cbb7e5d18264.jpeg"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif",
-      "PackagePath": "staticwebassets\\image\\Product\\14b47c9d-9db7-4f4c-9e5a-c685ba6e7ed8notebook-g15-5530-nt-coral-black-gallery-1.avif"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\0e89b9f50b8b4cc05a32c7b5fc7c4a1a6e77b99f57b719d0a06d88ff58ac51e1.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\0e89b9f50b8b4cc05a32c7b5fc7c4a1a6e77b99f57b719d0a06d88ff58ac51e1.webp"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\31f3745e-66fc-437d-ba42-d212b87026878f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\31f3745e-66fc-437d-ba42-d212b87026878f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3e85b86024f491befeabce56885353c790527a99067bdedb8f77bd3db80148a7.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\3e85b86024f491befeabce56885353c790527a99067bdedb8f77bd3db80148a7.webp"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3496d92b-0d46-48c0-b89b-c17d21d3312c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\3496d92b-0d46-48c0-b89b-c17d21d3312c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\400b0e6f1b524a03d0d48fc29b4417a6823037fdfc138539eb70fcd9a92a9896.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\400b0e6f1b524a03d0d48fc29b4417a6823037fdfc138539eb70fcd9a92a9896.webp"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif",
-      "PackagePath": "staticwebassets\\image\\Product\\395e9379-99c0-46f4-b6a4-9e0e4e75b919notebook-g15-5530-nt-coral-black-gallery-1.avif"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\92be0bb1227e0db229bc2b69d06268d28bfade7450592f0ef2342f9a3562dac4.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\92be0bb1227e0db229bc2b69d06268d28bfade7450592f0ef2342f9a3562dac4.webp"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif",
-      "PackagePath": "staticwebassets\\image\\Product\\3b2be055-d416-4243-beb5-bb58dde2509anotebook-g15-5530-nt-coral-black-gallery-1.avif"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\c9b762d2511eef53bfec8a219fe94ae9605e0b5f59aa6ccb9067f2387f791c97.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\c9b762d2511eef53bfec8a219fe94ae9605e0b5f59aa6ccb9067f2387f791c97.webp"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif",
-      "PackagePath": "staticwebassets\\image\\Product\\41c9a1b1-10d3-4e5e-b297-196eb60d6bb5notebook-g15-5530-nt-coral-black-gallery-1.avif"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fac6cfd2a99f5a705c6e0e20ce2cf24654070695645f2633f5da9328fc3d627f.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\fac6cfd2a99f5a705c6e0e20ce2cf24654070695645f2633f5da9328fc3d627f.webp"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\44a8eccd-4c21-4ebf-8067-bd24c10b4778200-200pro-mb.jpg",
-      "PackagePath": "staticwebassets\\image\\Product\\44a8eccd-4c21-4ebf-8067-bd24c10b4778200-200pro-mb.jpg"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\505380da-43e1-41d8-ab97-6f63ccfb08fc8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\60c7beb5-ca8e-4677-af85-4f4c4b7ecff48f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\60c7beb5-ca8e-4677-af85-4f4c4b7ecff48f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
-      "PackagePath": "staticwebassets\\image\\Product\\64067a23-0865-4294-92be-d196312ef11d51vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\68208711-514e-4347-9e6f-ad3e5d732f9dprocessed-image-1732906120318.webp",
-      "PackagePath": "staticwebassets\\image\\Product\\68208711-514e-4347-9e6f-ad3e5d732f9dprocessed-image-1732906120318.webp"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif",
-      "PackagePath": "staticwebassets\\image\\Product\\73a8ef5d-00b7-4f90-ae6f-8cb0d8edda39notebook-g15-5530-nt-coral-black-gallery-1.avif"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp",
-      "PackagePath": "staticwebassets\\image\\Product\\90c4d5c6-7f1d-410d-8ef0-6f073703096151vmG2EvIcL._AC_UL480_FMwebp_QL65_.webp"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif",
-      "PackagePath": "staticwebassets\\image\\Product\\9dfac9a2-a381-4c51-b8d4-5ee24f1cbb5cnotebook-g15-5530-nt-coral-black-gallery-1.avif"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif",
-      "PackagePath": "staticwebassets\\image\\Product\\b78a01c3-5607-4087-8729-2e58d9230693notebook-g15-5530-nt-coral-black-gallery-1.avif"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\bf8b2492-b84f-4021-a8db-ee7981a7f05b8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\bf8b2492-b84f-4021-a8db-ee7981a7f05b8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\d927df54-2608-4e78-880f-5d2d68aedd6c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\d927df54-2608-4e78-880f-5d2d68aedd6c8f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fbbfdb4e-7811-4d9b-9bc6-0104b0e0d0588f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\fbbfdb4e-7811-4d9b-9bc6-0104b0e0d0588f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
-    },
-    {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fdc54aac-59ee-44ab-a94e-e75ce73b0a518f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg",
-      "PackagePath": "staticwebassets\\image\\Product\\fdc54aac-59ee-44ab-a94e-e75ce73b0a518f7977ddbcd806ab9ac9dd6dbb973ae3e5595a567599e30d1abf9c2463d2be23.jpeg"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fd0fd4e23cea5baea02a41b1c383a3b073ff711da936861e9ee316515fd13636.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\fd0fd4e23cea5baea02a41b1c383a3b073ff711da936861e9ee316515fd13636.webp"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Ecommerce.Microsoft.AspNetCore.StaticWebAssets.props",

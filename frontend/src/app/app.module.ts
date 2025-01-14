@@ -13,7 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollSpyDirective } from './shared/directives/ScrollSpy.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-
+import { ProductsComponent } from './pages/products/products.component';
+import { FilterComponent } from './pages/products/components/filter/filter.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +23,12 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     AdvertisementCarouselComponent,
     ProductOffersComponent,
     ScrollSpyDirective,
+    ProductsComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,

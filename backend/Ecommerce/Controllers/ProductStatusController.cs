@@ -4,6 +4,7 @@ using Ecommerce.Contracts.DTOs.product;
 using Ecommerce.core;
 using Ecommerce.core.Entities;
 using Ecommerce.core.Specifications;
+using Ecommerce.Core;
 using Ecommerce.Core.Specifications;
 using EcommerceContract.ErrorResponses;
 using Microsoft.AspNetCore.Http;

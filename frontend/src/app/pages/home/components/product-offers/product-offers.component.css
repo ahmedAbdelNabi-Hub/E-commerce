@@ -5,7 +5,12 @@
   padding: 10px;
   border-radius: 5px;
 }
-
+.shadow{
+  box-shadow: rgba(0, 0, 0, 0.066) 0px 4px 12px;
+}
+*{
+  font-family:sans-serif
+}
 .scrollbar-visible::-webkit-scrollbar-track {
   background: #bababa; /* White background for the track */
 }
@@ -70,7 +75,7 @@
 }
 
 .active {
-  border: 2px dotted rgb(0, 0, 0);
+  border: 2px dotted rgb(98, 103, 193);
   color: rgb(0, 0, 0);
   transition: .2s linear;
   

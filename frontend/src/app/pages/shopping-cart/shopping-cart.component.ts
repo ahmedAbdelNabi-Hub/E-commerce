@@ -41,9 +41,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.loadingState$ = loading$;
     this.loadingState$.pipe(
       delay(2000)
-    ).subscribe()
-    this.router.navigate(['']);
-    this.router.navigate(['/checkout/cart']);
+    ).subscribe(Response => {
+      this.getBasket();
+    })
   }
 
   ngOnDestroy(): void {

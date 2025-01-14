@@ -4,22 +4,23 @@ import { ICategory } from '../../models/interfaces/ICategory';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { API_URLS } from '../../constant/api-urls';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class CategoryService {
-    private Categories : ICategory[] | null = null;
-    constructor(private _Http:HttpClient) { }
-    
-    getAllCategories():Observable<ICategory[]>{
-      return this._Http.get<ICategory[]>(API_URLS.Localhost+API_URLS.category+'GetAllCategorys').pipe(
-        tap(response =>{
-            if(response!=null){
-              this.Categories=response;
-            }
-        }),
-        catchError(error=>{
-           return of([]);
-        })
-      );
-    }
+  private Categories: ICategory[] | null = null;
+  constructor(private _Http: HttpClient) { }
+
+  getAllCategories(): Observable<ICategory[]> {
+    return this._Http.get<ICategory[]>(API_URLS.Localhost + API_URLS.category + 'GetAllCategorys').pipe(
+      tap(response => {
+        if (response != null) {
+          this.Categories = response;
+          console.log(response)
+        }
+      }),
+      catchError(error => {
+        return of([]);
+      })
+    );
+  }
 
 }

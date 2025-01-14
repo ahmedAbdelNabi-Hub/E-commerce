@@ -39,11 +39,14 @@ namespace EcommerceContract.Helpers.profile
             CreateMap<Product, ProductReadDto>()
                 .ForMember(dest => dest.OfferEndDate, opt => opt.MapFrom(src => src.OfferEndDate))
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
-                ;
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom<PictureProductImageResolver>());
+                
 
             CreateMap<ProductReadDto, Product>()
                 .ForMember(dest => dest.OfferEndDate, opt => opt.MapFrom(src => src.OfferEndDate))
                 .ForMember(dest => dest.ImageUrl, opt => opt.Ignore());
+
+            CreateMap<ProductCreateDto, Product>().ForMember(des=>des.ProductStatus,opt=>opt.Ignore());  
 
             CreateMap<ProductCreateDto, Product>();
 

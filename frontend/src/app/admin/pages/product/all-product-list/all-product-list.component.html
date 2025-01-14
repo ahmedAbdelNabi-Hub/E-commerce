@@ -1,6 +1,6 @@
 <!-- Table Section -->
-<div *ngIf="!(perform.hasError$ | async)" class="max-w-[85rem] py-5 sm:px-6 lg:px-8 lg:py-4 mx-auto">
-    <div
+<div *ngIf=" !(perform.hasError$ | async) " class="max-w-[85rem] py-5 sm:px-6 lg:px-8 lg:py-4 mx-auto">
+    <div *ngIf="!(perform.isLoading$|async)"
     class="px-6 py-2 my-1 border rounded-sm grid gap-3 md:flex md:justify-between md:items-center ">
     <div>
         <h2 class="text-xl font-semibold text-gray-800">
@@ -28,39 +28,41 @@
 
 <!-- error -->
 <div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-   <div [@fadeInOut] *ngFor="let product of productsWithPagination()?.data;let index=index" class="items-center border rounded-md shadow-sm flex ">        
-   <div class="flex flex-col ">
+   <div [@paginationAnimation] *ngFor="let product of productsWithPagination()?.data;let index=index" class="items-center border rounded-md shadow-sm flex ">        
+   <div class="flex flex-col shadow-sm">
     <div class="flex items-center relative">
-        <div class="basis-[30%]">
-            <img [src]="product.linkImage" alt="" loading="lazy">
+        <div class="basis-[35%] flex items-center justify-center">
+            <img loading="lazy" 
+            class="max-w-[100px] px-1 py-2"
+            [src]="product.imageUrl" alt="" loading="lazy">
         </div>
 
     <div class="flex flex-col basis-[70%] py-2">
         <div class="flex flex-col  line-clamp-2">
-          <p class="text-[17px] line-clamp-1 font-semibold text-emerald-900">{{product.name}}</p>
+          <p class="text-[17px] line-clamp-1 font-semibold text-gray-700">{{product.name}}</p>
           <p class="text-[12px] text-gray-600 line-clamp-1 font-thin">{{product.description}}</p>
         </div>
-        <div class="text-[10px] my-1 px-1"><p>{{product.sku}}</p></div>
+        <div class="text-[10px] my-1 "><p>{{product.sku}}</p></div>
         <div class="flex flex-col px-2 py-2">
             <div class="flex items-center text-sm">
                 <p class="text-gray-600">Price : </p>
-                <p class="font-semibold">{{product.price}}EGP</p>
+                <p class="px-2">{{product.price | number}} <span class="text-[11px] text-red-600">EGP</span></p>
             </div>
             <div class="flex items-center text-sm">
                 <p class="text-gray-600">Brand : </p>
-                <p class="font-semibold">{{product.brand}}</p>
+                <p class="px-2">{{product.brand}}</p>
             </div>
             <div class="flex items-center text-sm">
                 <p class="text-gray-600">Stock : </p>
-                <p class="font-semibold">{{product.stockQuantity}}</p>
+                <p class="px-2">{{product.stockQuantity}}</p>
             </div>
             <div class="flex items-center text-sm">
                 <p class="text-gray-600">Discount : </p>
-                <p class="font-semibold">{{product.discount}}</p>
+                <p class="px-2">{{product.discount}}</p>
             </div>
             <div class="flex items-center text-sm">
                 <p class="text-gray-600">OfferEndDate : </p>
-                <span class="font-semibold">{{product.offerEndDate | date:'yyyy-MM-dd'}}</span>
+                <span class=" bg-[#eee] px-2 mx-1 rounded-md">{{product.offerEndDate | date:'yyyy-MM-dd'}}</span>
             </div>
         </div>
     </div>
@@ -68,17 +70,20 @@
     <div class="absolute bottom-0 left-0 flex items-center">
         <div class=" flex-col flex justify-center mx-1">
             <button (click)="toggleDropdown(index)"
-                class="px-1 rounded-md py-1  text-black"><i
-                    class="bx p-2 rounded-full border bx-dots-vertical"></i></button>
+                class="px-1 rounded-full  py-1  text-black"><i
+                    class="bx p-2 rounded-full border bg-[#eee] bx-dots-vertical"></i></button>
             <div [ngClass]="{'hidden ':isDropdownVisible==false || (isDropdownVisible==true && DropdownIndex!=index),
        'block ': DropdownIndex===index
-       }" class="relative mt-1 ">
+       }" class="relative mt-1 z-20">
                 <ul
                     class=" bg-[#fff] border rounded-lg flex flex-col justify-center py-1  text-black px-5 absolute">
                     <li (click)="delete(product.id)" class="cursor-pointer text-[13px]"><i
-                            class=" text-xl bx bx-trash text-blue-600"></i></li>
-                    <li class="cursor-pointer text-[13px]"><i
-                            class="text-xl text-blue-600 bx bx-edit"></i>
+                            class=" text-xl bx bx-trash text-green-600"></i></li>
+                    <li 
+                    [queryParams]="{ update: 'true',sku:product.id}"
+                    routerLink="/admin/product"
+                    class="cursor-pointer text-[13px]"><i
+                            class="text-xl text-green-600 bx bx-edit"></i>
                     </li>
                 </ul>
             </div>
@@ -87,7 +92,7 @@
         <div class=" whitespace-nowrap">
             <div class=" flex items-center justify-center">
                 <button (click)="ShowstatusPopup(product.id) " class=""><i
-                        class='text-xl  text-gray-700 bx bx-list-plus'></i></button>
+                        class='text-xltext-gray-700 text-xl bx bx-list-plus'></i></button>
             </div>
         </div>
     </div>
@@ -98,7 +103,7 @@
 </div>
 </div>
 
-<div class="w-full flex items-center py-4 mt-1 px-5 border rounded-md">
+<div *ngIf="!(perform.isLoading$|async)" class="w-full flex items-center py-4 mt-1 px-5 border rounded-md">
     <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
             <p class="text-sm text-gray-700">

@@ -1,6 +1,6 @@
 
 <div  class="flex justify-center w-full">
-  <label *ngIf="!previewImage"  for="dropzone-file"
+  <label *ngIf="!previewImage && !image"  for="dropzone-file"
     class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer">
 
     <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -16,11 +16,14 @@
     </div>
     <input (change)="onFileSelected($event)" id="dropzone-file" type="file" class="hidden" accept="image/*" />
   </label>
-  <div *ngIf="previewImage">
+  <div *ngIf="previewImage && !image ">
     <i class='bx bx-refresh text-2xl text-emerald-800 mx-3 cursor-pointer' (click)="clearImagePreview()"></i>
-
     <img [src]="previewImage" alt="Processed Image" />
-    <p>Preview of the processed image (WebP format)</p>
   </div>
-
+  
+  <div *ngIf="image" class="flex items-center justify-center">
+    <i class='bx bx-refresh text-2xl text-emerald-800 mx-3 cursor-pointer' (click)="clearImagePreview()"></i>
+    <img loading="lazy" class="w-1/2 " [src]="image"/> 
+    
+  </div>
 </div>

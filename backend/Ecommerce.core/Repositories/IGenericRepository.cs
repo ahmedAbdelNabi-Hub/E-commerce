@@ -12,11 +12,15 @@ namespace Ecommerce.core.Repositories
     {
       
         Task<IReadOnlyList<T>> GetAllWithSpecAsync(ISpecifications<T> Spec);
+        
+       Task<IReadOnlyList<T>> GetAllWithTrackingAsync(ISpecifications<T> Spec);
+
         Task<T> GetByIdSpecAsync(ISpecifications<T> Spec);
         Task AddAsync(T entity);
         Task  UpdateAsync(T entity);
         Task  DeleteAsync(T entity);       
        
         Task<int> CountWithSpec(ISpecifications<T> Spec);
+
     }
 }

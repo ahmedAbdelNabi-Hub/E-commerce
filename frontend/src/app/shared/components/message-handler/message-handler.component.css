@@ -1,14 +1,12 @@
 .message {
   position: fixed;
-  bottom: 20px; /* Slightly above the very bottom for better visibility */
+  bottom: 10px; /* Slightly above the very bottom for better visibility */
   font-size: 16px;
-  max-width: 400px;
+  max-width: 500px;
   margin: 0; 
   text-align: center;
   z-index: 1000; 
-  border-radius: 5px; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  font-weight: 600; 
 }
 
 .success {
@@ -19,4 +17,13 @@
 .error {
   background-color: #dc3545; /* Error red */
   color: white; /* Text color for contrast */
+}
+.blur-glass {
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  transition: color 0.3s ease, background 0.3s ease; /* Smooth transitions */
+}
+.max-bland{
+  mix-blend-mode:difference;
 }

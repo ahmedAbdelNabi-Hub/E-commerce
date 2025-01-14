@@ -5,11 +5,21 @@
         <div class="h-10 rounded-md w-10 flex items-center justify-center border">
           <i class='bx bx-left-arrow-alt text-xl text-gray-500'></i>
         </div>
-        <p class="text-2xl">Add New Product</p>
+        <p class="text-2xl">{{paramsValue}} New Product</p>
       </div>
-      <div class="">
-        <button type="submit" class="w-full  px-6 text-sm  bg-blue-700 text-white font-semibold py-1 ">
-          Save Product
+      <div *ngIf="paramsValue.includes('Create')">
+        <button type="submit"
+          class="w-24 flex items-center justify-between px-5   rounded-lg text-sm bg-blue-500  hover:bg-blue-700 text-white font-semibold py-2 ">
+          <i class='bx bx-plus'></i>
+          Create
+        </button>
+      </div>
+      <div *ngIf="paramsValue.includes('Update')">
+      
+        <button type="submit"
+          class="w-24 flex items-center justify-between px-5   rounded-lg text-sm bg-blue-500  hover:bg-blue-700 text-white font-semibold py-2 ">
+          <i class='bx bx-plus'></i>
+          Update
         </button>
       </div>
     </div>
@@ -18,9 +28,12 @@
       <div class="flex flex-col gap-1 md:px-10 py-4 col-span-1 md:col-span-4 rounded-md shadow-sm">
         <!-- Product Name Field -->
         <div class="flex flex-col justify-center space-y-1 mt-5">
-          <p class="text-[14px] md:text-[16px]">Product Name</p>
+          <div class="flex items-center space-x-1">
+            <i class='bx bxl-product-hunt text-xl text-emerald-400'></i>
+            <p class="text-[14px] md:text-[16px]">Product Name</p>
+          </div>
           <input placeholder="Please enter the product name accurately..." type="text" formControlName="name"
-            class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" required />
+            class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
           <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('name')">{{
             getErrorMessage('name') }}</div>
         </div>
@@ -69,8 +82,8 @@
                 <input id="regular-price" placeholder="Please enter the regular price of the product" type="number"
                   min="0" formControlName="price"
                   class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" required />
-                  <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('price')">{{
-                getErrorMessage('price') }}</div>
+                <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('price')">{{
+                  getErrorMessage('price') }}</div>
 
               </div>
               <div class="flex flex-col w-full md:basis-1/2">
@@ -106,12 +119,12 @@
       <!-- Image Upload and Category Selection -->
       <div class="col-span-1 md:col-span-3 py-3">
         <!-- Main Image Upload -->
-        <app-image-uploader (imageFileChange)="onImageFileChange($event)"></app-image-uploader>
+        <app-image-uploader [image]="selectedImage" (imageFileChange)="onImageFileChange($event)"></app-image-uploader>
+        <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('ImageFile')">
+          {{getErrorMessage('ImageFile') }}
+        </div>
 
-        <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('ImageFile')">{{
-            getErrorMessage('ImageFile') }}</div>
 
-       
 
         <!-- Thumbnail Previews
         <div *ngIf="productForm.get('ImageFile')?.value" class="mt-4 flex flex-wrap">
@@ -129,66 +142,76 @@
           </div>
         </div> -->
 
-        <div class="bg-[#f9f9f9] px-3 py-3 mt-5 rounded-md">
-          <div class="px-2">
-            <p class="font-thin py-1">Product Category</p>
-            <select formControlName="categoryId" class="border rounded-md w-full bg-[#ffffff] px-3 py-2">
-              <option *ngFor="let category of categories" [value]="category.id">{{ category.categoryName }}</option>
-            </select>
+        <div class="border rounded-md shadow-sm border-gray-100 px-2 py-2 mt-3">
+          <div class="py-3  rounded-md">
+            <div>
+              <p class="font-thin py-1">Product Category</p>
+              <select formControlName="categoryId" class="border rounded-md w-full bg-[#ffffff] px-3 py-2">
+                <option value="null" selected>Categories</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.categoryName }}</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class="flex flex-col bg-[#f9f9f9] px-3 py-3  justify-center space-y-1 mt-5">
-          <p class="text-[14px] md:text-[16px]">Delivery Time In Days</p>
-          <input formControlName="deliveryTimeInDays" placeholder="Please enter the Delivery Time In Days "
-            type="number" class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
-          <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('deliveryTimeInDays')">{{
-            getErrorMessage('deliveryTimeInDays') }}</div>
-        </div>
-        <div class="flex  flex-col ">
-          <!-- Weight -->
-          <div class="w-full mx-2 flex flex-col justify-center space-y-1 mt-2">
-            <p class="font-semibold text-[14px]">Weight</p>
-            <span class="text-[10px] text-gray-400">
-              Weight in kg (e.g., 1.5)
-            </span>
-            <input placeholder="Enter product weight" type="number" min="0" step="0.01" formControlName="weight"
-              class="px-4 w-full text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]">
+          <div class="flex flex-col py-3 justify-center space-y-1 mt-5">
+            <p class="text-[14px] md:text-[16px]">Delivery Time In Days</p>
+            <input formControlName="deliveryTimeInDays" placeholder="Please enter the Delivery Time In Days "
+              type="number" class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
             <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('deliveryTimeInDays')">{{
               getErrorMessage('deliveryTimeInDays') }}</div>
-
           </div>
-          <!-- Dimensions (Length, Width, Height) -->
-          <div class="w-full  mx-2 flex flex-col justify-center space-y-1 mt-2">
-            <p class="font-semibold text-[14px]">Dimensions</p>
-            <span class="text-[10px] text-gray-400">
-              Enter dimensions in cm (Length x Width x Height)
-            </span>
-            <div class="flex flex-col  gap-1 flex-shrink">
-              <input placeholder="Dimensions in the format 'Width x Height x Length'" type="text" min="0" step="0.1"
-                formControlName="dimensions"
-                class="px-4 w-full md:w-auto text-[12px] rounded-md outline-none py-2 bg-[#eeeeee] my-1" required>
-              <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('dimensions')">{{
-                getErrorMessage('dimensions') }}</div>
+          <div class="flex  flex-col ">
+            <!-- Weight -->
+            <div class="w-full flex flex-col justify-center space-y-1 mt-2">
+              <p class="font-semibold text-[14px]">Weight</p>
+              <span class="text-[10px] text-gray-400">
+                Weight in kg (e.g., 1.5)
+              </span>
+              <input placeholder="Enter product weight" type="number" min="0" step="0.01" formControlName="weight"
+                class="px-4 w-full text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]">
+              <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('deliveryTimeInDays')">
+                {{
+                getErrorMessage('deliveryTimeInDays') }}</div>
+            </div>
+            <!-- Dimensions (Length, Width, Height) -->
+            <div class="w-full flex flex-col justify-center space-y-1 mt-2">
+              <p class="font-semibold text-[14px]">Dimensions</p>
+              <span class="text-[10px] text-gray-400">
+                Enter dimensions in cm (Length x Width x Height)
+              </span>
+              <div class="flex flex-col  gap-1 flex-shrink">
+                <input placeholder="Dimensions in the format 'Width x Height x Length'" type="text" min="0" step="0.1"
+                  formControlName="dimensions"
+                  class="px-4 w-full md:w-auto text-[12px] rounded-md outline-none py-2 bg-[#eeeeee] my-1" required>
+                <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('dimensions')">{{
+                  getErrorMessage('dimensions') }}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <form (submit)="addAttrubute()" class="px-12 py-5  container mx-auto" [formGroup]="productAttributesFrom">
-      <div class="container mx-auto mt-5">
-        <div class="flex items-center md:flex-row flex-col py-3 md:my-5">
+
+
+
+
+    <form (submit)="addAttrubute()" class="px-7 py-5 relative container mx-auto" [formGroup]="productAttributesFrom">
+      <div class="container mx-auto rounded-md px-3 border border-gray-100 shadow-sm">
+        <div class=" flex items-center justify-between md:flex-row flex-col py-3 md:my-2">
           <div class="flex flex-col space-x-1 justify-center">
+            <span class="text-[14px] px-2 text-red-500">{{errorMessage}}</span>
             <span class="text-[10px] px-2 text-gray-400">Be careful! should be meaningful, like "Color" , "CPU" or
               "Size".</span>
             <h3 class=" text-2xl font-thin">
               Attribute Properties
             </h3>
           </div>
+          <app-upload-file-attribute
+            (productAttributesChanged)="handleProductAttributes($event)"></app-upload-file-attribute>
         </div>
-        <div class="flex md:flex-row flex-col items-center">
+        <div class="flex  mb-10 flex-col ">
           <!-- Attribute Name -->
-          <div class="w-full md:w-[40%] mx-2 flex flex-col justify-center space-y-1 mt-2">
+          <div class="w-full  mx-2 flex flex-col justify-center space-y-1 mt-2">
             <label for="attributeName" class="font-semibold text-[14px]">
               Attribute Name
             </label>
@@ -199,7 +222,7 @@
               class="px-4 text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]" minlength="3" maxlength="100" required>
           </div>
           <!-- Attribute Value -->
-          <div class="w-full md:w-[40%] mx-2 flex flex-col justify-center space-y-1 mt-2">
+          <div class="w-full  mx-2 flex flex-col justify-center space-y-1 mt-2">
             <label for="attributeValue" class="font-semibold text-[14px]">
               Attribute Value
             </label>
@@ -207,42 +230,72 @@
               Enter attribute value (1-255 characters)
             </span>
             <input id="attributeValue" placeholder="Enter attribute value" type="text" formControlName="attributeValue"
-              class="px-4 text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]" minlength="2" maxlength="255" required>
+              class="px-4 text-[12px]  rounded-md outline-none py-2 bg-[#eeeeee]" minlength="2" maxlength="255"
+              required>
+          </div>
+          <div class=" flex items-center py-4 px-3 space-x-2">
+            <input id="IsFilterable" type="checkbox" formControlName="IsFilterable"
+              class="px-4 text-[12px] rounded-md outline-none  bg-[#eeeeee]">
+            <label for="attributeValue" class="font-semibold text-[14px]">
+              IsFilterable
+            </label>
           </div>
           <!-- buuton is save attribute -->
-          <button type="submit" class=" w-full md:w-auto px-5 py-1  mt-12 bg-blue-500 text-white text-sm">Add
+          <button type="submit" class=" w-[20%] px-5 mx-3 py-1 rounded-md  mt-1 bg-blue-500 text-white text-sm">Add
             attribute</button>
         </div>
       </div>
     </form>
-    <div class="px-5 md:px-14" *ngIf="productAttributes.length">
+
+
+
+
+    <div class="px-5 " *ngIf="productAttributes.length>0">
       <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto">
           <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="overflow-hidden">
-              <table class="min-w-full divide-y divide-gray-200">
+              <table class="min-w-full divide-y mb-10 divide-gray-200">
                 <thead>
                   <tr>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                      اسم
-                      الخاصية
+                      Property Name
+                    </th>
+                    <th scope="col" class=" px-9 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                      Details
                     </th>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                      التفاصيل
+                      Use In Filter
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="odd:bg-white even:bg-gray-100 overflow-x-hidden"
-                    *ngFor="let attribute  of productAttributes ; let i =index">
-                    <td class="px-6 py-4 w-[50%] whitespace-nowrap text-sm font-medium text-gray-800">
-                      {{attribute.attributeName}}</td>
-                    <td class="px-6 py-4 w-[50%] whitespace-nowrap text-sm text-gray-800">
-                      {{attribute.attributeValue}}</td>
+                    *ngFor="let attribute  of productAttributes ; let i =index;trackBy: trackByAttributeName">
 
-                    <td> <button (click)="removeAttribute(i)"
-                        class="border border-dotted h-full px-4 py-1 text-black bg-sky-50 text-sm">Remove</button>
+                    <td class="px-6 py-4  whitespace-nowrap text-sm font-medium text-gray-800">
+                      {{attribute.attributeName}}
                     </td>
+
+                    <td class="px-6 py-4  whitespace-nowrap text-sm text-gray-800">
+                      <p class="px-6 w-[350px] line-clamp-1">
+                        {{attribute.attributeValue}}
+                      </p>
+                    </td>
+
+                    <td class="px-6 py-4  whitespace-nowrap text-sm text-gray-800">
+                      <i *ngIf="attribute?.isFilterable==true" class='text-xl text-green-400 bx bx-check-double'></i>
+                      <i *ngIf="attribute?.isFilterable==false" class='text-xl text-red-500 bx bx-x'></i>
+                    </td>
+                    <td class="flex items-center justify-center space-x-3 px-6 py-3">
+                      <button type="button" (click)="removeAttribute(i)"
+                        class="border border-dotted h-full px-4 py-1 text-black bg-sky-50 text-sm">Remove</button>
+                      <button type="button" (click)="filterActive(i)"
+                        class="border border-dotted h-full px-4 py-1 text-black bg-sky-50 text-sm">Use In
+                        Filter</button>
+                    </td>
+
+
                   </tr>
                 </tbody>
               </table>

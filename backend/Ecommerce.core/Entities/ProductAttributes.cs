@@ -1,6 +1,7 @@
 ﻿using Ecommerce.core.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,9 @@ namespace Ecommerce.Core.Entities
     {
         public string AttributeName { get; set; }
         public string AttributeValue { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } 
+        public DateTime UpdatedAt { get; set; } 
+        public bool IsFilterable { get; set; }
 
         [ForeignKey("Product")]
         public int? ProductId { get; set; }

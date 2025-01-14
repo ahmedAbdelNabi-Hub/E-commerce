@@ -70,7 +70,7 @@ namespace Ecommerce.service
                 Expiration = expiration,  // Pass the expiration time in the response
                 RefreshToken = "Empty",
                 statusCode = 200,
-                massage= "successful"
+                message = "successful"
 
             };
         }

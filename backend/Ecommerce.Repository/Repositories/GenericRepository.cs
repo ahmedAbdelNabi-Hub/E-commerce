@@ -33,19 +33,40 @@ namespace Ecommerce.Repository.Repositories
             _dbContext.Set<T>().Remove(entity);
             return Task.CompletedTask;
         }
- 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
             if (entity == null) throw new ArgumentNullException(nameof(entity));
+
+            // Check if the entity is already being tracked
+            var trackedEntity = _dbContext.Set<T>().Local.FirstOrDefault(e => e.Equals(entity));
+
+            if (trackedEntity == null)
+            {
+                // Attach the entity to the DbContext if it's not tracked
+                _dbContext.Attach(entity);
+            }
+
+            // Mark the entity as modified
             _dbContext.Entry(entity).State = EntityState.Modified;
-            return Task.CompletedTask;
+
+            // Iterate through navigation properties (if any) and mark them as modified too
+            foreach (var navigation in _dbContext.Entry(entity).Navigations)
+            {
+                if (navigation.IsModified)
+                {
+                    _dbContext.Entry(navigation.CurrentValue!).State = EntityState.Modified;
+                }
+            }
+
+            // Save changes to the database
+            await _dbContext.SaveChangesAsync();
         }
 
-  
+
         public async Task<T> GetByIdSpecAsync(ISpecifications<T> spec)
         {
             if (spec == null) throw new ArgumentNullException(nameof(spec));
-            return await ApplySpecification(spec).FirstOrDefaultAsync();
+            return await ApplySpecification(spec).AsTracking().SingleOrDefaultAsync();
         }
 
        
@@ -53,6 +74,11 @@ namespace Ecommerce.Repository.Repositories
         {
             if (spec == null) throw new ArgumentNullException(nameof(spec));
             return await ApplySpecification(spec).AsNoTracking().ToListAsync();
+        }
+        public async Task<IReadOnlyList<T>> GetAllWithTrackingAsync(ISpecifications<T> spec)
+        {
+            if (spec == null) throw new ArgumentNullException(nameof(spec));
+            return await ApplySpecification(spec).ToListAsync();
         }
 
         public async Task<int> CountWithSpec(ISpecifications<T> Spec)

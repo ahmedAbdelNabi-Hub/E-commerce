@@ -62,6 +62,7 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
     NavbarComponent,
     SearchComponent,
     ImageUploaderComponent,
+    ProductCardWithDiscoundComponent,
     DropdownComponent,
     AdminSidebarComponent,
     CategoryCardComponent,

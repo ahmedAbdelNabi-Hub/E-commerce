@@ -17,14 +17,12 @@ namespace Ecommerce.Contracts.DTOs.product
         public string Description { get; set; }
         public string Brand { get; set; }
         public string? SKU { get; set; }
-
         public int CategoryId { get; set; }  
         public string? CategoryName { get; set; } 
         public decimal Price { get; set; }
         public decimal Discount { get; set; } = 0;
         public decimal Weight { get; set; }
-        public string Dimensions { get; set; }
-
+        public int deliveryTimeInDays { get; set; }
         public int StockQuantity { get; set; } = 0;
         public string? ImageUrl { get; set; }
         public string? LinkImage { get; set; }

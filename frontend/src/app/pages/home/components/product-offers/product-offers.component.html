@@ -1,52 +1,58 @@
-<section *ngIf="productsGrouped()" class=" latest-offers mt-9 px-4 xs:px-0">
+<section *ngIf="productsGrouped()" class=" latest-offers mt-9  ">
   <h2 class="text-xl lg:text-4xl mb-1 text-center font-[550] ">BEST OFFERS</h2>
   <h2 class="text-2xl mb-4 text-center font-thin ">Deals of the season are here</h2>
   <nav
-    class="text-[14px] justify-start md:justify-center snap-x snap-mandatory scrollbar-hidden xs:text-[14px] md:text-[18px] font-semibold flex mb-2 overflow-x-auto overflow-y-hidden scrollbar-hide flex-wrap ml-2">
+    class="text-[12px] justify-start md:justify-center snap-x snap-mandatory scrollbar-hidden md:text-[13.2px] font-semibold flex mb-2 overflow-x-auto overflow-y-hidden scrollbar-hide flex-wrap ml-2">
     <ul class="flex mb-2 px-2 items-start md:items-center py-1">
       <li *ngFor="let category of productsGrouped(); let i = index" (click)="scrollToImage(i)"
         [ngClass]="{'active': activeIndex() === i}"
-        class="capitalize snap-center p-1 flex-none mx-2 cursor-pointer border-b-2 border-transparent hover:border-black">
+        class="capitalize snap-center py-2 px-3 flex-none mx-2 cursor-pointer border border-gray-200 rounded-full">
         {{ category.key }}
       </li>
     </ul>
   </nav>
 
-  <div class="flex space-x-20 flex-none overflow-x-auto scrollbar-hidden snap-x snap-mandatory scrollbar-none" #slider>
+  <div class="flex space-x-20 flex-none  max-h-[550px] overflow-x-auto overflow-y-hidden scrollbar-hidden snap-x snap-mandatory scrollbar-none" #slider>
     <div *ngFor="let category of productsGrouped()" class="flex-none w-full snap-center">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
-        <div *ngIf="category.items && category.items.length"
-          class="border bg-[#ffffff] 
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-2 h-full md:h-[100%] px-2">
+        <div *ngIf="category.items && category.items.length" class="border bg-[#f5f5f5] 
           overflow-hidden flex 
           flex-row items-center
           rounded-md
-          md:col-span-2 md:flex-col ">
-              <img
-                [src]="category.items[0].linkImage"
-                srcset="
-                {{category.items[0].linkImage}} 300w, 
-                {{category.items[0].linkImage}} 600w, 
-                {{category.items[0].linkImage}} 1000w"
-                sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px" alt="{{ category.items[0].name }}"
-                width="300" height="200" class="object-contain max-w-md w-[50%] md:w-[80%] h-[100%] md:h-[80%]"loading="lazy" />
-                <div class="flex flex-col justify-center items-center">
-                  <p class="text-gray-800 font-semibold text-[12px] md:text-[20px] line-clamp-2">{{category.items[0].name}}</p>
-                  <p class="text-[10px] font-bold text-emerald-600">Save up to $400</p>
-                 </div>
-                </div>
+          relative
+          md:col-span-2 md:flex-col md:gap-5">
+          <div class="h-full w-[50%] md:w-full md:h-[65%] flex items-center justify-center">
+            <img
+              [src]="category.items[0].imageUrl"
+              sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px" alt="{{ category.items[0].name }}"
+              width="300" height="200" class="py-2 object-contain w-full md:max-w-60 h-full" loading="lazy" />
+          </div>
+          <div class="flex flex-col py-5 px-2 md:h-[35%] text-center justify-center items-center border-l-4 
+          h-full md:border-t-4 w-[50%] md:w-full border-white">
+            <p class=" font-semibold text-[16px] md:text-[25px]  ">
+              {{category.items[0].name}}</p>
+              <div class="text-[10px] md:text-[12px] text-gray-500 ">
+                End Offer Date : <span class="text-black font-semibold">{{category.items[0].offerEndDate | date:'dd/mm/yyy'}}</span>
+              </div>
+              <button class="md:px-4 px-2 py-1 text-[12px] md:py-2 mt-3 hover:bg-white hover:text-black shadow-sm transition-colors bg-black rounded-full md:text-[15px] text-white">Buy Now</button>
+            </div>
+        </div>
 
 
         <!-- Offer Products Section -->
-        <div class="col-span-full md:col-span-2 grid grid-cols-1 flex-none relative">
-          <div class="grid grid-cols-2 gap-2 ">
+        <div class="col-span-full md:col-span-2 gap-3 grid grid-cols-1 flex-none relative ">
+          <div class="grid grid-cols-2 gap-3 ">
+          
             <div *ngFor="let product of category.items.slice(1)"
-              class="max-h-[170px] md:max-h-[230px]  border  rounded-md bg-white flex flex-col justify-center items-center">
-              <img [src]="product.linkImage" alt=""class="object-contain max-w-md w-[70%] h-[50%] md:h-[80%]" />
-              <div class="text-center h-[20%] px-7 pb-5">
-               <div class="flex flex-col">
-                <p class="text-gray-800 font-semibold text-[12px] line-clamp-2">{{product.name}}</p>
-                <p class="text-[9px] font-bold text-emerald-500">Save up to $400</p>
-               </div>
+              class="rounded-2xl py-4 shadow-sm relative bg-[#f5f5f5] flex flex-col justify-center items-center">
+              <img [src]="product.imageUrl" alt="" class="object-contain h-[100px] lg:h-auto max-w-32 mb-2" />
+              <div class="text-center px-4 pb-2">
+                <div class="flex flex-col text-center">
+                  <p class="text-black font-semibold text-[11px] md:text-[16px] line-clamp-2">{{product.name}}</p>
+                  <div class="text-[12px] text-gray-500 ">
+                    End Offer Date : <span class="text-black font-semibold">{{product.offerEndDate | date:'dd/mm/yyy'}}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -55,6 +61,4 @@
     </div>
   </div>
 </section>
-
-
 

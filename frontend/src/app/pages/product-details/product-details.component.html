@@ -1,17 +1,17 @@
 <div class="w-full  mt-10">
 	<div class="py-1  px-4 md:px-9 shadow-md mt-20 bg-white flex flex-col md:flex-row justify-between md:items-center">
-		<h1 class="text-[17px] py-2 sm:text-[25px] font-[600] text-black w-full md:w-[60%] line-clamp-3">
-			{{'25 cu. ft. 33" 3-Door French Door Refrigerator with Beverage Center™ in Stainless Steel'}}
+		<h1 class="text-[17px] py-2 sm:text-[25px] font-semibold text-black w-full md:w-[60%] line-clamp-2">
+			{{detailsProduct?.description}}
 		</h1>
-		<div class="flex mt-1 md:items-center flex-col md:flex-row ">
-			<div class="flex flex-col border-r  py-3 md:py-0 border-gray-300 px-0 md:px-5">
-				<span class="text-[15px] font-thin text-gray-700">From Total</span>
+		<div class="flex mt-1 md:items-center py-4 flex-col md:flex-row ">
+			<div class="flex flex-col border-r py-3 md:py-0 border-gray-300 px-0 md:px-5">
+				<span class="text-[15px] text-gray-500">From Total</span>
 				<div class="flex items-center leading-4">
 					<p class="text-orange-500 text-[15px] md:text-2xl">
-						{{'1,499.00'}} ج.م.
+						{{detailsProduct?.price | number}} ج.م.
 					</p>
 					<p class="text-[14px] md:tex-xl mt-4 mx-1 line-through text-gray-400">
-						{{'1,499.00'}} ج.م.
+						{{detailsProduct?.offerPrice | number}} ج.م.
 					</p>
 				</div>
 			</div>
@@ -23,7 +23,7 @@
 		</div>
 	</div>
 	<div class="bg-white border-y  py-2.5 px-8 ">
-		<p class="text-[13px] text-gray-600 font-thin"> RF25C5551SR/AA / RF25C5551SR/AA </p>
+		<p class="text-[13px] text-gray-600 font-thin"> {{detailsProduct?.sku}} / RF25C5551SR/AA </p>
 	</div>
 	<div class="bg-white border-y  py-2.5 px-8">
 		<ul class="flex items-center space-x-3 text-sm text-gray-900">
@@ -97,13 +97,15 @@
 					<div class="flex justify-center  items-center ">
 						<div class=" overflow-hidden ">
 							<div class="h-full w-[100%] md:w-[100%] mt-5  object-cover ">
-								<img [src]="detailsProduct?.linkImage" srcset="
-                {{ detailsProduct?.linkImage }} 300w, 
-                {{ detailsProduct?.linkImage }} 600w, 
-                {{ detailsProduct?.linkImage }} 1000w"
+								<img [src]="detailsProduct?.imageUrl" srcset="
+                {{ detailsProduct?.imageUrl }} 300w, 
+                {{ detailsProduct?.imageUrl }} 600w, 
+                {{ detailsProduct?.imageUrl }} 1000w"
 									sizes="(max-width: 600px) 300px, (max-width:1200px) 600px, 1000px"
 									alt="{{ detailsProduct?.name }} - Image" width="500" height="500"
-									style="height:100%;" loading="lazy">
+									style="height:100%;" loading="lazy"
+									class="max-w-[360px]"
+									>
 							</div>
 						</div>
 					</div>
@@ -265,11 +267,8 @@
 
 	<div class="mt-10 px-2 md:px-16">
 		<h3 class="py-3 text-xl md:text-2xl font-semibold px-1">Other products</h3>
-		<app-owl-carousel
-		[service]="_productService"
-		[methodName]="'getAllProduct'"
-		[params]='params'
-	  ></app-owl-carousel>
+		<app-owl-carousel [service]="_productService" [methodName]="'getAllProduct'"
+			[params]='params'></app-owl-carousel>
 	</div>
 
 </section>

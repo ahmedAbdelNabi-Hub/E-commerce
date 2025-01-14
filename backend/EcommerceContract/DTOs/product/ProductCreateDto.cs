@@ -15,15 +15,17 @@ namespace Ecommerce.Contracts.DTOs.product
         public int CategoryId { get; set; }
         public decimal Price { get; set; }
         public decimal Weight { get; set; }
-        public string Dimensions { get; set; }
+        public string? Dimensions { get; set; }
 
         public decimal Discount { get; set; } = 0;
+
+        public int deliveryTimeInDays { get; set; }
         public int StockQuantity { get; set; } = 0;
         public IFormFile ImageFile { get; set; }
         public decimal? OfferPrice { get; set; }
         public DateTime? OfferStartDate { get; set; }
         public DateTime? OfferEndDate { get; set; }
-        public IReadOnlyList<ProductAttributeDto>? ProductAttributes { get; set; }
+        public List<ProductAttributeDto>? ProductAttributes { get; set; }
    
     }
 }

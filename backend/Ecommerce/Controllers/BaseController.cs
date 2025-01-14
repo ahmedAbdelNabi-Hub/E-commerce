@@ -1,4 +1,5 @@
 ﻿using Ecommerce.core;
+using Ecommerce.Core;
 using EcommerceContract.ErrorResponses;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -26,7 +27,6 @@ namespace Ecommerce.Controllers
             }
             catch (Exception ex)
             {
-                // Log ex.InnerException for more details
                 return new BaseApiResponse(StatusCodes.Status500InternalServerError, ex.InnerException?.Message);
             }
         }

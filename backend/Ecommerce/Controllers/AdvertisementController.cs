@@ -2,6 +2,7 @@
 using Ecommerce.core;
 using Ecommerce.core.Entities;
 using Ecommerce.core.Specifications;
+using Ecommerce.Core;
 using EcommerceContract.DTOs;
 using EcommerceContract.ErrorResponses;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +48,7 @@ namespace EcommerceContract.Controllers
             }
 
             _mapper.Map(advertisementDto, existingAd); // Map the updates
-            await _unitOfWork.Repository<Advertisement>().UpdateAsync(existingAd); // Update the advertisement
+            _unitOfWork.Repository<Advertisement>().UpdateAsync(existingAd); // Update the advertisement
 
             return await SaveChangesAsync("Advertisement updated successfully.", "Failed to update the advertisement.");
         }

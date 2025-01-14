@@ -27,7 +27,7 @@ export class TagNavigationComponent implements OnInit, OnDestroy {
   activeIndex : number=0;
   constructor() {
     this.productParams.set({
-      CategoryName: 'washingmachines',
+      CategoryName: 'smartphone',
       PageIndex: 1,
       PageSize: 4,
       StatusId: 0
@@ -45,9 +45,9 @@ export class TagNavigationComponent implements OnInit, OnDestroy {
             value
           }));
           this.groupProductByNameData.set(groupedArray);
+          console.log(this.groupProductByNameData())
           if (groupedArray.length > 0) {
             this.containtTag.set(groupedArray[0].value);
-            console.log("Default tag set:", this.containtTag());
           }
         }
       }),
@@ -67,7 +67,7 @@ export class TagNavigationComponent implements OnInit, OnDestroy {
           this.containtTag.set([]);
         }
         this.showAnimation = true; // Re-add content to trigger animation
-      }, 600); // Match or exceed the animation duration
+      }, 570); // Match or exceed the animation duration
     }
   }
 

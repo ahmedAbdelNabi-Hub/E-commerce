@@ -30,6 +30,7 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
+    autoplay:true,
     touchDrag: true,
     pullDrag: true,
     dots: false,

@@ -1,9 +1,12 @@
 ﻿using Ecommerce.core.Entities;
 using Ecommerce.core.Repositories;
-using Ecommerce.core;
+using Ecommerce.Core;
+using Ecommerce.Core.Entities;
+using Ecommerce.Core.Repositories;
 using Ecommerce.Repository.Data;
 using Ecommerce.Repository.Repositories;
-using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,39 +15,82 @@ namespace Ecommerce.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly EcommerceDbContext _context;
-        private readonly Dictionary<string, object> _repositories;  // To store repositories
+        private readonly Dictionary<string, object> _repositories;
+        private IDbContextTransaction _transaction;
 
-        public UnitOfWork(EcommerceDbContext DbContext)
+        private IProductAttributeRepository _productAttributeRepository;
+
+        public UnitOfWork(EcommerceDbContext dbContext)
         {
-            _context = DbContext;
+            _context = dbContext;
             _repositories = new Dictionary<string, object>();
         }
 
-        // This method will commit all pending changes to the database
+        // Begin a new transaction
+        public async Task BeginTransactionAsync()
+        {
+            _transaction = await _context.Database.BeginTransactionAsync();
+        }
+
+        // Commit the transaction
+        public async Task CommitAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.CommitAsync();
+                _transaction.Dispose();
+            }
+        }
+
+        // Rollback the transaction in case of failure
+        public async Task RollbackAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.RollbackAsync();
+                _transaction.Dispose();
+            }
+        }
+
+        // Complete changes and save data
         public async Task<int> CompleteAsync()
         {
             return await _context.SaveChangesAsync();
         }
 
-        // Dispose the database context
+        // Dispose resources
         public async ValueTask DisposeAsync()
         {
             await _context.DisposeAsync();
         }
 
-        // Generic method to get a repository for the given entity type
+        // Generic repository method
         public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
         {
-            // Check if the repository for TEntity already exists in the dictionary
             var type = typeof(TEntity).Name;
+
             if (!_repositories.ContainsKey(type))
             {
-                // Create a new GenericRepository for the entity and store it in the dictionary
-                var repositoryType = typeof(GenericRepository<>);
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
-                _repositories.Add(type, repositoryInstance);
+                if (typeof(TEntity) == typeof(ProductAttributes))
+                {
+                    _repositories.Add(type, GetProductAttributeRepository());
+                }
+                else
+                {
+                    var repositoryType = typeof(GenericRepository<>);
+                    var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
+                    _repositories.Add(type, repositoryInstance);
+                }
             }
+
             return (IGenericRepository<TEntity>)_repositories[type];
+        }
+
+        // Specific repository for ProductAttributes
+        public IProductAttributeRepository GetProductAttributeRepository()
+        {
+            _productAttributeRepository ??= new ProductAttributeRepository(_context);
+            return _productAttributeRepository;
         }
     }
 }

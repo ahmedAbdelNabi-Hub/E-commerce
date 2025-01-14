@@ -10,19 +10,26 @@ import { fadeInOut } from '../../../../shared/animations/fadeInOut';
 import { ErrorHandlerService } from '../../../../core/services/ErrorHandler.service';
 import { MessageService } from '../../../../core/services/Message.service';
 import { StatusService } from '../../../../core/services/Status/status.service';
+import { ProductDataService } from '../../../../core/services/ProductData.service';
+import { IProduct } from '../../../../core/models/interfaces/IProduct';
+import { Router } from '@angular/router';
+import { transformAnimation } from '../../../../shared/animations/transformAnimation';
+import { contentAnimation, imageAnimation, paginationAnimation } from '../../../../shared/animations/contentAnimation';
 
 @Component({
   selector: 'app-all-product-list',
   templateUrl: './all-product-list.component.html',
   styleUrls: ['./all-product-list.component.css'],
-  animations: [fadeInOut],
+  animations: [fadeInOut,,paginationAnimation],
 })
 export class AllProductListComponent implements OnInit, OnDestroy {
   private productService = inject(ProductService);
+  private productDataService = inject(ProductDataService);
   private categoryService = inject(CategoryService);
   private errorHandler = inject(ErrorHandlerService);  // Inject error handler
   private messageHandelr = inject(MessageService)
   private statuseService = inject(StatusService);
+  private router = inject(Router);
   productParams: IProductSpecParams = {
     CategoryName: '',
     StatusId: 0,
@@ -31,14 +38,13 @@ export class AllProductListComponent implements OnInit, OnDestroy {
   };
 
   perform = new Perform<IPaginationDto>();
-  productsWithPagination = signal<IPaginationDto | null>(null);  // Signal for product data
-  categories = signal<ICategory[]>([]);  // Signal for categories
+  productsWithPagination = signal<IPaginationDto | null>(null); 
+  categories = signal<ICategory[]>([]);  
 
   categoryName = '';
   isDropdownVisible = false;
   DropdownIndex = 0;
 
-  // Pagination
   totalItems = 0;
   totalPages = 0;
   currentPage = 1;
@@ -106,7 +112,10 @@ export class AllProductListComponent implements OnInit, OnDestroy {
     ));
     this.loadProducts();
   }
-  ShowstatusPopup(productId:number): void {
+  goInAddProductFormWithData(data:IProduct):void{
+    this.router.navigate(['/admin/product'], { queryParams: { update: 'true', sku: data.id } });
+  }
+  ShowstatusPopup(productId: number): void {
     this.statuseService.showStatusPopup(productId);
   }
   ngOnDestroy(): void {

@@ -18,5 +18,12 @@ namespace Ecommerce.Contracts.DTOs.product
         [StringLength(255, ErrorMessage = "Attribute value must be less than 255 characters.")]
         [MinLength(1, ErrorMessage = "Attribute value must be at least 2 characters long.")]
         public string AttributeValue { get; set; }
+
+        [Required(ErrorMessage = "IsFilterable value is required.")]
+        public bool IsFilterable { get; set; }
+
+        public int productId { get; set; }  
+
+        public int id { get; set; }
     }
 }

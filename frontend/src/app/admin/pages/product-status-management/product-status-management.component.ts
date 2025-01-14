@@ -29,9 +29,7 @@ export class ProductStatusManagementComponent implements OnInit, OnDestroy {
     this.preform.data$.pipe(
       tap(data => {
         if (data) {
-          console.log('Loaded statuses:', data); // Debug log
           this.statuses.set(data);
-          // Group statuses once data is loaded
           this.groupedStatuses = groupStatuses(this.statuses()!);
         }
       })
