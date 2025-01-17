@@ -31,7 +31,7 @@ export function strongDescriptionValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value || '';
     const minLength = 10;
-    const maxLength = 500;
+    const maxLength = 200;
     if (value && (value.length < minLength || value.length > maxLength)) {
       return { strongDescription: `Description must be between ${minLength} and ${maxLength} characters` };
     }
@@ -45,7 +45,7 @@ export function strongBrandValidator(): ValidatorFn {
     const value = control.value as string;
 
     const Brands = [
-      'Samsung', 'LG', 'Sony', 'Panasonic', 'Philips', 'Sharp', 'Toshiba', 'Hisense', 'Vizio', 'Haier',
+      'Samsung', 'LG','Haier ', 'Jac','Sony', 'Tornado','Panasonic', 'Philips', 'Sharp', 'Toshiba', 'Hisense', 'Vizio', 'Haier',
       'Electrolux', 'Whirlpool', 'GE Appliances', 'Bosch', 'Siemens', 'Miele', 'Frigidaire', 'Maytag', 'Kenmore', 'Amana',
       'Smeg', 'KitchenAid', 'Sub-Zero', 'Thermador', 'Viking', 'Samsung Appliances', 'Dyson', 'Hoover', 'Bissell', 'Eureka',
       'Midea', 'Hitachi', 'Fujitsu', 'Daikin', 'Carrier', 'Trane', 'Honeywell', 'Nest', 'Rheem', 'Lennox',

@@ -197,3 +197,9 @@ E:\E-commerce\backend\Ecommerce\obj\Debug\net6.0\Ecommerce.genruntimeconfig.cach
 E:\E-commerce\backend\Ecommerce\obj\Debug\net6.0\ref\Ecommerce.dll
 E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\Microsoft.Bcl.TimeProvider.dll
+E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\Google.Apis.dll
+E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\Google.Apis.Auth.dll
+E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\Google.Apis.Core.dll
+E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\System.CodeDom.dll
+E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\System.Management.dll
+E:\E-commerce\backend\Ecommerce\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Management.dll

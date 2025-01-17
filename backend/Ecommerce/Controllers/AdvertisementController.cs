@@ -48,7 +48,7 @@ namespace EcommerceContract.Controllers
             }
 
             _mapper.Map(advertisementDto, existingAd); // Map the updates
-            _unitOfWork.Repository<Advertisement>().UpdateAsync(existingAd); // Update the advertisement
+            await _unitOfWork.Repository<Advertisement>().UpdateAsync(existingAd); // Update the advertisement
 
             return await SaveChangesAsync("Advertisement updated successfully.", "Failed to update the advertisement.");
         }

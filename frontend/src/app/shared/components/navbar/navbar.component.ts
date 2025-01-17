@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Renderer2, inject } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, filter, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Navbar } from '../../../core/models/interfaces/navbar.model';
 import { NavbarService } from '../../../core/services/navbar.service';
@@ -8,6 +8,7 @@ import { sidebarAnimation } from '../../animations/sidebarAnimation';
 import { BasketService } from '../../../core/services/shipping/Basket.service';
 import { Perform } from '../../../core/models/classes/Perform';
 import { IBasket } from '../../../core/models/interfaces/Basket/IBasket';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +23,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   _basketService = inject(BasketService);
   private readonly navbarService = inject(NavbarService);
   constructor(private renderer: Renderer2) { }
-
   ngOnInit(): void {
     this.loadNavbars();
   }
@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }),
       catchError(error => {
         console.error('Error fetching navbars:', error);
-        return of([]); // Return an empty array on error
+        return of([]); 
       })
     ).subscribe();
   }

@@ -68,7 +68,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   getProductInMoodUpdate() {
 
     if (this.productId) {
-      this.productService.getProductWithId(+this.productId).pipe(distinctUntilChanged(), takeUntil(this.destroy$)).subscribe(data => {
+      this.productService.getProductWithIdAndStoreInRedis(+this.productId,false).pipe(distinctUntilChanged(), takeUntil(this.destroy$)).subscribe(data => {
         if (data) {
           this.productUpdated = data;
           this.patchValueInForm(this.productUpdated);
@@ -209,8 +209,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         formData.append(`ProductAttributes[${index}].attributeName`, attribute.attributeName);
         formData.append(`ProductAttributes[${index}].attributeValue`, attribute.attributeValue);
         formData.append(`ProductAttributes[${index}].IsFilterable`, attribute.isFilterable + '');
-        formData.append(`ProductAttributes[${index}].productId`, this.productId);
-        formData.append(`ProductAttributes[${index}].id`, attribute.id+'');
       });
 
       const imageFile = this.productForm.get('ImageFile')?.value;
@@ -219,11 +217,14 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       }
 
       if (this.paramsValue.includes("Update")) {
+        this.productAttributes.forEach((attribute, index) => {
+          formData.append(`ProductAttributes[${index}].productId`, this.productId);
+          formData.append(`ProductAttributes[${index}].id`, attribute.id+'');
+        });
         this.updateProduct(this.productId, formData);
       } else if (this.paramsValue.includes("Create")) {
         this.createProduct(formData);
       }
-
     } else {
       this.productForm.markAllAsTouched();
       this.errorMessage = "The Attributes are Required";

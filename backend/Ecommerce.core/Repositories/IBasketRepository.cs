@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Core.Repositories
 {
-    public interface IBasketRepository
+    public interface IBasketRepository<T>
     {
-        Task<CustomerBasket?> GetBasketAsync(string  id);
-        Task<CustomerBasket?> UpdateBasketAsync(CustomerBasket basket);
-        Task <bool> DeleteBasketAsync (string id);
+        Task<T?> GetBasketAsync(string id);
+        Task<T?> UpdateBasketAsync(string id, T RedisView);
+        Task<bool> DeleteBasketAsync(string id);
     }
 }

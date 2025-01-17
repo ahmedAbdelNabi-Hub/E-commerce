@@ -2,7 +2,7 @@ import { FormGroup } from '@angular/forms';
 
 export function getErrorMessage(form: FormGroup, controlName: string): string | null {
   const control = form.get(controlName);
-  if (!control?.touched) {
+  if (!control?.touched || !control?.errors) {
     return null;
   }
 
@@ -46,6 +46,12 @@ export function getErrorMessage(form: FormGroup, controlName: string): string | 
   }
   if (control?.hasError('strongBrand')) {
     return `${controlName} contains a forbidden brand.`;
+  }
+  if (control?.hasError('alphanumeric')) {
+    return `${controlName} must be alphanumeric with commas allowed`;
+  }
+  if (control?.hasError('lettersAndSpaces')) {
+    return `${controlName}  must contain only letters and be at least 2 characters long`;
   }
 
   return null;

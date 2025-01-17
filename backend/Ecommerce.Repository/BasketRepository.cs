@@ -6,7 +6,7 @@ using Ecommerce.Core.Repositories;
 
 namespace Ecommerce.Repository
 {
-    public class BasketRepository : IBasketRepository
+    public class BasketRepository<T> : IBasketRepository<T> where T : class
     {
         private readonly IDatabase _database;
 
@@ -15,17 +15,17 @@ namespace Ecommerce.Repository
             _database = redis.GetDatabase();
         }
 
-        public async Task<CustomerBasket?> GetBasketAsync(string id)
+        public async Task<T?> GetBasketAsync(string id)
         {
             var basket = await _database.StringGetAsync(id);
 
-            return string.IsNullOrEmpty(basket) ? null : JsonSerializer.Deserialize<CustomerBasket>(basket!);
+            return string.IsNullOrEmpty(basket) ? null : JsonSerializer.Deserialize<T>(basket!);
         }
 
-        public async Task<CustomerBasket?> UpdateBasketAsync(CustomerBasket basket)
+        public async Task<T?> UpdateBasketAsync(string id,T basket)
         {
             var basketJson = JsonSerializer.Serialize(basket);
-            var created = await _database.StringSetAsync(basket.Id, basketJson,TimeSpan.FromMinutes(30));
+            var created = await _database.StringSetAsync(id, basketJson,TimeSpan.FromDays(3));
             return created ? basket : null;
         }
 

@@ -19,7 +19,7 @@ export class ProductCardWithDiscoundComponent {
   _basketService = inject(BasketService);
   perform = new Perform<IBasket | null>();
   private messageService = inject(MessageService);
-
+  @Input('Recently') Recently :boolean=false;
   navigateToProduct(productData: any) {
     this.router.navigate(
       ['/product', productData.categoryName, productData.nameEn],

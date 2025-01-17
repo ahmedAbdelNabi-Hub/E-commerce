@@ -5,6 +5,7 @@ using Ecommerce.Contracts.ErrorResponses;
 using Ecommerce.Contracts.Interfaces;
 using Ecommerce.core.Entities.identity;
 using EcommerceContract.ErrorResponses;
+using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -52,18 +53,31 @@ namespace Ecommerce.service
 
             }
 
-            return await _jwtService.CreateJwtToken(user);
+            return await _jwtService.CreateJwtToken(user, false, null);
+        }
+
+        public async Task<BaseApiResponse> googleLoginAsync(GoogleLoginDto googleLoginDto)
+        {
+            var setting = new GoogleJsonWebSignature.ValidationSettings 
+            {
+              Audience = new string[] { "810583915097-vgf50ast4vi6i0fg4aaolahm57k5t5k2.apps.googleusercontent.com" }
+            };
+            var payload = await GoogleJsonWebSignature.ValidateAsync(googleLoginDto.TokenId, setting);   
+            if(payload == null)
+            {
+                return AuthErrorResponse("The TokenId is Valid");
+            }
+           
+            return await _jwtService.CreateJwtToken(new AppUser(),true,payload);
         }
         public async Task<BaseApiResponse> RegisterAsync(RegisterDTO registerDto)
         {
-            // Check if the email is already in use
             var existingUser = await _userManager.FindByEmailAsync(registerDto.Email);
             if (existingUser != null)
             {
                 return AuthErrorResponse("The email is already associated with an account.");
             }
 
-            // Create the new user
             var newUser = new AppUser
             {
                 FirstName = registerDto.FirstName,
@@ -127,7 +141,7 @@ namespace Ecommerce.service
 
             if (result.Succeeded)
             {
-                return await _jwtService.CreateJwtToken(user);
+                return await _jwtService.CreateJwtToken(user, false, null);
             }
             return new BaseApiResponse(StatusCodes.Status400BadRequest, "Email confirmation unsuccessful. Please ensure the link is valid and not expired.");
         }

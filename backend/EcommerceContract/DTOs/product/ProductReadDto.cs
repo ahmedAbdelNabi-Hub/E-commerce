@@ -26,7 +26,7 @@ namespace Ecommerce.Contracts.DTOs.product
         public int StockQuantity { get; set; } = 0;
         public string? ImageUrl { get; set; }
         public string? LinkImage { get; set; }
-        public decimal OfferPrice { get; set; } 
+        public decimal? OfferPrice { get; set; } 
         public DateTime? OfferStartDate { get; set; } 
         public DateTime? OfferEndDate { get; set; } 
         public IReadOnlyList<ProductAttributeDto>? ProductAttributes { get; set; } 

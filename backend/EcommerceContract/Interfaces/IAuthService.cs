@@ -18,5 +18,7 @@ namespace Ecommerce.Contracts.Interfaces
         Task <BaseApiResponse> ConfirmEmailAsync(ConfirmEmailDto confirmEmailDto);
         Task<BaseApiResponse> RestPasswordAsync(RestPasswordDto restPasswordDto);
         Task<BaseApiResponse> ForgotPasswordAsync(ForgotPassword forgotPassword);
+        Task<BaseApiResponse> googleLoginAsync(GoogleLoginDto googleLoginDto);
+
     }
 }

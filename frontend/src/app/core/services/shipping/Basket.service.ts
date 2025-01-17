@@ -19,7 +19,7 @@ export class BasketService {
         const currentBasket = this.getCurrentBasket();
         if (!currentBasket) {
             return this._http.get<IBasket>(`${API_URLS.Localhost + API_URLS.Basket}?id=${basketId}`).pipe(
-                tap(basket =>{
+                tap(basket => {
                     this._basketSource.next(basket)
                     this.numberOfItemInBasket.next(basket.basketItems.length);
                 }),
@@ -38,10 +38,8 @@ export class BasketService {
             tap(response => {
                 this._basketSource.next(response);
                 this.numberOfItemInBasket.next(basket.basketItems.length);
-                console.log('Basket successfully stored in Redis:', response);
             }),
             catchError(error => {
-                console.error('Error setting basket in Redis:', error);
                 return of(null);
             })
         )
@@ -64,7 +62,6 @@ export class BasketService {
     updateBasketItemQuantity(basketItem: IBasketItem, quantity: number): Observable<IBasket | null> {
         const currentBasket = this.getCurrentBasket() ?? this.createBasket();
         if (basketItem.quantity == quantity) {
-            console.log('Basket not changed, skipping API request.');
             return of(currentBasket);
         }
         const itemWithUpdateQantity = { ...basketItem, quantity };
@@ -76,7 +73,7 @@ export class BasketService {
     deleteItemFromBasket(item: IBasketItem): Observable<IBasket | null> {
         const currentBasket = this.getCurrentBasket() ?? this.createBasket();
         const updatedBasketItems = currentBasket.basketItems.filter(B => B.productId !== item.productId);
-        const updatedBasket: IBasket = { ...currentBasket, basketItems: updatedBasketItems };    
+        const updatedBasket: IBasket = { ...currentBasket, basketItems: updatedBasketItems };
         return this.setBasketInRedis(updatedBasket);
     }
 
@@ -115,8 +112,8 @@ export class BasketService {
             brand: product.brand,
             quantity: quantity,
             price: product.price,
-            offerPrice: product.offerPrice ?? null,      
-            imageUrl: product.linkImage,
+            offerPrice: product.offerPrice ?? null,
+            imageUrl: product.imageUrl,
             unitOfStock: product.stockQuantity,
             subTotal: applicablePrice * quantity
         };

@@ -16,12 +16,11 @@ namespace Ecommerce.Contracts.DTOs.product
         public decimal Price { get; set; }
         public decimal Weight { get; set; }
         public string? Dimensions { get; set; }
-
         public decimal Discount { get; set; } = 0;
-
         public int deliveryTimeInDays { get; set; }
+        public string? ImageUrl { get; set; }
         public int StockQuantity { get; set; } = 0;
-        public IFormFile ImageFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
         public decimal? OfferPrice { get; set; }
         public DateTime? OfferStartDate { get; set; }
         public DateTime? OfferEndDate { get; set; }

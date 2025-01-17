@@ -3,6 +3,7 @@ using Ecommerce.Contracts.Interfaces;
 using Ecommerce.service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 
 namespace Ecommerce.Extensions
@@ -33,7 +34,8 @@ namespace Ecommerce.Extensions
                     ValidateLifetime = true,
                     ValidIssuer = Configuration["JwtConfig:Issuer"],
                     ValidAudience = Configuration["JwtConfig:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtConfig:Key"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtConfig:Key"])),
+
                 };
 
             });

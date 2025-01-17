@@ -15,8 +15,8 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
   private detailsSectionOffset: number = 0;
   private overviewSectionOffset: number = 0;
   private route = inject(ActivatedRoute);
-   _productService = inject(ProductService);
-  detailsProduct!: IProduct | null; // Initialize as null
+  _productService = inject(ProductService);
+  detailsProduct!: IProduct | null; 
   activeSection: string = 'overview';
   productId?: number;
   params !: IProductSpecParams;
@@ -31,20 +31,22 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
   }
 
   getDetailsOfProduct(id: number): void {
-    this._productService.getProductWithId(id).pipe(
+    this._productService.getProductWithIdAndStoreInRedis(id, true).pipe(
       tap(response => {
         this.detailsProduct = response;
+        console.log(this.detailsProduct);
         this.setParams();
       })
     ).subscribe();
   }
   setParams(): void {
-    // const randomNumber = Math.floor(Math.random() * 5) + 1;
-    this.params = {
-      CategoryName: this.detailsProduct?.categoryName!,
-      StatusId:0,
-      PageIndex: 1,
-      PageSize: 6,
+    if (this.detailsProduct?.categoryName != null) {
+      this.params = {
+        CategoryName: this.detailsProduct?.categoryName,
+        StatusId: 0,
+        PageIndex: 1,
+        PageSize: 6,
+      }
     }
   }
 

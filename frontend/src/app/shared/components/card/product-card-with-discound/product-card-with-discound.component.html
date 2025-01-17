@@ -1,16 +1,20 @@
 <div
 class="relative  h-auto flex flex-col bg-white border border-gray-100"
     [ariaLabel]="'product-title-'+productData.sku" role="article">
-    <i *ngIf="productData.offerPrice" class='bx bxs-offer absolute top-2 left-2 text-2xl text-gray-600'></i>
+    <i *ngIf="productData.offerPrice && !Recently" class='bx bxs-offer absolute top-2 left-2 text-2xl text-gray-600'></i>
     <div class="flex justify-center">
-        <div class="h-[120px] xs:h-[150px]">
-                <img [src]="productData.imageUrl" srcset="
+        <div 
+        [ngClass]="{'h-[100px]':Recently , 'h-[110px] xs:h-[130px]':!Recently}"
+        class="">
+                <img
+                [ngClass]="{'max-w-22':Recently,'max-w-52':!Recently}"
+                [src]="productData.imageUrl" srcset="
                     {{ productData.imageUrl }} 300w, 
                     {{ productData.imageUrl }} 600w, 
                     {{ productData.imageUrl }} 1000w"
                     sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px"
                     alt="{{ productData.name }} - Image" width="300" height="200" style="height:100%;"
-                    class="object-contain max-w-52 pt-4 hover:scale-[1.1]  transition-transform cursor-pointer"
+                    class="object-contain  pt-4 hover:scale-[1.1]  transition-transform cursor-pointer"
                     loading="lazy" />
         
         </div>
@@ -26,7 +30,7 @@ class="relative  h-auto flex flex-col bg-white border border-gray-100"
             </h2>
         </a>
 
-        <div class="py-2 h-20">
+        <div class="py-2 h-16">
             <!-- Save Price Calculation -->
         
             <div *ngIf="productData.offerPrice! > 0" class="flex items-center space-x-1">
@@ -51,7 +55,7 @@ class="relative  h-auto flex flex-col bg-white border border-gray-100"
            
         </div>
 
-        <div class="w-full relative py-1">
+        <div *ngIf="!Recently" class="w-full relative ">
             <button (click)="addToBasket(productData)"
                 class="flex items-center justify-center border py-1 bg-[#fbfffa] text-sm shadow-sm hover:bg-black hover:text-white transition-all">
 
@@ -64,17 +68,10 @@ class="relative  h-auto flex flex-col bg-white border border-gray-100"
 
                 <!-- Display the icon when isLoading$ is false -->
                 <ng-container class="" *ngIf="!(perform.isLoading$ | async)">
-                    <i class='bx bxs-cart-add text-xl mx-2 '></i> 
-                  
+                    <i class='bx bxs-cart-add text-xl mx-2 '></i>     
                 </ng-container>
 
             </button>
-
-
-            <!-- Show error if something went wrong -->
-            <div *ngIf="perform.hasError$ |async" class="text-red-500 text-sm mt-2">
-                Error adding item to basket. Please try again.
-            </div>
 
         </div>
     </div>

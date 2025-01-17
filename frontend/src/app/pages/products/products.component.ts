@@ -26,9 +26,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     StatusId: 0,
   };
   private destroy$ = new Subject<void>();
-   performApi = inject(Perform<{ products: IPaginationDto, filters: IFilterationDto }>);
-
-  // Loading and error state observables
+  performApi = inject(Perform<{ products: IPaginationDto, filters: IFilterationDto }>);
   isLoading$ = this.performApi.isLoading$;
   hasError$ = this.performApi.hasError$;
   errorMessage$ = this.performApi.errorMessage$;
@@ -53,10 +51,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   private updateParams(category: string): void {
     this.productCategory = this.sanitize(category);
-    this.params = {
-      ...this.params,
-      CategoryName: this.productCategory!,
-    };
+    if (this.productCategory != null) {
+      this.params = {
+        ...this.params,
+        CategoryName: this.productCategory!,
+      };
+    }
     this.getProductWithCategory();
   }
 
@@ -71,7 +71,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
     const actions = {
       products: this._productService.getAllProduct(this.params).pipe(distinctUntilChanged()),
-      filters: this._productService.getAllFilterWithCategoy(this.params.CategoryName).pipe(distinctUntilChanged())
+      filters: this._productService.getAllFilterWithCategoy(this.params?.CategoryName).pipe(distinctUntilChanged())
     };
 
     this.performApi.loadMultiple(actions);
@@ -81,9 +81,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         next: (results) => {
           if (results) {
             this.products.set(results.products);
-            console.log(this.products()?.data)  
-            this.filters.set(results.filters); 
-             console.log(results.filters)   
+            this.filters.set(results.filters);
           }
         },
       });

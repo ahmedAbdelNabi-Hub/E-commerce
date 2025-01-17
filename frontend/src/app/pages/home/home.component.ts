@@ -23,23 +23,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(public _productService: ProductService, public _productStatus: StatusService) { }
 
   ngOnInit(): void {
-    this.fetchNewArrivals();
     this.getItemInBasket();
   }
 
-  private fetchNewArrivals(): void {
-    this._productService.getNewArrivalsProducts().pipe(
-      tap(response => {
-        this.dataSignal.set(response);
-        console.log("the product is arrive", response)
-      }),
-      catchError(error => {
-        console.error('Error fetching new arrivals:', error);
-        return of([]);
-      }),
-      takeUntil(this.destroy$)
-    ).subscribe();
-  }
+
   private getItemInBasket(): void {
     if (this.basketId) {
       this._basketService.getBasketByID(this.basketId)

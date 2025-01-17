@@ -5,7 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        'responsive-sm': '7.43333vw',  // 5.43333vw Small screens to larger screens
+        'responsive-sm': '7.43333vw',
+        'responsive-xsm': '4.43333vw',  // 5.43333vw Small screens to larger screens
         'responsive-xl': '2.398vw',
         'responsive-lg': '1vw',  // Extra-large screens
         'responsive-xs': '0.75rem',   // Extra small (12px) for small screens

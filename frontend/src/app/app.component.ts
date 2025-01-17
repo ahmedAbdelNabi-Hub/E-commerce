@@ -7,22 +7,20 @@ import { filter } from 'rxjs';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  animations:[routingAnimation,routeAnimations]
+  animations: [routingAnimation, routeAnimations]
 })
 export class AppComponent {
   getRouteAnimation(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
-
   showNavbar: boolean = false;
-
   constructor(private router: Router) {
-    // Subscribe to router events to check for NavigationEnd
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      // Check if the current route is for the admin module
-      this.showNavbar = event.url.includes('/admin'); // Adjust the condition as necessary
+      this.showNavbar = ['/login', '/register', '/forgot-password', '/admin'].some(path =>
+        event.url.includes(path)
+      );
     });
   }
 }

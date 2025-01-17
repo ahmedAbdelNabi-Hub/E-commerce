@@ -1,21 +1,14 @@
 ﻿using Ecommerce.Contracts.DTOs;
 using Ecommerce.Contracts.DTOs.Authentication;
 using Ecommerce.Contracts.DTOs.Password;
-using Ecommerce.Contracts.ErrorResponses;
 using Ecommerce.Contracts.Interfaces;
 using Ecommerce.core.Entities.identity;
 using EcommerceContract.ErrorResponses;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebUtilities;
-using Newtonsoft.Json.Linq;
-using System.Net;
 using System.Security.Claims;
-using System.Text;
-using System.Web;
+
 
 namespace Ecommerce.Controllers
 {
@@ -41,12 +34,23 @@ namespace Ecommerce.Controllers
             var response = await _authService.RegisterAsync(registerDto);
             return HandleStatusCode(response);
         }
+
+        [HttpPost()]
+        [Route("google-login")]
+        public async Task<ActionResult<BaseApiResponse>> googleLogin([FromBody] GoogleLoginDto googleLoginDto)
+        {
+            var authResponse = await _authService.googleLoginAsync(googleLoginDto);
+            return HandleStatusCode(authResponse);
+        }
+
         [HttpPost("login")]
         public async Task<ActionResult<BaseApiResponse>> Login([FromBody] LoginDTO loginDto)
         {
             var authResponse = await _authService.LoginAsync(loginDto);
             return HandleStatusCode(authResponse);
         }
+
+
         [HttpPost]
         [Route("ForgotPassword")]
         public async Task<ActionResult<BaseApiResponse>> ForgotPasswordAsync([FromBody] ForgotPassword forgotPassword)
@@ -70,7 +74,7 @@ namespace Ecommerce.Controllers
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
             var currentUser = await _userManager.FindByEmailAsync(email);
-            var authResponse = await _jwtService.CreateJwtToken(currentUser);
+            var authResponse = await _jwtService.CreateJwtToken(currentUser,false,null);
             
             if (currentUser is not null)
             {

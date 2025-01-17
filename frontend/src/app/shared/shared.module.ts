@@ -25,6 +25,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { MessageHandlerComponent } from './components/message-handler/message-handler.component';
 import { TagNavigationComponent } from './components/tag-navigation/tag-navigation.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { ImageUploaderComponent } from './components/image-uploader/image-upload
     MessageHandlerComponent,
     TagNavigationComponent,
     ImageUploaderComponent,
-
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

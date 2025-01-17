@@ -8,8 +8,8 @@ namespace Ecommerce.Controllers
 {
     public class BasketController : BaseController
     {
-        private IBasketRepository _basketRepository;
-        public BasketController(IBasketRepository basketRepository)
+        private IBasketRepository<CustomerBasket> _basketRepository;
+        public BasketController(IBasketRepository<CustomerBasket> basketRepository)
         {
             _basketRepository = basketRepository;
         }
@@ -26,7 +26,7 @@ namespace Ecommerce.Controllers
         public async Task<ActionResult<CustomerBasket>> CreateOrUpdateBasket(CustomerBasket basket)
         {
 
-            var CreateOrUpdateBasket = await _basketRepository.UpdateBasketAsync(basket);
+            var CreateOrUpdateBasket = await _basketRepository.UpdateBasketAsync(basket.Id,basket);
             return CreateOrUpdateBasket == null ? BadRequest(new BaseApiResponse(StatusCodes.Status400BadRequest)) : Ok(CreateOrUpdateBasket);
         }
 

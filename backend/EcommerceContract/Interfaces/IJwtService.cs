@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Contracts.DTOs.Authentication;
 using Ecommerce.core.Entities.identity;
+using Google.Apis.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Ecommerce.Contracts.Interfaces
 {
     public interface IJwtService
     {
-        Task<AuthResponse> CreateJwtToken(AppUser user);
+        Task<AuthResponse> CreateJwtToken(AppUser user, bool isGoogle , GoogleJsonWebSignature.Payload payload);
 
         Task<string> GenerateRefreshToken();
 

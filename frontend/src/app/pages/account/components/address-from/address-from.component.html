@@ -1,0 +1,62 @@
+<!-- component -->
+<div class="px-2 flex mt-10 py-2 ">
+
+    <div class="w-full">
+        <div class="px-3">
+            <h2 class="font-semibold text-xl text-gray-600">Address Form</h2>
+            <p class="text-gray-500 mb-6">Your Owen The <span class="text-blue-500">(15)</span> Address </p>
+
+        </div>
+        <form [formGroup]="addressForm" (ngSubmit)="onSubmit()"
+            class="bg-white rounded shadow-sm p-4 px-4 w-full  mb-6">
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 w-full md:grid-cols-5">
+                <div class="md:col-span-3">
+                    <label for="address">Address / Street</label>
+                    <input formControlName="street" type="text" name="address" id="address"
+                        class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                    <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('street')">{{
+                        getErrorMessage('street') }}</div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label for="city">City</label>
+                    <input formControlName="city" type="text" name="city" id="city"
+                        class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                    <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('city')">{{
+                        getErrorMessage('city') }}</div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label for="country">Area / region</label>
+                    <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
+                        <input formControlName="area" name="Area" id="Area" placeholder="Area"
+                            class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
+
+                    </div>
+                    <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('area')">{{
+                        getErrorMessage('area') }}</div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label for="state">Landmark</label>
+                    <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
+                        <input formControlName="landmark" name="Landmark" id="Landmark" placeholder="Landmark"
+                            class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
+                    </div>
+                    <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('landmark')">{{
+                        getErrorMessage('landmark') }}</div>
+                </div>
+
+
+
+                <div class="md:col-span-5 text-right">
+                    <div class="inline-flex items-end">
+                        <button
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

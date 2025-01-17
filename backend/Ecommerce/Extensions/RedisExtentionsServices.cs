@@ -10,7 +10,7 @@ namespace Ecommerce.Extensions
         {
             var RedisConnectionString = configuration.GetConnectionString("RedisConnection");
             Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(RedisConnectionString));
-            Services.AddScoped<IBasketRepository, BasketRepository>();
+            Services.AddScoped(typeof(IBasketRepository<>), typeof(BasketRepository<>));
             return Services;
         }
     }

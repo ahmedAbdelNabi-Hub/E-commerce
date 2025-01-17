@@ -6,8 +6,10 @@ using Ecommerce.core.Entities;
 using Ecommerce.core.Specifications;
 using Ecommerce.Core;
 using Ecommerce.Core.Entities;
+using Ecommerce.Core.Repositories;
 using Ecommerce.Core.Specifications;
 using Ecommerce.Helpers;
+using Ecommerce.Repository;
 using EcommerceContract.ErrorResponses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,26 +29,77 @@ namespace Ecommerce.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public ProductController(IUnitOfWork unitOfWork, IMapper mapper)
+        private IBasketRepository<ProductViewDto> _basketRepository;
+       
+        public ProductController(IUnitOfWork unitOfWork, IMapper mapper, IBasketRepository<ProductViewDto> basketRepository)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _basketRepository = basketRepository;
+
         }
 
         [HttpGet]
         [Route("GetProduct/{id}")]
-        public async Task<ActionResult<ProductReadDto>> GetProduct(int id)
-        {
+        public async Task<ActionResult<ProductReadDto>> GetProduct(int id, [FromQuery] string viewId,[FromQuery] bool isStoreInRedis)
+       {
             var product = await GetExistingProduct(id);
-            if (product is null)
-                return NotFound(new BaseApiResponse(404, "product not found."));
-            else
+            if (product == null)
+                return NotFound(new BaseApiResponse(404, "Product not found."));
+            var DeepCopyFromProduct = ProductHelper.DeepCopy(product);
+            DeepCopyFromProduct.ProductAttributes.Clear(); 
+             
+            if (isStoreInRedis && !string.IsNullOrEmpty(viewId))
             {
-                var MappingProduct = _mapper.Map<Product, ProductReadDto>(product);
-                return Ok(MappingProduct);
+                var productViews = await _basketRepository.GetBasketAsync(viewId);
+                if (productViews != null)
+                {
+                    var productView = productViews.ProductReadDto.FirstOrDefault(p => p.Id == product.id);
+                    if (productView == null)
+                    {
+                        productViews.ProductReadDto.Add(_mapper.Map<Product, ProductReadDto>(DeepCopyFromProduct));
+                        
+                    }
+                    await _basketRepository.UpdateBasketAsync(productViews.viewId, productViews);
+                }
+                else
+                {
+
+                    var newProductViews = new ProductViewDto
+                    {
+                        viewId = viewId,
+                        ProductReadDto = new List<ProductReadDto>
+                        {
+                         _mapper.Map<Product, ProductReadDto>(DeepCopyFromProduct)
+                        }
+                    };
+
+                    await _basketRepository.UpdateBasketAsync(viewId, newProductViews);
+                }
+
             }
+       
+
+            var mappedProduct = _mapper.Map<Product, ProductReadDto>(product);
+            return Ok(mappedProduct);
         }
 
+        [HttpGet]
+        [Route("GetRecentlyProducts/{id}")]
+        public async Task<ActionResult<PaginationDto<ProductReadDto>>> GetRecentlyViewedProducts(string id)
+        {
+            var RecentlyProducts =  await _basketRepository.GetBasketAsync(id);
+            if (RecentlyProducts == null)
+                return NotFound(new BaseApiResponse(StatusCodes.Status404NotFound,"The Product Not Found of This Key"));
+            var newRecentlyProducts = new PaginationDto<ProductReadDto>()
+            {
+                Count = 0,
+                PageIndex = 1,
+                PageSize = 10,
+                data = RecentlyProducts.ProductReadDto.Take(10).ToList()
+            };
+            return newRecentlyProducts;
+        }
 
         [HttpGet]
         [Route("all/prorduct")]
@@ -75,7 +128,7 @@ namespace Ecommerce.Controllers
                 return NotFound(new BaseApiResponse());
             }
             var product = _mapper.Map<ProductCreateDto,Product>(request);
-            string imageName = DocumentSettings.UploadFile(request.ImageFile, "product");
+            string imageName = DocumentSettings.UploadFile(request.ImageFile!, "product");
             product.ImageUrl = imageName;
             product.LinkImage = imageName;
             product.SKU = ProductHelper.GenerateSKU(product.CategoryId, product.Brand, product.CreatedAt, product.id);
@@ -101,11 +154,14 @@ namespace Ecommerce.Controllers
             {
                 throw new Exception($"Product with ID not found.");
             }
-            string imageName = DocumentSettings.UploadFile(product.ImageFile, "product");
+            if(existingProduct.Discount !=0)
+            {
+                existingProduct.OfferPrice = ProductHelper.CalculateOfferPrice(product.Price, product.Discount);
+            }
+            string imageName = DocumentSettings.UploadFile(product.ImageFile!, "product");
             existingProduct.ImageUrl = imageName;
             existingProduct.LinkImage = imageName;
             existingProduct.SKU = ProductHelper.GenerateSKU(product.CategoryId, product.Brand, DateTime.Now, id);
-            existingProduct.OfferPrice = ProductHelper.CalculateOfferPrice(product.Price, product.Discount);
             existingProduct.Name = product.Name;
             existingProduct.Description = product.Description;
             existingProduct.Brand = product.Brand;
@@ -153,11 +209,6 @@ namespace Ecommerce.Controllers
 
             return await SaveChangesAsync(_unitOfWork, "Product deleted successfully", "Failed to delete product");
         }
-
-
-
-    
-
 
         [HttpDelete("{id}/RemoveStatus/{statusId}")]
         public async Task<ActionResult<BaseApiResponse>> DeleteproductStatus(int id, int statusId)
