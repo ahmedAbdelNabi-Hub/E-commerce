@@ -3,44 +3,36 @@ import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/ro
 import { routingAnimation } from '../../animations/RouteAnimation';
 import { filter } from 'rxjs';
 import { fadeInOut } from '../../animations/fadeInOut';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
-  animations: [routingAnimation]
+  animations: [
+    trigger('dropdownAnimation', [
+      state('closed', style({
+        height: '0',
+        opacity: 0,
+        visibility: 'hidden',
+      })),
+      state('open', style({
+        height: '*',
+        opacity: 1,
+        visibility: 'visible',
+      })),
+      transition('closed <=> open', [
+        animate('300ms ease-in-out')
+      ])
+    ])
+  ]
 })
-export class LayoutComponent implements OnInit {
-  showNavbar: boolean = false;
 
-  constructor(private route: ActivatedRoute,private router: Router) { }
+export class LayoutComponent {
+  dropdownState: string = 'closed';
 
-  ngOnInit(): void {
-    this.route.firstChild?.data.subscribe((data) => {
-      console.log('Data from resolver in child route:', data);
-      this.showNavbar = data['showNavbar'];
-    });
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.showNavbar = ['/login', '/auth', '/forgot-password', '/admin'].some(path =>
-        event.url.includes(path) ? false:true
-      );
-    });
+  toggleDropdown() {
+    this.dropdownState = this.dropdownState === 'closed' ? 'open' : 'closed';
   }
 
-  getRouteAnimation(outlet: RouterOutlet) {
-      return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-    }
-    animationState: string = '';
-
-  onActivate() {
-    setTimeout(() => {
-      this.animationState = '';
-      setTimeout(() => {
-        this.animationState = 'activated';
-      }, 0);
-    }, 0);
-  }
-  
 }

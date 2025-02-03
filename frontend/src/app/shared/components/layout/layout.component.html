@@ -1,5 +1,20 @@
-<app-navbar *ngIf="showNavbar"></app-navbar>
-<main [@routingAnimation]="animationState">
-    <router-outlet #outletRef="outlet" (activate)="onActivate()"></router-outlet>
-</main>
-<app-message-handler></app-message-handler>
+<div class="dropdown-container">
+    <button (click)="toggleDropdown()" class="flex items-center">
+        <img class="w-4 h-4" src="assets/icons/logotype (2).png">
+        <span class="text-[14px] mx-2">Advertisements</span>
+    </button>
+    <div class="dropdown-menu" [@dropdownAnimation]="dropdownState">
+        <ul class="">
+            <li 
+            routerLink="/admin/all-advertisement"
+            class="text-[13px] px-4 py-1 my-1 flex items-center space-x-2">
+                <i class='bx bx-list-ul text-xl'></i>
+                <p> View All </p>
+            </li>
+            <li routerLink="/admin/create-advertisement" class="text-[13px] px-4 py-1 mt-1 flex items-center space-x-2">
+                <i class='bx bx-image-add text-xl'></i>
+                <p> Create</p>
+            </li>
+        </ul>
+    </div>
+</div>

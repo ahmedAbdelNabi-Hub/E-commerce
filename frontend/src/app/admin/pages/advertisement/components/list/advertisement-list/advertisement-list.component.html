@@ -1,8 +1,10 @@
-<div class="scrollable-container flex  flex-col overflow-y-scroll h-screen space-y-2 flex-nowrap overflow-x-hidden">
-    <div class="flex items-center">
-        <p class="text-[18px] font-semibold px-2 py-1">Advertisements List</p>
+<div class=" px-8 container mx-auto scrollable-container flex  flex-col overflow-y-scroll h-screen space-y-2 flex-nowrap overflow-x-hidden">
+    <div class="flex items-center justify-between px-1 border-b py-1">
+        <p class="text-[20px] font-semibold px-2 py-1">Advertisements List</p>
+
     </div>
-    <div *ngFor="let image of imageSlider()" class="flex items-center space-x-5 relative  py-4 rounded-md shadow-sm px-3 border cursor-pointer hover:scale-[0.99] transition-transform">
+    <div *ngFor="let image of imageSlider()"
+        class="flex items-center space-x-5 relative  py-4 rounded-md shadow-sm px-3 border cursor-pointer hover:scale-[0.99] transition-transform">
         <div class="absolute top-2 space-x-2 right-4 flex items-center">
             <i class='bx bxs-time text-[#c0c0c0]'></i>
             <p class="text-sm font-thin text-gray-800">{{image.createdAt}}</p>
@@ -10,7 +12,7 @@
         <div class="flex items-center absolute bottom-2 right-2 space-x-2">
             <div class=" space-x-2  flex items-center">
                 <i class='bx bx-edit-alt'></i>
-                <p class="text-sm font-thin text-gray-800">Update</p>
+                <p class="text-sm  text-blue-700">Update</p>
             </div>
             <div class=" space-x-2  flex items-center">
                 <i class='bx bx-hide'></i>
@@ -21,28 +23,26 @@
         <div
             class="flex items-center w-[28%] rounded-lg shadow-sm border border-s-lime-100 py-2 px-2 bg-[#fbfcff]  space-x-2">
             <img class="w-[60px]  shadow-sm" [src]="image.smallImage" alt="">
-            <img class="w-[180px] rounded-sm shadow-sm" [src]="image.largeImage"
-                alt="">
+            <img class="w-[180px] rounded-sm shadow-sm" [src]="image.largeImage" alt="">
         </div>
         <div class="flex flex-col w-[55%]">
             <div class="flex items-center my-1 space-x-1 ">
-                <div class="flex items-center space-x-1 text-green-300 bg-[#76d0492b] px-2 py-0.5 rounded-md">
+                <div class="flex items-center space-x-1 text-blue-300 bg-[#766bf316] px-2 py-0.5 rounded-md">
                     <i class='bx bx-show'></i>
                     <p class="text-sm  text-gray-800">active</p>
                 </div>
-                <div class="flex items-center space-x-1 text-green-300 bg-[#f1f3ef5f] px-2 py-0.5 rounded-md">
+                <div class="flex items-center space-x-1 text-blue-400  px-2 py-0.5 rounded-md">
                     <i class='bx bx-area'></i>
                     <p class="text-sm  text-gray-800">Section : HomePage</p>
                 </div>
-                <div class="flex items-center space-x-1 text-black bg-[#f1f3ef5f] px-2 py-0.5 rounded-md">
+                <div class="flex items-center space-x-1 text-black  px-2 py-0.5 rounded-md">
                     <i class='bx bx-label'></i>
                     <p class="text-sm  text-gray-800">PlacementType :newarrivals</p>
                 </div>
             </div>
             <title class="text-[18px] font-semibold line-clamp-1">{{image.subtitle}}</title>
             <p class="text-sm text-gray-700 line-clamp-2 my-1">
-               {{image.description}}</p>
+                {{image.description}}</p>
         </div>
     </div>
 </div>
-    
