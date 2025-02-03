@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlphanumericValidator, lettersAndSpacesValidator } from '../../../../core/validators/address-form-validators';
 import { getErrorMessage } from '../../../../core/utils/form-error-messages';
+import { AlphanumericValidator, lettersAndSpacesValidator } from '../../../../core/validators/general-validators';
 
 @Component({
   selector: 'app-address-from',

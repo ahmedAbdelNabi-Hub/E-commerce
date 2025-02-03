@@ -1,19 +1,20 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { filter, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { filter, distinctUntilChanged, takeUntil, delay } from 'rxjs/operators';
 import { routingAnimation } from '../../shared/animations/RouteAnimation';
 import { ProductService } from '../../core/services/Product.service';
 import { IProductSpecParams } from '../../core/models/interfaces/IProductSpecParams';
 import { IPaginationDto } from '../../core/models/interfaces/IPaginationDto';
-import { Perform } from '../../core/services/Perform.service';
 import { IFilterationDto } from '../../core/models/interfaces/IFilteration';
+import { Perform } from '../../core/services/PerformMultiple.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
   animations: [routingAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush ,
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   products = signal<IPaginationDto | null>(null);

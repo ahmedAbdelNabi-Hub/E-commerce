@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ExtraOptions, PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { NavbarVisibilityResolver } from './core/guards/NavbarVisibility.resolver';
 
 const routes: Routes = [
   {
@@ -11,14 +12,17 @@ const routes: Routes = [
   { path: 'product/:category/:slug', loadChildren: () => import('./modules/product/product-detail/product-detail.module').then(m => m.ProductDetailModule) },
   { path: 'checkout/cart', loadChildren: () => import('./modules/shopping-cart/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule) },
   { path: 'account', loadChildren: () => import('./modules/account/account.module').then(m => m.AccountModule) },
-  { path: 'login', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
+  { path: 'auth/login', canActivate: [], loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
+  { path: 'auth/create/account', canActivate: [], loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-  { path: '**', component: NotFoundComponent }
+  { path: 'unKonwPage', component: NotFoundComponent },
+  { path: '**', redirectTo: "unKonwPage", pathMatch: 'full' }
 ];
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
-  anchorScrolling: 'enabled'
+  anchorScrolling: 'enabled',
+
 };
 
 @NgModule({

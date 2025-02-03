@@ -1,0 +1,5 @@
+<app-navbar *ngIf="showNavbar"></app-navbar>
+<main [@routingAnimation]="animationState">
+    <router-outlet #outletRef="outlet" (activate)="onActivate()"></router-outlet>
+</main>
+<app-message-handler></app-message-handler>

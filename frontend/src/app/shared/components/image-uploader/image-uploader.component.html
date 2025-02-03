@@ -18,7 +18,7 @@
   </label>
   <div *ngIf="previewImage && !image ">
     <i class='bx bx-refresh text-2xl text-emerald-800 mx-3 cursor-pointer' (click)="clearImagePreview()"></i>
-    <img [src]="previewImage" alt="Processed Image" />
+    <img [src]="previewImage" class="w-1/2" alt="Processed Image" />
   </div>
   
   <div *ngIf="image" class="flex items-center justify-center">

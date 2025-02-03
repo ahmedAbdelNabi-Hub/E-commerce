@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Ecommerce.Controllers;
 using Ecommerce.core;
 using Ecommerce.core.Entities;
 using Ecommerce.core.Specifications;
 using Ecommerce.Core;
+using Ecommerce.Core.Entities;
 using EcommerceContract.DTOs;
 using EcommerceContract.ErrorResponses;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +12,8 @@ using System.Net;
 
 namespace EcommerceContract.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AdvertisementController : ControllerBase
+   
+    public class AdvertisementController : BaseController
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -50,7 +51,7 @@ namespace EcommerceContract.Controllers
             _mapper.Map(advertisementDto, existingAd); // Map the updates
             await _unitOfWork.Repository<Advertisement>().UpdateAsync(existingAd); // Update the advertisement
 
-            return await SaveChangesAsync("Advertisement updated successfully.", "Failed to update the advertisement.");
+            return await SaveChangesAsync(_unitOfWork,"Advertisement updated successfully.", "Failed to update the advertisement.");
         }
 
 
@@ -66,7 +67,7 @@ namespace EcommerceContract.Controllers
                 return NotFound(new BaseApiResponse((int)HttpStatusCode.NotFound, "Advertisement not found."));
             }
            await _unitOfWork.Repository<Advertisement>().DeleteAsync(existingAd); // Delete the advertisement
-            return await SaveChangesAsync("Advertisement deleted successfully.", "Failed to delete the advertisement.");
+            return await SaveChangesAsync(_unitOfWork, "Advertisement deleted successfully.", "Failed to delete the advertisement.");
         }
 
 
@@ -75,15 +76,7 @@ namespace EcommerceContract.Controllers
         {
             return advertisementDto != null;
         }
-        private async Task<ActionResult<BaseApiResponse>> SaveChangesAsync(string successMessage, string failureMessage)
-        {
-            var result = await _unitOfWork.CompleteAsync();
-            if (result > 0)
-            {
-                return Ok(new BaseApiResponse((int)HttpStatusCode.OK, successMessage));
-            }
-            return BadRequest(new BaseApiResponse((int)HttpStatusCode.BadRequest, failureMessage));
-        }
+    
         private async Task<Advertisement> GetAdvertisementByIdAsync(int id)
         {
             var advertisementRepo = _unitOfWork.Repository<Advertisement>();

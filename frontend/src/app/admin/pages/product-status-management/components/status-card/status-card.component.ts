@@ -12,13 +12,10 @@ export class StatusCardComponent {
   @Input('assignableby') assignableBy !: string
   @Output("statusId") statusIdEmitter = new EventEmitter<number>();
 
-
   selectStatus(id: number,index:number): void {
     this.currentStatusIndex = index;
     this.statusIdEmitter.emit(id); 
   }
-
-
 
   // TrackBy function for performance
   trackById(index: number, status: { id: number }): number {

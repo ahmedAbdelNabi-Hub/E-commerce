@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChildrenOutletContexts } from '@angular/router';
 import { routingAnimation } from '../shared/animations/RouteAnimation';
 
 @Component({
@@ -8,15 +9,9 @@ import { routingAnimation } from '../shared/animations/RouteAnimation';
   animations: [routingAnimation],
 })
 export class AdminComponent {
-  animationState: string = '';
+  constructor(private contexts: ChildrenOutletContexts) {}
 
-  onActivate() {
-    setTimeout(() => {
-      this.animationState = '';
-      setTimeout(() => {
-        this.animationState = 'activated';
-      }, 0);
-    }, 0);
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
-  
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/services/Product.service';
 import { IProduct } from '../../core/models/interfaces/IProduct';
@@ -16,7 +16,7 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
   private overviewSectionOffset: number = 0;
   private route = inject(ActivatedRoute);
   _productService = inject(ProductService);
-  detailsProduct!: IProduct | null; 
+  detailsProduct = signal<IProduct | null>(null); 
   activeSection: string = 'overview';
   productId?: number;
   params !: IProductSpecParams;
@@ -33,16 +33,16 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
   getDetailsOfProduct(id: number): void {
     this._productService.getProductWithIdAndStoreInRedis(id, true).pipe(
       tap(response => {
-        this.detailsProduct = response;
+        this.detailsProduct.set(response);
         console.log(this.detailsProduct);
         this.setParams();
       })
     ).subscribe();
   }
   setParams(): void {
-    if (this.detailsProduct?.categoryName != null) {
+    if (this.detailsProduct()?.categoryName != null) {
       this.params = {
-        CategoryName: this.detailsProduct?.categoryName,
+        CategoryName: this.detailsProduct()?.categoryName!,
         StatusId: 0,
         PageIndex: 1,
         PageSize: 6,

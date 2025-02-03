@@ -1,46 +1,57 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { IGroupedStatuses, IStatus } from '../../../core/models/interfaces/IStatus';
 import { StatusService } from '../../../core/services/Status/status.service';
 import { Perform } from '../../../core/models/classes/Perform';
-import { tap } from 'rxjs';
-import { groupStatuses } from '../../../core/utils/groupedStatuses ';
-import { routeAnimations } from '../../../shared/animations/RouteAnimation';
-import { fadeInOut } from '../../../shared/animations/fadeInOut';
+import { share, tap } from 'rxjs/operators';
 import { transformAnimation } from '../../../shared/animations/transformAnimation';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-status-management',
   templateUrl: './product-status-management.component.html',
-  styleUrl: './product-status-management.component.css',
-  animations:[transformAnimation]
+  styleUrls: ['./product-status-management.component.css'],
+  animations: [transformAnimation]
 })
 export class ProductStatusManagementComponent implements OnInit, OnDestroy {
   statuses = signal<IStatus[] | null>(null);
-  statusesService = inject(StatusService);
-  preform = new Perform<IStatus[]>();
   groupedStatuses: IGroupedStatuses = { admin: [], system: [] };
-  statusId!:number;
+  selectedStatusId!: number;
+  private perform: Perform<IStatus[]>;
+  private subscriptions: Subscription = new Subscription();
+  private isLoading = false;
+
+  constructor(private statusService: StatusService) {
+    this.perform = new Perform<IStatus[]>();
+  }
+
   ngOnInit(): void {
     this.loadStatuses();
   }
 
   loadStatuses(): void {
-    this.preform.load(this.statusesService.getStatuses());
-    this.preform.data$.pipe(
+    if (this.isLoading) {
+      return;
+    }
+    this.isLoading = true;
+    this.perform.load(this.statusService.getStatuses().pipe(share()));
+    const subscription = this.perform.data$.pipe(
       tap(data => {
         if (data) {
           this.statuses.set(data);
-          this.groupedStatuses = groupStatuses(this.statuses()!);
+          this.isLoading = false;
         }
       })
     ).subscribe();
+
+    this.subscriptions.add(subscription);
   }
- 
-  handleStatusSelection(statusId: number){
-        this.statusId=statusId;
+
+  handleStatusSelection(statusId: number): void {
+    this.selectedStatusId = statusId;
   }
- 
+
   ngOnDestroy(): void {
-    this.preform.unsubscribe();
+    this.perform.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 }

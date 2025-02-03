@@ -27,17 +27,17 @@
 </div>
 
 <!-- error -->
-<div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-   <div [@paginationAnimation] *ngFor="let product of productsWithPagination()?.data;let index=index" class="items-center border rounded-md shadow-sm flex ">        
-   <div class="flex flex-col shadow-sm">
-    <div class="flex items-center relative">
+<div class="grid grid-cols-1 gap-2  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+   <div [@AnimationOpcity] *ngFor="let product of productsWithPagination()?.data;let index=index" class="items-center border  rounded-md shadow-sm flex ">        
+   <div class="flex flex-col pb-4 relative">
+    <div class="flex items-center ">
         <div class="basis-[35%] flex items-center justify-center">
             <img loading="lazy" 
-            class="max-w-[100px] px-1 py-2"
+            class="max-w-[100px] max-h-[200px] px-1 py-2"
             [src]="product.imageUrl" alt="" loading="lazy">
         </div>
 
-    <div class="flex flex-col basis-[70%] py-2">
+    <div class="flex flex-col basis-[70%] py-6">
         <div class="flex flex-col  line-clamp-2">
           <p class="text-[17px] line-clamp-1 font-semibold text-gray-700">{{product.name}}</p>
           <p class="text-[12px] text-gray-600 line-clamp-1 font-thin">{{product.description}}</p>

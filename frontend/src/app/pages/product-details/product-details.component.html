@@ -1,17 +1,17 @@
 <div class="w-full  mt-10">
 	<div class="py-1  px-4 md:px-9 shadow-md mt-20 bg-white flex flex-col md:flex-row justify-between md:items-center">
 		<h1 class="text-[17px] py-2 sm:text-[25px] font-semibold text-black w-full md:w-[60%] line-clamp-2">
-			{{detailsProduct?.description}}
+			{{detailsProduct()?.description}}
 		</h1>
 		<div class="flex mt-1 md:items-center py-4 flex-col md:flex-row ">
 			<div class="flex flex-col border-r py-3 md:py-0 border-gray-300 px-0 md:px-5">
 				<span class="text-[15px] text-gray-500">From Total</span>
 				<div class="flex items-center leading-4">
 					<p class="text-orange-500 text-[15px] md:text-2xl">
-						{{detailsProduct?.price | number}} ج.م.
+						{{detailsProduct()?.price | number}} ج.م.
 					</p>
 					<p class="text-[14px] md:tex-xl mt-4 mx-1 line-through text-gray-400">
-						{{detailsProduct?.offerPrice | number}} ج.م.
+						{{detailsProduct()?.offerPrice | number}} ج.م.
 					</p>
 				</div>
 			</div>
@@ -23,7 +23,7 @@
 		</div>
 	</div>
 	<div class="bg-white border-y  py-2.5 px-8 ">
-		<p class="text-[13px] text-gray-600 font-thin"> {{detailsProduct?.sku}} / RF25C5551SR/AA </p>
+		<p class="text-[13px] text-gray-600 font-thin"> {{detailsProduct()?.sku}} / RF25C5551SR/AA </p>
 	</div>
 	<div class="bg-white border-y  py-2.5 px-8">
 		<ul class="flex items-center space-x-3 text-sm text-gray-900">
@@ -74,10 +74,10 @@
 						<p class="ml-2 text-sm font-medium text-gray-500">4.5</p>
 					</div>
 					<h1 class="text-[17px] sm:text-[20px]   text-gray-900 ">
-						{{detailsProduct?.name}}
+						{{detailsProduct()?.name}}
 					</h1>
 					<p class="text-[15px] mt-2 line-clamp-3">
-						{{detailsProduct?.description}}
+						{{detailsProduct()?.description}}
 					</p>
 				</div>
 
@@ -97,15 +97,13 @@
 					<div class="flex justify-center  items-center ">
 						<div class=" overflow-hidden ">
 							<div class="h-full w-[100%] md:w-[100%] mt-5  object-cover ">
-								<img [src]="detailsProduct?.imageUrl" srcset="
-                {{ detailsProduct?.imageUrl }} 300w, 
-                {{ detailsProduct?.imageUrl }} 600w, 
-                {{ detailsProduct?.imageUrl }} 1000w"
+								<img [src]="detailsProduct()?.imageUrl" srcset="
+                {{ detailsProduct()?.imageUrl }} 300w, 
+                {{ detailsProduct()?.imageUrl }} 600w, 
+                {{ detailsProduct()?.imageUrl }} 1000w"
 									sizes="(max-width: 600px) 300px, (max-width:1200px) 600px, 1000px"
-									alt="{{ detailsProduct?.name }} - Image" width="500" height="500"
-									style="height:100%;" loading="lazy"
-									class="max-w-[360px]"
-									>
+									alt="{{ detailsProduct()?.name }} - Image" width="500" height="500"
+									style="height:100%;" loading="lazy" class="max-w-[360px]">
 							</div>
 						</div>
 					</div>
@@ -114,13 +112,13 @@
 			<div class="lg:col-span-2 lg:row-span-2 lg:row-end-2 px-0 md:px-8">
 				<div class="tite-page hidden lg:block">
 					<h1 class="text-[17px] sm:text-[30px] text-gray-900 py-1">
-						{{detailsProduct?.name}}
+						{{detailsProduct()?.name}}
 					</h1>
 					<p class="text-[12px] mt-2 text-gray-600 sm:text-[16.2px] line-clamp-4">
-						{{detailsProduct?.description}}
+						{{detailsProduct()?.description}}
 					</p>
 					<!-- <p class="my-3 font-thin text-sm text-gray-600">
-						رقم الموديل : {{detailsProduct?.sku}}
+						رقم الموديل : {{detailsProduct()?.sku}}
 					</p> -->
 				</div>
 
@@ -128,31 +126,31 @@
 				<!-- salary -->
 				<div class="my-2 px-2 ">
 					<!-- <div class="mt-5 flex flex-col md:flex-row space-x-2 md:items-center">
-						<p *ngIf="detailsProduct?.offerPrice" id="offer-price"
+						<p *ngIf="detailsProduct()?.offerPrice" id="offer-price"
 							class=" text-sm md:text-[17px] text-gray-500 font-thin ">
 							الآن:
 							<span class="text-gray-800   text-[25px]">
-								{{detailsProduct?.offerPrice}}
+								{{detailsProduct()?.offerPrice}}
 								جنيه
 							</span>
 							يشمل ضريبة القيمة المضافة
 						</p>
-						<p *ngIf="!detailsProduct?.offerPrice" id="offer-price"
+						<p *ngIf="!detailsProduct()?.offerPrice" id="offer-price"
 							class=" text-sm md:text-[17px] text-gray-600 ">
 							الآن:
 							<span class="text-gray-900  ">
-								{{detailsProduct?.price}}
+								{{detailsProduct()?.price}}
 								جنيه
 							</span>
 							يشمل ضريبة القيمة المضافة
 						</p>
 					</div> -->
-					<!-- <div *ngIf="detailsProduct?.offerPrice" class="flex items-center my-1">
+					<!-- <div *ngIf="detailsProduct()?.offerPrice" class="flex items-center my-1">
 						<p id="price" class="text-gray-500 line-through text-[13px] ">
-							{{detailsProduct?.price}}
+							{{detailsProduct()?.price}}
 						</p>
 						<p class="text-gray-600   text-[13px] mx-1">
-							وفر ({{detailsProduct?.discount}} جنيه)
+							وفر ({{detailsProduct()?.discount}} جنيه)
 						</p>
 					</div> -->
 
@@ -222,8 +220,8 @@
 				</div>
 			</div>
 
-			<div *ngIf="detailsProduct?.productAttributes?.length!=0" #detailsSection class="lg:col-span-full  md:px-10"
-				id="details">
+			<div *ngIf="detailsProduct()?.productAttributes?.length!=0" #detailsSection
+				class="lg:col-span-full  md:px-10" id="details">
 				<div class="mt-8 flow-root sm:mt-12">
 					<div class="flex flex-col mt-8">
 						<div class="-m-1.5 overflow-x-auto">
@@ -245,7 +243,7 @@
 										</thead>
 										<tbody>
 											<tr class="odd:bg-white even:bg-gray-100 overflow-x-hidden"
-												*ngFor="let attribute  of detailsProduct?.productAttributes">
+												*ngFor="let attribute  of detailsProduct()?.productAttributes">
 												<td
 													class="px-6 py-4 w-[50%] whitespace-nowrap text-sm font-medium text-gray-800">
 													{{attribute.attributeName}}</td>

@@ -16,12 +16,12 @@
       [methodName]="'GetRecentlyProducts'" [params]="{}">
     </app-owl-carousel>
   </div>
-  <div class="py-2 mt-1 bg-white ">
-    <p class=" text-[15px] md:text-[19px] font-semibold px-4 py-4 border-t">Newest Products</p>
+  <div class="py-2 mt-1 bg-white mb-4">
+    <p class=" text-[15px] md:text-[19px] font-semibold px-4 py-2 border-t">Newest Products</p>
     <div
-      class="overflow-hidden relative text-[12px] md:text-responsive-lg rounded-md font-semibold px-4 py-2 md:w-[30vw] shadow-sm text-black bg-[#eee]">
+      class="overflow-hidden relative text-[12px] line-clamp-1 md:text-responsive-lg border font-thin px-4 py-2  md:w-[30vw]  text-black ">
       Be the first to get it – New products available now
-      <i class='absolute right-2 overflow-hidden -top-1 text-[#000000b7] text-[65px] bx bxs-shopping-bag-alt'></i>
+      <i class='absolute right-2 overflow-hidden top-0 text-[#000000b7] text-[65px] bx bxs-shopping-bag-alt'></i>
     </div>
   </div>
   <app-owl-carousel [Recently]="false" [autoPlay]="true" [service]="_productStatus"
@@ -35,12 +35,12 @@
   <img src="../../../assets/llo.png" alt="">
   <app-tag-navigation [TitleTagNevigation]="'Mobile & Computing'"></app-tag-navigation>
 
-  <div class="py-2 mt-1 bg-white ">
-    <p class=" text-[15px] md:text-[19px] font-semibold px-4 py-4 border-t">Newest Products</p>
+  <div class="py-2 mt-1 bg-white mb-4">
+    <p class=" text-[15px] md:text-[19px] font-semibold px-4 py-2 border-t">Newest Products</p>
     <div
-      class="overflow-hidden relative text-[12px] md:text-responsive-lg rounded-md font-semibold px-4 py-2 md:w-[30vw] shadow-sm text-black bg-[#eee]">
+      class="overflow-hidden relative text-[12px] line-clamp-1 md:text-responsive-lg border font-thin px-4 py-2  md:w-[30vw]  text-black ">
       Be the first to get it – New products available now
-      <i class='absolute right-2 overflow-hidden -top-1 text-[#000000b7] text-[65px] bx bxs-shopping-bag-alt'></i>
+      <i class='absolute right-2 overflow-hidden top-0 text-[#000000b7] text-[65px] bx bxs-shopping-bag-alt'></i>
     </div>
   </div>
   <app-owl-carousel [service]="_productStatus" [methodName]="'getProductWithStatus'" [params]="{
@@ -48,13 +48,7 @@
     StatusId:20,
     PageIndex: 1,
     PageSize: 8,}"></app-owl-carousel>
-
-
- 
 </div>
-
-
-
 
 <!-- ========== FOOTER ========== -->
 <footer class="border-t border-gray-200 w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto mt-10">

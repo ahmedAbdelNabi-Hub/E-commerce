@@ -1,39 +1,33 @@
-<div
-class="relative  h-auto flex flex-col bg-white border border-gray-100"
+<div class="relative py-5  h-auto flex flex-col bg-white border border-gray-100"
     [ariaLabel]="'product-title-'+productData.sku" role="article">
-    <i *ngIf="productData.offerPrice && !Recently" class='bx bxs-offer absolute top-2 left-2 text-2xl text-gray-600'></i>
-    <div class="flex justify-center">
-        <div 
-        [ngClass]="{'h-[100px]':Recently , 'h-[110px] xs:h-[130px]':!Recently}"
-        class="">
-                <img
-                [ngClass]="{'max-w-22':Recently,'max-w-52':!Recently}"
-                [src]="productData.imageUrl" srcset="
+    <i *ngIf="productData.offerPrice && !Recently && !EnableForProductsPage"
+        class='bx bxs-offer absolute top-2 left-2 text-2xl text-gray-600'></i>
+    <div [ngClass]="{'py-2 md:py-8':EnableForProductsPage}" class="flex justify-center">
+        <div [ngClass]="{'h-[100px]':Recently , 'h-[110px] xs:h-[130px]':!Recently ,'h-[110px] xs:h-[180px]':EnableForProductsPage}"
+            class="">
+            <img [ngClass]="{'max-w-22':Recently,'max-w-52':!Recently}" [src]="productData.imageUrl" srcset="
                     {{ productData.imageUrl }} 300w, 
                     {{ productData.imageUrl }} 600w, 
                     {{ productData.imageUrl }} 1000w"
-                    sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px"
-                    alt="{{ productData.name }} - Image" width="300" height="200" style="height:100%;"
-                    class="object-contain  pt-4 hover:scale-[1.1]  transition-transform cursor-pointer"
-                    loading="lazy" />
-        
+                sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px" alt="{{ productData.name }} - Image"
+                width="300" height="200" style="height:100%;"
+                class="object-contain  pt-4 hover:scale-[1.1]  transition-transform cursor-pointer" loading="lazy" />
         </div>
     </div>
 
     <div class="py-1 px-4 md:px-5 md:py-1 overflow-hidden">
-        <a  [queryParams]="{sku:productData.id}" [routerLink]="['/product', productData.categoryName, productData.name]"
+        <a [queryParams]="{sku:productData.id}" [routerLink]="['/product', productData.categoryName, productData.name]"
             class="hover:underline transition-all" [attr.href]="'/product/' + productData.sku"
             [attr.aria-label]="'View product ' + productData.name">
-            <h2 id="product-title-{{ productData.sku }}"
+            <h2 [ngClass]="{'text-[14px] mb-3':EnableForProductsPage}" id="product-title-{{ productData.sku }}"
                 class="line-clamp-2 mt-2 text-gray-600 text-[12px] h-[40px]">
                 {{ productData.description }}
             </h2>
         </a>
 
-        <div class="py-2 h-16">
-            <!-- Save Price Calculation -->
-        
-            <div *ngIf="productData.offerPrice! > 0" class="flex items-center space-x-1">
+        <div class="py-2 mb-4 h-16">
+            <div [ngClass]="{'flex-col':Recently,'flex-row':!Recently}" *ngIf="productData.offerPrice! > 0"
+                class="flex ">
                 <p class="text-[13px] xs:text-[18px]  font-semibold ">
                     {{ productData.offerPrice | number}} <span class="text-[11px]">EGP</span>
                 </p>
@@ -42,37 +36,38 @@ class="relative  h-auto flex flex-col bg-white border border-gray-100"
                 </p>
             </div>
             <p *ngIf="productData.offerPrice! <= 0" class="text-[15px] xs:text-[18px] mx-1  ">
-                {{ productData.price | number }} <span class="text-[11px]">جنيه</span>
+                {{ productData.price | number }} <span class="text-[11px]">EGP</span>
             </p>
-           
-            <div class="flex items-center space-x-2">
+
+            <div *ngIf="!Recently" class="flex items-center space-x-2">
                 <p *ngIf="productData.offerPrice! > 0" class="text-[10.5px]">
                     End Of: {{ productData.offerEndDate | date }}
                 </p>
                 <p *ngIf="productData.discount > 0" class="text-green-400  text-[9px] font-bold capitalize">Save {{
-                productData.discount | number}} EGP</p>
+                    productData.discount | number}} EGP</p>
             </div>
-           
+
         </div>
 
-        <div *ngIf="!Recently" class="w-full relative ">
+        <div *ngIf="(!Recently ) " class="w-full relative flex items-center space-x-3">
             <button (click)="addToBasket(productData)"
-                class="flex items-center justify-center border py-1 bg-[#fbfffa] text-sm shadow-sm hover:bg-black hover:text-white transition-all">
-
-                <!-- Display loader while isLoading$ is true -->
+                class="flex items-center justify-center border py-1 rounded-md bg-[#fbfffa] text-sm shadow-sm hover:bg-black hover:text-white transition-all">
                 <ng-container *ngIf="perform.isLoading$ | async">
-                    <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-4 px-3 ">
                         <span class="loader"></span>
                     </div>
                 </ng-container>
-
-                <!-- Display the icon when isLoading$ is false -->
-                <ng-container class="" *ngIf="!(perform.isLoading$ | async)">
-                    <i class='bx bxs-cart-add text-xl mx-2 '></i>     
+                <ng-container class="px-3 py-2 rounded-md" *ngIf="!(perform.isLoading$ | async)">
+                    <i class='bx bxs-cart-add text-xl mx-2 '></i>
                 </ng-container>
-
             </button>
-
+            <div *ngIf="EnableForProductsPage" class="md:w-[40%] relative ">
+                <button
+                    class="flex items-center w-full justify-center font-semibold border py-2 px-4 md:px-7 text-white rounded-full bg-[#598fed]  shadow-sm hover:bg-black hover:text-white transition-all">
+                    <p class="text-[10px] md:text-[13px] font-semibold"> Buy Now </p>
+                </button>
+            </div>
         </div>
+
     </div>
 </div>

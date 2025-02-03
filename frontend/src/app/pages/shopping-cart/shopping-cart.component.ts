@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
+  initalloadingFlash :boolean = false;
   basketItems = signal<IBasket | null>(null);
   private destroy$ = new Subject<void>();
   private _basketService = inject(BasketService);
@@ -28,6 +29,12 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
         .pipe(
           tap(response => {
             this.basketItems.set(response);
+            if(this.basketItems()?.basketItems.length === 0){ 
+              this.initalloadingFlash = false;  
+            }
+            else{
+              this.initalloadingFlash = true; 
+            }
           }),
           catchError(error => {
             return of([]);

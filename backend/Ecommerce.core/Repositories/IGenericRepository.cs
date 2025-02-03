@@ -13,7 +13,7 @@ namespace Ecommerce.core.Repositories
       
         Task<IReadOnlyList<T>> GetAllWithSpecAsync(ISpecifications<T> Spec);
         
-       Task<IReadOnlyList<T>> GetAllWithTrackingAsync(ISpecifications<T> Spec);
+        Task<IReadOnlyList<T>> GetAllWithTrackingAsync(ISpecifications<T> Spec);
 
         Task<T> GetByIdSpecAsync(ISpecifications<T> Spec);
         Task AddAsync(T entity);

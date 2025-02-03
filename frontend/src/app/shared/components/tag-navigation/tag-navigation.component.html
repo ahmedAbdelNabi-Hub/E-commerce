@@ -19,7 +19,7 @@
     <div *ngFor="let product of containtTag() " class="flex w-full flex-col items-center">
       <!-- Image Animation -->
       <div *ngIf="showAnimation" class="image flex justify-center w-full" [@imageAnimation]>
-        <img loading="lazy" class="w-[80%] md:w-[35%]  md:max-w-[35%]" [src]="product.imageUrl" alt="Product Image">
+        <img loading="lazy" class="max-w-[300px] max-h-[500px]" [src]="product.imageUrl" alt="Product Image">
       </div>
 
       <div *ngIf="showAnimation" class="mt-4 flex flex-col items-center justify-center" [@contentAnimation]>

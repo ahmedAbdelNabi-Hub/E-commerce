@@ -24,6 +24,6 @@ namespace Ecommerce.Contracts.DTOs.Password
         public string? Email { get; set; }
 
         [Required(ErrorMessage = "Token is required.")]
-        public string? Token { get; set; }
+        public string? OTP { get; set; }
     }
 }

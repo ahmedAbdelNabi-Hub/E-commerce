@@ -54,5 +54,6 @@ export function getErrorMessage(form: FormGroup, controlName: string): string | 
     return `${controlName}  must contain only letters and be at least 2 characters long`;
   }
 
+
   return null;
 }

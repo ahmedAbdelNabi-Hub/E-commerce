@@ -18,6 +18,17 @@
   /* Smooth transitions */
 }
 
+/* .owl-item{
+  max-width: 300px !important;
+
+}
+.card{
+  max-width: 300px !important;
+  width: 300px !important;
+  display: block !important;
+} */
+
+
 .retext {
   font-size: clamp(17px, 3.2vw, 55px);
 }

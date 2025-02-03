@@ -1,5 +1,6 @@
-<app-navbar *ngIf="!showNavbar"></app-navbar>
-<main [@routeAnimations]="outletRef.isActivated? outletRef.activatedRoute:''">
+<app-navbar *ngIf="navbarStateService.navbarVisible$|async"></app-navbar>
+<ng-template #hiddenNavbar></ng-template>
+<main [@AnimationOpcity]="outletRef.isActivated? outletRef.activatedRoute:''">
     <router-outlet #outletRef="outlet"></router-outlet>
 </main>
 <app-message-handler></app-message-handler>

@@ -19,6 +19,12 @@ import { StatusCardComponent } from './pages/product-status-management/component
 import { SwitchComponent } from './pages/product-status-management/components/switch/switch.component';
 import { TableComponent } from './pages/product-status-management/components/table/table.component';
 import { UploadFileAttributeComponent } from './pages/product/add-product/components/upload-file-attribute/upload-file-attribute.component';
+import { DeleteModalComponent } from './components/Modals/delete-modal/delete-modal.component';
+import { AdvertisementListComponent } from './pages/advertisement/components/list/advertisement-list/advertisement-list.component';
+import { AdvertisementCreateComponent } from './pages/advertisement/components/create/advertisement-create/advertisement-create.component';
+import { AdvertisementEditComponent } from './pages/advertisement/components/edit/advertisement-edit/advertisement-edit.component';
+import { AdvertisementDetailsComponent } from './pages/advertisement/components/details/advertisement-details/advertisement-details.component';
+import { AdvertisementComponent } from './pages/advertisement/advertisement.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +39,12 @@ import { UploadFileAttributeComponent } from './pages/product/add-product/compon
     SwitchComponent,
     TableComponent,
     UploadFileAttributeComponent,
+    DeleteModalComponent,
+    AdvertisementListComponent,
+    AdvertisementCreateComponent,
+    AdvertisementEditComponent,
+    AdvertisementDetailsComponent,
+    AdvertisementComponent,
   ],
   imports: [
     CommonModule,

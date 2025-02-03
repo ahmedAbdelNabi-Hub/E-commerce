@@ -37,7 +37,6 @@ export class ProductService {
       return this._Http.get<IProduct[]>(`${API_URLS.Localhost + API_URLS.prodcut}NewArrivals`).pipe(
         tap(response => {
           this.newArrivalsCache = response;
-          console.log("new prodcut", this.newArrivalsCache);
         }),
         catchError(error => {
           return of([]);

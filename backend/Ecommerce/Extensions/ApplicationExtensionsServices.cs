@@ -23,7 +23,7 @@ namespace EcommerceContract.Extensions
             {
                 Options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
-            Services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+            Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
             Services.AddScoped<IProductAttributeRepository,ProductAttributeRepository>();
             Services.AddAutoMapper(typeof(MappingProfiles));

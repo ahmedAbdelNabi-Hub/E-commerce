@@ -74,7 +74,7 @@ namespace Ecommerce.Controllers
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
             var currentUser = await _userManager.FindByEmailAsync(email);
-            var authResponse = await _jwtService.CreateJwtToken(currentUser,false,null);
+            var authResponse = await _jwtService.CreateJwtToken(currentUser);
             
             if (currentUser is not null)
             {

@@ -1,18 +1,16 @@
-<div class="hs-accordion-group border " data-hs-accordion-always-open>
+<div class="hs-accordion-group border shadow-sm " data-hs-accordion-always-open>
     <!-- Display Size Accordion -->
-     <div class="flex items-center justify-between py-1 px-2  ">
+     <div class="flex items-center justify-between py-3 px-4  ">
         <p class="  text-xl py-1">Filter Products</p>
         <button class="px-6 py-1 rounded-full bg-blue-500 text-white">Apply</button>  
      </div>
     <div *ngFor="let filter of filterItem" class=" border-t  px-3 py-2 my-2  relative hs-accordion active" id="hs-basic-always-open-heading-one">
         <div>
-            <p class="font-semibold  text-[16px] py-3 capitalize ">{{filter.filterName }}</p>
+            <p class="font-semibold uppercase text-[16px] py-3  ">{{filter.filterName }}</p>
         </div>
-        <div>
-         <input type="text" class="px-4 py-1 rounded-sm shadow-sm my-1 text-sm border font-extralight w-full" [placeholder]="'Please Enter '+filter.filterName">
-        </div>
+     
         <div  id="hs-basic-always-open-collapse-one" class=" hs-accordion-content w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-always-open-heading-one">
-            <div class="flex-col  space-y-2 justify-center py-1">
+            <div class="flex-col px-3 space-y-2 justify-center py-1">
                 <div *ngFor="let item of filter.filterValues" class="flex space-x-2 items-center">
                     <input 
                     type="radio" 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import browserImageCompression from 'browser-image-compression';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,37 +8,38 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./image-uploader.component.css'],
 })
 export class ImageUploaderComponent {
-   previewImage: string | null = null;
-  @Input('image') image: string | ArrayBuffer | null = null; // Empty string by default
-  apiKey: string = 'MHEJSmjCzqe8fYxCqjgofPqf'; // Your remove.bg API key
-  backendUrl: string = 'https://your-backend-url.com/upload'; // Replace with your backend endpoint
-  @Output() imageFileChange = new EventEmitter<File>();  // Emit a File, not Blob
+  @Input() image: string | ArrayBuffer | null = null;
+  @Output() imageFileChange = new EventEmitter<File>();
+  previewImage: string | null = null;
+  private readonly apiKey: string = 'MHEJSmjCzqe8fYxCqjgofPqf';
   show: boolean = false;
 
   constructor(private http: HttpClient) {}
-
-
 
   async onFileSelected(event: Event): Promise<void> {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
       try {
-        // Step 1: Compress the image
+        // Compression options
         const options = { maxSizeMB: 1, maxWidthOrHeight: 1024, useWebWorker: true };
         const compressedFile = await browserImageCompression(file, options);
-        // Step 2: Remove the background
+
+        // Remove background
         const bgRemovedImage = await this.removeBackground(compressedFile);
-        // Step 3: Convert to WebP
+
+        // Convert to WebP
         const webpImage = await this.convertToWebP(bgRemovedImage);
-        // Set the preview image for display
+
+        // Set preview image
         this.previewImage = webpImage;
+
         // Convert WebP image to Blob
         const blob = this.base64ToBlob(webpImage, 'image/webp');
-        // Create a File object from the Blob (adding a name and lastModified)
-        const fileName = `processed-image-${Date.now()}.webp`; // Generate a unique filename
+        const fileName = `processed-image-${Date.now()}.webp`;
         const fileWithMetaData = new File([blob], fileName, { type: 'image/webp', lastModified: Date.now() });
-        // Emit the File object to parent component/form
+        
+        // Emit the File object
         this.imageFileChange.emit(fileWithMetaData);
       } catch (error) {
         console.error('Error processing the image:', error);
@@ -53,14 +54,15 @@ export class ImageUploaderComponent {
 
     const response = await fetch('https://api.remove.bg/v1.0/removebg', {
       method: 'POST',
-      headers: {
-        'X-Api-Key': this.apiKey,
-      },
+      headers: { 'X-Api-Key': this.apiKey },
       body: formData,
     });
+
     if (!response.ok) {
       throw new Error('Failed to remove background. Please try again.');
-    } return response.blob(); // Return the processed image as a Blob
+    }
+
+    return response.blob(); // Return Blob for further processing
   }
 
   private async convertToWebP(blob: Blob): Promise<string> {
@@ -70,7 +72,6 @@ export class ImageUploaderComponent {
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          // Set a uniform width while maintaining aspect ratio
           const fixedWidth = 300; // Desired width
           const aspectRatio = img.height / img.width;
           canvas.width = fixedWidth;
@@ -101,8 +102,9 @@ export class ImageUploaderComponent {
 
     return new Blob([arrayBuffer], { type: mime });
   }
+
   clearImagePreview(): void {
     this.image = '';
-    this.previewImage = null; // Clear the preview as well
+    this.previewImage = null;
   }
 }

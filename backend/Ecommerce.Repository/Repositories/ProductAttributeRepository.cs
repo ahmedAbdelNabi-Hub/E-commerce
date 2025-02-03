@@ -16,24 +16,21 @@ namespace Ecommerce.Repository.Repositories
         {
             _dbContext = dbContext;
         }
-
         public async Task<List<(string FilterName, List<string> FilterValues, int ProductCount)>> GetGroupedProductAttributesAsync(string categoryName)
         {
-
-            var result = await (from pa in _dbContext.ProductAttributes
-                                join p in _dbContext.Product on pa.ProductId equals p.id
-                                join c in _dbContext.Category on p.CategoryId equals c.id
-                                where c.CategoryName == categoryName  && pa.IsFilterable
-                                group pa by pa.AttributeName into grouped
-                                select new
-                                {
-                                    FilterName = grouped.Key,
-                                    FilterValues = grouped.Select(pa => pa.AttributeValue).Distinct().ToList(),
-                                    ProductCount = grouped.Count()
-                                })
-                    .ToListAsync();
+            var result = await _dbContext.ProductAttributes
+                .Where(pa => pa.Product.Category.CategoryName == categoryName && pa.IsFilterable)
+                .GroupBy(pa => pa.AttributeName)
+                .Select(grouped => new
+                {
+                    FilterName = grouped.Key,
+                    FilterValues = grouped.Select(pa => pa.AttributeValue).Distinct().ToList(),
+                    ProductCount = grouped.Select(pa => pa.ProductId).Distinct().Count()
+                })
+                .ToListAsync();
 
             return result.Select(r => (r.FilterName, r.FilterValues, r.ProductCount)).ToList();
         }
+
     }
 }

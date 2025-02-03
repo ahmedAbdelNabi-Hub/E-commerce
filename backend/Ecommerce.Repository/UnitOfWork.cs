@@ -17,7 +17,6 @@ namespace Ecommerce.Repository
         private readonly EcommerceDbContext _context;
         private readonly Dictionary<string, object> _repositories;
         private IDbContextTransaction _transaction;
-
         private IProductAttributeRepository _productAttributeRepository;
 
         public UnitOfWork(EcommerceDbContext dbContext)
@@ -79,7 +78,7 @@ namespace Ecommerce.Repository
                 {
                     var repositoryType = typeof(GenericRepository<>);
                     var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
-                    _repositories.Add(type, repositoryInstance);
+                    _repositories.Add(type, repositoryInstance!);
                 }
             }
 

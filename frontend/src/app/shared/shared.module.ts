@@ -26,6 +26,8 @@ import { MessageHandlerComponent } from './components/message-handler/message-ha
 import { TagNavigationComponent } from './components/tag-navigation/tag-navigation.component';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { CustomCarouselComponent } from './components/custom-carousel/custom-carousel.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     TagNavigationComponent,
     ImageUploaderComponent,
     NotFoundComponent,
+    LayoutComponent,
+    CustomCarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -72,6 +76,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     AdminHeaderComponent,
     ButtonWithIconComponent,
     LoadingComponent,
+    CustomCarouselComponent,
     MenuComponent, HoverToggleMenuDirective, OwlCarouselComponent]
 })
 export class SharedModule { }

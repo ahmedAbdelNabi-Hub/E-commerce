@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ecommerce.core.Entities;
+using System;
 
-namespace Ecommerce.core.Entities
+namespace Ecommerce.Core.Entities
 {
     public class Advertisement : BaseEntity
     {
@@ -15,10 +12,13 @@ namespace Ecommerce.core.Entities
         public string Subtitle { get; set; }
         public string Description { get; set; }
         public string Direction { get; set; }
-        public string TargetPage { get; set; } 
-        public string Section { get; set; } 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-    }
+        public string TargetPage { get; set; }
+        public string Section { get; set; }
 
+        public bool IsActive { get; set; } = true;
+
+        // Metadata
+        public DateTime CreatedAt { get; set; } 
+        public DateTime UpdatedAt { get; set; } 
+    }
 }

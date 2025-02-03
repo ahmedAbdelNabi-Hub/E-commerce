@@ -1,0 +1,20 @@
+<section class="px-4 md:px-10  flex flex-col space-y-4 mt-7 md:mt-4 ">
+    <section class="bg-gradient-to-r py-2 f relative sm:px-7 ">
+      <div #cont
+        class="flex flex-nowrap gap-1 py-2 scroll-smooth overflow-x-auto snap-mandatory snap-x take ">
+        <div
+          class="hidden md:flex absolute -left-4 top-32 z-40 w-10 h-10  justify-center items-center text-white cursor-pointer bg-[#5b389c75]"
+          (click)="back(cont)"><i class='text-4xl bx bx-chevron-left'></i></div>
+        <div
+          class="hidden md:flex absolute -right-4 top-32 z-40 w-10 h-10   justify-center items-center text-white cursor-pointer bg-[#5b389c75]"
+          (click)="next(cont)"><i class='text-4xl bx bx-chevron-right'></i></div>
+        </div>
+        <div class="relative flex-none -space-y-0 snap-center"
+        *ngFor="let film of [0,0,0,0];trackBy:track">        
+        <img src="../../../../assets/01-hd01-Q6-KV-pc-1440x640.webp" alt="">
+         <p>ahmed abdel nabi</p>
+         <p>ahmed abdel nabi</p>
+      </div>
+      
+    </section>
+  </section>

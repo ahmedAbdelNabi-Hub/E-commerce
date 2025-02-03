@@ -46,13 +46,12 @@ public class EmailService : IEmailService
             Subject = subject
         };
 
-        email.To.Add(MailboxAddress.Parse(emailTo)); // Add recipient
+        email.To.Add(MailboxAddress.Parse(emailTo)); 
         return email;
     }
 
     private string BuildEmailBody( string body, string? subject = "Confirm your email address ")
     {
-        // Email body with inline styles for presentation
         return $@"
     <html>
         <head>
@@ -67,17 +66,16 @@ public class EmailService : IEmailService
                     font-size: 15px;
                     color: rgb(36, 80, 82);
                 }}
-                .button {{
-                    padding-top: 5px;
-                    padding-bottom: 5px;
+                .otp {{
+                    padding-top: 6px;
+                    padding-bottom: 6px;
                     padding-inline: 10px;
-                    background-color: #2da663;
-                    color: white;
+                    background-color: #fffff;
+                    color: black;
                     font-weight: bold;
-                    width: 200px;
-                    text-align: center;
-                    border-radius: 5px;
-                    font-size: 20px;
+                    width:100%;
+                    text-align: center;        
+                    font-size: 16px;
                 }}
                 li {{
                     color: #555;
@@ -103,12 +101,12 @@ public class EmailService : IEmailService
         </head>
         <body>
             <div class='container'>
-                <h1>{subject} to get started on<span style='color: rgb(6, 130, 213)'>Voltora</span></h1>
+                <h1>{subject} to get started on<span style='color: rgb(6, 130, 213)'>Breezo</span></h1>
                 <p class='p-1'>
                     Once you've confirmed that <span style='color: rgb(6, 130, 213); font-weight: bold;'>{{kaloyan.yankulov@gmail.com}}</span> 
-                    is your email address, we'll help you find your Voltora workspaces or create a new one.
+                    is your email address, we'll help you find your Breezo workspaces or create a new one.
                 </p>
-                <div class='button'>
+                <div class='otp'>
                     {body}
                 </div>
                 <h3>Security Tips:</h3>
@@ -131,15 +129,15 @@ public class EmailService : IEmailService
 
         foreach (var file in attachments)
         {
-            if (file.Length > 0) // Check if the file has content
+            if (file.Length > 0) 
             {
                 using var ms = new MemoryStream();
-                file.CopyTo(ms); // Copy the file stream to memory
+                file.CopyTo(ms); 
                 builder.Attachments.Add(file.FileName, ms.ToArray(), ContentType.Parse(file.ContentType)); // Add attachment
             }
         }
 
-        email.Body = builder.ToMessageBody(); // Set the updated body with attachments
+        email.Body = builder.ToMessageBody(); 
     }
 
     private async Task<bool> SendEmailAsync(MimeMessage email)

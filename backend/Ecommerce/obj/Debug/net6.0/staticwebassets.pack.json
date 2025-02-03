@@ -89,6 +89,14 @@
       "PackagePath": "staticwebassets\\image\\Advertisement\\SDSAC-8619.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\Samsung-Galaxy-Book-m.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\Samsung-Galaxy-Book-m.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\Samsung-Galaxy-Book-w.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\Samsung-Galaxy-Book-w.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\Samsung-Symbol.png",
       "PackagePath": "staticwebassets\\image\\Advertisement\\Samsung-Symbol.png"
     },
@@ -237,8 +245,16 @@
       "PackagePath": "staticwebassets\\image\\Product\\471ed9dee0c45e61741e5beabeb0cfeab41546f7344e83f9535e79d5ebabb099.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\54a8f72e3b27af3c3cf9e747c4f7daef42d354029b497ecc789a5970d47be3f2.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\54a8f72e3b27af3c3cf9e747c4f7daef42d354029b497ecc789a5970d47be3f2.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\5d505d6ea18f4d384fab179cd6eda502570f4fbcfbf44d9b2bcfdc234cb9e987.webp",
       "PackagePath": "staticwebassets\\image\\Product\\5d505d6ea18f4d384fab179cd6eda502570f4fbcfbf44d9b2bcfdc234cb9e987.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\5f9dc491df5a94e18cca3fb1a7fda45300489adf0468cf8188ca6454f7f30d09.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\5f9dc491df5a94e18cca3fb1a7fda45300489adf0468cf8188ca6454f7f30d09.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\5fd2355e975b880d1dfa5b9d80bf3168c5949d37062e4019d7b86de36aaf8df2.webp",
@@ -249,12 +265,20 @@
       "PackagePath": "staticwebassets\\image\\Product\\650669859e1a0f613460c933a375f58185c095d34da30d47b9be262ce544d9e2.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\8501b57f8ff3cbf721c2dc8dec0180048f88d4c7ed09ccea7584825446ccfd97.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\8501b57f8ff3cbf721c2dc8dec0180048f88d4c7ed09ccea7584825446ccfd97.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\92be0bb1227e0db229bc2b69d06268d28bfade7450592f0ef2342f9a3562dac4.webp",
       "PackagePath": "staticwebassets\\image\\Product\\92be0bb1227e0db229bc2b69d06268d28bfade7450592f0ef2342f9a3562dac4.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\94698fd734524b8825a258834d68f2962446d3ab5025b263d0e54576a6610de7.webp",
       "PackagePath": "staticwebassets\\image\\Product\\94698fd734524b8825a258834d68f2962446d3ab5025b263d0e54576a6610de7.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\9e8ea8d91a573460aeb0e701384c9a4d60a1eb5d2ebd51e8b215561f4d3f2943.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\9e8ea8d91a573460aeb0e701384c9a4d60a1eb5d2ebd51e8b215561f4d3f2943.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\a8d10194379df518508100d11a28d91243054954e6b965a39a0424df188ac009.webp",
@@ -299,6 +323,10 @@
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fac6cfd2a99f5a705c6e0e20ce2cf24654070695645f2633f5da9328fc3d627f.webp",
       "PackagePath": "staticwebassets\\image\\Product\\fac6cfd2a99f5a705c6e0e20ce2cf24654070695645f2633f5da9328fc3d627f.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fcc73ffd6c80ab78b430d09b51b41633ef82c6177932d4380362161cea91facc.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\fcc73ffd6c80ab78b430d09b51b41633ef82c6177932d4380362161cea91facc.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fd0fd4e23cea5baea02a41b1c383a3b073ff711da936861e9ee316515fd13636.webp",

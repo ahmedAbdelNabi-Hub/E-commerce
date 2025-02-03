@@ -1,10 +1,7 @@
 <form enctype="multipart/form-data" (ngSubmit)="submitForm()" [formGroup]="productForm">
   <div class="container mx-auto mt-10 px-5">
     <div class="flex items-center justify-between">
-      <div class="flex items-center space-x-2">
-        <div class="h-10 rounded-md w-10 flex items-center justify-center border">
-          <i class='bx bx-left-arrow-alt text-xl text-gray-500'></i>
-        </div>
+      <div class="flex items-center space-x-2 px-5">
         <p class="text-2xl">{{paramsValue}} New Product</p>
       </div>
       <div *ngIf="paramsValue.includes('Create')">
@@ -169,9 +166,9 @@
               </span>
               <input placeholder="Enter product weight" type="number" min="0" step="0.01" formControlName="weight"
                 class="px-4 w-full text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]">
-              <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('deliveryTimeInDays')">
+              <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('weight')">
                 {{
-                getErrorMessage('deliveryTimeInDays') }}</div>
+                getErrorMessage('weight') }}</div>
             </div>
             <!-- Dimensions (Length, Width, Height) -->
             <div class="w-full flex flex-col justify-center space-y-1 mt-2">
@@ -195,8 +192,8 @@
 
 
 
-    <form (submit)="addAttrubute()" class="px-7 py-5 relative container mx-auto" [formGroup]="productAttributesFrom">
-      <div class="container mx-auto rounded-md px-3 border border-gray-100 shadow-sm">
+  <form (submit)="addAttrubute()" class="md:px-7 py-5 relative container mx-auto" [formGroup]="productAttributesFrom">
+      <div class="container mx-auto rounded-md px-2 md:pl-4 border border-gray-100 shadow-sm">
         <div class=" flex items-center justify-between md:flex-row flex-col py-3 md:my-2">
           <div class="flex flex-col space-x-1 justify-center">
             <span class="text-[14px] px-2 text-red-500">{{errorMessage}}</span>
@@ -206,44 +203,48 @@
               Attribute Properties
             </h3>
           </div>
-          <app-upload-file-attribute
-            (productAttributesChanged)="handleProductAttributes($event)"></app-upload-file-attribute>
+          <app-upload-file-attribute (productAttributesChanged)="handleProductAttributes($event)"></app-upload-file-attribute>
         </div>
-        <div class="flex  mb-10 flex-col ">
-          <!-- Attribute Name -->
-          <div class="w-full  mx-2 flex flex-col justify-center space-y-1 mt-2">
-            <label for="attributeName" class="font-semibold text-[14px]">
-              Attribute Name
-            </label>
-            <span class="text-[10px] text-gray-400">
-              Enter attribute name (2-100 characters)
-            </span>
-            <input id="attributeName" placeholder="Enter attribute name" type="text" formControlName="attributeName"
-              class="px-4 text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]" minlength="3" maxlength="100" required>
+         <div class="flex flex-col md:flex-row items-center md:space-x-4 ">
+          <div class="flex  mb-10 flex-col w-full md:w-[50%]">
+            <!-- Attribute Name -->
+            <div class="w-full  mx-2 flex flex-col justify-center space-y-1 mt-2">
+              <label for="attributeName" class="font-semibold text-[14px]">
+                Attribute Name
+              </label>
+              <span class="text-[10px] text-gray-400">
+                Enter attribute name (2-10 characters)
+              </span>
+              <input id="attributeName" placeholder="Enter attribute name" type="text" formControlName="attributeName"
+                class="px-4 text-[12px] rounded-md outline-none py-2 border" minlength="3" maxlength="100" required>
+            </div>
+            <!-- Attribute Value -->
+            <div class="w-full  mx-2 flex flex-col justify-center space-y-1 mt-2">
+              <label for="attributeValue" class="font-semibold text-[14px]">
+                Attribute Value
+              </label>
+              <span class="text-[10px] text-gray-400">
+                Enter attribute value (1-20 characters)
+              </span>
+              <input id="attributeValue" placeholder="Enter attribute value" type="text" formControlName="attributeValue"
+                class="px-4 text-[12px]   rounded-md outline-none py-2 border " minlength="2" maxlength="255"
+                required>
+            </div>
+            <div class=" flex items-center py-4 px-3 space-x-2">
+              <input id="IsFilterable" type="checkbox" formControlName="IsFilterable"
+                class="px-4 text-[12px]  rounded-md outline-none ">
+              <label for="attributeValue" class="font-semibold text-[14px]">
+                IsFilterable
+              </label>
+            </div>
+            <!-- buuton is save attribute -->
+            <button type="submit" class=" px-5 mx-3 py-1 rounded-md  mt-1 bg-blue-500 text-white text-sm">Add
+              attribute</button>
           </div>
-          <!-- Attribute Value -->
-          <div class="w-full  mx-2 flex flex-col justify-center space-y-1 mt-2">
-            <label for="attributeValue" class="font-semibold text-[14px]">
-              Attribute Value
-            </label>
-            <span class="text-[10px] text-gray-400">
-              Enter attribute value (1-255 characters)
-            </span>
-            <input id="attributeValue" placeholder="Enter attribute value" type="text" formControlName="attributeValue"
-              class="px-4 text-[12px]  rounded-md outline-none py-2 bg-[#eeeeee]" minlength="2" maxlength="255"
-              required>
+          <div class="w-full md:basis-[50%]">
+            <img class="rounded-tl-3xl" src="../../../../../../../assets/Nordstrom-Viewing.webp" alt="">
           </div>
-          <div class=" flex items-center py-4 px-3 space-x-2">
-            <input id="IsFilterable" type="checkbox" formControlName="IsFilterable"
-              class="px-4 text-[12px] rounded-md outline-none  bg-[#eeeeee]">
-            <label for="attributeValue" class="font-semibold text-[14px]">
-              IsFilterable
-            </label>
-          </div>
-          <!-- buuton is save attribute -->
-          <button type="submit" class=" w-[20%] px-5 mx-3 py-1 rounded-md  mt-1 bg-blue-500 text-white text-sm">Add
-            attribute</button>
-        </div>
+         </div> 
       </div>
     </form>
 

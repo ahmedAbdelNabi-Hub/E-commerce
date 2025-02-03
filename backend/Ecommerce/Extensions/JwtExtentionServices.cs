@@ -3,7 +3,6 @@ using Ecommerce.Contracts.Interfaces;
 using Ecommerce.service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 using System.Text;
 
 namespace Ecommerce.Extensions

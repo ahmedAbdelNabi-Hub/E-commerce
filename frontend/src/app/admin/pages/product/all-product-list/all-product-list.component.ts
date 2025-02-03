@@ -6,27 +6,23 @@ import { IPaginationDto } from '../../../../core/models/interfaces/IPaginationDt
 import { IProductSpecParams } from '../../../../core/models/interfaces/IProductSpecParams';
 import { CategoryService } from '../../../../core/services/Category/Category.service';
 import { ProductService } from '../../../../core/services/Product.service';
-import { fadeInOut } from '../../../../shared/animations/fadeInOut';
 import { ErrorHandlerService } from '../../../../core/services/ErrorHandler.service';
 import { MessageService } from '../../../../core/services/Message.service';
 import { StatusService } from '../../../../core/services/Status/status.service';
-import { ProductDataService } from '../../../../core/services/ProductData.service';
 import { IProduct } from '../../../../core/models/interfaces/IProduct';
 import { Router } from '@angular/router';
-import { transformAnimation } from '../../../../shared/animations/transformAnimation';
-import { contentAnimation, imageAnimation, paginationAnimation } from '../../../../shared/animations/contentAnimation';
+import { AnimationOpcity } from '../../../../shared/animations/RouteAnimation';
 
 @Component({
   selector: 'app-all-product-list',
   templateUrl: './all-product-list.component.html',
   styleUrls: ['./all-product-list.component.css'],
-  animations: [fadeInOut,,paginationAnimation],
+  animations: [AnimationOpcity],
 })
 export class AllProductListComponent implements OnInit, OnDestroy {
   private productService = inject(ProductService);
-  private productDataService = inject(ProductDataService);
   private categoryService = inject(CategoryService);
-  private errorHandler = inject(ErrorHandlerService);  // Inject error handler
+  private errorHandler = inject(ErrorHandlerService);  
   private messageHandelr = inject(MessageService)
   private statuseService = inject(StatusService);
   private router = inject(Router);

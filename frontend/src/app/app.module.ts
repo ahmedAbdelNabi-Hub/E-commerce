@@ -11,7 +11,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollSpyDirective } from './shared/directives/ScrollSpy.directive';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,6 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     ProductOffersComponent,
     ScrollSpyDirective,
 
-
- 
   ],
   imports: [
     BrowserModule,
@@ -33,13 +30,13 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     CarouselModule,
   ],
   providers: [
-    provideHttpClient(),
-    provideAnimationsAsync(),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true,
-    },
+    // provideHttpClient(),
+    // provideAnimationsAsync(),
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ErrorInterceptor,
+    //   multi: true,
+    // },
     // No need for provideClientHydration here
   ],
 

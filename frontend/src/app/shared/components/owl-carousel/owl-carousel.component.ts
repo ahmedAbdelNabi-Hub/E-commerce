@@ -24,7 +24,7 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
   @Input() methodName!: string; // Name of the method to call on the service
   @Input() params!: any; // Parameters to pass to the service method
   @Input('autoPlay') autoPlay: boolean = true;
-  @Input('itemLarge') itemLarge: number = 5;
+  @Input('itemLarge') itemLarge: number = 4;
   @Input('Recently') Recently: boolean = false;
   private destroy$ = new Subject<void>();
   private inProgressRequests = new Map<string, Observable<any>>();
@@ -36,7 +36,7 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
   hasErrorSignal = signal<boolean>(false);
 
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: true,
     autoplay: this.autoPlay,
     touchDrag: true,
@@ -44,15 +44,15 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
     dots: false,
     navSpeed: 1000,
     navText: [
-      '<i class="bx bxs-chevron-left text-slate-700 text-2xl"></i>',
-      '<i class="bx bxs-chevron-right text-slate-700 text-2xl"></i>',
+      '<i class="bx bxs-chevron-left text-white text-2xl"></i>',
+      '<i class="bx bxs-chevron-right text-white text-2xl"></i>',
     ],
     responsive: {
       0: { items: 1.5 },
       400: { items: 2.3 },
       500: { items: 2.5 },
-      740: { items: 4 },
-      940: { items: 5 },
+      740: { items: 3 },
+      940: { items: 4 },
     },
     nav: false,
   };

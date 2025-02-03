@@ -1,4 +1,4 @@
-/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div>
 .loader {
   --w:10ch;
   font-weight: bold;
@@ -16,7 +16,7 @@
   animation: l20 2s infinite linear;
 }
 .loader:before {
-  content:"breezo...";
+  content:"Breezo...";
   color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -53,3 +53,23 @@
         calc( 0*var(--w)) 0 #000,calc(-1*var(--w)) 0 #000,calc(-2*var(--w)) 0 #000,calc(-3*var(--w)) 0 #000,calc(-4*var(--w)) 0 #000, 
         calc(-5*var(--w)) 0 #000,calc(-6*var(--w)) 0 #000,calc(-7*var(--w)) 0 #000,calc(-8*var(--w)) 0 #000,calc(-9*var(--w)) -10px #000}
 }
+        */
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #709bff;
+            border-bottom-color: #381695;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            }
+        
+            @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+            } 

@@ -6,6 +6,7 @@ using Google.Apis.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -28,10 +29,10 @@ namespace Ecommerce.service
             _roleManager = roleManager;
             _jwt = jwt.Value;
         }
-        public async Task<AuthResponse> CreateJwtToken(AppUser user,bool isGoogle =false, GoogleJsonWebSignature.Payload payload=null)
+        public async Task<AuthResponse> CreateJwtToken(AppUser user)
         {
 
-            var claims = isGoogle == true ? setClaimsBaseOfGooglePayload(payload) : await setClaims(user); 
+            var claims =  await setClaims(user); 
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Key));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
@@ -62,31 +63,16 @@ namespace Ecommerce.service
         {
             throw new NotImplementedException();
         }
-        private List<Claim> setClaimsBaseOfGooglePayload(GoogleJsonWebSignature.Payload payload)
-        {
-            var email = payload.Email;
-            var name = payload.Name;
 
-            var claims = new List<Claim>
-             {
-                new Claim(JwtRegisteredClaimNames.Sub, name), 
-                new Claim(JwtRegisteredClaimNames.Email, email), 
-                new Claim("roles", "User"), 
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) 
-            };
-            return claims;  
-        }
         private async Task<List<Claim>> setClaims(AppUser user) 
         
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);
+            
             var roleClaims = new List<Claim>();
+            roleClaims.Add(new Claim("roles", "User"));
 
-            foreach (var role in roles)
-            {
-                roleClaims.Add(new Claim("roles", role));
-            }
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
@@ -94,6 +80,9 @@ namespace Ecommerce.service
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim("uid", user.Id)
             }.Union(userClaims).Union(roleClaims);
+
+            /*  foreach (var role in roles)
+           { roleClaims.Add(new Claim("roles", role));}*/
 
             return claims.ToList();
         }

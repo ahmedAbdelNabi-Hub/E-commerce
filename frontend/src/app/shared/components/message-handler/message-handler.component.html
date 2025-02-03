@@ -1,5 +1,27 @@
-<div  *ngIf="message" [@transformAnimation] class=" blur-glass fixed py-2 h-[70px] bottom-0 bg-[#e4e4e49f] w-full flex items-center justify-center">
-    <div class="message rounded-sm px-9 py-2" [ngClass]="messageType">
-        <span class="text-[14px]">{{message}}</span>
-    </div>
+<div  class=" fixed bottom-0 end-0 flex-col flex items-center justify-center z-[100]">
+    <div *ngFor="let messageItem of messageQueue()" [@transformAnimation]  class=" z-[80] sm:max-w-sm w-full mx-auto p-2">
+        <!-- Card -->
+        <div class="p-4 bg-gradient-to-r from-white via-white  to-green-100 border border-gray-200 rounded-xl shadow-sm">
+          <div class="flex gap-x-4">
+            <i class='bx bxl-product-hunt text-2xl text-blue-400'></i>
+            <div class="grow">
+              <p class="text-sm font-semibold text-gray-800">
+                {{messageItem.message}}
+            </p>
+            </div>
+            <div>
+              <button type="button" class="p-2 inline-flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-remove-element="#cookies-simple-with-icon-and-dismiss-button">
+                <span class="sr-only">Dismiss</span>
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- End Card -->
+      </div>
 </div>
+
+
+
+      
+      

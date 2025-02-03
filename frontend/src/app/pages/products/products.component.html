@@ -1,42 +1,40 @@
-<div *ngIf="!(performApi.isLoading$ | async)" class="container mx-auto px-0 md:px-10 lg:px-32 pt-4 bg-[#ffffff] mt-1 md:mt-10" >
-    <!-- image -->
-    <div class="w-full flex items-center justify-center">
-        <img class="object-cover"
-            [src]="'https://btech.com/media/amasty/ampromobanners/banner__Strip_Banner_EN_2x-100-min.jpg'" alt="">
-    </div>
-  
-    <div class="">
-        <div class="flex md:flex-row flex-col-reverse  gap-3 ">
-            <div class="hidden md:block  mt-7 bg-white basis-[25%]">
-            <app-filter [filterItem]="filters()!"></app-filter>
-            </div>
-            <!--  -->
-            <div class="md:py-4 bg-white basis-[75%]">
-                <div class="px-1 py-2">
-                    <div class="flex items-center justify-between pb-7 py-2 ">
-                        <p class="font-semibold text-[16px]">
-                            Sort By:<span class="ml-2 text-blue-400">Postion</span>
+<div *ngIf="performApi.isLoading$ | async" class="absolute top-0 w-full h-screen">
+    <app-loading></app-loading>
+</div>
+
+<div class="w-full h-[60vh] xs:h-[40vh] relative flex items-center justify-center mt-14 md:my-32">
+    <img
+    
+    class="object-cover " src="../../../assets/SDSAC-8666-Super-Bowl-Frame-TV-Soundbar-PF_DT_1440x400.jpg"
+        alt="" />
+        <div  [ngClass]="{
+            'direction-left': true,
+          }" class="absolute  px-4 lg:px-2  w-full xs:max-w-[18rem] md:max-w-sm lg:max-w-[33rem] max-h-max flex flex-col ">
+                    <div>
+                        <h3
+                            class="leading-2 max-bland line-clamp-2  lg:line-clamp-3 text-[#fffefe]  text-responsive-sm xs:text-responsive-xl md:text-[35px] font-[550] md:max-w-xl break-words">
+                            Samsung Galaxy Book with A1-Powered
+                        </h3>
+                        <p class="max-bland text-[#b5b5b5] mt-3  text-[12px] line-clamp-2 md:max-w-md xs:text-[15px] md:text-[1rem]">
+                            Experience Next-Level Performance with Galaxy A1 & Intel Core
+                            Ultra 7 on Intel Evo Platform   
                         </p>
-
-                        <div class="font-bold text-xl">
-                            <div class="flex items-center space-x-3">
-                                <i class='bx bxs-grid' ></i>
-                                <i class='bx bx-list-ul' ></i>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="block md:hidden w-full">
-                        <button type="button"
-                            class="py-1 w-full px-4 inline-flex items-center justify-center gap-x-2 text-sm font-semibold rounded-sm border border-gray-300  disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            data-hs-overlay="#hs-overlay-example">
-                            <span><i class='bx bx-filter-alt text-[15px]'></i></span> Filter
-                        </button>
                     </div>
                 </div>
+</div>
+<div *ngIf="!(performApi.isLoading$ | async)"
+    class="container mx-auto px-1 md:px-9 lg:px-14 pt-4 bg-[#ffffff] mt-1 ">
+    <div class="">
+        <div class=" flex md:flex-row flex-col-reverse  gap-3 ">
+            <div class="hidden md:block   basis-[25%]">
+                <app-filter [filterItem]="filters()!"></app-filter>
+            </div>
+            <!--  -->
+            <div class=" bg-white basis-[75%]">
                 <div class="grid overflow-hidden grid-cols-2 lg:grid-cols-3 bg-white">
                     <div *ngFor="let product of products()?.data">
-                        <app-product-card-with-discound [showWithRow]="true" [productData]="product"></app-product-card-with-discound>
+                        <app-product-card-with-discound [EnableForProductsPage]="true" [showWithRow]="true"
+                            [productData]="product"></app-product-card-with-discound>
                     </div>
                 </div>
             </div>
@@ -64,7 +62,6 @@
         </button>
     </div>
 </div>
-<app-loading *ngIf="performApi.isLoading$ | async"></app-loading>
 
 
 <!-- 

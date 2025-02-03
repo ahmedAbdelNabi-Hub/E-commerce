@@ -1,6 +1,4 @@
-.message {
-  position: fixed;
-  bottom: 10px; /* Slightly above the very bottom for better visibility */
+.message { 
   font-size: 16px;
   max-width: 500px;
   margin: 0; 

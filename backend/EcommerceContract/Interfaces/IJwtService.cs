@@ -11,8 +11,7 @@ namespace Ecommerce.Contracts.Interfaces
 {
     public interface IJwtService
     {
-        Task<AuthResponse> CreateJwtToken(AppUser user, bool isGoogle , GoogleJsonWebSignature.Payload payload);
-
+        Task<AuthResponse> CreateJwtToken(AppUser user);
         Task<string> GenerateRefreshToken();
 
     }

@@ -1,4 +1,4 @@
-<div *ngIf="basketItems()?.basketItems?.length !== 0"
+<div *ngIf="initalloadingFlash"
     class="mt-20 font-sans px-0 md:px-5 lg:px-4 xl:px-16 py-4 relative bg-white">
     <!-- Announcement Banner -->
     <a class="group block bg-gray-100 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 p-4 rounded-lg text-center transition duration-300"
@@ -52,7 +52,7 @@
 
 <!-- Empty Cart Message -->
 <div class="mt-20 flex flex-col items-center justify-center"
-    *ngIf="basketId == null || basketItems()?.basketItems?.length === 0">
+    *ngIf="!initalloadingFlash">
     <div class="flex justify-center mt-10 mb-3 h-[200px]">
         <img class="object-cover" src="../../../assets/54b13147340145.Y3JvcCw0MDUsMzE3LDAsNDI.png"
             alt="Empty shopping cart illustration"> <!-- Added meaningful alt text -->

@@ -22,6 +22,7 @@ namespace Ecommerce.core.Specifications
         public ProductStatusWithSpecifications(ProductSpecParams Params) :base(ps => ps.StatusId == Params.StatusId)
         {
             AddInclude(ps => ps.Product);
+            AddOrderByDescending(ps => ps.Product.CreatedAt); 
             ApplyPagination(Params.PageSize * (Params.PageIndex - 1), Params.PageSize);
 
         }

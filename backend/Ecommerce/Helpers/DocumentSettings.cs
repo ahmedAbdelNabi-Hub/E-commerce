@@ -14,7 +14,7 @@
             string fileHash = GetFileHash(file);
 
             string existingFile = Directory.GetFiles(folderPath)
-                .FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == fileHash);
+                .FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == fileHash)!;
 
 
             if (existingFile != null)

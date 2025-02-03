@@ -3,19 +3,17 @@ import { IBasketItem } from '../../../../core/models/interfaces/Basket/IBasketIt
 import { BasketService } from '../../../../core/services/shipping/Basket.service';
 import { Perform } from '../../../../core/models/classes/Perform';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { MessageService } from '../../../../core/services/Message.service';
 
 @Component({
   selector: 'app-shopping-card',
   templateUrl: './shopping-card.component.html',
   styleUrl: './shopping-card.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShoppingCardComponent implements OnDestroy, AfterViewInit {
   @Input('BasketItem') basketItem !: IBasketItem;
   @Output() isLoading = new EventEmitter<Observable<boolean>>();
-  private _changeDetectRef = inject(ChangeDetectorRef);
   private _basketService = inject(BasketService);
   readonly _preFrom = new Perform();
   private router = inject(Router);
@@ -26,7 +24,6 @@ export class ShoppingCardComponent implements OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.stockOptions = this.generateStockOptions(this.basketItem.unitOfStock);
-    this._changeDetectRef.detectChanges();
   }
 
   generateStockOptions(unitOfStock: number): number[] {
@@ -39,13 +36,12 @@ export class ShoppingCardComponent implements OnDestroy, AfterViewInit {
   }
 
   deleteItemFromBasket(item: IBasketItem) {
-    this._preFrom.load(this._basketService.deleteItemFromBasket(item));
+    this._preFrom.load(this._basketService.deleteItemFromBasket(item).pipe(tap((data) => {
+      if (data) {
+        this.messageService.showSuccess("The Item Deleted Successfully");
+      }}))
+    );
     this.isLoading.emit(this._preFrom.isLoading$)
-    this._preFrom.hasError$.subscribe(data => {
-      if (data != null) {
-        this.messageService.showSuccess("The Item Deleted Successfully")
-      }
-    })
   }
 
   ngOnDestroy(): void {

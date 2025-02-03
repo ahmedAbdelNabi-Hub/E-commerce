@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Ecommerce.core.Entities;
+using Ecommerce.Core.Entities;
 using EcommerceContract.DTOs;
 
 namespace Ecommerce.Helpers.PictureResolver

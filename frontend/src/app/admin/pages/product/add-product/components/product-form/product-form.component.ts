@@ -133,7 +133,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     });
 
     if (product.imageUrl) {
-      this.selectedImage = product.linkImage;
+      this.selectedImage = product.imageUrl;
     }
 
     this.productAttributes = product.productAttributes;

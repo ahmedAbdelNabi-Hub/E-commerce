@@ -54,6 +54,7 @@ export class ProductOffersComponent implements OnInit, OnDestroy {
       { name: 'keywords', content: 'products, offers, discounts' }
     ]);
     this.getProductsOnOfferGrouped();
+   
   }
 
   getProductsOnOfferGrouped(): void {
@@ -70,7 +71,6 @@ export class ProductOffersComponent implements OnInit, OnDestroy {
           this.loading.set(false);
         }),
         catchError(error => {
-          console.error('Error fetching grouped products:', error);
           this.errorMessage.set('Unable to load product offers. Please try again later.');
           this.loading.set(false);
           return of([]);

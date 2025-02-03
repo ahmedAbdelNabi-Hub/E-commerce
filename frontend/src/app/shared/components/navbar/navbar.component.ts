@@ -1,14 +1,12 @@
-import { Component, OnInit, OnDestroy, Renderer2, inject } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { catchError, filter, map, tap } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy, Renderer2, inject, Input, OnChanges, SimpleChanges, signal } from '@angular/core';
+import {  Subscription } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Navbar } from '../../../core/models/interfaces/navbar.model';
 import { NavbarService } from '../../../core/services/navbar.service';
 import { sidebarAnimation } from '../../animations/sidebarAnimation';
 import { BasketService } from '../../../core/services/shipping/Basket.service';
-import { Perform } from '../../../core/models/classes/Perform';
-import { IBasket } from '../../../core/models/interfaces/Basket/IBasket';
-import { NavigationEnd, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-navbar',
@@ -16,9 +14,10 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./navbar.component.css'],
   animations: [sidebarAnimation]
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit, OnDestroy, OnChanges {
   isOpenSideBar: boolean = false;
-  Navbars: Navbar[] = [];
+  Navbars = signal<Navbar[]>([]);
+  @Input("hiddenItem") hiddenItem: boolean = true;
   private navbarSubscription!: Subscription;
   _basketService = inject(BasketService);
   private readonly navbarService = inject(NavbarService);
@@ -26,16 +25,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadNavbars();
   }
-
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['hiddenItem']) {
+      this.hiddenItem = this.hiddenItem;
+    }
+  }
   private loadNavbars(): void {
     this.navbarSubscription = this.navbarService.getNavbars().pipe(
       tap(response => {
-        this.Navbars = response;
-        console.log("nav",response)
+        this.Navbars.set(response);
       }),
       catchError(error => {
-        console.error('Error fetching navbars:', error);
-        return of([]); 
+        return of([]);
       })
     ).subscribe();
   }
