@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\image\\Advertisement\\03-hd01-B6-KV-pc-1440x640.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\04e9bd065d4fb46cadaaa25b274ba3011fb4b00a3e791e68b987a57fed7701c4.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\04e9bd065d4fb46cadaaa25b274ba3011fb4b00a3e791e68b987a57fed7701c4.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1440x64015.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\1440x64015.webp"
     },
@@ -35,6 +39,10 @@
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\720-x-10801.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\720-x-10801.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\78ce7369b0a2649de5a738172791af652a97d88b3834e423f65ebd40c4faf3d9.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\78ce7369b0a2649de5a738172791af652a97d88b3834e423f65ebd40c4faf3d9.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\DA-Horizontal.webp",
@@ -125,8 +133,16 @@
       "PackagePath": "staticwebassets\\image\\Advertisement\\c645-banner-pc.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\c73084ef156b96124702f83855b29ad8fbf7763ee2c0922d54fcdb443d2b54c2.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\c73084ef156b96124702f83855b29ad8fbf7763ee2c0922d54fcdb443d2b54c2.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\calaxyLarge.avif",
       "PackagePath": "staticwebassets\\image\\Advertisement\\calaxyLarge.avif"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\ce859292abaad69a477be14f8f262e22d767055a44056866bd6c7cfd890f1f3b.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\ce859292abaad69a477be14f8f262e22d767055a44056866bd6c7cfd890f1f3b.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_lg.webp",

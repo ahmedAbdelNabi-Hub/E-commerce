@@ -4,6 +4,8 @@ namespace EcommerceContract.DTOs
 {
     public class AdvertisementDTO
     {
+        public string Id { get; set; }  
+
         [Required(ErrorMessage = "Large image is required")]
         [Url(ErrorMessage = "Large image must be a valid URL")]
         public string LargeImage { get; set; }
@@ -16,8 +18,6 @@ namespace EcommerceContract.DTOs
         [Url(ErrorMessage = "Link URL must be a valid URL")]
         public string LinkUrl { get; set; }
 
-     
-        [Required(ErrorMessage = "title is required")]
         [MaxLength(255, ErrorMessage = "title cannot be longer than 255 characters")]
         public string Title { get; set; }
       
@@ -31,11 +31,16 @@ namespace EcommerceContract.DTOs
         [RegularExpression("^(left|right)$", ErrorMessage = "Direction must be either 'left' or 'right'")]
         public string Direction { get; set; }
 
-        
+        public string TargetPage { get; set; }
+        public string Section { get; set; }
+
         [Required]
         public DateTime CreatedAt { get; set; }
 
         [Required]
         public DateTime UpdatedAt { get; set; }
+
+        [Required]  
+        public bool IsActive { get; set; }   
     }
 }

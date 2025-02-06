@@ -72,7 +72,7 @@
 .direction-left {
     left: 2vw;
     text-align: center;
-    top:8vw;
+    top:14vw;
   }
   
   @media (min-width: 475px) {
@@ -90,9 +90,8 @@
   
   /* Styles for right-aligned content */
   .direction-right {
-    
     text-align: center;
-    top:8vw;
+    top:14vw;
   }
   
   @media (min-width: 475px) {
@@ -104,7 +103,7 @@
   
   @media (min-width: 1024px) {
     .direction-right {
-      right: 8vw;
+      right: 2vw;
     }
   }
   

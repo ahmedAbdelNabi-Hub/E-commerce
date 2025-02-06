@@ -33,7 +33,7 @@ namespace EcommerceContract.Helpers.profile
                 .ForMember(dest => dest.LargeImage, opt => opt.MapFrom<PictureLargeImageResoIver>())
                 .ForMember(dest => dest.SmallImage, opt => opt.MapFrom<PictureSmallImageResoIver>());
 
-            CreateMap<AdvertisementDTO, Advertisement>();
+            CreateMap<AdvertisementCreateDto, Advertisement>();
 
             // Product Mapping
             CreateMap<Product, ProductReadDto>()

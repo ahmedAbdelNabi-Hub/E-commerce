@@ -1,145 +1,130 @@
 <!-- Hero -->
 <div class="overflow-hidden">
-    
+
     <div class="mx-auto px-4 py-8">
-        <div class="relative mx-auto  grid space-y-5 sm:space-y-10">
-            
+        <div class="relative mx-auto  grid ">
+
             <!-- Title -->
-            <div class="text-center">
+            <div class="text-center flex flex-col items-center">
                 <p class="text-xs font-semibold text-gray-500 tracking-wide uppercase mb-3">
                     Advertisement Creation
                 </p>
-                <p class="text-[30px] text-gray-800 font-bold  lg:leading-tight">
-                    Create your <span class="text-blue-500">perfect advertisement</span> and boost your business
-                </p>
-                <p class="text-sm font-thin text-gray-500 mt-2">
-                    Use our intuitive tools to add compelling titles, descriptions, and images, and target specific
-                    sections of your website. Your advertisements can be tailored to show up in the right place at the
-                    right time.
-                    Ready to get started? Fill in the details below to create your advertisement. Choose the right
-                    section, set a duration, and watch your campaign soar!
+                <p class="text-[30px] text-gray-800 font-bold max-w-xl  lg:leading-tight">
+                    Create your <span class="text-blue-800">perfect advertisement</span> and boost your business
                 </p>
             </div>
-            
+
             <!-- End Title -->
 
-
-            <form class="relative px-1 md:px-8">
+            <form [formGroup]="advertisementForm" (ngSubmit)="onSubmit()" class="relative px-1 md:px-2">
                 <div class="text-center py-5 my-2 ">
-                    <p class="text-xl ">Basic Informations</p>
+                  <p class="text-xl">Basic Informations</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-                    <div class="col-span-1 md:col-span-2">
-                        <div class="flex justify-center mb-2 ">
-                            <label for="dropzone-file"
-                                class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer">
+              
+                <div class="flex items-center space-x-2 w-full ">
+                  <div class="flex justify-center mb-2  w-[75%]">
+                    <label for="largeImage"
+                      class="flex flex-col items-center justify-center w-full h-96 border-2 border-dashed rounded-lg cursor-pointer">
+                      <img *ngIf="largeImageUrl()" [src]="largeImageUrl()" alt="Small Image" class="h-full w-full">
 
-                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-blue-400" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                    </svg>
-                                    <p class="mb-2 text-sm text-gray-900">
-                                        <span class="font-semibold">Click to upload</span> or drag and drop
-                                    </p>
-                                    <p class="text-xs text-gray-600">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                </div>
-                                <input id="dropzone-file" type="file" class="hidden" accept="image/*" />
-                            </label>
-                        </div>
-                        <div class="mx-auto max-w-4xl sm:flex sm:space-x-3 p-3 ">
-                            <div class="w-full pb-2 sm:pb-0">
-                                <label  class="text-sm font-thin"><span>Title (optional)</span></label>
+                      <div *ngIf="!largeImageUrl()" class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg class="w-8 h-8 mb-4 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-900">
+                          <span class="font-semibold">Click to upload</span> or drag and drop
+                        </p>
+                        <p class="text-xs text-gray-600">SVG, PNG, JPG or GIF (MAX. 800x400px) <span class="text-blue-300">large image</span></p>
+                      </div>
+                      <input id="largeImage" type="file" class="hidden" (change)="onFileSelect($event, 'largeImage')" />
+                    </label>
+                  </div>
+              
+                  <div class="flex justify-center w-[25%]">
+                    <label for="smallImage"
+                      class="flex flex-col items-center justify-center w-full h-96 border-2 border-dashed rounded-lg cursor-pointer">
+                      <img *ngIf="smallImageUrl()" [src]="smallImageUrl()" alt="Small Image" class="h-full w-full">
 
-                                <input type="text" id="hs-hero-name-1"
-                                    class="py-3 px-4 border-gray-200 border block w-full  rounded-lg text-sm outline-gray-100"
-                                    placeholder="Your advertisement title">
-                            </div>
-                            <div class="pt-2 sm:pt-0 sm:ps-3 border-t border-gray-200 sm:border-t-0 sm:border-s w-full">
-                                <label  class="text-sm font-thin"><span>SubTitle (optional)</span></label>
-
-                                <input type="email" id="hs-hero-email-1"
-                                    class="py-3 px-4 border-gray-200 border block w-full  rounded-lg text-sm outline-gray-100"
-                                    placeholder="Your advertisement SubTitle">
-                            </div>
-                        </div>
-                        <div class="mx-auto max-w-4xl  sm:flex sm:space-x-3 p-3 ">
-                            <div class="w-full pb-2 sm:pb-0">
-                                <label  class="text-sm font-thin"><span>description (optional)</span></label>
-
-                                <textarea type="text" id="hs-hero-name-1"
-                                    class="py-3 px-4 border-gray-200 border block w-full  rounded-lg text-sm outline-gray-100"
-                                    placeholder="Your advertisement description"></textarea>
-                            </div>
-
-                        </div>
-                        <div class="mx-auto max-w-4xl  sm:flex sm:space-x-3 p-3 ">
-                            <div class="w-full pb-2 sm:pb-0">
-                                <label  class="text-sm font-thin"><span>LinkUrl</span></label>
-                                <input type="text" id="hs-hero-name-1"
-                                    class="py-3 px-4 border-gray-200 border block w-full  rounded-lg text-sm outline-gray-100"
-                                    placeholder="Your advertisement LinkUrl (to-go)">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-1 md:col-span-1">
-                        <div class="flex justify-center ">
-                            <label for="dropzone-file"
-                                class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer">
-
-                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-blue-400" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                    </svg>
-                                    <p class="mb-2 text-sm text-gray-900">
-                                        <span class="font-semibold">Click to upload</span> or drag and drop
-                                    </p>
-                                    <p class="text-xs text-gray-600">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                </div>
-                                <input id="dropzone-file" type="file" class="hidden" accept="image/*" />
-                            </label>
-                        </div>
-                        <!-- Floating Select -->
-                        <select
-                            class="py-3 px-4  pe-9 block w-full border-gray-200 border mt-10 rounded-lg text-sm outline-gray-100">
-                            <option selected="">Section</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                        <select
-                            class="py-3 px-4 pe-9 block w-full border-gray-200 border mt-2 rounded-lg text-sm outline-gray-100">
-                            <option selected="">TargetPage</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                        <select
-                            class="py-3 px-4 pe-9 block w-full border-gray-200 border mt-2 rounded-lg text-sm outline-gray-100">
-                            <option selected="">Status</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                        <select
-                            class="py-3 px-4 pe-9 block w-full border-gray-200 border mt-2 rounded-lg text-sm outline-gray-100">
-                            <option selected="">Direction</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </div>
+                      <div *ngIf="!smallImageUrl()" class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg class="w-8 h-8 mb-4 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-900">
+                          <span class="font-semibold">Click to upload</span> or drag and drop
+                        </p>
+                        <p class="text-xs text-gray-600">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                      </div>
+                      <input id="smallImage" type="file" class="hidden" (change)="onFileSelect($event, 'smallImage')" />
+                    </label>
+                  </div>
                 </div>
-                <div class="mt-6 mx-4">
-                    <button type="submit"
-                        class="w-[20%] bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-500 transition duration-200">Submit</button>
+              
+                <div class="mx-auto sm:flex sm:space-x-3 p-3">
+                  <div class="w-full pb-2 sm:pb-0">
+                    <label class="text-sm font-thin"><span>Title (optional)</span></label>
+                    <input formControlName="title" type="text"
+                      class="py-3 px-4 border-gray-200 border block w-full rounded-lg text-sm outline-gray-100"
+                      placeholder="Your advertisement title">
+                  </div>
+                  <div class="pt-2 sm:pt-0 sm:ps-3 border-t border-gray-200 sm:border-t-0 sm:border-s w-full">
+                    <label class="text-sm font-thin"><span>SubTitle (optional)</span></label>
+                    <input formControlName="subtitle" type="text"
+                      class="py-3 px-4 border-gray-200 border block w-full rounded-lg text-sm outline-gray-100"
+                      placeholder="Your advertisement SubTitle">
+                  </div>
                 </div>
-            </form>
+              
+                <div class="mx-auto sm:flex sm:space-x-3 p-3">
+                  <div class="w-full pb-2 sm:pb-0">
+                    <label class="text-sm font-thin"><span>Description (optional)</span></label>
+                    <textarea formControlName="description"
+                      class="py-3 px-4 border-gray-200 border block w-full rounded-lg text-sm outline-gray-100"
+                      placeholder="Your advertisement description"></textarea>
+                  </div>
+                </div>
+              
+                <div class="mx-auto sm:flex sm:space-x-3 p-3">
+                  <div class="w-full pb-2 sm:pb-0">
+                    <label class="text-sm font-thin"><span>LinkUrl</span></label>
+                    <input formControlName="linkUrl" type="text"
+                      class="py-3 px-4 border-gray-200 border block w-full rounded-lg text-sm outline-gray-100"
+                      placeholder="Your advertisement LinkUrl (to-go)">
+                  </div>
+                </div>
+              
+                <div class="mx-auto sm:flex sm:space-x-3 p-3">
+                  <select formControlName="section"
+                    class="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm outline-gray-100">
+                    <option value="">Section</option>
+                    <option *ngFor="let section of sections" [value]="section">{{ section }}</option>
+                  </select>
+                  <select formControlName="targetPage"
+                    class="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm outline-gray-100">
+                    <option value="">Target Page</option>
+                    <option *ngFor="let page of targetPages" [value]="page">{{ page }}</option>
+                  </select>
+                  <select formControlName="status"
+                    class="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm outline-gray-100">
+                    <option [value]="true">Active</option>
+                    <option [value]="false">Inactive</option>
+                  </select>
+                  <select formControlName="direction"
+                    class="py-3 px-4 block w-full border-gray-200 border rounded-lg text-sm outline-gray-100">
+                    <option value="">Direction</option>
+                    <option *ngFor="let dir of directions" [value]="dir">{{ dir }}</option>
+                  </select>
+                </div>
+              
+                <div class="mt-6 mx-4 flex items-center justify-center">
+                  <button type="submit"
+                    class="w-[20%] bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-500 transition duration-200">
+                    Submit
+                  </button>
+                </div>
+              </form>
+              
 
         </div>
     </div>

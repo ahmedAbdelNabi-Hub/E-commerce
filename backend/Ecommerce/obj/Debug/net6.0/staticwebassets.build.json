@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mlFLkBjxEiKpVuIePhtZ3MFk+7hzdr5brvy68VuZUOI=",
+  "Hash": "YkrbePHf1BWbMu60zdw6RfZmwHcWwWEsYP95QXCf0f0=",
   "Source": "Ecommerce",
   "BasePath": "_content/Ecommerce",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\03-hd01-B6-KV-pc-1440x640.webp"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\04e9bd065d4fb46cadaaa25b274ba3011fb4b00a3e791e68b987a57fed7701c4.webp",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Advertisement/04e9bd065d4fb46cadaaa25b274ba3011fb4b00a3e791e68b987a57fed7701c4.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Advertisement\\04e9bd065d4fb46cadaaa25b274ba3011fb4b00a3e791e68b987a57fed7701c4.webp"
     },
     {
       "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1440x64015.webp",
@@ -188,6 +207,25 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\720-x-10801.webp"
     },
     {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\78ce7369b0a2649de5a738172791af652a97d88b3834e423f65ebd40c4faf3d9.webp",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Advertisement/78ce7369b0a2649de5a738172791af652a97d88b3834e423f65ebd40c4faf3d9.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Advertisement\\78ce7369b0a2649de5a738172791af652a97d88b3834e423f65ebd40c4faf3d9.webp"
+    },
+    {
       "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob-02.webp",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
@@ -302,6 +340,25 @@
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\c645-banner-pc.webp"
     },
     {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\c73084ef156b96124702f83855b29ad8fbf7763ee2c0922d54fcdb443d2b54c2.webp",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Advertisement/c73084ef156b96124702f83855b29ad8fbf7763ee2c0922d54fcdb443d2b54c2.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Advertisement\\c73084ef156b96124702f83855b29ad8fbf7763ee2c0922d54fcdb443d2b54c2.webp"
+    },
+    {
       "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\calaxyLarge.avif",
       "SourceId": "Ecommerce",
       "SourceType": "Discovered",
@@ -319,6 +376,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\Advertisement\\calaxyLarge.avif"
+    },
+    {
+      "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\ce859292abaad69a477be14f8f262e22d767055a44056866bd6c7cfd890f1f3b.webp",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "image/Advertisement/ce859292abaad69a477be14f8f262e22d767055a44056866bd6c7cfd890f1f3b.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Advertisement\\ce859292abaad69a477be14f8f262e22d767055a44056866bd6c7cfd890f1f3b.webp"
     },
     {
       "Identity": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\collection_lg.webp",

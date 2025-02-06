@@ -13,7 +13,7 @@ import { delay, tap } from 'rxjs';
   styleUrl: './product-card-with-discound.component.css'
 })
 export class ProductCardWithDiscoundComponent implements OnDestroy {
-  @Input('productData') productData !: IProduct
+  @Input('productData') productData !: IProduct | any;
   @Input('showWithRow') Row: boolean = false;
   @Input('EnableForProductsPage') EnableForProductsPage: boolean = false;
   private router = inject(Router);

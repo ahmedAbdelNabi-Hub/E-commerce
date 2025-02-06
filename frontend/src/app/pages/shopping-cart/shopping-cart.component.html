@@ -1,5 +1,4 @@
-<div *ngIf="initalloadingFlash"
-    class="mt-20 font-sans px-0 md:px-5 lg:px-4 xl:px-16 py-4 relative bg-white">
+<div *ngIf="initalloadingFlash" class="mt-20 font-sans px-0 md:px-5 lg:px-4 xl:px-8 py-4 relative bg-white">
     <!-- Announcement Banner -->
     <a class="group block bg-gray-100 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 p-4 rounded-lg text-center transition duration-300"
         href="#">
@@ -9,7 +8,7 @@
             </p>
             <span
                 class="group-hover:underline group-focus:underline decoration-2 inline-flex justify-center items-center gap-x-2 font-semibold text-blue-600 text-sm">
-               Sign Now
+                Sign Now
                 <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
@@ -24,9 +23,9 @@
         <span class="loader"></span>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 mt-3">
+    <div class="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-3">
         <!-- Cart Header -->
-        <div class="col-span-1 lg:col-span-3 shrink overflow-hidden space-y-4">
+        <div class="col-span-1 lg:col-span-4 shrink overflow-hidden space-y-4">
             <div class="flex items-center justify-between py-3 px-5 mb-5 border-b text-black text-2xl">
                 <h2 class="spicel-font text-black md:text-3xl">Cart</h2> <!-- Heading for SEO -->
                 <div class="text-sm">
@@ -44,15 +43,22 @@
 
         <!-- Order Total -->
         <div aria-labelledby="order-total-section"
-            class="col-span-1 lg:col-span-2 md:px-4 flex-none lg:px-8 xl:px-12 mt-10">
+            class="flex flex-col  col-span-1 lg:col-span-2 md:px-4 flex-none lg:px-8 xl:px-12 mt-10">
             <app-order-total></app-order-total>
         </div>
     </div>
+    <div class="mt-8 mb-4 blur-glass">
+        <p
+          class=" text-[14px] md:text-[16px] px-4 py-1 my-2 border-dashed border-orange-200 font-semibold rounded-sm  border shadow-sm w-[220px] bg-[#fcfbfb] text-black">
+           Your Recent Views</p>
+        <app-owl-carousel [Recently]="true" [itemLarge]="6" [autoPlay]="false" [service]="productService"
+          [methodName]="'GetRecentlyProducts'" [params]="{}">
+        </app-owl-carousel>
+      </div>
 </div>
 
 <!-- Empty Cart Message -->
-<div class="mt-20 flex flex-col items-center justify-center"
-    *ngIf="!initalloadingFlash">
+<div class="mt-20 flex flex-col items-center justify-center" *ngIf="!initalloadingFlash">
     <div class="flex justify-center mt-10 mb-3 h-[200px]">
         <img class="object-cover" src="../../../assets/54b13147340145.Y3JvcCw0MDUsMzE3LDAsNDI.png"
             alt="Empty shopping cart illustration"> <!-- Added meaningful alt text -->

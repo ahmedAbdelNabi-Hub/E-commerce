@@ -3,35 +3,42 @@
         <p class="text-[20px] font-semibold px-2 py-1">Advertisements List</p>
 
     </div>
-    <div *ngFor="let image of imageSlider()"
+    <div *ngFor="let image of advertisements();let index = index"
         class="flex items-center space-x-5 relative  py-4 rounded-md shadow-sm px-3 border cursor-pointer hover:scale-[0.99] transition-transform">
         <div class="absolute top-2 space-x-2 right-4 flex items-center">
             <i class='bx bxs-time text-[#c0c0c0]'></i>
             <p class="text-sm font-thin text-gray-800">{{image.createdAt}}</p>
         </div>
         <div class="flex items-center absolute bottom-2 right-2 space-x-2">
-            <div class=" space-x-2  flex items-center">
+            <button class="hover:bg-black  hover:text-white border border-[#eee] px-3 py-0.5 rounded-sm space-x-2  flex items-center">
                 <i class='bx bx-edit-alt'></i>
-                <p class="text-sm  text-blue-700">Update</p>
-            </div>
-            <div class=" space-x-2  flex items-center">
+                <p class="text-sm">Update</p>
+            </button>
+            <button (click)="toggleStatus(image.id,index)" *ngIf="image.isActive==true" class=" border border-[#eee] px-2 space-x-2  flex items-center hover:bg-black hover:text-white">
                 <i class='bx bx-hide'></i>
-                <p class="text-sm font-thin text-gray-800">hide</p>
-            </div>
+                <p class="text-sm font-thin">hide</p>
+            </button>
+            <button (click)="toggleStatus(image.id,index)"  *ngIf="image.isActive==false" class=" space-x-2 hover:bg-black hover:text-white border border-[#eeee] px-2 text-blue-500 flex items-center">
+                <i class='bx bx-show'></i>
+                <p class="text-sm font-thin ">active</p>
+            </button>
         </div>
-
         <div
-            class="flex items-center w-[28%] rounded-lg shadow-sm border border-s-lime-100 py-2 px-2 bg-[#fbfcff]  space-x-2">
+            class="flex items-center w-[28%] rounded-lg shadow-sm border border-s-lime-100 py-2 px-2 bg-[#f4f4f4]  space-x-2">
             <img class="w-[60px]  shadow-sm" [src]="image.smallImage" alt="">
             <img class="w-[180px] rounded-sm shadow-sm" [src]="image.largeImage" alt="">
         </div>
         <div class="flex flex-col w-[55%]">
             <div class="flex items-center my-1 space-x-1 ">
-                <div class="flex items-center space-x-1 text-blue-300 bg-[#766bf316] px-2 py-0.5 rounded-md">
+                <div *ngIf="image.isActive==true" class="flex items-center space-x-1 text-yellow-800  px-2 py-0.5 rounded-md">
                     <i class='bx bx-show'></i>
                     <p class="text-sm  text-gray-800">active</p>
                 </div>
-                <div class="flex items-center space-x-1 text-blue-400  px-2 py-0.5 rounded-md">
+                <div *ngIf="image.isActive==false" class=" space-x-2  flex items-center">
+                    <i class='bx bx-hide'></i>
+                    <p class="text-sm font-thin text-gray-800">hide</p>
+                </div>
+                <div class="flex items-center space-x-1 px-2 py-0.5 rounded-md">
                     <i class='bx bx-area'></i>
                     <p class="text-sm  text-gray-800">Section : HomePage</p>
                 </div>
@@ -46,3 +53,4 @@
         </div>
     </div>
 </div>
+<app-loading *ngIf="preformApi.isLoading$ | async"></app-loading>

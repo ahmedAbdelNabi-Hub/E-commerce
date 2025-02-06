@@ -1,11 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Component, HostListener, Inject, OnInit, OnDestroy, PLATFORM_ID, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ImageSlider } from '../../../../core/models/interfaces/ImageSlider';
+import { AfterViewInit, Component, HostListener, Inject, OnInit, OnDestroy, PLATFORM_ID, ChangeDetectionStrategy, ChangeDetectorRef, signal } from '@angular/core';
+import { Iadvertisement } from '../../../../core/models/interfaces/ImageSlider';
 import { HoverService } from '../../../../core/services/hover.service';
-import { ImageSliderService } from '../../../../core/services/imageSlider.service';
 import { Observable, of, Subscription } from 'rxjs';
 import { catchError, tap, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AdvertisementService } from '../../../../core/services/advertisement.service';
 
 @Component({
   selector: 'app-advertisement-carousel',
@@ -24,12 +24,12 @@ export class AdvertisementCarouselComponent implements AfterViewInit, OnInit, On
   imageMovingTime: number = 5000;
   isSmallScreen: boolean = false;
 
-  imageSlider: ImageSlider[] = [];
+  imageSlider : Iadvertisement[]= []; 
   private hoverSubscription!: Subscription;
   private destroy$ = new Subject<void>();
 
   constructor(
-    private imageSliderService: ImageSliderService,
+    private advertisementService: AdvertisementService,
     @Inject(PLATFORM_ID) platformId: object,
     private hoverService: HoverService,
     private _ChangeDetectorRef: ChangeDetectorRef
@@ -40,7 +40,7 @@ export class AdvertisementCarouselComponent implements AfterViewInit, OnInit, On
 
   ngOnInit(): void {
     
-    this.imageSliderService.getImageSlider().pipe(
+    this.advertisementService.getActiveAdvertisements().pipe(
       tap(response => {
         this.imageSlider = response;
         if (this.imageSlider.length > 0) {
@@ -128,11 +128,11 @@ export class AdvertisementCarouselComponent implements AfterViewInit, OnInit, On
     this.isSmallScreen = this.isBrowser && window.innerWidth < 605;
   }
 
-  getImage(image: ImageSlider): string {
+  getImage(image: Iadvertisement): string {
     return this.isSmallScreen ? image.smallImage : image.largeImage;
   }
 
-  trackByFn(index: number, item: ImageSlider): number {
+  trackByFn(index: number, item: Iadvertisement): number {
     return item.id;
   }
   ngOnDestroy(): void {
