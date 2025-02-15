@@ -10,11 +10,10 @@ namespace Ecommerce.core.Repositories
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {
-      
         Task<IReadOnlyList<T>> GetAllWithSpecAsync(ISpecifications<T> Spec);
-        
         Task<IReadOnlyList<T>> GetAllWithTrackingAsync(ISpecifications<T> Spec);
-
+        Task<IReadOnlyList<T>> GetAllAsync();
+        Task<T> GetByIdAsync(int id);
         Task<T> GetByIdSpecAsync(ISpecifications<T> Spec);
         Task AddAsync(T entity);
         Task  UpdateAsync(T entity);
