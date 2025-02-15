@@ -13,7 +13,8 @@ import { LoginRoutingModule } from './login-routing.module';
     ReactiveFormsModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    
   ],
   providers: [
     {

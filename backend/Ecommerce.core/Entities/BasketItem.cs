@@ -17,6 +17,7 @@ namespace Ecommerce.Core.Entities
         public decimal? OfferPrice { get; set; }
         public string ImageUrl { get; set; }
         public int UnitOfStock { get; set; }
+        public int DeliveryTimeInDays { get; set; }
         public decimal SubTotal => (decimal)(OfferPrice > 0 ? OfferPrice : Price) * Quantity;
     }
 

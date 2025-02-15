@@ -1,15 +1,17 @@
 <main class="w-full h-screen">
+    
     <div class="flex-1 flex-col items-center justify-center h-screen mt-20  md:mt-10">
-        <div class=" w-full md:w-[80%] lg:w-[45%] mt-7 px-2 md:px-28 flex items-center justify-center  bg-white  container mx-auto">
+        <div
+            class=" w-full md:w-[80%] lg:w-[45%] mt-7 px-2 md:px-28 flex items-center justify-center  bg-white  container mx-auto">
             <div class="w-full px-2">
                 <div class="p-4 sm:p-7">
                     <div class="relative text-center flex items-center justify-center space-x-2">
                         <a routerLink="" class=" flex px-3 py-3  items-center flex-row">
                             <img class="w-[150px]  h-9 " src="../../../../assets/logo-2-removebg-preview.png" />
-                        </a>                      
+                        </a>
                     </div>
                     <p class="mb-4 py-2 text-center text-2xl font-bold text-[#150922]">Sign In To Your Account.</p>
-            
+
                     <div class="mt-5">
                         <!-- Form -->
                         <form>
@@ -19,7 +21,8 @@
                                     <label for="email" class="block text-sm mb-2">Email Address</label>
                                     <div class="relative">
                                         <i class='text-gray-600  bx bx-envelope absolute top-3.5 left-2'></i>
-                                        <input placeholder="Enter your Email Address" type="email" id="email" name="email"
+                                        <input placeholder="Enter your Email Address" type="email" id="email"
+                                            name="email"
                                             class="py-3 px-8 block border w-full border-gray-200 rounded-lg text-sm outline-none"
                                             required aria-describedby="email-error">
                                         <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
@@ -39,52 +42,48 @@
                                 <!-- Form Group -->
                                 <div>
                                     <div class="flex justify-between items-center">
-                                      <label for="password" class="block text-sm mb-2">Password</label>
+                                        <label for="password" class="block text-sm mb-2">Password</label>
                                     </div>
                                     <div class="relative">
-                                      <i class="text-gray-600 bx bx-lock-alt absolute top-3.5 left-2"></i>
-                                  
-                                      <!-- Input for Password -->
-                                      <input
-                                        [type]="showPassword ? 'text' : 'password'" 
-                                        placeholder="Enter your password"
-                                        class="py-3 px-8 block border w-full border-gray-200 rounded-lg text-sm outline-none"
-                                        required
-                                        aria-describedby="password-error"
-                                      />
-                                  
-                                      <!-- Toggle Password Visibility Icon -->
-                                      <button
-                                        type="button"
-                                        class="absolute top-3.5 right-2 text-gray-600 focus:outline-none"
-                                        (click)="togglePasswordVisibility()"
-                                      >
-                                        <i [class]="showPassword ? 'bx bx-show' : 'bx bx-hide'"></i>
-                                      </button>
+                                        <i class="text-gray-600 bx bx-lock-alt absolute top-3.5 left-2"></i>
+
+                                        <!-- Input for Password -->
+                                        <input [type]="showPassword ? 'text' : 'password'"
+                                            placeholder="Enter your password"
+                                            class="py-3 px-8 block border w-full border-gray-200 rounded-lg text-sm outline-none"
+                                            required aria-describedby="password-error" />
+
+                                        <!-- Toggle Password Visibility Icon -->
+                                        <button type="button"
+                                            class="absolute top-3.5 right-2 text-gray-600 focus:outline-none"
+                                            (click)="togglePasswordVisibility()">
+                                            <i [class]="showPassword ? 'bx bx-show' : 'bx bx-hide'"></i>
+                                        </button>
                                     </div>
-                                  
-                                    <a
-                                      class="inline-flex items-end justify-end w-full gap-x-1 text-sm text-[#2966eb] decoration-2 hover:underline focus:outline-none focus:underline font-medium"
-                                      href="../examples/html/recover-account.html"
-                                      >Forgot password?</a
-                                    >
-                                    <p class="hidden text-xs text-red-600 mt-2" id="password-error">8+ characters required</p>
-                                  </div>
-                                  
+
+                                    <a class="inline-flex items-end justify-end w-full gap-x-1 text-sm text-[#2966eb] decoration-2 hover:underline focus:outline-none focus:underline font-medium"
+                                        href="../examples/html/recover-account.html">Forgot password?</a>
+                                    <p class="hidden text-xs text-red-600 mt-2" id="password-error">8+ characters
+                                        required</p>
+                                </div>
+
                                 <!-- End Form Group -->
 
-                            
+
 
                                 <button (click)="true" type="button"
                                     class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#2966eb] uppercase text-white ">Sign
                                     in
                                 </button>
-                                <div class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6">Or</div>
-                                <asl-google-signin-button shape="square"  theme="outline"  logo_alignment="center" size="large" type='standard' size='large'></asl-google-signin-button>
+                                <div
+                                    class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6">
+                                    Or</div>
+                                <asl-google-signin-button shape="square" theme="outline" logo_alignment="center"
+                                    size="large" type='standard' size='large'></asl-google-signin-button>
                                 <p class="mt-2 text-sm text-gray-600 text-center">
                                     Don't have an account yet?
-                                    <a routerLink="/auth/create/account" class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium"
-                                       >
+                                    <a routerLink="/auth/create/account"
+                                        class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium">
                                         Sign up here
                                     </a>
                                 </p>

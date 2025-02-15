@@ -14,6 +14,8 @@ namespace EcommerceContract.Helpers.profile
     {
         public MappingProfiles()
         {
+            CreateMap<Address,AddressDto>().ReverseMap();   
+
             // Navbar Mapping
             CreateMap<Navbar, NavbarDto>()
                 .ForMember(dest => dest.Menus, opt => opt.MapFrom(src => src.Menus))
@@ -39,16 +41,19 @@ namespace EcommerceContract.Helpers.profile
             CreateMap<Product, ProductReadDto>()
                 .ForMember(dest => dest.OfferEndDate, opt => opt.MapFrom(src => src.OfferEndDate))
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
+                .ForMember(dest => dest.DeliveryTimeInDays, opt => opt.MapFrom(src => src.DeliveryTimeInDays))
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom<PictureProductImageResolver>());
                 
 
             CreateMap<ProductReadDto, Product>()
                 .ForMember(dest => dest.OfferEndDate, opt => opt.MapFrom(src => src.OfferEndDate))
+                 .ForMember(dest => dest.DeliveryTimeInDays, opt => opt.MapFrom(src => src.DeliveryTimeInDays))
                 .ForMember(dest => dest.ImageUrl, opt => opt.Ignore());
 
-            CreateMap<ProductCreateDto, Product>().ForMember(des=>des.ProductStatus,opt=>opt.Ignore());  
+            CreateMap<ProductCreateDto, Product>()
+                 .ForMember(dest => dest.DeliveryTimeInDays, opt => opt.MapFrom(src => src.DeliveryTimeInDays))
+                .ForMember(des=>des.ProductStatus,opt=>opt.Ignore());  
 
-            CreateMap<ProductCreateDto, Product>();
 
             // Product Status Mapping
             CreateMap<ProductStatus, ProductStatusDTO>()

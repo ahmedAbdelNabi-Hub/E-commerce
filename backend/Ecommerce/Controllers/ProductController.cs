@@ -110,7 +110,7 @@ namespace Ecommerce.Controllers
             if (product is null)
                 return NotFound(new BaseApiResponse(404, "products not found."));
 
-                var MappingProducts = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductReadDto>>(product);
+                 var MappingProducts = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductReadDto>>(product);
                  var countSpec = new ProductWithSpecifcations().CountProductBeforePagination(Params);
                  var countProductBeforPagination = await productRepo.CountWithSpec(countSpec); 
                 return Ok(new PaginationDto<ProductReadDto>() { PageIndex = Params.PageIndex , PageSize = Params.PageSize, data=MappingProducts ,Count= countProductBeforPagination });
@@ -169,10 +169,10 @@ namespace Ecommerce.Controllers
             existingProduct.Discount = product.Discount;
             existingProduct.StockQuantity = product.StockQuantity;
             existingProduct.Weight = product.Weight;
-            existingProduct.Dimensions = product.Dimensions;   
+            existingProduct.Dimensions = product.Dimensions!;   
             existingProduct.OfferStartDate = product.OfferStartDate;
             existingProduct.OfferEndDate = product.OfferEndDate;
-            existingProduct.DeliveryTimeInDays = product.deliveryTimeInDays;
+            existingProduct.DeliveryTimeInDays = product.DeliveryTimeInDays;
 
             // Update the ProductAttributes
             foreach (var attribute in product.ProductAttributes!)

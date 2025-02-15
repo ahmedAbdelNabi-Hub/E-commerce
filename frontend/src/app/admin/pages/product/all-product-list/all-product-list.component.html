@@ -28,7 +28,7 @@
 
 <!-- error -->
 <div class="grid grid-cols-1 gap-2  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-   <div [@AnimationOpcity] *ngFor="let product of productsWithPagination()?.data;let index=index" class="items-center border  rounded-md shadow-sm flex ">        
+   <div [@fadeInOut] *ngFor="let product of productsWithPagination()?.data;let index=index" class="items-center border  rounded-md shadow-sm flex ">        
    <div class="flex flex-col pb-4 relative">
     <div class="flex items-center ">
         <div class="basis-[35%] flex items-center justify-center">
@@ -37,7 +37,7 @@
             [src]="product.imageUrl" alt="" loading="lazy">
         </div>
 
-    <div class="flex flex-col basis-[70%] py-6">
+    <div class="flex flex-col basis-[70%] py-2">
         <div class="flex flex-col  line-clamp-2">
           <p class="text-[17px] line-clamp-1 font-semibold text-gray-700">{{product.name}}</p>
           <p class="text-[12px] text-gray-600 line-clamp-1 font-thin">{{product.description}}</p>
@@ -78,12 +78,12 @@
                 <ul
                     class=" bg-[#fff] border rounded-lg flex flex-col justify-center py-1  text-black px-5 absolute">
                     <li (click)="delete(product.id)" class="cursor-pointer text-[13px]"><i
-                            class=" text-xl bx bx-trash text-green-600"></i></li>
+                            class=" text-xl bx bx-trash "></i></li>
                     <li 
                     [queryParams]="{ update: 'true',sku:product.id}"
                     routerLink="/admin/product"
                     class="cursor-pointer text-[13px]"><i
-                            class="text-xl text-green-600 bx bx-edit"></i>
+                            class="text-xl bx bx-edit"></i>
                     </li>
                 </ul>
             </div>
@@ -91,15 +91,13 @@
 
         <div class=" whitespace-nowrap">
             <div class=" flex items-center justify-center">
-                <button (click)="ShowstatusPopup(product.id) " class=""><i
-                        class='text-xltext-gray-700 text-xl bx bx-list-plus'></i></button>
+                <button (click)="ShowstatusPopup(product.id) " class="border rounded-full px-1.5 py-0.5"><i
+                    class='text-xltext-gray-700 text-xl bx bx-list-plus'></i></button>
             </div>
         </div>
     </div>
-
     </div>
-   </div> 
-           
+   </div>      
 </div>
 </div>
 

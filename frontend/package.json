@@ -29,7 +29,6 @@
     "ng-apexcharts": "^1.12.0",
     "ngx-owl-carousel-o": "^18.0.0",
     "owl.carousel": "^2.3.4",
-    "primeng": "^17.18.11",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "uuid": "^10.0.0",

@@ -34,7 +34,6 @@ namespace Ecommerce.Contracts.DTOs.Authentication
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Url(ErrorMessage ="The link must be Url")]
-        public string Url { get; set; } 
+
     }
 }

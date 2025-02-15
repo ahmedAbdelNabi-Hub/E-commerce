@@ -11,11 +11,11 @@ export interface IProduct {
   price: number;
   discount: number;
   stockQuantity: number;
-  weight :number;
-  dimensions :string
+  weight: number;
+  dimensions: string
   imageUrl: string;
   linkImage: string;
-  deliveryTimeInDays : string;
+  deliveryTimeInDays: number;
   offerPrice: number | null;
   productAttributes: IProductAttribute[]
   offerStartDate: string | null;

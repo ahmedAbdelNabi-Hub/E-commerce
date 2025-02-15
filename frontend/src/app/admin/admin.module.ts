@@ -9,7 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 registerLocaleData(localeAr, 'ar'); // Register Arabic locale
 import { NgApexchartsModule } from "ng-apexcharts";
-import { AccordionModule } from 'primeng/accordion';
 import { AllProductListComponent } from './pages/product/all-product-list/all-product-list.component';
 import { AddProductComponent } from './pages/product/add-product/add-product.component';
 import { ProductFormComponent } from './pages/product/add-product/components/product-form/product-form.component';
@@ -48,7 +47,6 @@ import { AdvertisementComponent } from './pages/advertisement/advertisement.comp
   ],
   imports: [
     CommonModule,
-    AccordionModule,
     NgApexchartsModule,
     AdminRoutingModule,
     FormsModule,

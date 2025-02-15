@@ -24,10 +24,10 @@ export class TagNavigationComponent implements OnInit, OnDestroy {
   productService = inject(ProductService);
   productParams = signal<IProductSpecParams | null>(null);
   containtTag = signal<IProduct[] | []>([]);
-  activeIndex : number=0;
+  activeIndex: number = 0;
   constructor() {
     this.productParams.set({
-      CategoryName: 'refrigerator',
+      CategoryName: 'washingmachines',
       PageIndex: 1,
       PageSize: 4,
       StatusId: 0
@@ -54,10 +54,10 @@ export class TagNavigationComponent implements OnInit, OnDestroy {
 
     ).subscribe();
   }
- 
+
   getNextTag(tagIndex: number): void {
     if (this.activeIndex != tagIndex) {
-      this.activeIndex=tagIndex;
+      this.activeIndex = tagIndex;
       this.showAnimation = false; // Remove current content
       setTimeout(() => {
         const items = this.groupProductByNameData();

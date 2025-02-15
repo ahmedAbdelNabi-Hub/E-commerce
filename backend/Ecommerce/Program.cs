@@ -1,4 +1,4 @@
-using Ecommerce.core;
+﻿using Ecommerce.core;
 using Ecommerce.core.Repositories;
 using EcommerceContract.Extensions;
 using EcommerceContract.Helpers.profile;
@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Ecommerce.Extensions;
 using Ecommerce.Repository.Data.DataSeed;
+using System.Text.Json.Serialization;
 
 namespace EcommerceContract
 {
@@ -20,51 +21,64 @@ namespace EcommerceContract
     {
         public static async Task Main(string[] args)
         {
-
             #region   Add services to the container.
 
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddControllers();
-            
-               
+            builder.Services.AddControllers()
+                            .AddJsonOptions(options =>
+                            {
+                                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                            });
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddApplicationService(builder.Configuration);
             builder.Services.AddCorsService();
             builder.Services.AddIdentityServices();
-            builder.Services.JwtService(builder.Configuration); 
+            builder.Services.JwtService(builder.Configuration);
             builder.Services.AddRedisSerivce(builder.Configuration);
-
-
 
             var app = builder.Build();
             #endregion
 
             #region Update Database
 
-            var scope = app.Services.CreateScope();
-            var services = scope.ServiceProvider;
-            var Dbcontext = services.GetRequiredService<EcommerceDbContext>();
-            await Dbcontext.Database.MigrateAsync();
-            await RoleSeeder.SeedRoles(services);
-            await StatusSeeder.SeedStatuses(services);
-            scope.Dispose();
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var dbContext = services.GetRequiredService<EcommerceDbContext>();
+
+                try
+                {
+                    await dbContext.Database.MigrateAsync();
+                    await RoleSeeder.SeedRoles(services);
+                    await StatusSeeder.SeedStatuses(services);
+                    await SeedData.SeedDeliveryMethods(services); 
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "❌ An error occurred while seeding the database.");
+                }
+            }
             #endregion
 
             #region Configure the HTTP request pipeline.
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
             app.UseMiddleware<ExceptionMiddleware>();
-            app.UseCors("AllowAll");  
-            
+            app.UseCors("AllowAll");
+
             var provider = new FileExtensionContentTypeProvider();
-            provider.Mappings[".avif"] = "image/avif"; // Add support for .avif files
+            provider.Mappings[".avif"] = "image/avif";
             app.UseStaticFiles(new StaticFileOptions
             {
-                ContentTypeProvider = provider // This ensures .avif files are served correctly
+                ContentTypeProvider = provider
             });
 
             app.UseHttpsRedirection();
@@ -74,7 +88,6 @@ namespace EcommerceContract
 
             app.Run();
             #endregion
-
         }
     }
 }

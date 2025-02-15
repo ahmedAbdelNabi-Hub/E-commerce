@@ -22,7 +22,7 @@ namespace Ecommerce.Contracts.DTOs.product
         public decimal Price { get; set; }
         public decimal Discount { get; set; } = 0;
         public decimal Weight { get; set; }
-        public int deliveryTimeInDays { get; set; }
+        public int DeliveryTimeInDays { get; set; }
         public int StockQuantity { get; set; } = 0;
         public string? ImageUrl { get; set; }
         public string? LinkImage { get; set; }

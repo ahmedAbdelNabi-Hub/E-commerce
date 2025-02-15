@@ -1,6 +1,7 @@
 ﻿using Ecommerce.core.Entities;
 using Ecommerce.core.Entities.identity;
 using Ecommerce.Core.Entities;
+using Ecommerce.Core.Entities.order;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,7 +23,11 @@ namespace Ecommerce.Repository.Data
         public DbSet<Advertisement> Advertisement { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
-        public DbSet<ProductAttributes> ProductAttributes { get; set; } 
+        public DbSet<ProductAttributes> ProductAttributes { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
         public EcommerceDbContext(DbContextOptions<EcommerceDbContext> options):base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,7 +39,7 @@ namespace Ecommerce.Repository.Data
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
             configurationBuilder.Properties<DateTime>().HaveColumnType("DateTime");
-            configurationBuilder.Properties<decimal>().HaveColumnType("decimal(8,2)");
+            configurationBuilder.Properties<decimal>().HaveColumnType("decimal(18,2)");
         }
     }
 }

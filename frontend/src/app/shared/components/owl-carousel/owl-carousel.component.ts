@@ -52,7 +52,7 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
       400: { items: 2.3 },
       500: { items: 2.5 },
       740: { items: 3 },
-      940: { items: 4 },
+      940: { items: 5 },
     },
     nav: false,
   };

@@ -1,5 +1,11 @@
-<app-address-from></app-address-from>
-<div class="px-2  ">
-    <h4 class="text-gray-600 font-thin text-xl">View All Address</h4>
-     
+<app-address-from (address)="putAddressInaddresses($event)"></app-address-from>
+<div class="px-2 ">
+    <h4 class="text-gray-600 font-thin text-xl mb-4 px-4 w-44 border border-gray-600 border-dashed py-2">View All Address</h4>
+    <!-- Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div class="col-span-1 md:col-span-1 lg:col-span-1" *ngFor="let address of addresses()">
+            <app-address-card [data]="address"></app-address-card>
+
+        </div>
+    </div>
 </div>

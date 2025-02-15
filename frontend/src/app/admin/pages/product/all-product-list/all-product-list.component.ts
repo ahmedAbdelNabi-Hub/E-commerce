@@ -12,12 +12,13 @@ import { StatusService } from '../../../../core/services/Status/status.service';
 import { IProduct } from '../../../../core/models/interfaces/IProduct';
 import { Router } from '@angular/router';
 import { AnimationOpcity } from '../../../../shared/animations/RouteAnimation';
+import { fadeInOut } from '../../../../shared/animations/fadeInOut';
 
 @Component({
   selector: 'app-all-product-list',
   templateUrl: './all-product-list.component.html',
   styleUrls: ['./all-product-list.component.css'],
-  animations: [AnimationOpcity],
+  animations: [fadeInOut],
 })
 export class AllProductListComponent implements OnInit, OnDestroy {
   private productService = inject(ProductService);

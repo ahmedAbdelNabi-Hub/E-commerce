@@ -19,7 +19,6 @@ import { CountdownTimerComponent } from './components/countdown-timer/countdown-
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 import { DashboardCardComponent } from './components/card/dashboard-card/dashboard-card.component';
 import { AdminHeaderComponent } from './components/header/admin-header/admin-header.component';
-import { PanelMenuModule } from 'primeng/panelmenu';
 import { ButtonWithIconComponent } from './components/buttons/button-with-icon/button-with-icon.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MessageHandlerComponent } from './components/message-handler/message-handler.component';
@@ -58,7 +57,6 @@ import { CustomCarouselComponent } from './components/custom-carousel/custom-car
   ],
   imports: [
     CommonModule,
-    PanelMenuModule,
     RouterModule, CarouselModule, FormsModule
   ],
   exports: [MessageHandlerComponent,

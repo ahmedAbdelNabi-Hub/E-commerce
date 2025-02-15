@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
   font-family: 'Samsung Sharp Sans Medium';
   font-style: normal;
@@ -45,4 +46,31 @@
 body {
   margin: 0;
   box-sizing: border-box;
+}
+
+/* For all scrollbars */
+::-webkit-scrollbar {
+  width: 9px; /* Width of vertical scrollbar */
+  height: 8px; /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Track color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(172, 172, 172);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(28, 28, 28);
+}
+
+/* Optional Scrollbar for specific containers */
+.scrollable-container {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 5px;
 }

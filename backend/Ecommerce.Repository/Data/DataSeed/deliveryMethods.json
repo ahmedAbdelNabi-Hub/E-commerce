@@ -1,0 +1,32 @@
+﻿[
+  {
+    "Id": 1,
+    "ShortName": "DHL",
+    "Description": "DHL Fast Delivery (1-2 days)",
+    "Cost": 60.00
+  },
+  {
+    "Id": 2,
+    "ShortName": "Aramex",
+    "Description": "Aramex Standard Shipping (3-5 days)",
+    "Cost": 40.00
+  },
+  {
+    "Id": 3,
+    "ShortName": "EgyptPost",
+    "Description": "Egypt Post (5-7 days)",
+    "Cost": 20.00
+  },
+  {
+    "Id": 4,
+    "ShortName": "Bosta",
+    "Description": "Bosta Express (Same-day delivery in Cairo)",
+    "Cost": 20.00
+  },
+  {
+    "Id": 5,
+    "ShortName": "Free Shipping",
+    "Description": "Free Shipping (Available for Cairo & Giza)",
+    "Cost": 0.00
+  }
+]

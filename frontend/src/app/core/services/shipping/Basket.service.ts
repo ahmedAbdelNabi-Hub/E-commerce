@@ -115,7 +115,8 @@ export class BasketService {
             offerPrice: product.offerPrice ?? null,
             imageUrl: product.imageUrl,
             unitOfStock: product.stockQuantity,
-            subTotal: applicablePrice * quantity
+            subTotal: applicablePrice * quantity,
+            deliveryTimeInDays: product.deliveryTimeInDays
         };
     }
 }

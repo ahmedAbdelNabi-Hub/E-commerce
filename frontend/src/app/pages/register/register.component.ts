@@ -11,6 +11,8 @@ export class RegisterComponent implements OnInit {
   animationState: string = '';
   _registerService = inject(RegistrationService);
   contentRightForm = signal<string[]>([]);
+
+
   ngOnInit(): void {
     this.onActivate();
     this._registerService.setDefContent();
@@ -20,9 +22,11 @@ export class RegisterComponent implements OnInit {
   onActivate() {
     this.animationState = 'activated';
   }
+
   getContent(): void {
     this._registerService.containtIsChange$.subscribe(data => {
       this.contentRightForm.set(data);
     })
   }
+  
 }

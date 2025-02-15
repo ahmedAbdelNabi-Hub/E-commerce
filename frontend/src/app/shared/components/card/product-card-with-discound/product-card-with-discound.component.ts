@@ -33,7 +33,6 @@ export class ProductCardWithDiscoundComponent implements OnDestroy {
     this.perform.load(addItem$.pipe(delay(1000), tap(data => {
       if (data) {
         this.messageService.showSuccess("Item added! Continue shopping or proceed to checkout");
-
       }
     })));
   }

@@ -14,19 +14,19 @@ import { IPaginationDto } from "../../core/models/interfaces/IPaginationDto";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
-  initalloadingFlash :boolean = false;
+  initalloadingFlash = signal<boolean>(false);
   basketItems = signal<IBasket | null>(null);
-   productService = inject(ProductService);  
+  productService = inject(ProductService);
   private destroy$ = new Subject<void>();
   private _basketService = inject(BasketService);
   basketId = localStorage.getItem('basket_id');
-  lastViewProduct = signal<IPaginationDto | null>(null);  
+  lastViewProduct = signal<IPaginationDto | null>(null);
   loadingState$: Observable<boolean> | undefined;
   private router = inject(Router);
 
   ngOnInit(): void {
     this.getBasket();
-    this.getResentlyProducts()  ;
+    this.getResentlyProducts();
   }
 
   getBasket(): void {
@@ -35,11 +35,11 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
         .pipe(
           tap(response => {
             this.basketItems.set(response);
-            if(this.basketItems()?.basketItems.length === 0){ 
-              this.initalloadingFlash = false;  
+            if (this.basketItems()?.basketItems.length === 0) {
+              this.initalloadingFlash.set(false);
             }
-            else{
-              this.initalloadingFlash = true; 
+            else {
+              this.initalloadingFlash.set(true);
             }
           }),
           catchError(error => {
@@ -59,9 +59,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     })
   }
   getResentlyProducts() {
-    this.productService.GetRecentlyProducts().subscribe(response=>{
-       this.lastViewProduct.set(response);  
-    });  
+    this.productService.GetRecentlyProducts().subscribe(response => {
+      this.lastViewProduct.set(response);
+    });
   }
 
   ngOnDestroy(): void {

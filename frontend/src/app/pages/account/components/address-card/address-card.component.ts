@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
+import { IAddress } from '../../../../core/models/interfaces/IAddress';
 
 @Component({
   selector: 'app-address-card',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './address-card.component.css'
 })
 export class AddressCardComponent {
-
+  @Input("data") data !: IAddress;
+  
 }
