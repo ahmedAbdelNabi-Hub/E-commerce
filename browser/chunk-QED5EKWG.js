@@ -1,0 +1,1 @@
+function l(){return r=>{let t=r.value;return t?/^[a-zA-Z0-9\s,]+$/.test(t)?null:{alphanumeric:" must be alphanumeric with commas allowed"}:null}}function e(){return r=>{let t=r.value;if(!t)return null;let n=/^[a-zA-Z\s]+$/.test(t),a=t.length>=2;return!n||!a?{lettersAndSpaces:" must contain only letters and be at least 2 characters long"}:null}}export{l as a,e as b};
