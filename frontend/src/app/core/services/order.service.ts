@@ -32,23 +32,23 @@ export class OrderService {
         return this._checkoutPrice.value;
     }
 
-    updateOrderStatus(orderId: number, status: string): Observable<IBaseApiResponse> {   
+    updateOrderStatus(orderId: number, status: string): Observable<IBaseApiResponse> {
         return this._http.patch<IBaseApiResponse>(`${API_URLS.Localhost}/api/orders/${orderId}/status/${status}`, {});
     }
-    
-    createOrder(params:IOrderParams): Observable<IOrderResponse> {
+
+    createOrder(params: IOrderParams): Observable<IOrderResponse> {
 
         return this._http.post<IOrderResponse>(`${API_URLS.Localhost}/api/order/create`, this.getOrderParams())
     }
-    getOrdersByEmailUser(email: string): Observable<IOrder[]> {
-        return this._http.get<IOrder[]>(`${API_URLS.Localhost}/api/orders/${email}`);
+    getOrdersByEmailUser(): Observable<IOrder[]> {
+        return this._http.get<IOrder[]>(`${API_URLS.Localhost}/api/orders/by-email`);
     }
 
     getOrderParams(): IOrderParams | null {
         return this._orderParams.value;
     }
 
-    getOrdersByStatus(status : string , pageIndex : string , pageSize : string):Observable<IPaginationDto>{
+    getOrdersByStatus(status: string, pageIndex: string, pageSize: string): Observable<IPaginationDto> {
         return this._http.get<IPaginationDto>(`${API_URLS.Localhost}/api/orders?status=${status}&pageIndex=${pageIndex}&pageSize=${pageSize}`)
     }
     simulateDelay(): Observable<void> {

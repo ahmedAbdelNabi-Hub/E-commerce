@@ -3,9 +3,9 @@ import { moveLeftToRight } from '../../../../shared/animations/RouteAnimation';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { getErrorMessage } from '../../../../core/utils/form-error-messages';
-import { AuthService } from '../../../../core/services/Auth.service';
 import { tap, takeUntil, catchError, finalize } from 'rxjs/operators';
 import { Subject, of } from 'rxjs';
+import { AuthService } from '../../../../core/services/registration.service';
 
 @Component({
   selector: 'app-email-and-password',
@@ -20,14 +20,12 @@ export class EmailAndPasswordComponent implements OnInit, OnDestroy {
   private _activatedRoute = inject(ActivatedRoute);
   private registrationService = inject(AuthService);
 
-  // Signals for reactive state management
   isLoading = signal<boolean>(false);
   isSubmitting = signal<boolean>(false);
   showPassword = signal<boolean>(false);
   showConfirmPassword = signal<boolean>(false);
   submitAttempted = signal<boolean>(false);
 
-  // Subject for managing subscriptions
   private destroy$ = new Subject<void>();
 
   ngOnInit(): void {
@@ -204,7 +202,7 @@ export class EmailAndPasswordComponent implements OnInit, OnDestroy {
     }
 
     if (this.isSubmitting()) {
-      return; 
+      return;
     }
 
     this.processFormSubmission();
@@ -226,7 +224,6 @@ export class EmailAndPasswordComponent implements OnInit, OnDestroy {
         return;
       }
 
-      // Process registration
       this.registrationService.simulateDelay()
         .pipe(
           takeUntil(this.destroy$),
@@ -248,18 +245,15 @@ export class EmailAndPasswordComponent implements OnInit, OnDestroy {
 
   private processRegistration(): void {
     const currentToken = this._activatedRoute.snapshot.queryParamMap.get('flv');
-
     this.registrationService.register()
       .pipe(
         takeUntil(this.destroy$),
         tap(response => {
-          if (response?.token) {
-            
-              localStorage.setItem('token', response.token);
-              this.router.navigate(['/auth/create/account/confirm-email'], {
-                queryParams: { flv: currentToken },
-                queryParamsHandling:'merge',
-              });
+          if (response?.statusCode) {
+            this.router.navigate(['/auth/create/account/confirm-email'], {
+              queryParams: { flv: currentToken },
+              queryParamsHandling: 'merge',
+            });
           }
         }),
         catchError(error => {
@@ -272,7 +266,7 @@ export class EmailAndPasswordComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe(response => {
-        if (response?.token) {
+        if (response?.statusCode) {
           this.navigateToConfirmEmail(currentToken);
         }
       });

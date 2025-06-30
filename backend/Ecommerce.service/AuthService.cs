@@ -230,6 +230,7 @@ namespace Ecommerce.service
                 };
 
                 creationResult = await _userManager.CreateAsync(newUser, registerDto.Password);
+                await _userManager.AddToRoleAsync(newUser,"User");
             }
             else if (payload != null)
             {
@@ -246,6 +247,8 @@ namespace Ecommerce.service
                     PhoneNumber = null
                 };
                 creationResult = await _userManager.CreateAsync(newUser);
+                await _userManager.AddToRoleAsync(newUser, "User");
+
             }
 
             return (creationResult, newUser!);

@@ -12,6 +12,6 @@ export class DashboardCardComponent {
   @Input("percentageChange") percentageChange: number = 0;       
   @Input("isPositiveChange") isPositiveChange: boolean = true; 
   @Input("icon") icon: string = ''; 
-  @Input("isLoading") isLoading :boolean=true; 
+  @Input("isLoading") isLoading :boolean=false; 
   
 }

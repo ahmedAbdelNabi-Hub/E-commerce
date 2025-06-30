@@ -4,81 +4,180 @@ import {
   ApexChart,
   ChartComponent,
   ApexDataLabels,
-  ApexPlotOptions,
-  ApexYAxis,
-  ApexLegend,
+
   ApexStroke,
   ApexXAxis,
   ApexFill,
-  ApexTooltip
+  ApexTooltip,
+  ApexTheme,
+  ApexAnnotations,
+  ApexMarkers,
+  ApexTitleSubtitle,
+  ApexYAxis
 } from "ng-apexcharts";
-import { ChartData } from "../../../../../../core/models/interfaces/IChartData";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-  tooltip: ApexTooltip;
   dataLabels: ApexDataLabels;
+  markers: ApexMarkers;
+  title: ApexTitleSubtitle;
   fill: ApexFill;
-  colors?: string[];
+  yaxis: ApexYAxis;
+  xaxis: ApexXAxis;
+  tooltip: ApexTooltip;
+  stroke: ApexStroke;
+  annotations: ApexAnnotations;
 };
+export const data = [
+  [new Date("01 Mar 2012").getTime(), 30000],
+  [new Date("02 Mar 2012").getTime(), 30005],
+  [new Date("03 Mar 2012").getTime(), 3200],
+  [new Date("04 Mar 2012").getTime(), 41000],
+  [new Date("05 Mar 2012").getTime(), 49000],
+  [new Date("06 Mar 2012").getTime(), 55000],
+  [new Date("07 Mar 2012").getTime(), 60000],
+  [new Date("08 Mar 2012").getTime(), 72000],
+  [new Date("09 Mar 2012").getTime(), 65000],
+  [new Date("10 Mar 2012").getTime(), 5800],
+  [new Date("11 Mar 2012").getTime(), 62000],
+  [new Date("12 Mar 2012").getTime(), 70000],
+  [new Date("13 Mar 2012").getTime(), 68000],
+  [new Date("14 Mar 2012").getTime(), 80000],
+  [new Date("15 Mar 2012").getTime(), 7400],
+  [new Date("16 Mar 2012").getTime(), 8500],
+  [new Date("17 Mar 2012").getTime(), 9000],
+  [new Date("18 Mar 2012").getTime(), 95000],
+  [new Date("19 Mar 2012").getTime(), 1000],
+  [new Date("20 Mar 2012").getTime(), 10500],
+  [new Date("21 Mar 2012").getTime(), 980],
+  [new Date("22 Mar 2012").getTime(), 10200],
+  [new Date("23 Mar 2012").getTime(), 110000],
+  [new Date("24 Mar 2012").getTime(), 108000],
+  [new Date("25 Mar 2012").getTime(), 11500],
+  [new Date("26 Mar 2012").getTime(), 12000],
+  [new Date("27 Mar 2012").getTime(), 12500],
+  [new Date("28 Mar 2012").getTime(), 1300],
+  [new Date("29 Mar 2012").getTime(), 12800],
+  [new Date("30 Mar 2012").getTime(), 13500]
+];
+
+
 
 @Component({
   selector: 'app-order-status-chart',
   templateUrl: './order-status-chart.component.html',
   styleUrl: './order-status-chart.component.css'
 })
-export class OrderStatusChartComponent implements OnChanges {
-  @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions: Partial<ChartOptions> = {};
+export class OrderStatusChartComponent {
+  @ViewChild("chart", { static: false }) chart!: ChartComponent;
+  public chartOptions!: Partial<ChartOptions>;
+  public activeOptionButton = "all";
 
-  @Input() chartData: ChartData | null = null;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['chartData'] && this.chartData) {
-      this.prepareChart();
-      console.log(this.chartData);
-    }
+
+  constructor() {
+    this.initChart();
   }
 
-  private prepareChart(): void {
-   
+  initChart(): void {
     this.chartOptions = {
-      series : this.chartData?.orderStatusChart.series,
+      series: [
+        {
+          name: "Visits",
+          data: data
+        }
+      ],
       chart: {
-        height: 210,
         type: "area",
-        zoom: { enabled: false }
+        height: 350,
+        toolbar: {
+          show: true
+        }
       },
-      colors: ['#008FFB', '#00E396', '#FEB019'], // You can adjust as needed
-      dataLabels: { enabled: false },
-      stroke: { curve: "smooth", width: 3 },
+      title: {
+        align: "left",
+        style: {
+          fontSize: "16px",
+          fontWeight: "bold"
+        }
+      },
+      annotations: {
+        yaxis: [
+          {
+            y: 30,
+            borderColor: "#e11d48",
+            label: {
+              text: "Low Traffic",
+              style: {
+                color: "#fff",
+                background: "#e11d48"
+              }
+            }
+          }
+        ],
+        xaxis: [
+          {
+            x: new Date("14 Nov 2012").getTime(),
+            borderColor: "#2563eb",
+            label: {
+              text: "Campaign Launch",
+              style: {
+                color: "#fff",
+                background: "#2563eb"
+              }
+            }
+          }
+        ]
+      },
+      dataLabels: {
+        enabled: false
+      },
+      markers: {
+        size: 3,
+        colors: ["#3b82f6"],
+        strokeColors: "#fff",
+        strokeWidth: 2
+      },
+      stroke: {
+        curve: "smooth",
+        width: 2
+      },
       fill: {
         type: "gradient",
         gradient: {
           shadeIntensity: 1,
-          opacityFrom: 0.3,
-          opacityTo: 0.8,
-          stops: [0, 90, 100]
+          opacityFrom: 0.7,
+          opacityTo: 0.2,
+          stops: [0, 100]
         }
       },
       xaxis: {
-        type: "category",
-        categories: this.chartData?.orderStatusChart.categories,
+        type: "datetime",
+        tickAmount: 6,
+        min: new Date("01 Mar 2012").getTime(),
+        labels: {
+          format: "dd MMM"
+        }
+      },
+      yaxis: {
+        labels: {
+          formatter: (val) => `${val}`,
+          style: {
+            fontSize: "12px",
+            colors: "#666"
+          }
+        }
       },
       tooltip: {
-        shared: true,
-        y: {
-          formatter: (val) => `${val}`,
-          title: {
-            formatter: (seriesName) => `${seriesName}:`
-          }
+        x: {
+          format: "dd MMM yyyy"
         }
       }
     };
   }
+
+  public updateOptions(option: string): void {
+    this.activeOptionButton = option;
+  }
 }
-
-

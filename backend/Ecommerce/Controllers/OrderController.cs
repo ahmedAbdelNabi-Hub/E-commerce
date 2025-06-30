@@ -134,13 +134,14 @@ namespace Ecommerce.Controllers
             return Ok(new BaseApiResponse(200, "Order status updated successfully"));
         }
 
+        [Authorize]
         [HttpGet]
-        [Route("/api/orders/{email}")]
-        public async Task<ActionResult<IReadOnlyList<OrderDTO>>> GetOrdersForSpecificUserAsync(string email)
+        [Route("/api/orders/by-email")]
+        public async Task<ActionResult<IReadOnlyList<OrderDTO>>> GetOrdersForSpecificUserAsync()
         {
 
-         /*   var email = User.FindFirstValue(ClaimTypes.Email);
-            if (email == null) return Unauthorized(new BaseApiResponse(404, "Unauthorized User"));*/
+           var email = User.FindFirstValue(ClaimTypes.Email);
+            if (email == null) return Unauthorized(new BaseApiResponse(404, "Unauthorized User"));
             var order = await _orderService.GetOrdersForSpecificUserAsync(email);
             if (order == null || !order.Any())
                 return NotFound(new BaseApiResponse(404, "No orders found for this user"));
@@ -165,7 +166,7 @@ namespace Ecommerce.Controllers
             var orderSpec = new OrderWithSpecictions(sixMonthsAgo); // Pass List<DateTime>
             var orderItemSpec = new OrderItemsWithSpecictions(); // Your existing implementation
 
-            var chartData = await _orderService.GetDashboardChartData(orderSpec, orderItemSpec);
+            var chartData = await _orderService.GetDashboardCounter(orderSpec, orderItemSpec);
 
             if (chartData == null)
                 return NotFound(new BaseApiResponse(404, "No data found"));

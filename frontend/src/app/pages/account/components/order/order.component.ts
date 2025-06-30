@@ -12,13 +12,13 @@ import { tap } from 'rxjs';
 export class OrderComponent implements OnInit, OnDestroy {
   private _orderService = inject(OrderService);
   private _OrderApi = new Perform<IOrder[]>();
-  orders = signal<IOrder[] | null>(null);
+  orders = signal<IOrder[]>([]);
 
   ngOnInit(): void {
     this.getOrdersByUserEmail();
   }
   getOrdersByUserEmail(): void {
-    this._OrderApi.load(this._orderService.getOrdersByEmailUser("ahmedahmed@mailna.co"));
+    this._OrderApi.load(this._orderService.getOrdersByEmailUser());
     this._OrderApi.data$.pipe(
       tap(response => {
         if (response) {

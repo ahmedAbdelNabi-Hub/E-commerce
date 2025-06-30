@@ -4,6 +4,8 @@ import { BehaviorSubject, delay, Observable, of } from 'rxjs';
 import * as CryptoJS from 'crypto-js'
 import { HttpClient } from '@angular/common/http';
 import { IAuthResponse } from '../models/interfaces/IAuthResponse';
+import { IBaseApiResponse } from '../models/interfaces/IBaseApiResponse';
+import { IUser } from '../models/interfaces/IUser';
 
 @Injectable({
     providedIn: 'root',
@@ -77,15 +79,22 @@ export class AuthService {
         const encryptedUpdateDate = CryptoJS.AES.encrypt(JSON.stringify(listIsContain), this.secretkey).toString();
         localStorage.setItem(this.updatedateKey, encryptedUpdateDate);
     }
-    register(): Observable<IAuthResponse> {
-        return this._http.post<IAuthResponse>('https://localhost:7197/api/Authentication/register', { ...this.getRegisterFormData()[0] });
+    register(): Observable<IBaseApiResponse> {
+        return this._http.post<IBaseApiResponse>('https://localhost:7197/api/Authentication/register', { ...this.getRegisterFormData()[0] });
     }
     confirmEmail(otp: string): Observable<IAuthResponse> {
         return this._http.post<IAuthResponse>('https://localhost:7197/api/Authentication/ConfirmEmail', { email: this.getEmail(), otp: otp });
     }
+    login(email: string, password: string): Observable<IAuthResponse> {
+        return this._http.post<IAuthResponse>('https://localhost:7197/api/Authentication/login', {
+            email: email,
+            password: password
+        });
+    }
 
-
-
+    getCurrentUser(): Observable<IUser> {
+        return this._http.get<IUser>('https://localhost:7197/api/Authentication/GetCurrentUser');
+    }
     clearFormData(): void {
         localStorage.removeItem(this.updatedateKey);
     }

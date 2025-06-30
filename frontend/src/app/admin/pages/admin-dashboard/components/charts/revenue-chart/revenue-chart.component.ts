@@ -59,7 +59,7 @@ export class RevenueChartComponent implements OnChanges {
       plotOptions: {
         bar: {
           borderRadius: 4,
-          columnWidth: "70%",
+          columnWidth: "50%",
           borderRadiusApplication: 'end',
           dataLabels: {
             position: "top"
@@ -79,7 +79,7 @@ export class RevenueChartComponent implements OnChanges {
           padding: 1,
           borderRadius: 3,
           borderWidth: 1,
-          borderColor: '#bfdbfe',
+          borderColor: '#e2e8f0',
           opacity: 0.9,
           dropShadow: {
             enabled: false
@@ -93,7 +93,7 @@ export class RevenueChartComponent implements OnChanges {
           formatter: (val: string) => val.split(' ')[0],
           style: {
             fontSize: "10px",
-            colors: "#666"
+            colors: "#94a3b8"
           }
         },
         axisBorder: {
@@ -102,17 +102,15 @@ export class RevenueChartComponent implements OnChanges {
         axisTicks: {
           show: true
         }
-      }
-,      
+      },      
       
       yaxis: {
         show: false,
-        
         tickAmount: 4,
         labels: {
           style: {
             fontSize: "12px",
-            colors: "#888"
+            colors: "#94a3b8"
           }
         },
         axisBorder: {
@@ -124,11 +122,9 @@ export class RevenueChartComponent implements OnChanges {
       },
       fill: {
         colors: this.series?.categoryRevenueChart.categories.map((_, i) =>
-          i === 7 ? '#3B82F6' : '#D1D5DB'
+          i === 7 ? '#93c5fd' : '#e2e8f0'
         )
       },
-      
-     
     }
   }
 }

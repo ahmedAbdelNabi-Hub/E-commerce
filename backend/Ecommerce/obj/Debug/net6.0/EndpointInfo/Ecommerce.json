@@ -1473,20 +1473,10 @@
         }
       }
     },
-    "/api/orders/{email}": {
+    "/api/orders/by-email": {
       "get": {
         "tags": [
           "Order"
-        ],
-        "parameters": [
-          {
-            "name": "email",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {

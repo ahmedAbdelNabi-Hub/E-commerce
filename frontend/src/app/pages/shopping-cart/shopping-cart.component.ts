@@ -31,6 +31,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
         .pipe(
           tap(response => {
             this.basketItems.set(response);
+            console.log(response);
             if (this.basketItems()?.basketItems.length === 0) {
               this.initalloadingFlash.set(false);
             }

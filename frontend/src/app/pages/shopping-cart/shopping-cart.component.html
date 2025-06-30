@@ -1,5 +1,4 @@
 <div *ngIf="initalloadingFlash()" class="mt-20 font-sans px-0 md:px-5 lg:px-4 xl:px-8 py-4 relative bg-white">
-    <!-- Announcement Banner -->
     <a class="group block bg-gray-100 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 p-4 rounded-lg text-center transition duration-300"
         href="#">
         <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
@@ -44,7 +43,7 @@
         <!-- Order Total -->
         <div aria-labelledby="order-total-section"
             class="flex flex-col  col-span-1 lg:col-span-3 md:px-4 flex-none lg:px-8 xl:px-12 mt-10">
-            <app-order-total [basketItems]="basketItems"></app-order-total>
+            <app-order-total [basketItems]="basketItems()"></app-order-total>
         </div>
     </div>
     <div class="mt-8 mb-4 blur-glass">

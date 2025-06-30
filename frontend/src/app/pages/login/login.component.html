@@ -1,5 +1,5 @@
 <main class="w-full h-screen">
-    
+
     <div class="flex-1 flex-col items-center justify-center h-screen mt-20  md:mt-10">
         <div
             class=" w-full md:w-[80%] lg:w-[45%] mt-7 px-2 md:px-28 flex items-center justify-center  bg-white  container mx-auto">
@@ -14,32 +14,31 @@
 
                     <div class="mt-5">
                         <!-- Form -->
-                        <form>
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <div *ngIf="errorMessage" class="text-red-500 text-sm mt-2 text-center">
+                                {{ errorMessage }}
+                            </div>
                             <div class="grid gap-y-4">
-                                <!-- Form Group -->
                                 <div>
                                     <label for="email" class="block text-sm mb-2">Email Address</label>
                                     <div class="relative">
                                         <i class='text-gray-600  bx bx-envelope absolute top-3.5 left-2'></i>
-                                        <input placeholder="Enter your Email Address" type="email" id="email"
-                                            name="email"
+                                        <input formControlName="email" placeholder="Enter your Email Address"
+                                            type="email" id="email" name="email"
                                             class="py-3 px-8 block border w-full border-gray-200 rounded-lg text-sm outline-none"
                                             required aria-describedby="email-error">
-                                        <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
-                                            <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor"
-                                                viewBox="0 0 16 16" aria-hidden="true">
-                                                <path
-                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <p class="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid
-                                        email
-                                        address so we can get back to you</p>
-                                </div>
-                                <!-- End Form Group -->
 
-                                <!-- Form Group -->
+                                        <p *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')"
+                                            class="text-xs text-red-600 mt-2">
+                                            Email is required
+                                        </p>
+                                        <p *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')"
+                                            class="text-xs text-red-600 mt-2">
+                                            Enter a valid email address
+                                        </p>
+                                    </div>
+
+                                </div>
                                 <div>
                                     <div class="flex justify-between items-center">
                                         <label for="password" class="block text-sm mb-2">Password</label>
@@ -48,12 +47,11 @@
                                         <i class="text-gray-600 bx bx-lock-alt absolute top-3.5 left-2"></i>
 
                                         <!-- Input for Password -->
-                                        <input [type]="showPassword ? 'text' : 'password'"
+                                        <input formControlName="password" [type]="showPassword ? 'text' : 'password'"
                                             placeholder="Enter your password"
                                             class="py-3 px-8 block border w-full border-gray-200 rounded-lg text-sm outline-none"
                                             required aria-describedby="password-error" />
 
-                                        <!-- Toggle Password Visibility Icon -->
                                         <button type="button"
                                             class="absolute top-3.5 right-2 text-gray-600 focus:outline-none"
                                             (click)="togglePasswordVisibility()">
@@ -63,17 +61,31 @@
 
                                     <a class="inline-flex items-end justify-end w-full gap-x-1 text-sm text-[#2966eb] decoration-2 hover:underline focus:outline-none focus:underline font-medium"
                                         href="../examples/html/recover-account.html">Forgot password?</a>
-                                    <p class="hidden text-xs text-red-600 mt-2" id="password-error">8+ characters
-                                        required</p>
+                                    <p *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')"
+                                        class="text-xs text-red-600 mt-2">
+                                        Password is required
+                                    </p>
+                                    <p *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('minlength')"
+                                        class="text-xs text-red-600 mt-2">
+                                        Password must be at least 6 characters
+                                    </p>
+
                                 </div>
 
-                                <!-- End Form Group -->
 
-
-
-                                <button (click)="true" type="button"
-                                    class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#2966eb] uppercase text-white ">Sign
-                                    in
+                                <button type="submit" [disabled]="isSubmitting()"
+                                    class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#2966eb] uppercase text-white ">
+                                    <span *ngIf="!isSubmitting()">Sign in</span>
+                                    <span *ngIf="isSubmitting()" class="flex items-center">
+                                        <svg class="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                                stroke-width="4" fill="none"></circle>
+                                            <path class="opacity-75" fill="currentColor"
+                                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                            </path>
+                                        </svg>
+                                        Signing in...
+                                    </span>
                                 </button>
                                 <div
                                     class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6">
@@ -87,7 +99,6 @@
                                         Sign up here
                                     </a>
                                 </p>
-
 
                             </div>
                         </form>

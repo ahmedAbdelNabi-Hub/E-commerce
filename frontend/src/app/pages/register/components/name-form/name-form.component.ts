@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { moveLeftToRight, moveRightToLeft } from '../../../../shared/animations/RouteAnimation';
 import { lettersAndSpacesValidator } from '../../../../core/validators/general-validators';
 import { getErrorMessage } from '../../../../core/utils/form-error-messages';
-import { AuthService } from '../../../../core/services/Auth.service';
+import { AuthService } from '../../../../core/services/registration.service';
 
 @Component({
   selector: 'app-name-form',

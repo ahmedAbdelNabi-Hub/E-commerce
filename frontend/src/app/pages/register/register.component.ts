@@ -1,5 +1,5 @@
-import {Component, inject, OnInit, signal } from '@angular/core';
-import { AuthService } from '../../core/services/Auth.service';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { AuthService } from '../../core/services/registration.service';
 
 @Component({
   selector: 'app-register',

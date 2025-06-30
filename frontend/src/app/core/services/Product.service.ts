@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, of, shareReplay, tap } from 'rxjs';
+import { BehaviorSubject, catchError, forkJoin, map, Observable, of, shareReplay, switchMap, tap } from 'rxjs';
 import { GroupedResultDto } from '../models/interfaces/GroupedResultDto';
 import { IProduct } from '../models/interfaces/IProduct';
 import { API_URLS } from '../constant/api-urls';
@@ -10,13 +10,14 @@ import { IFilterationDto } from '../models/interfaces/IFilteration';
 import { IProductView } from '../models/interfaces/IProductView';
 import { ProductView } from '../models/classes/ProductView';
 import { IProductAttribute } from '../models/interfaces/IProductAttribute';
+import { GoogleTranslateService } from './translation.service';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
   private dataCache: GroupedResultDto<string, IProduct>[] | null = null;
   private newArrivalsCache: IProduct[] | null = null;
   private recentlyProductsCache$ = new BehaviorSubject<IPaginationDto | null>(null);
-  constructor(private _Http: HttpClient) { }
+  constructor(private _Http: HttpClient ,private translateService : GoogleTranslateService) { }
 
 
   getProductsOnOfferGroupedByCategory(): Observable<GroupedResultDto<string, IProduct>[]> {
@@ -47,6 +48,29 @@ export class ProductService {
       .set('viewId', productIsViewByUser.viewId)
       .set('isStoreInRedis', isStoreInRedis.toString());
     return this._Http.get<IProduct>(`${API_URLS.Localhost + API_URLS.prodcut}${id}`, { params });
+  }
+  getTranslatedProduct(id: number, isStoreInRedis: boolean): Observable<IProduct> {
+    const productIsViewByUser = this.getUserViewProduct();
+    const params = new HttpParams()
+      .set('viewId', productIsViewByUser.viewId)
+      .set('isStoreInRedis', isStoreInRedis.toString());
+
+    return this._Http.get<IProduct>(`${API_URLS.Localhost + API_URLS.prodcut}${id}`, { params }).pipe(
+      switchMap(product =>
+        forkJoin({
+          name: this.translateService.translate(product.name),
+          description: this.translateService.translate(product.description),
+          brand: this.translateService.translate(product.brand),
+        }).pipe(
+          map(translations => ({
+            ...product,
+            name: translations.name,
+            description: translations.description,
+            brand: translations.brand
+          }))
+        )
+      )
+    );
   }
 
   getAllProduct(Params: IProductSpecParams): Observable<IPaginationDto> {

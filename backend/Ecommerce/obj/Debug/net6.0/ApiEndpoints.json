@@ -867,32 +867,6 @@
   },
   {
     "ContainingType": "Ecommerce.Controllers.OrderController",
-    "Method": "GetOrdersForSpecificUserAsync",
-    "RelativePath": "api/orders/{email}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Ecommerce.Contracts.DTOs.order.OrderDTO, Ecommerce.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Ecommerce.Controllers.OrderController",
     "Method": "DeleteOrder",
     "RelativePath": "api/orders/{id}",
     "HttpMethod": "DELETE",
@@ -927,6 +901,26 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Ecommerce.Controllers.OrderController",
+    "Method": "GetOrdersForSpecificUserAsync",
+    "RelativePath": "api/orders/by-email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Ecommerce.Contracts.DTOs.order.OrderDTO, Ecommerce.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Ecommerce.Controllers.OrderController",

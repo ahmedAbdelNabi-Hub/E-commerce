@@ -1,26 +1,31 @@
+// google-translate.service.ts
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class TranslationService {
-  private apiKey: string = 'AIzaSyCX6DxjsS0PklcQuXaX_arDp071_CPcP6E'; // Your actual API key
-  private apiUrl: string = 'https://translation.googleapis.com/language/translate/v2';
+@Injectable({ providedIn: 'root' })
+export class GoogleTranslateService {
+  private url = 'https://translate.googleapis.com/translate_a/single';
 
   constructor(private http: HttpClient) {}
 
-  translateText(text: string, targetLanguage: string): Observable<any> {
-    const body = {
-      q: text,
-      target: targetLanguage,
-      format: 'text',
-      key: this.apiKey,
-    };
+  translate(text: string, targetLang: string = 'ar', sourceLang: string = 'en'): Observable<string> {
+    const params = new HttpParams()
+      .set('client', 'gtx')
+      .set('sl', sourceLang)
+      .set('tl', targetLang)
+      .set('dt', 't')
+      .set('q', text);
 
-    return this.http.post<any>(this.apiUrl, body, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    return new Observable(observer => {
+      this.http.get<any>(this.url, { params }).subscribe({
+        next: res => {
+          const translated = res[0].map((x: any) => x[0]).join('');
+          observer.next(translated);
+          observer.complete();
+        },
+        error: err => observer.error(err)
+      });
     });
   }
 }

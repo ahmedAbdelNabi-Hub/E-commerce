@@ -73,20 +73,25 @@ namespace Ecommerce.Controllers
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
+            if (email == null) return Unauthorized();
+
             var currentUser = await _userManager.FindByEmailAsync(email);
+            if (currentUser == null) return Unauthorized();
+
             var authResponse = await _jwtService.CreateJwtToken(currentUser);
-            
-            if (currentUser is not null)
+
+            var roles = await _userManager.GetRolesAsync(currentUser);
+            var userRole = roles.FirstOrDefault() ?? "User"; // default role
+
+            var returnedCurrentUser = new UserDto()
             {
-                var returnedCurrentUser = new UserDto()
-                {
-                    Email = currentUser.Email,
-                    Name = currentUser.FirstName + "" + currentUser.LastName,
-                    Token = authResponse.Token  
-                };
-                return returnedCurrentUser;
-            }
-            return new UserDto();
+                Email = currentUser.Email,
+                Name = $"{currentUser.FirstName} {currentUser.LastName}",
+                Token = authResponse.Token,
+                Role = userRole
+            };
+
+            return Ok(returnedCurrentUser);
         }
 
         [HttpPost]

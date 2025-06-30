@@ -37,7 +37,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   private addressService = inject(AddressService);
   private basketService = inject(BasketService);
-  private router = inject(Router);
   private toastService = inject(MessageService);
   private deliveryMethodApi = new Perform<IDeliveryMethod[]>();
   private basketId = localStorage.getItem("basket_id");
@@ -74,13 +73,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   chooseDeliveryMethod(deliveryMethod: IDeliveryMethod): void {
     this.selectedDeliveryMethod = deliveryMethod;
     this.cacheOrderParams();
-
   }
 
   placeOrder(): void {
     const params = this.orderService.getOrderParams();
     if (!params) return;
-
     this.isLoading.set(true);
     this.orderService.createOrder(params).pipe(
       takeUntil(this.destroy$),

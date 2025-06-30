@@ -1,10 +1,10 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { delay, tap } from 'rxjs';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { AuthService } from '../../../../core/services/Auth.service';
 import { IAuthResponse } from '../../../../core/models/interfaces/IAuthResponse';
 import { Perform } from '../../../../core/models/classes/Perform';
+import { AuthService } from '../../../../core/services/registration.service';
 
 @Component({
   selector: 'app-confirm-email',
@@ -12,7 +12,7 @@ import { Perform } from '../../../../core/models/classes/Perform';
   styleUrls: ['./confirm-email.component.css']
 })
 
-export class ConfirmEmailComponent {
+export class ConfirmEmailComponent implements OnDestroy {
   private authService = inject(AuthService);
   public otpForm!: FormGroup;
   public _asyncDataHandler = new Perform<IAuthResponse>();
@@ -60,6 +60,13 @@ export class ConfirmEmailComponent {
         if (data) {
           localStorage.setItem("token", data.token);
           this.router.navigate(['/']);
+          this.authService.getCurrentUser()
+            .pipe(tap(user => {
+              localStorage.setItem('role', user.role);
+              localStorage.setItem('email', user.email);
+              this.router.navigate(['/']);
+            }))
+            .subscribe();
         }
       })
     ))
@@ -71,6 +78,10 @@ export class ConfirmEmailComponent {
       this.router.navigate(['/auth/error']);
       return;
     }
+  }
+
+  ngOnDestroy(): void {
+    this._asyncDataHandler.unsubscribe();
   }
 }
 

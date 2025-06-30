@@ -1,95 +1,77 @@
-<!-- Modal -->
-<div id="hs-ai-modal" class="size-full  overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog"
-    tabindex="-1" aria-labelledby="hs-ai-modal-label">
-    <div class=" mt-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
-        <div class="relative flex flex-col bg-white border rounded-xl pointer-events-auto">
-            <!-- Body -->
-            <div class="p-4 sm:p-7 overflow-y-auto">
-                <div class="text-center">
-          
-                    <h3 id="hs-ai-modal-label" class="text-lg font-semibold text-gray-800">
-                        Invoice from <span class="text-[#606060] font-medium">Breezo</span>
-                    </h3>
-                    <p class="text-sm text-gray-500">
-                        Invoice #{{ orderData.id }}{{ orderData.orderDate| date:'yyyyMMdd' }}
-                    </p>
+<!-- Order Card -->
+<div class="bg-white rounded-xl shadow-sm border max-h-[448px] overflow-y-auto border-gray-200  duration-300">
+    <div class="px-4 py-6">
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b pb-3">
+            <div>
+                <h3 class="text-base font-semibold text-gray-800">
+                    Order from <span class="text-primary">Breezo</span>
+                </h3>
+                <p class="text-xs text-gray-500">
+                    #{{ orderData.id }}{{ orderData.orderDate| date:'yyyyMMdd' }}
+                </p>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span [ngClass]="{
+                    'bg-green-50 text-green-700 border-green-200': orderData.status === 'Completed',
+                    'bg-yellow-50 text-yellow-700 border-yellow-200': orderData.status === 'Processing', 
+                    'bg-blue-50 text-blue-700 border-blue-200': orderData.status === 'Pending',
+                    'bg-sky-50 text-sky-700 border-sky-200': orderData.status === 'Paid',
+                    'bg-emerald-50 text-emerald-700 border-emerald-200': orderData.status === 'Delivered'
+                }" class="px-2.5 py-1 text-xs font-medium border rounded-full">
+                    {{orderData.status}}
+                </span>
+                <button class="px-2 py-1 text-xs font-medium text-white bg-gray-600 rounded hover:bg-gray-700 focus:ring-1 focus:ring-gray-500"
+                    (click)="showModal = true">
+                    Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Order Details -->
+        <div class="mt-4 space-y-3">
+            <!-- Amount & Date -->
+            <div class="grid grid-cols-2 gap-3 bg-gray-50 p-3 rounded-lg">
+                <div>
+                    <p class="text-xs text-gray-600">Amount Paid</p>
+                    <p class="text-base font-bold text-gray-900">{{(orderData.subTotal+orderData.deliveryMethod.cost) |
+                        number}} EGP</p>
                 </div>
-
-                <!-- Grid -->
-                <div class="mt-5 sm:mt-10 grid grid-cols-2 sm:grid-cols-2 gap-2">
-                    <div>
-                        <span class="block text-xs uppercase text-gray-500">Amount paid:</span>
-                        <span
-                            class="block text-sm font-medium text-gray-800">{{(orderData.subTotal+orderData.deliveryMethod.cost)
-                            | number}} EGP</span>
-                    </div>
-                    <!-- End Col -->
-
-                    <div>
-                        <span class="block text-xs uppercase text-gray-500">Date paid:</span>
-                        <span class="block text-sm font-medium text-gray-800">{{orderData.orderDate | date }}</span>
-                    </div>
-
-                </div>
-                <!-- End Grid -->
-
-                <div class="mt-5 sm:mt-10">
-                    <h4 class="text-xs font-semibold uppercase text-gray-800">Summary</h4>
-
-                    <ul class="mt-3 flex flex-col">
-                        <li
-                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
-                            <div class="flex items-center justify-between w-full">
-                                <span>Order Status</span>
-                             
-                                <span class="inline-flex justify-center items-center px-4 rounded-full border-4 border-blue-100 bg-[#eee] text-black ">
-                                    {{orderData.status}}
-                                    </span>
-                            </div>
-                        </li>
-                        <div
-                            class="flex flex-col text-sm   text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
-                            <li *ngFor="let items of orderData.items"
-                                class="inline-flex items-center gap-x-2 border text-sm -mt-px  ">
-                                <div class="flex items-center justify-between w-full">
-                                    <div class="my-1 ">
-                                        <img loading="lazy"
-                                            class=" inline-block w-[60px] h-[50px] max-w-[60px]  px-2 py-1  "
-                                            [src]="'https://localhost:7197/image/Product/'+items.pictureUrl"
-                                            alt="Avatar">
-                                    </div>
-                                    <div class="px-3 flex flex-col space-y-1 justify-end items-end">
-                                        <p class="line-clamp-1 text-[13px] font-medium">{{items.productName}}</p>
-                                        <p class="line-clamp-1 text-[13px] ">Quantity : {{items.quantity}}</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </div>
-                    </ul>
-                </div>
-
-                <!-- Button -->
-                <div class="mt-5 flex justify-end gap-x-2">
-                    
-                    <button class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#606060] text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                    (click)="showModal = true"  >
-                        Details
-                    </button>
-                </div>
-                <!-- End Buttons -->
-                <div class="mt-5 sm:mt-10">
-                    <p class="text-sm text-gray-500">If you have any questions, please contact us at <a
-                            class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium"
-                            class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium"
-                            href="tel:+1898345492">+1 898-34-5492</a></p>
+                <div>
+                    <p class="text-xs text-gray-600">Order Date</p>
+                    <p class="text-base font-bold text-gray-900">{{orderData.orderDate | date:'mediumDate'}}</p>
                 </div>
             </div>
-            <!-- End Body -->
+
+            <!-- Items List -->
+            <div class="space-y-2">
+                <h4 class="text-sm font-semibold text-gray-800">Order Items</h4>
+                <div class="space-y-2">
+                    <div *ngFor="let items of orderData.items"
+                        class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <img loading="lazy" [src]="'https://localhost:7197/image/Product/'+items.pictureUrl"
+                            class="w-16 h-16 object-cover rounded-md" [alt]="items.productName">
+                        <div class="flex-1">
+                            <h5 class="text-sm font-medium text-gray-900">{{items.productName}}</h5>
+                            <p class="text-xs text-gray-600">Quantity: {{items.quantity}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Actions -->
+        <div class="mt-6 flex items-center justify-between">
+            <p class="text-sm text-gray-600">
+                Need help? <a href="tel:+1898345492" class="text-primary hover:underline">Contact Support</a>
+            </p>
+            <button (click)="showModal = true"
+                class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+                View Details
+            </button>
         </div>
     </div>
 </div>
-<!-- End Modal -->
+
 <app-modal [isOpen]="showModal" (closeModal)="showModal = false">
     <app-order-details></app-order-details>
-</app-modal>
+</app-modal> 
