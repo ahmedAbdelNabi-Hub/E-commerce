@@ -92,7 +92,6 @@ namespace Ecommerce.service
                 throw new Exception("Basket is empty or does not exist.");
             return basket;
         }
-      
         public async Task<DashboardCounterDTO> GetDashboardCountersAsync(ISpecifications<Order> orderSpec)
         {
             var orderQuery = _unitOfWork.Repository<Order>().GetQueryableWithSpec(orderSpec);
@@ -113,7 +112,6 @@ namespace Ecommerce.service
                 TotalProducts = totalProducts
             };
         }
-
         public async Task<List<RevenuePointDto>> GetRevenueTimeSeriesAsync(ISpecifications<Order> spec)
         {
             var orderQuery = _unitOfWork.Repository<Order>().GetQueryableWithSpec(spec);
@@ -137,8 +135,6 @@ namespace Ecommerce.service
 
             return result;
         }
-
-
         private async Task<List<Product>> GetProductsAsync(CustomerBasket basket)
         {
             var productIds = basket.BasketItems.Select(b => b.ProductId).ToList();
@@ -255,8 +251,6 @@ namespace Ecommerce.service
              
             }
         }
-
-
 
     }
 }

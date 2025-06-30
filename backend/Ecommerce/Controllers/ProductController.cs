@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Ecommerce.Contracts.DTOs;
+using Ecommerce.Contracts.DTOs.order;
 using Ecommerce.Contracts.DTOs.product;
 using Ecommerce.core.Entities;
 using Ecommerce.core.Specifications;
 using Ecommerce.Core;
 using Ecommerce.Core.Entities;
+using Ecommerce.Core.Entities.order;
 using Ecommerce.Core.Repositories;
 using Ecommerce.Core.Specifications;
 using Ecommerce.Extensions;
@@ -193,8 +195,6 @@ namespace Ecommerce.Controllers
             }
         }
 
-
-
         [HttpPatch]
         [Route("/api/products/{id}/activate")]
         public async Task<ActionResult<BaseApiResponse>> activeProduct(int id)
@@ -209,9 +209,6 @@ namespace Ecommerce.Controllers
             return Ok(new BaseApiResponse(200,"The Product Is Active")); 
 
         }
-
-
-     
 
         [HttpGet("/api/products/{productId}/attributes")]
         public async Task<ActionResult<List<ProductAttributeDto>>> GetProductAttributes(int productId)
@@ -271,6 +268,30 @@ namespace Ecommerce.Controllers
             return Ok(groupedProducts);
         }
 
+        [HttpGet]
+        [Route("/api/products/top-selling")]
+        public async Task<ActionResult<IEnumerable<OrderItemDTO>>> GetTopSellingProducts([FromQuery] ProductSpecParams Params)
+        {
+            var spec = new OrderItemsWithSpecictions();
+            var orderItem = await _unitOfWork.Repository<OrderItem>()
+                .GetQueryableWithSpec(spec: spec)
+                .GroupBy(o => new { o.ProductId, o.ProductName, o.PictureUrl })
+                .Select(g => new OrderItemDTO
+                {
+                    ProductId = g.Key.ProductId,
+                    ProductName = g.Key.ProductName,
+                    PictureUrl = g.Key.PictureUrl,
+                    Quantity = g.Sum(x => x.Quantity),
+                    Price = g.Sum(x => x.Price * x.Quantity)
+
+                })
+                 .OrderByDescending(x => x.Quantity)
+                 .Skip(Params.PageSize * (Params.PageIndex - 1)) 
+                 .Take(Params.PageSize)
+                .ToListAsync();
+
+            return (orderItem);
+        }
         private async Task<Product> GetExistingProduct(int id)
         {
             return await _unitOfWork.Repository<Product>().GetByIdSpecAsync(new ProductWithSpecifcations(id));

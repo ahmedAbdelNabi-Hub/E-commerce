@@ -17,7 +17,9 @@ import {
   ApexMarkers,
   ApexYAxis,
   ApexGrid,
-  ApexTheme
+  ApexTheme,
+  ApexTitleSubtitle,
+  ApexLegend
 } from 'ng-apexcharts';
 
 import { catchError } from 'rxjs/operators';
@@ -38,6 +40,8 @@ export type ChartOptions = {
   annotations: ApexAnnotations;
   grid: ApexGrid;
   theme: ApexTheme;
+  title: ApexTitleSubtitle;
+  legend: ApexLegend;
 };
 
 @Component({
@@ -80,10 +84,10 @@ export class OrderStatusChartComponent implements OnInit {
       }],
       chart: {
         type: "area",
-        height: 250,
+        height: 350,
         fontFamily: 'Inter, sans-serif',
-        toolbar: { show: false },
-        zoom: { enabled: false },
+        toolbar: { show: true },
+        zoom: { enabled: true },
         animations: {
           enabled: true,
           easing: 'easeinout',
@@ -93,20 +97,24 @@ export class OrderStatusChartComponent implements OnInit {
             speed: 350
           }
         },
-        background: 'transparent',
+        background: '#ffffff',
         dropShadow: {
-          enabled: true,
-          opacity: 0.1,
-          blur: 3,
-          left: 0,
-          top: 0
+          enabled: false
         }
       },
       annotations: { yaxis: [], xaxis: [] },
-      dataLabels: { enabled: false },
+      dataLabels: {
+        enabled: false
+      },
+      legend: {
+        show: true,
+        position: 'top',
+        horizontalAlign: 'right',
+        fontSize: '14px',
+      },
       markers: {
         size: 4,
-        colors: ["#10b981"],
+        colors: ["#94a3b8"],
         strokeColors: "#ffffff",
         strokeWidth: 2,
         hover: { size: 6, sizeOffset: 2 }
@@ -115,19 +123,19 @@ export class OrderStatusChartComponent implements OnInit {
         curve: "smooth",
         width: 3,
         lineCap: 'round',
-        colors: ["#10b981"]
+        colors: ["#94a3b8"]
       },
       fill: {
         type: "gradient",
         gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.5,
+          shadeIntensity: 0.5,
+          opacityFrom: 0.4,
           opacityTo: 0.1,
           stops: [0, 90, 100],
           colorStops: [
-            { offset: 0, color: "#10b981", opacity: 0.5 },
-            { offset: 90, color: "#10b981", opacity: 0.1 },
-            { offset: 100, color: "#10b981", opacity: 0 }
+            { offset: 0, color: "#94a3b8", opacity: 0.4 },
+            { offset: 90, color: "#94a3b8", opacity: 0.1 },
+            { offset: 100, color: "#94a3b8", opacity: 0 }
           ]
         }
       },
@@ -136,31 +144,31 @@ export class OrderStatusChartComponent implements OnInit {
         strokeDashArray: 4,
         xaxis: { lines: { show: true } },
         yaxis: { lines: { show: true } },
-        padding: { top: 0, right: 0, bottom: 0, left: 0 }
+        padding: { top: 10, right: 20, bottom: 10, left: 20 }
       },
       xaxis: {
         type: "datetime",
-        tickAmount: 4,
+        tickAmount: 6,
         labels: {
           format: "dd MMM",
           style: {
-            fontSize: "10px",
-            fontWeight: 500,
+            fontSize: "12px",
+            fontWeight: 400,
             colors: "#64748b",
             fontFamily: 'Inter, sans-serif'
           }
         },
-        axisBorder: { show: false },
-        axisTicks: { show: false },
+        axisBorder: { show: true, color: '#f1f5f9' },
+        axisTicks: { show: true, color: '#f1f5f9' },
         crosshairs: {
           show: true,
           width: 1,
           position: 'back',
-          opacity: 0.9,
+          opacity: 0.7,
           stroke: {
-            color: '#10b981',
+            color: '#94a3b8',
             width: 1,
-            dashArray: 3,
+            dashArray: 0,
           }
         }
       },
@@ -168,26 +176,29 @@ export class OrderStatusChartComponent implements OnInit {
         labels: {
           formatter: (val) => `${val.toLocaleString("en-US")} EGP`,
           style: {
-            fontSize: "10px",
-            fontWeight: 500,
+            fontSize: "12px",
+            fontWeight: 400,
             colors: "#64748b",
             fontFamily: 'Inter, sans-serif'
           }
         },
-        axisBorder: { show: false },
-        axisTicks: { show: false },
+        axisBorder: { show: true, color: '#f1f5f9' },
+        axisTicks: { show: true, color: '#f1f5f9' },
         min: (min) => min - (min * 0.1),
         max: (max) => max + (max * 0.1),
-        tickAmount: 4
+        tickAmount: 5
       },
       tooltip: {
-        theme: 'dark',
+        theme: 'light',
         x: { format: "dd MMM yyyy" },
         y: {
-          formatter: (val) => `${val.toLocaleString("en-US")} EGP`
+          formatter: (val) => `${val.toLocaleString("en-US")} EGP`,
+          title: {
+            formatter: () => 'Revenue:'
+          }
         },
         style: {
-          fontSize: '10px',
+          fontSize: '12px',
           fontFamily: 'Inter, sans-serif'
         },
         marker: { show: true }

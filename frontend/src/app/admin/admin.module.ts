@@ -29,6 +29,7 @@ import { ImageUploaderComponent } from './pages/admin-dashboard/components/image
 import { ProductAttributeComponent } from './pages/product-Attribute/product-attribute.component';
 import { ProductFormComponent } from './pages/product-from/product-form.component';
 import { AttributeComponent } from './pages/product-from/components/Attribute/attribute.component';
+import { TopSellerTableComponent } from './pages/admin-dashboard/components/top-seller-table/top-seller-table.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AttributeComponent } from './pages/product-from/components/Attribute/at
     OrderComponent,
     ProductAttributeComponent,
     AttributeComponent,
+    TopSellerTableComponent,
   ],
   imports: [
     CommonModule,

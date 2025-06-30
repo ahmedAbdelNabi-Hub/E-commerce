@@ -11,13 +11,14 @@ import { IProductView } from '../models/interfaces/IProductView';
 import { ProductView } from '../models/classes/ProductView';
 import { IProductAttribute } from '../models/interfaces/IProductAttribute';
 import { GoogleTranslateService } from './translation.service';
+import { IOrderItems } from '../models/interfaces/IOrderItems';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
   private dataCache: GroupedResultDto<string, IProduct>[] | null = null;
   private newArrivalsCache: IProduct[] | null = null;
   private recentlyProductsCache$ = new BehaviorSubject<IPaginationDto | null>(null);
-  constructor(private _Http: HttpClient ,private translateService : GoogleTranslateService) { }
+  constructor(private _Http: HttpClient, private translateService: GoogleTranslateService) { }
 
 
   getProductsOnOfferGroupedByCategory(): Observable<GroupedResultDto<string, IProduct>[]> {
@@ -106,7 +107,6 @@ export class ProductService {
     if (!userKey) {
       return this.createNewViewForUser();
     }
-
     const productViewForUser: IProductView = {
       IsStoreInRedis: true,
       viewId: userKey!,
@@ -137,6 +137,11 @@ export class ProductService {
       shareReplay(1)
     );
   }
+
+  getTopSeller(Params: IProductSpecParams): Observable<IOrderItems[]> {
+    return this._Http.get<IOrderItems[]>(`${API_URLS.Localhost}/api/products/top-selling?PageIndex=${Params.PageIndex}&PageSize=${Params.PageSize}`);
+  }
+
 
   clearCache(): void {
     this.newArrivalsCache = null;
