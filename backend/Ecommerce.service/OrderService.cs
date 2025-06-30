@@ -85,60 +85,6 @@ namespace Ecommerce.service
           return orders;    
         }
 
-        public async Task<CombinedChartResponseDTO> GetDashboardChartData(ISpecifications<Order> specifications, ISpecifications<OrderItem> specOrderItems)
-        {
-            var sixteenDaysAgo = DateTime.UtcNow.AddDays(-15); // Last 16 days
-            var orderQuery = _unitOfWork.Repository<Order>().GetQueryableWithSpec(specifications);
-            var productQuery = _unitOfWork.Repository<OrderItem>().GetQueryableWithSpec(specOrderItems)
-                .GroupBy(oi => oi.ProductName)
-                .Select(g => new
-                {
-                    ProductName = g.Key,
-                    OrderCount = g.Count(), 
-                    Quantity = g.Sum(p => p.Quantity) 
-                })
-                .OrderByDescending(g => g.OrderCount) 
-                .Take(30);
-
-            var totalSalesTask = await orderQuery.SumAsync(o => o.SubTotal);
-            var totalClientsTask = await orderQuery.Select(o => o.BuyerEmail).Distinct().CountAsync();
-            var totalOrdersTask = await orderQuery.CountAsync();
-          
-            var totalProductsTask = await _unitOfWork.Repository<Product>().GetQueryableWithSpec(new ProductWithSpecifcations()).CountAsync();
-            var orderDataTask = await orderQuery.Where(o => o.OrderDate >= sixteenDaysAgo) 
-                .GroupBy(o => new { o.OrderDate.Date })
-                .Select(g => new
-                {
-                    g.Key.Date,
-                    TotalRevenue = g.Sum(o => o.SubTotal),
-                    OrderCount = g.Count()
-                })
-                .OrderBy(g => g.Date).ToListAsync(); 
-
-            var productDataTask = await productQuery.ToListAsync();
-
-            var categoryChart = new ChartResponseDTO
-            {
-                Series = new List<ChartSeriesDTO>
-        {
-            new ChartSeriesDTO { Name = "Quantity Sold", Data = productDataTask.Select(c => (decimal)c.Quantity).ToList() }
-        },
-                Categories = productDataTask.Select(c => c.ProductName).ToList() // Sorted by order count
-            };
-
-            // Map order chart
-            var orderChart = new ChartResponseDTO
-            {
-                Categories = orderDataTask.Select(o => o.Date.ToString("MMM dd")).ToList(), // Format as "Sep 10"
-                Series = new List<ChartSeriesDTO>
-        {
-            new ChartSeriesDTO { Name = "Total Revenue", Data = orderDataTask.Select(o => o.TotalRevenue).ToList() },
-            new ChartSeriesDTO { Name = "Order Count", Data = orderDataTask.Select(o => (decimal)o.OrderCount).ToList() }
-        }
-            };
-
-            return new CombinedChartResponseDTO {TotalProducts = totalProductsTask, TotalClients = totalClientsTask,TotalOrders = totalOrdersTask , TotalSales = totalSalesTask,CategoryRevenueChart = categoryChart, OrderStatusChart = orderChart };
-        }
         private async Task<CustomerBasket> GetBasketAsync(string basketId)
         {
             var basket = await _basketRepository.GetBasketAsync(basketId);
@@ -146,6 +92,53 @@ namespace Ecommerce.service
                 throw new Exception("Basket is empty or does not exist.");
             return basket;
         }
+      
+        public async Task<DashboardCounterDTO> GetDashboardCountersAsync(ISpecifications<Order> orderSpec)
+        {
+            var orderQuery = _unitOfWork.Repository<Order>().GetQueryableWithSpec(orderSpec);
+
+            var totalSales = await orderQuery.SumAsync(o => o.SubTotal);
+            var totalClients = await orderQuery.Select(o => o.BuyerEmail).Distinct().CountAsync();
+            var totalOrders = await orderQuery.CountAsync();
+
+            var totalProducts = await _unitOfWork.Repository<Product>()
+                .GetQueryableWithSpec(new ProductWithSpecifcations())
+                .CountAsync();
+
+            return new DashboardCounterDTO
+            {
+                TotalSales = totalSales,
+                TotalClients = totalClients,
+                TotalOrders = totalOrders,
+                TotalProducts = totalProducts
+            };
+        }
+
+        public async Task<List<RevenuePointDto>> GetRevenueTimeSeriesAsync(ISpecifications<Order> spec)
+        {
+            var orderQuery = _unitOfWork.Repository<Order>().GetQueryableWithSpec(spec);
+
+            var data = await orderQuery
+                .GroupBy(o => o.OrderDate.Date)
+                .Select(g => new
+                {
+                    Date = g.Key,
+                    TotalEarned = g.Sum(o => o.Total)
+                })
+                .Where(x => x.TotalEarned > 0) 
+                .OrderBy(x => x.Date)
+                .ToListAsync();
+
+            var result = data.Select(x => new RevenuePointDto
+            {
+                Timestamp = new DateTimeOffset(x.Date).ToUnixTimeMilliseconds(),
+                TotalEarned = x.TotalEarned
+            }).ToList();
+
+            return result;
+        }
+
+
         private async Task<List<Product>> GetProductsAsync(CustomerBasket basket)
         {
             var productIds = basket.BasketItems.Select(b => b.ProductId).ToList();

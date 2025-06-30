@@ -4,6 +4,7 @@ import { DashboardService } from '../../../core/services/dashboard.service';
 import { ChartData } from '../../../core/models/interfaces/IChartData';
 import { Perform } from '../../../core/models/classes/Perform';
 import { delay, Subject, takeUntil } from 'rxjs';
+import { IRevenuePoint } from '../../../core/models/interfaces/IRevenuePoint';
 
 interface RecentOrder {
   customerName: {
@@ -90,15 +91,17 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   dashboardApi = new Perform<ChartData>();
   private dashboardService = inject(DashboardService);
   chartData = signal<ChartData | null>(null);
+  revenueSeries = signal<IRevenuePoint[]>([]);
   private destroy$ = new Subject<void>();
+
   ngOnInit(): void {
-    this.dashboardApi.load(this.dashboardService.getChartData());
+    this.dashboardApi.load(this.dashboardService.getCounterData());
     this.dashboardApi.data$.pipe(takeUntil(this.destroy$)).subscribe(
       response => {
         this.chartData.set(response!)
-        console.log(response)
       }
     )
+    
   }
   ngOnDestroy(): void {
     this.destroy$.next();

@@ -19,8 +19,8 @@ namespace Ecommerce.Contracts.Interfaces
         Task<IReadOnlyList<Order>> GetOrdersForSpecificUserAsync(string buyerEmail);
 
         Task<IReadOnlyList<Order>> GetAllOrderByStatus(string status, int PageIndex, int PageSize);
-        Task<CombinedChartResponseDTO> GetDashboardChartData(ISpecifications<Order> specifications, ISpecifications<OrderItem> specOrderItems);
-
+        Task<DashboardCounterDTO> GetDashboardCountersAsync(ISpecifications<Order> orderSpec);
+        Task<List<RevenuePointDto>> GetRevenueTimeSeriesAsync(ISpecifications<Order> spec);
     }
 
 }

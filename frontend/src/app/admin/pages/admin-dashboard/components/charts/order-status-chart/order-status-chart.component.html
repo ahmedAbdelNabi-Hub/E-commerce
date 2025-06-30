@@ -1,7 +1,6 @@
-
-
-<apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
-  [title]="chartOptions.title" [annotations]="chartOptions.annotations" [markers]="chartOptions.markers"
-  [stroke]="chartOptions.stroke" [fill]="chartOptions.fill" [xaxis]="chartOptions.xaxis" [yaxis]="chartOptions.yaxis"
-  [tooltip]="chartOptions.tooltip">
-</apx-chart>
+<div class="px-4 py-2 border border-gray-200 rounded-md mt-5">
+  <apx-chart #chart [series]="chartOptions.series!" [chart]="chartOptions.chart!" [xaxis]="chartOptions.xaxis!"
+  [yaxis]="chartOptions.yaxis!" [stroke]="chartOptions.stroke!" [tooltip]="chartOptions.tooltip!"
+  [dataLabels]="chartOptions.dataLabels!" [fill]="chartOptions.fill!" 
+  [markers]="chartOptions.markers!" [annotations]="chartOptions.annotations!"></apx-chart>
+</div>

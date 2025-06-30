@@ -1,183 +1,197 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewChild } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import {
   ApexAxisChartSeries,
   ApexChart,
   ChartComponent,
   ApexDataLabels,
-
   ApexStroke,
   ApexXAxis,
   ApexFill,
   ApexTooltip,
-  ApexTheme,
   ApexAnnotations,
   ApexMarkers,
-  ApexTitleSubtitle,
-  ApexYAxis
-} from "ng-apexcharts";
+  ApexYAxis,
+  ApexGrid,
+  ApexTheme
+} from 'ng-apexcharts';
+
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { IRevenuePoint } from '../../../../../../core/models/interfaces/IRevenuePoint';
+import { DashboardService } from '../../../../../../core/services/dashboard.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   dataLabels: ApexDataLabels;
   markers: ApexMarkers;
-  title: ApexTitleSubtitle;
   fill: ApexFill;
   yaxis: ApexYAxis;
   xaxis: ApexXAxis;
   tooltip: ApexTooltip;
   stroke: ApexStroke;
   annotations: ApexAnnotations;
+  grid: ApexGrid;
+  theme: ApexTheme;
 };
-export const data = [
-  [new Date("01 Mar 2012").getTime(), 30000],
-  [new Date("02 Mar 2012").getTime(), 30005],
-  [new Date("03 Mar 2012").getTime(), 3200],
-  [new Date("04 Mar 2012").getTime(), 41000],
-  [new Date("05 Mar 2012").getTime(), 49000],
-  [new Date("06 Mar 2012").getTime(), 55000],
-  [new Date("07 Mar 2012").getTime(), 60000],
-  [new Date("08 Mar 2012").getTime(), 72000],
-  [new Date("09 Mar 2012").getTime(), 65000],
-  [new Date("10 Mar 2012").getTime(), 5800],
-  [new Date("11 Mar 2012").getTime(), 62000],
-  [new Date("12 Mar 2012").getTime(), 70000],
-  [new Date("13 Mar 2012").getTime(), 68000],
-  [new Date("14 Mar 2012").getTime(), 80000],
-  [new Date("15 Mar 2012").getTime(), 7400],
-  [new Date("16 Mar 2012").getTime(), 8500],
-  [new Date("17 Mar 2012").getTime(), 9000],
-  [new Date("18 Mar 2012").getTime(), 95000],
-  [new Date("19 Mar 2012").getTime(), 1000],
-  [new Date("20 Mar 2012").getTime(), 10500],
-  [new Date("21 Mar 2012").getTime(), 980],
-  [new Date("22 Mar 2012").getTime(), 10200],
-  [new Date("23 Mar 2012").getTime(), 110000],
-  [new Date("24 Mar 2012").getTime(), 108000],
-  [new Date("25 Mar 2012").getTime(), 11500],
-  [new Date("26 Mar 2012").getTime(), 12000],
-  [new Date("27 Mar 2012").getTime(), 12500],
-  [new Date("28 Mar 2012").getTime(), 1300],
-  [new Date("29 Mar 2012").getTime(), 12800],
-  [new Date("30 Mar 2012").getTime(), 13500]
-];
-
-
 
 @Component({
   selector: 'app-order-status-chart',
   templateUrl: './order-status-chart.component.html',
-  styleUrl: './order-status-chart.component.css'
+  styleUrls: ['./order-status-chart.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrderStatusChartComponent {
-  @ViewChild("chart", { static: false }) chart!: ChartComponent;
+export class OrderStatusChartComponent implements OnInit {
+  @ViewChild('chart', { static: true }) chart!: ChartComponent;
   public chartOptions!: Partial<ChartOptions>;
-  public activeOptionButton = "all";
 
+  constructor(private dashboardService: DashboardService) { }
 
-
-  constructor() {
-    this.initChart();
+  ngOnInit(): void {
+    this.loadRevenueData();
   }
 
-  initChart(): void {
+  private loadRevenueData(): void {
+    this.dashboardService.getRevenueTimeSeries()
+      .pipe(catchError(error => {
+        console.error('Failed to load chart data:', error);
+        return of([]);
+      }))
+      .subscribe((data: IRevenuePoint[]) => {
+        this.initChart(data);
+      });
+  }
+
+  private initChart(data: IRevenuePoint[]): void {
+    const formattedData = data.map(p => ({
+      x: new Date(p.timestamp).getTime(),
+      y: Number(p.totalEarned.toFixed(2))
+    }));
+
     this.chartOptions = {
-      series: [
-        {
-          name: "Visits",
-          data: data
-        }
-      ],
+      series: [{
+        name: "Revenue",
+        data: formattedData
+      }],
       chart: {
         type: "area",
-        height: 350,
-        toolbar: {
-          show: true
+        height: 250,
+        fontFamily: 'Inter, sans-serif',
+        toolbar: { show: false },
+        zoom: { enabled: false },
+        animations: {
+          enabled: true,
+          easing: 'easeinout',
+          speed: 800,
+          dynamicAnimation: {
+            enabled: true,
+            speed: 350
+          }
+        },
+        background: 'transparent',
+        dropShadow: {
+          enabled: true,
+          opacity: 0.1,
+          blur: 3,
+          left: 0,
+          top: 0
         }
       },
-      title: {
-        align: "left",
-        style: {
-          fontSize: "16px",
-          fontWeight: "bold"
-        }
-      },
-      annotations: {
-        yaxis: [
-          {
-            y: 30,
-            borderColor: "#e11d48",
-            label: {
-              text: "Low Traffic",
-              style: {
-                color: "#fff",
-                background: "#e11d48"
-              }
-            }
-          }
-        ],
-        xaxis: [
-          {
-            x: new Date("14 Nov 2012").getTime(),
-            borderColor: "#2563eb",
-            label: {
-              text: "Campaign Launch",
-              style: {
-                color: "#fff",
-                background: "#2563eb"
-              }
-            }
-          }
-        ]
-      },
-      dataLabels: {
-        enabled: false
-      },
+      annotations: { yaxis: [], xaxis: [] },
+      dataLabels: { enabled: false },
       markers: {
-        size: 3,
-        colors: ["#3b82f6"],
-        strokeColors: "#fff",
-        strokeWidth: 2
+        size: 4,
+        colors: ["#10b981"],
+        strokeColors: "#ffffff",
+        strokeWidth: 2,
+        hover: { size: 6, sizeOffset: 2 }
       },
       stroke: {
         curve: "smooth",
-        width: 2
+        width: 3,
+        lineCap: 'round',
+        colors: ["#10b981"]
       },
       fill: {
         type: "gradient",
         gradient: {
           shadeIntensity: 1,
-          opacityFrom: 0.7,
-          opacityTo: 0.2,
-          stops: [0, 100]
+          opacityFrom: 0.5,
+          opacityTo: 0.1,
+          stops: [0, 90, 100],
+          colorStops: [
+            { offset: 0, color: "#10b981", opacity: 0.5 },
+            { offset: 90, color: "#10b981", opacity: 0.1 },
+            { offset: 100, color: "#10b981", opacity: 0 }
+          ]
         }
+      },
+      grid: {
+        borderColor: "#f1f5f9",
+        strokeDashArray: 4,
+        xaxis: { lines: { show: true } },
+        yaxis: { lines: { show: true } },
+        padding: { top: 0, right: 0, bottom: 0, left: 0 }
       },
       xaxis: {
         type: "datetime",
-        tickAmount: 6,
-        min: new Date("01 Mar 2012").getTime(),
+        tickAmount: 4,
         labels: {
-          format: "dd MMM"
+          format: "dd MMM",
+          style: {
+            fontSize: "10px",
+            fontWeight: 500,
+            colors: "#64748b",
+            fontFamily: 'Inter, sans-serif'
+          }
+        },
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+        crosshairs: {
+          show: true,
+          width: 1,
+          position: 'back',
+          opacity: 0.9,
+          stroke: {
+            color: '#10b981',
+            width: 1,
+            dashArray: 3,
+          }
         }
       },
       yaxis: {
         labels: {
-          formatter: (val) => `${val}`,
+          formatter: (val) => `${val.toLocaleString("en-US")} EGP`,
           style: {
-            fontSize: "12px",
-            colors: "#666"
+            fontSize: "10px",
+            fontWeight: 500,
+            colors: "#64748b",
+            fontFamily: 'Inter, sans-serif'
           }
-        }
+        },
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+        min: (min) => min - (min * 0.1),
+        max: (max) => max + (max * 0.1),
+        tickAmount: 4
       },
       tooltip: {
-        x: {
-          format: "dd MMM yyyy"
-        }
+        theme: 'dark',
+        x: { format: "dd MMM yyyy" },
+        y: {
+          formatter: (val) => `${val.toLocaleString("en-US")} EGP`
+        },
+        style: {
+          fontSize: '10px',
+          fontFamily: 'Inter, sans-serif'
+        },
+        marker: { show: true }
       }
     };
-  }
-
-  public updateOptions(option: string): void {
-    this.activeOptionButton = option;
   }
 }

@@ -158,22 +158,23 @@ namespace Ecommerce.Controllers
             return Ok(_mapper.Map<IReadOnlyList<DeliveryMethodsDTO>>(deliveryMethods));
         }
         [HttpGet]
-        [Route("/api/orders/dashboard-chart-data")]
-        public async Task<ActionResult<CombinedChartResponseDTO>> GetDashboardChartData()
+        [Route("/api/orders/counter")]
+        public async Task<ActionResult<DashboardCounterDTO>> GetDashboardChartData()
         {
-            var sixMonthsAgo = DateTime.Now.AddMonths(-6);
-
-            var orderSpec = new OrderWithSpecictions(sixMonthsAgo); // Pass List<DateTime>
-            var orderItemSpec = new OrderItemsWithSpecictions(); // Your existing implementation
-
-            var chartData = await _orderService.GetDashboardCounter(orderSpec, orderItemSpec);
-
+            var orderSpec = new OrderWithSpecictions(); 
+            var chartData = await _orderService.GetDashboardCountersAsync(orderSpec);
             if (chartData == null)
                 return NotFound(new BaseApiResponse(404, "No data found"));
-
             return Ok(chartData);
         }
-
+        [HttpGet("/api/orders/revenue-series")]
+        public async Task<ActionResult<List<RevenuePointDto>>> GetRevenueTimeSeries()
+        {
+            var result = await _orderService.GetRevenueTimeSeriesAsync(new OrderWithSpecictions());
+            if (result == null)
+                return NotFound(new BaseApiResponse(404, "No data found"));
+            return Ok(result);
+        }
 
 
     }
