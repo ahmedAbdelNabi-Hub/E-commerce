@@ -11,14 +11,13 @@ namespace Ecommerce.Core.Entities
 {
     public class ProductAttributes : BaseEntity
     {
-        public string AttributeName { get; set; }
-        public string AttributeValue { get; set; }
-        public DateTime CreatedAt { get; set; } 
-        public DateTime UpdatedAt { get; set; } 
-        public bool IsFilterable { get; set; }
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
 
-        [ForeignKey("Product")]
-        public int? ProductId { get; set; }
-        public Product Product { get; set; }    
+        public int AttributeId { get; set; }
+        public Attribute Attribute { get; set; }
+
+        public int AttributeValueId { get; set; }
+        public AttributeValue AttributeValue { get; set; }
     }
 }

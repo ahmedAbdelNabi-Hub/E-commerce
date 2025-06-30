@@ -1,10 +1,10 @@
-import { Component, NgModule } from '@angular/core';
-import { ExtraOptions, PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { NavbarVisibilityResolver } from './core/guards/NavbarVisibility.resolver';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
+import { OrderSuccessComponent } from './pages/order-success/order-success.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: 'account', loadChildren: () => import('./modules/account/account.module').then(m => m.AccountModule) },
   { path: 'auth/login', canActivate: [], loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   { path: 'checkout/s', component: CheckoutComponent },
-  { path: 'checkout/order-summary', component: OrderSummaryComponent },
+  { path: 'order-success', component: OrderSuccessComponent },
   { path: 'auth/create/account', canActivate: [], loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
-  { path: 'unKonwPage', component: NotFoundComponent },
-  { path: '**', redirectTo: "unKonwPage", pathMatch: 'full' }
+  { path: 'Not-Found', component: NotFoundComponent },
+  { path: '**', redirectTo: "Not-Found", pathMatch: 'full' }
 ];
 
 const routerOptions: ExtraOptions = {
@@ -33,6 +33,7 @@ const routerOptions: ExtraOptions = {
   imports: [
     RouterModule.forRoot(routes, routerOptions)
   ],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

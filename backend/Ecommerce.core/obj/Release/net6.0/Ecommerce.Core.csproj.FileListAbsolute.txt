@@ -1,0 +1,13 @@
+E:\E-commerce\backend\Ecommerce.core\bin\Release\net6.0\Ecommerce.Core.deps.json
+E:\E-commerce\backend\Ecommerce.core\bin\Release\net6.0\Ecommerce.Core.dll
+E:\E-commerce\backend\Ecommerce.core\bin\Release\net6.0\Ecommerce.Core.pdb
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\Ecommerce.Core.csproj.AssemblyReference.cache
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\Ecommerce.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\Ecommerce.Core.AssemblyInfoInputs.cache
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\Ecommerce.Core.AssemblyInfo.cs
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\Ecommerce.Core.csproj.CoreCompileInputs.cache
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\Ecommerce.Core.sourcelink.json
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\Ecommerce.Core.dll
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\refint\Ecommerce.Core.dll
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\Ecommerce.Core.pdb
+E:\E-commerce\backend\Ecommerce.core\obj\Release\net6.0\ref\Ecommerce.Core.dll

@@ -17,7 +17,6 @@ export class StatusCardComponent {
     this.statusIdEmitter.emit(id); 
   }
 
-  // TrackBy function for performance
   trackById(index: number, status: { id: number }): number {
     return status.id;
   }

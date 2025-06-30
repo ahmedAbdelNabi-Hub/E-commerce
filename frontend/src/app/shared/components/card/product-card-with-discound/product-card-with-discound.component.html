@@ -1,73 +1,89 @@
-<div class="relative py-5  h-auto flex flex-col bg-white border border-gray-100"
-    [ariaLabel]="'product-title-'+productData.sku" role="article">
-    <i *ngIf="productData.offerPrice && !Recently && !EnableForProductsPage"
-        class='bx bxs-offer absolute top-2 left-2 text-2xl text-gray-600'></i>
-    <div [ngClass]="{'py-2 md:py-8':EnableForProductsPage}" class="flex justify-center">
-        <div [ngClass]="{'h-[100px]':Recently , 'h-[110px] xs:h-[130px]':!Recently ,'h-[110px] xs:h-[180px]':EnableForProductsPage}"
-            class="">
-            <img [ngClass]="{'max-w-22':Recently,'max-w-52':!Recently}" [src]="productData.imageUrl" srcset="
-                    {{ productData.imageUrl }} 300w, 
-                    {{ productData.imageUrl }} 600w, 
-                    {{ productData.imageUrl }} 1000w"
-                sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1000px" alt="{{ productData.name }} - Image"
-                width="300" height="200" style="height:100%;"
-                class="object-contain max-h-28 md:max-h-32 pt-4 hover:scale-[1.1]  transition-transform cursor-pointer" loading="lazy" />
-        </div>
+<div class="relative pt-5 pb-2  h-auto flex flex-col bg-white border border-[#eee]"
+  [ariaLabel]="'product-title-'+productData.sku" role="article">
+  <i *ngIf="isOfferValid() && !Recently && !EnableForProductsPage"
+    class='bx bxs-offer absolute top-3 left-4 text-2xl text-gray-600'></i>
+  <div [ngClass]="{'py-2 md:py-1': EnableForProductsPage}" class="flex justify-center">
+    <div [ngClass]="{
+                  'h-[100px]': Recently, 
+                  'h-[130px]': !Recently, 
+                  'h-[150px] xs:h-[230px] max-h-[200px]': EnableForProductsPage
+              }">
+      <picture>
+        <source [srcset]="productData.imageUrl + '?w=300&format=webp 300w, 
+                                    ' + productData.imageUrl + '?w=600&format=webp 600w, 
+                                    ' + productData.imageUrl + '?w=1000&format=webp 1000w'" type="image/webp">
+        <img [src]="productData.imageUrl + '?w=300&format=webp'" alt="{{ productData.name }} - Image" width="400"
+          height="300"
+          class="object-contain max-h-52 md:max-h-52 pt-4 hover:scale-[1.1] transition-transform cursor-pointer"
+          loading="lazy" decoding="async" fetchpriority="low" style="height: 100%;" />
+      </picture>
     </div>
+  </div>
+ 
+      <!-- Brand Badge -->
+      <div class="mb-2 text-center">
+        <span class="text-xs font-medium uppercase text-gray-700 px-2 py-1 rounded-full">{{productData.brand}}</span>
+      </div>
 
-    <div class="py-1 px-4 md:px-5 md:py-1 overflow-hidden">
-        <a [queryParams]="{sku:productData.id}" [routerLink]="['/product', productData.categoryName, productData.name]"
-            class="hover:underline transition-all" [attr.href]="'/product/' + productData.sku"
-            [attr.aria-label]="'View product ' + productData.name">
-            <h2 [ngClass]="{'text-[14px] mb-3':EnableForProductsPage}" id="product-title-{{ productData.sku }}"
-                class="line-clamp-2 mt-2 text-gray-600 text-[12px] h-[40px]">
-                {{ productData.description }}
-            </h2>
-        </a>
-
-        <div class="py-2 mb-4 h-16">
-            <div [ngClass]="{'flex-col':Recently,'flex-row':!Recently}" *ngIf="productData.offerPrice! > 0"
-                class="flex ">
-                <p class="text-[13px] xs:text-[18px]  font-semibold ">
-                    {{ productData.offerPrice | number}} <span class="text-[11px]">EGP</span>
-                </p>
-                <p class="text-[11px] xs:text-[14px] line-through text-gray-500">
-                    {{ productData.price | number}} <span class="text-[11px]">EGP</span>
-                </p>
-            </div>
-            <p *ngIf="productData.offerPrice! <= 0" class="text-[15px] xs:text-[18px] mx-1  ">
-                {{ productData.price | number }} <span class="text-[11px]">EGP</span>
-            </p>
-
-            <div *ngIf="!Recently" class="flex items-center space-x-2">
-                <p *ngIf="productData.offerPrice! > 0" class="text-[10.5px]">
-                    End Of: {{ productData.offerEndDate | date }}
-                </p>
-                <p *ngIf="productData.discount > 0" class="text-green-400  text-[9px] font-bold capitalize">Save {{
-                    productData.discount | number}} EGP</p>
-            </div>
-
-        </div>
-
-        <div *ngIf="(!Recently ) " class="w-full relative flex items-center space-x-3">
-            <button (click)="addToBasket(productData)"
-                class="flex items-center justify-center border py-1 rounded-md bg-[#fbfffa] text-sm shadow-sm hover:bg-black hover:text-white transition-all">
-                <ng-container *ngIf="perform.isLoading$ | async">
-                    <div class="flex items-center space-x-4 px-3 ">
-                        <span class="loader"></span>
-                    </div>
-                </ng-container>
-                <ng-container class="px-3 py-2 rounded-md" *ngIf="!(perform.isLoading$ | async)">
-                    <i class='bx bxs-cart-add text-xl mx-2 '></i>
-                </ng-container>
-            </button>
-            <div *ngIf="EnableForProductsPage" class="md:w-[40%] relative ">
-                <button
-                    class="flex items-center w-full justify-center font-semibold border py-2 px-4 md:px-7 text-white rounded-full bg-[#598fed]  shadow-sm hover:bg-black hover:text-white transition-all">
-                    <p class="text-[10px] md:text-[13px] font-semibold"> Buy Now </p>
-                </button>
-            </div>
-        </div>
-
+  <div class="py-1 px-4 md:px-5 md:py-1 overflow-hidden">
+      <div *ngIf="!Recently" class="text-xs text-gray-600 mb-2 flex items-center gap-1">
+      <i class='bx bx-time'></i>
+      <span>Delivery in {{productData.deliveryTimeInDays}} days</span>
     </div>
+    <a [queryParams]="{sku:productData.id}" [routerLink]="['/product', productData.categoryName, productData.name]"
+      class="hover:underline transition-all" [attr.href]="'/product/' + productData.sku"
+      [attr.aria-label]="'View product ' + productData.name">
+      <h2 [ngClass]="{'text-[14px] mb-3':EnableForProductsPage}" id="product-title-{{ productData.sku }}"
+        class="line-clamp-2 mt-2 text-gray-600 text-[13px] h-[40px]">
+        {{ productData.description }}
+      </h2>
+    </a>
+
+    <div class="py-2 mb-4 h-14">
+      <!-- Offer Price Display -->
+      <div [ngClass]="{'flex-col': Recently, 'flex-row': !Recently}" *ngIf="isOfferValid()" class="flex">
+        <p class="text-[17px] xs:text-[18px] font-semibold">
+          {{ getProductPrice() | number }} <span class="text-[10px]">EGP</span>
+        </p>
+        <p class="text-[14px] mx-2 xs:text-[14px] line-through text-gray-500">
+          {{ productData.price | number }} <span class="text-[10px]">EGP</span>
+        </p>
+      </div>
+
+      <!-- Regular Price Display -->
+      <p *ngIf="!isOfferValid()" class="text-[18px] xs:text-[18px] mx-1">
+        {{ productData.price | number }} <span class="text-[10px]">EGP</span>
+      </p>
+
+      <!-- Offer End Date & Discount -->
+      <div *ngIf="!Recently && isOfferValid()" class="flex items-center space-x-2">
+        <p *ngIf="productData.offerPrice && productData.offerPrice > 0" class="text-[12px]">
+          End Of: {{ productData.offerEndDate | date }}
+        </p>
+        <p *ngIf="isOfferValid()" class="text-green-400 text-[11px] font-bold capitalize">
+          Save {{ productData.discount | number }} EGP
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+<div *ngIf="(!EnableForProductsPage) && !Recently" class="w-full px-3">
+  <button (click)="addToBasket(productData)" 
+    class="w-full flex items-center justify-center gap-2 py-2 px-4 mt-2 
+           rounded-full border border-gray-200 bg-white
+           hover:bg-black hover:text-white hover:shadow-sm
+           transition-all duration-300 ease-in-out
+           text-sm font-medium">
+    <ng-container *ngIf="perform.isLoading$ | async">
+      <div class="flex justify-center">
+        <span class="loader w-4 h-4"></span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!(perform.isLoading$ | async)">
+      <i class='bx bxs-cart-add text-lg'></i>
+      <span>Add to Cart</span>
+    </ng-container>
+  </button>
+</div>
 </div>

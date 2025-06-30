@@ -9,7 +9,7 @@ namespace Ecommerce.Core.Repositories
     public interface IProductAttributeRepository
     {
 
-        Task<List<(string FilterName, List<string> FilterValues, int ProductCount)>> GetGroupedProductAttributesAsync(string categoryName);
+        //Task<List<(string FilterName, List<string> FilterValues, int ProductCount)>> GetGroupedProductAttributesAsync(string categoryName);
 
     }
 }

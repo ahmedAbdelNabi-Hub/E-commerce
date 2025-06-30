@@ -14,53 +14,57 @@ namespace Ecommerce.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly EcommerceDbContext _context;
+        private readonly EcommerceDbContext _dbContext;
         private readonly Dictionary<string, object> _repositories;
         private IDbContextTransaction _transaction;
         private IProductAttributeRepository _productAttributeRepository;
 
         public UnitOfWork(EcommerceDbContext dbContext)
         {
-            _context = dbContext;
+            _dbContext = dbContext;
             _repositories = new Dictionary<string, object>();
         }
 
-        // Begin a new transaction
         public async Task BeginTransactionAsync()
         {
-            _transaction = await _context.Database.BeginTransactionAsync();
+            _transaction = await _dbContext.Database.BeginTransactionAsync();
         }
 
-        // Commit the transaction
-        public async Task CommitAsync()
+        public async Task<bool> CommitAsync()
         {
-            if (_transaction != null)
+            try
             {
                 await _transaction.CommitAsync();
-                _transaction.Dispose();
+                return true;
             }
-        }
+            catch
+            {
+                await _transaction.RollbackAsync();
+                return false;
+            }
+            finally
+            {
+                await _transaction.DisposeAsync();
+                _transaction = null!;
+            }
 
-        // Rollback the transaction in case of failure
+        }
         public async Task RollbackAsync()
         {
             if (_transaction != null)
             {
-                await _transaction.RollbackAsync();
-                _transaction.Dispose();
+                await _dbContext.Database.RollbackTransactionAsync();
+                await _transaction.DisposeAsync();
+                _transaction = null!;
             }
         }
-
-        // Complete changes and save data
         public async Task<int> CompleteAsync()
         {
-            return await _context.SaveChangesAsync();
+            return await _dbContext.SaveChangesAsync();
         }
-
-        // Dispose resources
-        public async ValueTask DisposeAsync()
+        public void Dispose()
         {
-            await _context.DisposeAsync();
+            _dbContext.Dispose();
         }
 
         // Generic repository method
@@ -77,7 +81,7 @@ namespace Ecommerce.Repository
                 else
                 {
                     var repositoryType = typeof(GenericRepository<>);
-                    var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
+                    var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _dbContext);
                     _repositories.Add(type, repositoryInstance!);
                 }
             }
@@ -88,7 +92,7 @@ namespace Ecommerce.Repository
         // Specific repository for ProductAttributes
         public IProductAttributeRepository GetProductAttributeRepository()
         {
-            _productAttributeRepository ??= new ProductAttributeRepository(_context);
+            _productAttributeRepository ??= new ProductAttributeRepository(_dbContext);
             return _productAttributeRepository;
         }
     }

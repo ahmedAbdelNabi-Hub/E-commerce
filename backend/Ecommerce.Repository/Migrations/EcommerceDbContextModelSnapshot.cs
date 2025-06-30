@@ -143,6 +143,45 @@ namespace Ecommerce.Repository.Migrations
                     b.ToTable("Advertisement");
                 });
 
+            modelBuilder.Entity("Ecommerce.Core.Entities.Attribute", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Attribute");
+                });
+
+            modelBuilder.Entity("Ecommerce.Core.Entities.AttributeValue", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.ToTable("AttributeValue");
+                });
+
             modelBuilder.Entity("Ecommerce.core.Entities.Category", b =>
                 {
                     b.Property<int>("id")
@@ -361,6 +400,9 @@ namespace Ecommerce.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PaymentMethod")
+                        .HasColumnType("int");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -368,9 +410,15 @@ namespace Ecommerce.Repository.Migrations
                     b.Property<decimal>("SubTotal")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("id");
 
                     b.HasIndex("DeliveryMethodid");
+
+                    b.HasIndex("OrderDate")
+                        .HasDatabaseName("IX_Orders_OrderDate");
 
                     b.ToTable("Orders");
                 });
@@ -382,6 +430,11 @@ namespace Ecommerce.Repository.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DateTime")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<int?>("Orderid")
                         .HasColumnType("int");
@@ -402,6 +455,11 @@ namespace Ecommerce.Repository.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("DateTime")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.HasKey("id");
 
@@ -454,6 +512,9 @@ namespace Ecommerce.Repository.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LinkImage")
                         .IsRequired()
@@ -511,34 +572,20 @@ namespace Ecommerce.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<string>("AttributeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AttributeValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETUTCDATE()");
-
-                    b.Property<bool>("IsFilterable")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<int?>("ProductId")
-                        .IsRequired()
+                    b.Property<int>("AttributeId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("DateTime")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                    b.Property<int>("AttributeValueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.HasIndex("AttributeValueId");
 
                     b.HasIndex("ProductId");
 
@@ -736,6 +783,17 @@ namespace Ecommerce.Repository.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Ecommerce.Core.Entities.AttributeValue", b =>
+                {
+                    b.HasOne("Ecommerce.Core.Entities.Attribute", "Attribute")
+                        .WithMany("Values")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Attribute");
+                });
+
             modelBuilder.Entity("Ecommerce.core.Entities.Menu", b =>
                 {
                     b.HasOne("Ecommerce.core.Entities.Navbar", "Navbar")
@@ -829,11 +887,27 @@ namespace Ecommerce.Repository.Migrations
 
             modelBuilder.Entity("Ecommerce.Core.Entities.ProductAttributes", b =>
                 {
+                    b.HasOne("Ecommerce.Core.Entities.Attribute", "Attribute")
+                        .WithMany()
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Ecommerce.Core.Entities.AttributeValue", "AttributeValue")
+                        .WithMany()
+                        .HasForeignKey("AttributeValueId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Ecommerce.core.Entities.Product", "Product")
                         .WithMany("ProductAttributes")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Attribute");
+
+                    b.Navigation("AttributeValue");
 
                     b.Navigation("Product");
                 });
@@ -906,6 +980,11 @@ namespace Ecommerce.Repository.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Ecommerce.Core.Entities.Attribute", b =>
+                {
+                    b.Navigation("Values");
                 });
 
             modelBuilder.Entity("Ecommerce.core.Entities.Category", b =>

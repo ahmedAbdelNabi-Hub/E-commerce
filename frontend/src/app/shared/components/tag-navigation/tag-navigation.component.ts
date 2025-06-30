@@ -27,7 +27,7 @@ export class TagNavigationComponent implements OnInit, OnDestroy {
   activeIndex: number = 0;
   constructor() {
     this.productParams.set({
-      CategoryName: 'washingmachines',
+      CategoryName: 'gaming_monitors',
       PageIndex: 1,
       PageSize: 4,
       StatusId: 0

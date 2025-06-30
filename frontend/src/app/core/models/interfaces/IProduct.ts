@@ -1,4 +1,4 @@
-import { IProductAttribute } from "./IProductAttribute";
+import { SelectedAttribute } from "../../../admin/pages/product-from/components/Attribute/attribute.component";
 
 export interface IProduct {
   id: number;
@@ -15,9 +15,10 @@ export interface IProduct {
   dimensions: string
   imageUrl: string;
   linkImage: string;
+  isActive: boolean;
   deliveryTimeInDays: number;
   offerPrice: number | null;
-  productAttributes: IProductAttribute[]
+  productAttributes: SelectedAttribute[]
   offerStartDate: string | null;
   offerEndDate: string | null;
   createdAt: string;

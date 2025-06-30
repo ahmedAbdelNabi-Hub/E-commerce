@@ -33,7 +33,6 @@ namespace Ecommerce.core.Specifications
             if (!string.IsNullOrEmpty(Params.CategoryName))
             {
                 AddCriteria(p => p.Category.CategoryName == Params.CategoryName);
-
             }
             ApplyPagination(Params.PageSize * (Params.PageIndex - 1),Params.PageSize);
 
@@ -42,7 +41,7 @@ namespace Ecommerce.core.Specifications
 
         public ProductWithSpecifcations(int id)
         {
-            AddCriteria(p=>p.id==id);
+            AddCriteria(p=>p.id==id && p.IsActive == true);
             AddInclude(p => p.Category);
             AddInclude(p => p.ProductAttributes);
         }
@@ -51,7 +50,7 @@ namespace Ecommerce.core.Specifications
         public ProductWithSpecifcations OnOffer()
         {
             DateTime currentDate = DateTime.Now;
-            AddCriteria(p => p.OfferStartDate <= currentDate && p.OfferEndDate >= currentDate);
+            AddCriteria(p => p.OfferStartDate <= currentDate && p.OfferEndDate >= currentDate && p.IsActive == true);
             AddInclude(p => p.Category);
             AddOrderByDescending(p => p.Discount!);
             return this;
@@ -60,7 +59,8 @@ namespace Ecommerce.core.Specifications
         public ProductWithSpecifcations newArrive() {
             AddIncludeExpression(query => query.Include(p => p.ProductStatus).ThenInclude(s=>s.Status));
             AddCriteria(ps => ps.ProductStatus.Any(s => s.Status.StatusName == "New Arrival"));
-             return this;
+            AddCriteria(p => p.IsActive == true);
+            return this;
         }
     }
 }

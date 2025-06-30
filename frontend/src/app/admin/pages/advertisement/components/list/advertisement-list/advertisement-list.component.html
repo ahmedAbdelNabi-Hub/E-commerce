@@ -1,56 +1,63 @@
-<div class=" px-8 container mx-auto  flex  flex-col   space-y-2  overflow-x-hidden">
-    <div class="flex items-center justify-between px-1 border-b py-1">
-        <p class="text-[20px] font-semibold px-2 py-1">Advertisements List</p>
-
+<div class="container mx-auto px-4">
+    <div class="flex items-center justify-between border-b py-4 mb-6">
+        <div class="flex items-center gap-3">
+            <h1 class="text-2xl font-bold text-gray-800">Advertisement Management</h1>
+            <span class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Marketing Tools</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="text-sm text-gray-500">Total Ads: {{advertisements().length}}</span>
+        </div>
     </div>
-    <div *ngFor="let image of advertisements();let index = index"
-        class="flex items-center space-x-5 relative  py-4 rounded-md shadow-sm px-3 border cursor-pointer hover:scale-[0.99] transition-transform">
-        <div class="absolute top-2 space-x-2 right-4 flex items-center">
-            <i class='bx bxs-time text-[#c0c0c0]'></i>
-            <p class="text-sm font-thin text-gray-800">{{image.createdAt}}</p>
-        </div>
-        <div class="flex items-center absolute bottom-2 right-2 space-x-2">
-            <button class="hover:bg-black  hover:text-white border border-[#eee] px-3 py-0.5 rounded-sm space-x-2  flex items-center">
-                <i class='bx bx-edit-alt'></i>
-                <p class="text-sm">Update</p>
-            </button>
-            <button (click)="toggleStatus(image.id,index)" *ngIf="image.isActive==true" class=" border border-[#eee] px-2 space-x-2  flex items-center hover:bg-black hover:text-white">
-                <i class='bx bx-hide'></i>
-                <p class="text-sm font-thin">hide</p>
-            </button>
-            <button (click)="toggleStatus(image.id,index)"  *ngIf="image.isActive==false" class=" space-x-2 hover:bg-black hover:text-white border border-[#eeee] px-2 text-blue-500 flex items-center">
-                <i class='bx bx-show'></i>
-                <p class="text-sm font-thin ">active</p>
-            </button>
-        </div>
-        <div
-            class="flex items-center w-[28%] rounded-lg shadow-sm border border-s-lime-100 py-2 px-2 bg-[#f4f4f4]  space-x-2">
-            <img class="w-[60px]  shadow-sm" [src]="image.smallImage" alt="">
-            <img class="w-[180px] rounded-sm shadow-sm" [src]="image.largeImage" alt="">
-        </div>
-        <div class="flex flex-col w-[55%]">
-            <div class="flex items-center my-1 space-x-1 ">
-                <div *ngIf="image.isActive==true" class="flex items-center space-x-1 text-yellow-800  px-2 py-0.5 rounded-md">
-                    <i class='bx bx-show'></i>
-                    <p class="text-sm  text-gray-800">active</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div *ngFor="let image of advertisements(); let index = index" 
+            class="bg-white rounded-lg  border border-gray-100 hover:border-gray-200 transition-all duration-200 overflow-hidden">
+            
+            <div class="relative">
+                <img [src]="image.largeImage" alt="" class="w-full h-48 object-cover">
+                <img [src]="image.smallImage" alt="" class="absolute bottom-2 right-2 w-16 h-16 rounded shadow">
+                <span class="absolute top-2 right-2 text-xs text-gray-600 bg-white/80 px-2 py-1 rounded-full">
+                    <i class='bx bxs-time mr-1'></i>{{image.createdAt}}
+                </span>
+            </div>
+
+            <div class="p-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span [class]="image.isActive ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'" 
+                          class="text-xs px-2 py-1 rounded-full flex items-center">
+                        <i [class]="image.isActive ? 'bx bx-show' : 'bx bx-hide'" class="mr-1"></i>
+                        {{image.isActive ? 'Active' : 'Hidden'}}
+                    </span>
+                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+                        <i class='bx bx-area mr-1'></i>HomePage
+                    </span>
+                    <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">
+                        <i class='bx bx-label mr-1'></i>New Arrivals
+                    </span>
                 </div>
-                <div *ngIf="image.isActive==false" class=" space-x-2  flex items-center">
-                    <i class='bx bx-hide'></i>
-                    <p class="text-sm font-thin text-gray-800">hide</p>
-                </div>
-                <div class="flex items-center space-x-1 px-2 py-0.5 rounded-md">
-                    <i class='bx bx-area'></i>
-                    <p class="text-sm  text-gray-800">Section : HomePage</p>
-                </div>
-                <div class="flex items-center space-x-1 text-black  px-2 py-0.5 rounded-md">
-                    <i class='bx bx-label'></i>
-                    <p class="text-sm  text-gray-800">PlacementType :newarrivals</p>
+
+                <h3 class="font-semibold mb-2 line-clamp-1">{{image.subtitle}}</h3>
+                <p class="text-sm text-gray-600 line-clamp-2 mb-4">{{image.description}}</p>
+
+                <div class="flex items-center justify-end gap-2">
+                    <button class="btn-icon">
+                        <i class='bx bx-edit-alt'></i>
+                    </button>
+                    <button (click)="toggleStatus(image.id,index)" 
+                            [class]="image.isActive ? 'text-red-600 hover:bg-red-50' : 'text-green-600 hover:bg-green-50'"
+                            class="btn-icon">
+                        <i [class]="image.isActive ? 'bx bx-hide' : 'bx bx-show'"></i>
+                    </button>
                 </div>
             </div>
-            <title class="text-[18px] font-semibold line-clamp-1">{{image.subtitle}}</title>
-            <p class="text-sm text-gray-700 line-clamp-2 my-1">
-                {{image.description}}</p>
         </div>
     </div>
 </div>
+
+<style>
+    .btn-icon {
+        @apply p-2 rounded-full transition-colors duration-200;
+    }
+</style>
+
 <app-loading *ngIf="preformApi.isLoading$ | async"></app-loading>

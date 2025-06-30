@@ -1,43 +1,60 @@
-﻿namespace Ecommerce.Helpers
+﻿public static class DocumentSettings
 {
-    public class DocumentSettings
+    public static string UploadFile(IFormFile file, string folderName, string? oldFileName = null)
     {
-        public static string UploadFile(IFormFile file, string FolderName)
+        if (file == null || file.Length == 0)
+            return oldFileName ?? string.Empty;
+
+        string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "image", folderName);
+
+        if (!Directory.Exists(folderPath))
         {
-            string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\image", FolderName);
+            Directory.CreateDirectory(folderPath);
+        }
 
-            if (!Directory.Exists(folderPath))
+        string fileHash = GetFileHash(file);
+        string extension = Path.GetExtension(file.FileName);
+        string newFileName = $"{fileHash}{extension}";
+        string newFilePath = Path.Combine(folderPath, newFileName);
+
+        if (File.Exists(newFilePath))
+        {
+            if (!string.IsNullOrWhiteSpace(oldFileName) &&
+                !string.Equals(oldFileName, newFileName, StringComparison.OrdinalIgnoreCase))
             {
-                Directory.CreateDirectory(folderPath);
+                string oldFilePath = Path.Combine(folderPath, oldFileName);
+                if (File.Exists(oldFilePath))
+                {
+                    File.Delete(oldFilePath);
+                }
             }
 
-            string fileHash = GetFileHash(file);
+            return newFileName;
+        }
 
-            string existingFile = Directory.GetFiles(folderPath)
-                .FirstOrDefault(f => Path.GetFileNameWithoutExtension(f) == fileHash)!;
-
-
-            if (existingFile != null)
-            {
-                return Path.GetFileName(existingFile);
-            }
-
-            string uniqueFileName = $"{fileHash}{Path.GetExtension(file.FileName)}";
-
-            string filePath = Path.Combine(folderPath, uniqueFileName);
-
-            using var fileStream = new FileStream(filePath, FileMode.Create);
+        using (var fileStream = new FileStream(newFilePath, FileMode.Create))
+        {
             file.CopyTo(fileStream);
-
-            return uniqueFileName;
         }
 
-        private static string GetFileHash(IFormFile file)
+        if (!string.IsNullOrWhiteSpace(oldFileName) &&
+            !string.Equals(oldFileName, newFileName, StringComparison.OrdinalIgnoreCase))
         {
-            using var stream = file.OpenReadStream();
-            using var sha256 = System.Security.Cryptography.SHA256.Create();
-            byte[] hashBytes = sha256.ComputeHash(stream);
-            return BitConverter.ToString(hashBytes).Replace("-", "").ToLower(); 
+            string oldFilePath = Path.Combine(folderPath, oldFileName);
+            if (File.Exists(oldFilePath))
+            {
+                File.Delete(oldFilePath);
+            }
         }
+
+        return newFileName;
+    }
+
+    private static string GetFileHash(IFormFile file)
+    {
+        using var stream = file.OpenReadStream();
+        using var sha256 = System.Security.Cryptography.SHA256.Create();
+        byte[] hashBytes = sha256.ComputeHash(stream);
+        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
     }
 }

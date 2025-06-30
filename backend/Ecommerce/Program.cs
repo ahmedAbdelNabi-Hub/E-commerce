@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using Ecommerce.Extensions;
 using Ecommerce.Repository.Data.DataSeed;
 using System.Text.Json.Serialization;
+using StackExchange.Redis;
 
 namespace EcommerceContract
 {
@@ -24,11 +25,13 @@ namespace EcommerceContract
             #region   Add services to the container.
 
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddControllers()
-                            .AddJsonOptions(options =>
-                            {
-                                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-                            });
+
+            builder.Services.AddControllers(options => options.Filters.Add<ValidateModelAttribute>())
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; //IgnoreCycles
+                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            });
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -58,9 +61,10 @@ namespace EcommerceContract
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "❌ An error occurred while seeding the database.");
+                    logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
+       
             #endregion
 
             #region Configure the HTTP request pipeline.

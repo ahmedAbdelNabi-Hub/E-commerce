@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, shareReplay, tap } from 'rxjs';
 import { GroupedResultDto } from '../models/interfaces/GroupedResultDto';
 import { IProduct } from '../models/interfaces/IProduct';
 import { API_URLS } from '../constant/api-urls';
@@ -9,13 +9,15 @@ import { IPaginationDto } from '../models/interfaces/IPaginationDto';
 import { IFilterationDto } from '../models/interfaces/IFilteration';
 import { IProductView } from '../models/interfaces/IProductView';
 import { ProductView } from '../models/classes/ProductView';
+import { IProductAttribute } from '../models/interfaces/IProductAttribute';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
   private dataCache: GroupedResultDto<string, IProduct>[] | null = null;
   private newArrivalsCache: IProduct[] | null = null;
-  private ProductIsViewByUser !: IProductView;
+  private recentlyProductsCache$ = new BehaviorSubject<IPaginationDto | null>(null);
   constructor(private _Http: HttpClient) { }
+
 
   getProductsOnOfferGroupedByCategory(): Observable<GroupedResultDto<string, IProduct>[]> {
     if (!this.dataCache) {
@@ -31,19 +33,12 @@ export class ProductService {
     return of(this.dataCache);
   }
 
-  getNewArrivalsProducts(): Observable<IProduct[]> {
-    if (!this.newArrivalsCache) {
-      console.log(this.newArrivalsCache)
-      return this._Http.get<IProduct[]>(`${API_URLS.Localhost + API_URLS.prodcut}NewArrivals`).pipe(
-        tap(response => {
-          this.newArrivalsCache = response;
-        }),
-        catchError(error => {
-          return of([]);
-        })
-      );
-    }
-    return of(this.newArrivalsCache);
+  activateProduct(productId: number): Observable<any> {
+    return this._Http.patch(`${API_URLS.Localhost + API_URLS.prodcut}${productId}/activate`, {});
+  }
+
+  getProductAttributes(productId: number): Observable<IProductAttribute[]> {
+    return this._Http.get<IProductAttribute[]>(`${API_URLS.Localhost + API_URLS.prodcut}${productId}/attributes`);
   }
 
   getProductWithIdAndStoreInRedis(id: number, isStoreInRedis: boolean): Observable<IProduct> {
@@ -51,12 +46,12 @@ export class ProductService {
     const params = new HttpParams()
       .set('viewId', productIsViewByUser.viewId)
       .set('isStoreInRedis', isStoreInRedis.toString());
-    return this._Http.get<IProduct>(`${API_URLS.Localhost + API_URLS.prodcut}GetProduct/${id}`, { params });
+    return this._Http.get<IProduct>(`${API_URLS.Localhost + API_URLS.prodcut}${id}`, { params });
   }
 
   getAllProduct(Params: IProductSpecParams): Observable<IPaginationDto> {
     if (Params) {
-      return this._Http.get<IPaginationDto>(`${API_URLS.Localhost + API_URLS.prodcut}all/prorduct/?CategoryName=${Params.CategoryName}&PageIndex=${Params.PageIndex}&PageSize=${Params.PageSize}`);
+      return this._Http.get<IPaginationDto>(`${API_URLS.Localhost + API_URLS.prodcut}?CategoryName=${Params.CategoryName}&PageIndex=${Params.PageIndex}&PageSize=${Params.PageSize}`);
     }
     return of();
   }
@@ -66,11 +61,11 @@ export class ProductService {
   }
 
   createProduct(productForm: FormData): Observable<any> {
-    const apiUrl = `${API_URLS.Localhost + API_URLS.prodcut}Create`;
+    const apiUrl = `${API_URLS.Localhost + API_URLS.prodcut}`;
     console.log(apiUrl);
     console.log([...productForm as any].map(([key, value]) => ({ key, value })));
 
-    return this._Http.post(apiUrl, productForm);  // FormData content type will be set automatically
+    return this._Http.post(apiUrl, productForm);
   }
   deleteProduct(productId: number): Observable<any> {
     const apiUrl = `${API_URLS.Localhost + API_URLS.prodcut}${productId}`
@@ -78,28 +73,29 @@ export class ProductService {
   }
 
   updateProduct(id: string, product: FormData): Observable<any> {
-    return this._Http.post(`https://localhost:7197/api/Product/${id}/update`, product);
+    const apiUrl = `${API_URLS.Localhost + API_URLS.prodcut}`
+    return this._Http.put(`${apiUrl}${id}`, product);
   }
 
   getUserViewProduct(): IProductView {
-    let userKey = localStorage.getItem('viewKey'); 
+    let userKey = localStorage.getItem('viewKey');
     if (!userKey) {
-      return this.createNewViewForUser();  
+      return this.createNewViewForUser();
     }
 
     const productViewForUser: IProductView = {
       IsStoreInRedis: true,
-      viewId: userKey!, 
+      viewId: userKey!,
       ProductReadDto: []
     };
     return productViewForUser;
   }
 
   createNewViewForUser(): IProductView {
-    const newViewId = crypto.randomUUID(); 
+    const newViewId = crypto.randomUUID();
     const productViewForUser: IProductView = {
       IsStoreInRedis: true,
-      viewId: newViewId, 
+      viewId: newViewId,
       ProductReadDto: []
     };
     localStorage.setItem('viewKey', productViewForUser.viewId);
@@ -108,13 +104,19 @@ export class ProductService {
   }
 
   GetRecentlyProducts(): Observable<IPaginationDto> {
-      const userKey  = this.getUserViewProduct().viewId;
-      return this._Http.get<IPaginationDto>(`${API_URLS.Localhost + API_URLS.prodcut}GetRecentlyProducts/${userKey}`);
-    
+    if (this.recentlyProductsCache$.value) {
+      return of(this.recentlyProductsCache$.value);
+    }
+    const userKey = this.getUserViewProduct().viewId;
+    return this._Http.get<IPaginationDto>(`${API_URLS.Localhost + API_URLS.prodcut}recent/${userKey}`).pipe(
+      tap(data => this.recentlyProductsCache$.next(data)),
+      shareReplay(1)
+    );
   }
 
   clearCache(): void {
     this.newArrivalsCache = null;
+    this.recentlyProductsCache$.next(null);
     this.dataCache = null;
   }
 }

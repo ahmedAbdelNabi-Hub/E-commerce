@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Ecommerce.Contracts.DTOs;
 using Ecommerce.Contracts.DTOs.Category;
+using Ecommerce.Contracts.DTOs.order;
 using Ecommerce.Contracts.DTOs.product;
 using Ecommerce.core.Entities;
 using Ecommerce.Core.Entities;
+using Ecommerce.Core.Entities.order;
 using Ecommerce.Helpers.PictureResolver;
 using EcommerceContract.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -14,27 +16,35 @@ namespace EcommerceContract.Helpers.profile
     {
         public MappingProfiles()
         {
-            CreateMap<Address,AddressDto>().ReverseMap();   
+            //order maping
+            CreateMap<OrderItem, OrderItemDTO>()
+            .ForMember(dest=>dest.PictureUrl,otp=>otp.MapFrom<PictureOrderItemsImageResolver>());
 
-            // Navbar Mapping
-            CreateMap<Navbar, NavbarDto>()
-                .ForMember(dest => dest.Menus, opt => opt.MapFrom(src => src.Menus))
-                .ReverseMap();
+            CreateMap<ShippingAddress, AddressDto>()
+                .ForMember(dest => dest.IsActive, otp => otp.Ignore());
+           CreateMap<Order, OrderDTO>()
+                                .ForMember(dest => dest.PaymentIntentId, otp => otp.Ignore());
 
-            // Menu Mapping
-            CreateMap<Menu, MenuDto>()
-                .ForMember(dest => dest.Links, opt => opt.MapFrom(src => src.Links))
-                .ReverseMap();
+            CreateMap<DeliveryMethodsDTO, DeliveryMethod>().ReverseMap();
 
-            // MenuLink Mapping
-            CreateMap<MenuLinks, MenuLinkDto>()
-                .ReverseMap();
+
+           CreateMap<Address,AddressDto>().ReverseMap();
+
+           CreateMap<Navbar, NavbarDto>()
+          .ForMember(dest => dest.Menus, opt => opt.MapFrom(src => src.Menus))
+          .ReverseMap();
+
+           CreateMap<Menu, MenuDto>()
+          .ForMember(dest => dest.Links, opt => opt.MapFrom(src => src.Links))
+          .ReverseMap();
+
+           CreateMap<MenuLinks, MenuLinkDto>()
+          .ReverseMap();
 
             // Advertisement Mapping
             CreateMap<Advertisement, AdvertisementDTO>()
                 .ForMember(dest => dest.LargeImage, opt => opt.MapFrom<PictureLargeImageResoIver>())
                 .ForMember(dest => dest.SmallImage, opt => opt.MapFrom<PictureSmallImageResoIver>());
-
             CreateMap<AdvertisementCreateDto, Advertisement>();
 
             // Product Mapping
@@ -52,7 +62,18 @@ namespace EcommerceContract.Helpers.profile
 
             CreateMap<ProductCreateDto, Product>()
                  .ForMember(dest => dest.DeliveryTimeInDays, opt => opt.MapFrom(src => src.DeliveryTimeInDays))
-                .ForMember(des=>des.ProductStatus,opt=>opt.Ignore());  
+                .ForMember(des=>des.ProductStatus,opt=>opt.Ignore());
+
+            CreateMap<ProductCreateDto, Product>()
+                  .ForMember(dest => dest.id, opt => opt.Ignore())
+                  .ForMember(dest => dest.ImageUrl, opt => opt.Ignore())
+                  .ForMember(dest => dest.LinkImage, opt => opt.Ignore())
+                  .ForMember(dest => dest.ProductStatus, opt => opt.Ignore())
+                  .ForMember(dest => dest.ProductAttributes, opt => opt.Ignore())
+                  .ForMember(dest => dest.SKU, opt => opt.Ignore())
+                  .ForMember(dest => dest.OfferPrice, opt => opt.Ignore())
+                  .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null))
+;
 
 
             // Product Status Mapping
@@ -66,9 +87,10 @@ namespace EcommerceContract.Helpers.profile
                 .ForMember(dest => dest.Image, opt => opt.MapFrom<PictureCategoryImageResolver>())
                 .ReverseMap();
 
-            // Product Attributes Mapping
             CreateMap<ProductAttributes, ProductAttributeDto>()
-                .ReverseMap();
+              .ForMember(dest => dest.AttributeName, opt => opt.MapFrom(src => src.Attribute.Name))
+              .ForMember(dest => dest.AttributeValue, opt => opt.MapFrom(src => src.AttributeValue.Value));
+
 
 
         }

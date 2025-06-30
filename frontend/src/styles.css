@@ -50,22 +50,24 @@ body {
 
 /* For all scrollbars */
 ::-webkit-scrollbar {
-  width: 9px; /* Width of vertical scrollbar */
-  height: 8px; /* Height of horizontal scrollbar */
+  width: 5px;
+  /* Width of vertical scrollbar */
+  height: 5px;
+  /* Height of horizontal scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  background: #f0f0f0; /* Track color */
+  background: #ffffff;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(172, 172, 172);
+  background: #ededed;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(28, 28, 28);
+  background: rgb(234, 234, 234);
 }
 
 /* Optional Scrollbar for specific containers */
@@ -73,4 +75,25 @@ body {
   max-height: 500px;
   overflow-y: auto;
   padding-right: 5px;
+}
+
+.loader {
+  width: 25px;
+  height: 25px;
+  border: 5px solid #709bff;
+  border-bottom-color: #381695;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

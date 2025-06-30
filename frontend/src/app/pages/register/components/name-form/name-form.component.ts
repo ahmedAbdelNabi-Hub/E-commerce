@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RegistrationService } from '../../../../core/services/registration.service'; // Import the RegistrationService
 import { moveLeftToRight, moveRightToLeft } from '../../../../shared/animations/RouteAnimation';
 import { lettersAndSpacesValidator } from '../../../../core/validators/general-validators';
 import { getErrorMessage } from '../../../../core/utils/form-error-messages';
+import { AuthService } from '../../../../core/services/Auth.service';
 
 @Component({
   selector: 'app-name-form',
@@ -17,7 +17,7 @@ export class NameFormComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private _activatedRoute = inject(ActivatedRoute);
-  private registrationService = inject(RegistrationService);
+  private registrationService = inject(AuthService);
   ngOnInit(): void {
     this.initalControllers();
     this.addTokenToQueryParams();

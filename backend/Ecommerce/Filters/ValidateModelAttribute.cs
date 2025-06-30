@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EcommerceContract.ErrorResponses;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using SkinTelIigentContracts.CustomResponses;
 using System.Linq;
 
 public class ValidateModelAttribute : ActionFilterAttribute

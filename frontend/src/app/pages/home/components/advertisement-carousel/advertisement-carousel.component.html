@@ -25,10 +25,10 @@
         'direction-center': image.direction === 'center'
       }" class="absolute  px-4 lg:px-2  w-full xs:max-w-[18rem] md:max-w-sm lg:max-w-[38rem] max-h-max flex flex-col ">
                 <div>
-                    <h3
-                        class="leading-2 max-bland line-clamp-2  lg:line-clamp-3 text-[#fffefe]  text-responsive-sm xs:text-responsive-xl md:text-[40px] font-[550] md:max-w-xl break-words">
+                    <h3 
+                        class="leading-2 max-bland line-clamp-2  lg:line-clamp-3 text-[#fffefe]  text-[38px] xs:text-responsive-xl md:text-[40px] font-[550] md:max-w-xl break-words">
                         {{image?.subtitle}}</h3>
-                    <p class="max-bland text-[#b5b5b5] mt-3  text-[12px] line-clamp-2 md:max-w-md xs:text-[15px] md:text-[1rem]">
+                    <p class="max-bland text-[#b5b5b5] mt-3  text-[15px] line-clamp-2 md:max-w-md xs:text-[15px] md:text-[1rem]">
                         {{image?.description}}</p>
                     <button class="bg-[#1d1a1a]  text-white  px-3 py-2 md:px-6 md:py-3 mt-4 xs:text-[12px] rounded-full md:text-[13px]">Buy Now</button>
                 </div>
@@ -44,11 +44,11 @@
         <i class=' text-4xl bx bx-chevron-right'></i>
     </button>
 
-    <div class="absolute md:py-2 bottom-0 md:bottom-2 w-full flex flex-col items-center justify-center">
+    <div class="absolute py-2 -bottom-2 md:bottom-2 w-full flex flex-col items-center justify-center">
         <div>
-            <p class="text-[10px] xs:text-[11px] md:text-[12px] max-bland  text-[#fffefe]">{{activeTitle}}</p>
+            <p class="text-[13px] xs:text-[11px] md:text-[12px] max-bland  text-[#fffefe]">{{activeTitle}}</p>
         </div>
-        <div class="flex items-center justify-center blur-glass bg-[#b0e0e797] my-2 rounded-md h-8 w-[450px] md:w-[300px]">
+        <div class="flex items-center justify-center blur-glass bg-[#b0e0e797] my-2 md:my-2 rounded-md h-9 w-[300px] md:w-[300px]">
             <div (click)="activeImage(i)" *ngFor="let image of imageSlider; let i = index"
                 class=" h-8 flex items-center justify-center" [ngClass]="{'animate-expand':activeIndex==i}">
                 <div [ngClass]="{'animate-expand':activeIndex==i}"

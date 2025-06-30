@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { IAddress } from '../models/interfaces/IAddress';
 import { HttpClient } from '@angular/common/http';
 import { IBaseApiResponse } from '../models/interfaces/IBaseApiResponse';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AddressService {
+    private cache$ = new BehaviorSubject<IAddress[] | null>(null); // Cache storage
     constructor(private _http: HttpClient) { }
 
     postAddress(address: IAddress): Observable<IBaseApiResponse> {
@@ -13,7 +15,15 @@ export class AddressService {
     }
 
     getAddress(): Observable<IAddress[]> {
-        return this._http.get<IAddress[]>('https://localhost:7197/api/Account/addresses');
+        if (this.cache$.value) {
+            return of(this.cache$.value); 
+        }
+        return this._http.get<IAddress[]>('https://localhost:7197/api/Account/addresses').pipe(
+            tap(data => this.cache$.next(data))
+        );
     }
 
+    clearCache() {
+        this.cache$.next(null); 
+    }
 }

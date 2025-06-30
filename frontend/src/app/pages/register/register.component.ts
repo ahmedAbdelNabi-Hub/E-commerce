@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, inject, OnInit, signal } from '@angular/core';
-import { RegistrationService } from '../../core/services/registration.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, inject, OnInit, signal } from '@angular/core';
+import { AuthService } from '../../core/services/Auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   animationState: string = '';
-  _registerService = inject(RegistrationService);
+  _registerService = inject(AuthService);
   contentRightForm = signal<string[]>([]);
 
 
@@ -28,5 +27,5 @@ export class RegisterComponent implements OnInit {
       this.contentRightForm.set(data);
     })
   }
-  
+
 }

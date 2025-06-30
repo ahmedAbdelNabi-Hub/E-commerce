@@ -1,3 +1,37 @@
-*{
+* {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.skeleton-container {
+    display: flex;
+    align-items: center;
+ 
+    /* Similar to space-x-4 in Tailwind */
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-line {
+    height: 20px;
+    /* Similar to h-4 */
+    width: 100%;
+    /* Similar to w-1/4 */
+    background-color: #e7e7e7;
+    /* Similar to bg-gray-200 */
+    border-radius: 9999px;
+    /* Similar to rounded-full */
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

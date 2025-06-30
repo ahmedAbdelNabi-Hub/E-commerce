@@ -29,7 +29,7 @@ export class NavbarService {
     return this.excludedRoutes.some((excludedRoute) => route.startsWith(excludedRoute));
   }
   getNavbars(): Observable<Navbar[]> {
-    return this.http.get<Navbar[]>(`https://localhost:7197${API_URLS.navbar}`).pipe(
+    return this.http.get<Navbar[]>(`${API_URLS.Localhost}${API_URLS.navbar}`).pipe(
       catchError(error => {
         // Handle error appropriately
         console.error('Error fetching navbars', error);

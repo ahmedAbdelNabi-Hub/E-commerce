@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Ecommerce.Repository.Repositories
@@ -94,6 +95,36 @@ namespace Ecommerce.Repository.Repositories
             if (spec == null) throw new ArgumentNullException(nameof(spec));
             return SpecificationsEvaluator<T>.GetQuery(_dbContext.Set<T>().AsQueryable(), spec);
         }
+        public IQueryable<T> GetQueryableWithSpec(ISpecifications<T> spec)
+        {
+            return ApplySpecification(spec);
+        }
+        public async Task<List<TResult>> GetProjectedAsync<TResult>(Expression<Func<T, TResult>> selector, ISpecifications<T> spec)
+        {
+            ArgumentNullException.ThrowIfNull(selector);
+            ArgumentNullException.ThrowIfNull(spec);
 
+            return await ApplySpecification(spec)
+                         .AsNoTracking()
+                         .Select(selector)
+                         .ToListAsync();
+        }
+        public async Task DeleteRangeAsync(IEnumerable<T> entities)
+        {
+            _dbContext.Set<T>().RemoveRange(entities);
+            await Task.CompletedTask;
+        }
+        public async Task AddRangeAsync(IEnumerable<T> entities)
+        {
+            await _dbContext.Set<T>().AddRangeAsync(entities);
+        }
+
+
+        public async Task<List<T>> GetByIdsAsync(List<int> ids)
+        {
+            return await _dbContext.Set<T>()
+                       .Where(entity => ids.Contains(entity.id))
+                       .ToListAsync();
+        }
     }
 }

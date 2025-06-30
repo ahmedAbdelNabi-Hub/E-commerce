@@ -18,7 +18,12 @@ namespace Ecommerce.Repository.Configruations
 
             builder.OwnsOne(O => O.ShippingAddress, S => S.WithOwner());
 
-            builder.HasOne(o=>o.DeliveryMethod).WithMany().OnDelete(DeleteBehavior.NoAction);    
+            builder.HasOne(o => o.DeliveryMethod).WithMany().OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasIndex(o => o.OrderDate)
+        .HasDatabaseName("IX_Orders_OrderDate"); // Optional: Custom Index Name
+
+
         }
     }
 }

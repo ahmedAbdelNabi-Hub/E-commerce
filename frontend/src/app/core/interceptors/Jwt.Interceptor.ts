@@ -5,9 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
   
-  // Simulated token retrieval (replace this with your real token retrieval logic)
   getToken(): string | null {
-    return localStorage.getItem('token'); // Example storage method
+    return localStorage.getItem('token');
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

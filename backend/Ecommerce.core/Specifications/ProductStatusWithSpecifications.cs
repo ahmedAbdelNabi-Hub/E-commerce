@@ -19,10 +19,10 @@ namespace Ecommerce.core.Specifications
         public ProductStatusWithSpecifications(int productId,int StatusId):base(ps => ps.StatusId == StatusId && ps.ProductId == productId)
         {
         }
-        public ProductStatusWithSpecifications(ProductSpecParams Params) :base(ps => ps.StatusId == Params.StatusId)
+        public ProductStatusWithSpecifications(ProductSpecParams Params) :base(ps => ps.StatusId == Params.StatusId &&  ps.Product.IsActive == true)
         {
             AddInclude(ps => ps.Product);
-            AddOrderByDescending(ps => ps.Product.CreatedAt); 
+            AddOrderByDescending(ps => ps.Product.CreatedAt);
             ApplyPagination(Params.PageSize * (Params.PageIndex - 1), Params.PageSize);
 
         }

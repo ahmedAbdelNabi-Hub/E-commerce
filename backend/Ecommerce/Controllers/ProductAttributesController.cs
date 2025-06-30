@@ -25,106 +25,135 @@ namespace Ecommerce.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpPost("{productId}/attrubite")]
-        [ProducesResponseType(typeof(BaseApiResponse), 200)]
-        public async Task<ActionResult<BaseApiResponse>> AddAttrubiteToProduct(int productId, [FromBody] List<ProductAttributeDto> productAttributesDtoList)
+        [HttpPost]
+        [Route("/api/attributes")]
+        public async Task<IActionResult> Create([FromBody] AttributeDto dto)
         {
-            if (productId <= 0 || productAttributesDtoList == null)
-            {
-                return BadRequest(new BaseApiResponse(StatusCodes.Status400BadRequest));
-            }
-            var productAttributeRep = _unitOfWork.Repository<ProductAttributes>();
-            var product = await _unitOfWork.Repository<Product>().GetByIdSpecAsync(new ProductWithSpecifcations(productId));
-            if (product is null)
-            {
-                return BadRequest(new BaseApiResponse(StatusCodes.Status400BadRequest,"Product is not Found"));
-            }
-            var listOfProductAttributes = _mapper.Map<List<ProductAttributes>>(productAttributesDtoList);
-            var tasks = listOfProductAttributes.Select(productAttribute =>
-            {
-                productAttribute.ProductId = productId;
-                return productAttributeRep.AddAsync(productAttribute);
-            });
+            var existingAttr = await _unitOfWork.Repository<Ecommerce.Core.Entities.Attribute>()
+               .GetByIdSpecAsync(new AttributesSpecification(dto.Name));
 
-            await Task.WhenAll(tasks);
-            return await SaveChangesAsync(_unitOfWork, "Save is successful", "Failed to save the productAttribute");
+            if (existingAttr != null)
+            {
+                return BadRequest(new BaseApiResponse(400, $"Attribute '{dto.Name}' already exists."));
+            }
 
+            var attribute = new Ecommerce.Core.Entities.Attribute
+            {
+                Name = dto.Name,
+                Values = dto.Values.Select(v => new AttributeValue { Value = v }).ToList()
+            };
+
+            await _unitOfWork.Repository<Ecommerce.Core.Entities.Attribute>().AddAsync(attribute);
+            await _unitOfWork.CompleteAsync();
+
+            return Ok(new BaseApiResponse(200, "Create Product Attribute"));
         }
 
-        [HttpPut("id")]
-        [ProducesResponseType(typeof(BaseApiResponse), 200)]
-        [Authorize(Roles = "Admin,Manager")]
-        public async Task<ActionResult<BaseApiResponse>> UpdateAttribute(int id, [FromBody] List<ProductAttributeDto> productAttributesDtoList)
+        [HttpGet]
+        [Route("/api/attributes")]
+        public async Task<IActionResult> GetAll()
         {
-            if (id <= 0 || productAttributesDtoList == null || !productAttributesDtoList.Any())
+            var data = await _unitOfWork.Repository<Ecommerce.Core.Entities.Attribute>()
+                .GetAllWithSpecAsync(new AttributesSpecification());
+            var result = data.Select(attr => new AttributeResponseDto
             {
-                return BadRequest(new BaseApiResponse(StatusCodes.Status400BadRequest, "Invalid input data"));
+                Id = attr.id,
+                Name = attr.Name,
+                Values = attr.Values.Select(v => new AttributeValueDto { Id = v.id, Value = v.Value }).ToList()
+            }).ToList();
+            return Ok(result);
+        }
+
+
+        [HttpPut("/api/attributes/{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] AttributeDto dto)
+        {
+            var repo = _unitOfWork.Repository<Ecommerce.Core.Entities.Attribute>();
+            var attribute = await repo.GetByIdSpecAsync(new AttributesSpecification(id));
+
+            if (attribute == null)
+                return NotFound(new BaseApiResponse(404, "Attribute not found"));
+
+            // Check for duplicate name
+            var duplicate = await repo.GetByIdSpecAsync(new AttributesSpecification(dto.Name.Trim()));
+            if (duplicate != null && duplicate.id != id)
+                return BadRequest(new BaseApiResponse(400, "Attribute with the same name already exists"));
+
+            attribute.Name = dto.Name.Trim();
+
+            // --- Get current values from DB
+            var existingValues = attribute.Values!.ToList();
+
+            // --- Normalize incoming new values
+            var newValues = dto.Values.Select(v => v.Trim()).ToList();
+
+            // --- Step 1: Handle updated or new values
+            foreach (var newVal in newValues)
+            {
+                var existing = existingValues.FirstOrDefault(ev => ev.Value.Equals(newVal, StringComparison.OrdinalIgnoreCase));
+                if (existing == null)
+                {
+                    attribute.Values!.Add(new AttributeValue
+                    {
+                        Value = newVal,
+                        AttributeId = id
+                    });
+                }
             }
 
-            var product = await _unitOfWork.Repository<Product>().GetByIdSpecAsync(new ProductWithSpecifcations(id));
-            if (product is null)
+            // --- Step 2: Handle deleted or renamed values
+            foreach (var oldVal in existingValues)
             {
-                return NotFound(new BaseApiResponse(StatusCodes.Status404NotFound, "Product not found"));
-            }
+                if (!newValues.Contains(oldVal.Value, StringComparer.OrdinalIgnoreCase))
+                {
+                    var renamed = newValues.Except(existingValues.Select(ev => ev.Value), StringComparer.OrdinalIgnoreCase).FirstOrDefault();
+                    if (!string.IsNullOrWhiteSpace(renamed) &&
+                        existingValues.Any(ev => ev.id == oldVal.id && ev.Value != renamed))
+                    {
+                        oldVal.Value = renamed;
+                    }
+                    else
+                    {
+                        
+                        var productAttrRepo = _unitOfWork.Repository<ProductAttributes>();
+                        var relatedProductAttributes = await productAttrRepo
+                            .GetAllWithTrackingAsync(new ProductAttributesWithSpecification(oldVal.id,true));
 
-            var productAttributes = _mapper.Map<List<ProductAttributes>>(productAttributesDtoList);
-            var productAttributeRep = _unitOfWork.Repository<ProductAttributes>();
+                        foreach (var pa in relatedProductAttributes)
+                        {
+                            await productAttrRepo.DeleteAsync(pa);
+                        }
+
+                        attribute.Values!.Remove(oldVal);
+                    }
+                }
+            }
 
             try
             {
-
-
-                // Use parallelism with chunking for batch updates
-                int batchSize = 10; // Define the batch size
-                var tasks = productAttributes
-                    .Select(attr =>
-                    {
-                        attr.ProductId = id;
-                        return productAttributeRep.UpdateAsync(attr);
-                    })
-                    .Chunk(batchSize) // Split into batches
-                    .Select(batch => Task.WhenAll(batch));
-
-                // Execute all tasks in parallel
-                await Task.WhenAll(tasks);
-
-                // Save changes once after processing all batches
                 await _unitOfWork.CompleteAsync();
-
-                return Ok(new BaseApiResponse(StatusCodes.Status200OK, "Save is successful"));
-
+                return Ok(new BaseApiResponse(200, "Attribute updated successfully"));
             }
-
-            catch (Exception)
+            catch (DbUpdateException ex)
             {
-                return StatusCode(500, new BaseApiResponse(StatusCodes.Status500InternalServerError, "An error occurred"));
+                return StatusCode(500, new BaseApiResponse(500, $"Database error: {ex.InnerException?.Message ?? ex.Message}"));
             }
         }
 
+        //[HttpDelete("/api/attributes/{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    var repo = _unitOfWork.Repository<Ecommerce.Core.Entities.Attribute>();
+        //    var attr = await repo.GetByIdIncludingAsync(id, a => a.Values);
 
-        [HttpGet("filters")]
-        public async Task<ActionResult<List<FilterationDto>>> GetProductFilters([FromQuery] string categoryName)
-        {
-       
-            var productAttributeRepo = _unitOfWork.GetProductAttributeRepository();
-            if (string.IsNullOrEmpty(categoryName))
-            {
-                return BadRequest(new BaseApiResponse(StatusCodes.Status400BadRequest, "Category name is required."));
-            }
+        //    if (attr == null)
+        //        return NotFound(new BaseApiResponse(404, "Attribute not found"));
 
-            var allProductAttributWithCategory = await productAttributeRepo.GetGroupedProductAttributesAsync(categoryName);
-            if (allProductAttributWithCategory is null)
-                return BadRequest(new BaseApiResponse(StatusCodes.Status404NotFound, "No filters found for the specified category."));
-            var filterationDtos = allProductAttributWithCategory.Select(group => new FilterationDto
-            {
-                FilterName = group.FilterName,
-                FilterValues = group.FilterValues,
-                ProductCount = group.ProductCount
-            }).ToList();
+        //    await _unitOfWork.Repository<AttributeValue>().DeleteRangeAsync(attr.Values);
+        //    await repo.DeleteAsync(attr);
+        //    await _unitOfWork.CompleteAsync();
 
-            return filterationDtos;
-
-        }
-
+        //    return Ok(new BaseApiResponse(200, "Attribute deleted successfully"));
+        //}
     }
 }

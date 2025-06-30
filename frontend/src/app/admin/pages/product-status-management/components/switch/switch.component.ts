@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-switch',
@@ -6,15 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './switch.component.css'
 })
 export class SwitchComponent {
-  isOn = false;
-
-  toggleSwitch(): void {
-    this.isOn = !this.isOn;
-  }
-
+  @Input("isActive") IsActive = false;
   
-  stopPropagation(event: Event): void {
-    event.stopPropagation();
+  toggleSwitch(): void {
+    this.IsActive = !this.IsActive;
   }
   
 }

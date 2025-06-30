@@ -34,8 +34,8 @@
     background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
     transition: color 0.3s ease, background 0.3s ease; /* Smooth transitions */
   }
-  .max-bland{
-    mix-blend-mode:difference;
+  .max-bland{ 
+      mix-blend-mode: difference;
   }
 
 .animate-Innerexpand {

@@ -13,8 +13,8 @@
   }
   /* Toggle switch */
   .switch {
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -22,9 +22,12 @@
   }
   /* Active state */
   .active {
-    background-color: #4caf50;
+    background-color: #7c92ff;
+    border: 1px solid #ffffff;
   }
   .switch.active {
     transform: translateX(20px);
+    border: 1px solid #ffffff;
+
   }
   

@@ -1,0 +1,6 @@
+<div *ngIf="isOpen" (click)="close()" @fadeInOut class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+  <div @slideUpDown (click)="stopPropagation($event)" class="bg-white h-auto relative rounded-lg shadow-lg ">
+    <button class="absolute top-2 text-xl z-50 right-4 text-gray-600 hover:text-gray-900" (click)="close()">✖</button>
+    <ng-content></ng-content>
+  </div>
+</div>

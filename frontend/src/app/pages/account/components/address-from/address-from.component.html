@@ -26,7 +26,7 @@
                         getErrorMessage('phone') }}</div>
                 </div>
                 <div class="md:col-span-3">
-                    <label for="address">Address / Street</label>
+                    <label for="address">Street</label>
                     <input formControlName="street" type="text" name="address" id="address"
                         class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
                     <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('street')">{{
@@ -42,9 +42,9 @@
                 </div>
 
                 <div class="md:col-span-2">
-                    <label for="country">Area / region</label>
+                    <label for="Governorate">Governorate</label>
                     <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                        <input formControlName="area" name="Area" id="Area" placeholder="Area"
+                        <input formControlName="area" name="Area" id="Area" placeholder="Governorate"
                             class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
 
                     </div>

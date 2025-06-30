@@ -1,17 +1,19 @@
-<div class="w-full  mt-10">
-	<div class="py-1  px-4 md:px-9 shadow-md mt-20 bg-white flex flex-col md:flex-row justify-between md:items-center">
-		<h1 class="text-[17px] py-2 sm:text-[25px] font-semibold text-black w-full md:w-[60%] line-clamp-2">
+<div class="w-full mt-5">
+	<div
+		class="py-1  px-4 md:px-9 border border-b mt-12 bg-white flex flex-col md:flex-row justify-between md:items-center">
+		<p
+			class="text-[17px] max-h-[73px] md:max-h-[100px] overflow-hidden py-4 sm:text-[25px] font-semibold text-black w-full md:w-[60%] line-clamp-2">
 			{{detailsProduct()?.description}}
-		</h1>
-		<div class="flex mt-1 md:items-center py-4 flex-col md:flex-row ">
+		</p>
+		<div class="flex md:items-center py-1 flex-col md:flex-row ">
 			<div class="flex flex-col border-r py-3 md:py-0 border-gray-300 px-0 md:px-5">
-				<span class="text-[15px] text-gray-500">From Total</span>
+				<span class="text-[17px] text-gray-500">From Total</span>
 				<div class="flex items-center leading-4">
-					<p class="text-orange-500 text-[15px] md:text-2xl">
-						{{detailsProduct()?.price | number}} ج.م.
-					</p>
-					<p class="text-[14px] md:tex-xl mt-4 mx-1 line-through text-gray-400">
+					<p class="text-orange-500 text-[18px] md:text-2xl">
 						{{detailsProduct()?.offerPrice | number}} ج.م.
+					</p>
+					<p class="text-[17px] md:tex-xl mt-4 mx-1 line-through text-gray-400">
+						{{detailsProduct()?.price | number}} ج.م.
 					</p>
 				</div>
 			</div>
@@ -19,30 +21,15 @@
 				class="bg-[#006bea] mx-5  my-3 md:my-0 text-sm text-gray-100 font-semibold px-8 py-3 rounded-full">Add
 				To
 				Cart</button>
-
 		</div>
-	</div>
-	<div class="bg-white border-y  py-2.5 px-8 ">
-		<p class="text-[13px] text-gray-600 font-thin"> {{detailsProduct()?.sku}} / RF25C5551SR/AA </p>
-	</div>
-	<div class="bg-white border-y  py-2.5 px-8">
-		<ul class="flex items-center space-x-3 text-sm text-gray-900">
-			<a [ngClass]="{ 'active': activeSection === 'overview' }" [routerLink]="[]" fragment="overview" class="">
-				OverView
-			</a>
-			<a [ngClass]="{ 'active': activeSection === 'details' }" [routerLink]="[]" fragment="details" class="">
-				Specifications
-			</a>
-			<li class="">Opinions</li>
-		</ul>
 	</div>
 </div>
 
 
 <section #overviewSection class="py-4 px-1 md:px-10 lg:px-8" id="overview">
 	<div class="container mx-auto px-4">
-		<div class="lg:col-gap-6 xl:col-gap-6 mt-8 grid grid-cols-1  lg:mt-12 lg:grid-cols-4 gap-2">
-			<div class="lg:col-span-2 lg:row-end-1">
+		<div class=" mt-8 grid grid-cols-1  lg:mt-12 lg:grid-cols-9 ">
+			<div class="lg:col-span-3 lg:row-end-1">
 				<div class="header-logo  block lg:hidden">
 					<div class="mt-5 flex items-center">
 						<div class="flex items-center">
@@ -80,193 +67,280 @@
 						{{detailsProduct()?.description}}
 					</p>
 				</div>
-
-
 				<div class="flex flex-col lg:flex-row items-center justify-center">
-					<!-- <div
-						class="max-h-[420px] w-full lg:w-[15%] order-2 lg:order-1 flex flex-row lg:flex-col items-center justify-center ">
-						<div *ngFor="let item of [0,0,0,0]"
-							class="bg-white mx-2 flex items-center justify-center w-[100px] p-5 h-[50px] md:h-[60px] md:mt-6 border">
-							<img [src]="'https://btech.com/media/catalog/product/2/2/22450a11348f69beb307254e2b1fc60a0359936e3bca0de8d82c7060afd296e7.jpeg?width=560&height=560&store=ar&image-type=image'"
-								class="object-contain " alt loading="lazy">
-						</div>
-						<div
-							class="bg-[#a9bacd] md:mt-6 w-[100px] h-[40px] md:h-[60px] flex items-center justify-center  border text-black font-semibold  rounded-md shadow-sm">
-							+8</div>
-					</div> -->
 					<div class="flex justify-center  items-center ">
 						<div class=" overflow-hidden ">
 							<div class="h-full w-[100%] md:w-[100%] mt-5  object-cover ">
 								<img [src]="detailsProduct()?.imageUrl" srcset="
-                {{ detailsProduct()?.imageUrl }} 300w, 
-                {{ detailsProduct()?.imageUrl }} 600w, 
-                {{ detailsProduct()?.imageUrl }} 1000w"
-									sizes="(max-width: 600px) 300px, (max-width:1200px) 600px, 1000px"
+										{{ detailsProduct()?.imageUrl }} 300w, 
+										{{ detailsProduct()?.imageUrl }} 600w, 
+										{{ detailsProduct()?.imageUrl }} 1000w" sizes="(max-width: 600px) 300px, (max-width:1200px) 600px, 1000px"
 									alt="{{ detailsProduct()?.name }} - Image" width="500" height="500"
-									style="height:100%;" loading="lazy" class="max-w-[360px]">
+									style="height:100%;" loading="lazy" class="max-w-[360px] max-h-[400px]">
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="lg:col-span-2 lg:row-span-2 lg:row-end-2 px-0 md:px-8">
-				<div class="tite-page hidden lg:block">
-					<h1 class="text-[17px] sm:text-[30px] text-gray-900 py-1">
-						{{detailsProduct()?.name}}
-					</h1>
-					<p class="text-[12px] mt-2 text-gray-600 sm:text-[16.2px] line-clamp-4">
+			<div class="lg:col-span-4 lg:row-span-2 lg:row-end-2 px-0 md:px-2">
+				<div class="tite-page  lg:block">
+
+					<p class="text-[22px] hidden md:block mt-2 line-clamp-3">
 						{{detailsProduct()?.description}}
 					</p>
-					<!-- <p class="my-3 font-thin text-sm text-gray-600">
-						رقم الموديل : {{detailsProduct()?.sku}}
-					</p> -->
 				</div>
 
-
-				<!-- salary -->
-				<div class="my-2 px-2 ">
-					<!-- <div class="mt-5 flex flex-col md:flex-row space-x-2 md:items-center">
-						<p *ngIf="detailsProduct()?.offerPrice" id="offer-price"
-							class=" text-sm md:text-[17px] text-gray-500 font-thin ">
-							الآن:
-							<span class="text-gray-800   text-[25px]">
-								{{detailsProduct()?.offerPrice}}
-								جنيه
-							</span>
-							يشمل ضريبة القيمة المضافة
-						</p>
-						<p *ngIf="!detailsProduct()?.offerPrice" id="offer-price"
-							class=" text-sm md:text-[17px] text-gray-600 ">
-							الآن:
-							<span class="text-gray-900  ">
-								{{detailsProduct()?.price}}
-								جنيه
-							</span>
-							يشمل ضريبة القيمة المضافة
-						</p>
-					</div> -->
-					<!-- <div *ngIf="detailsProduct()?.offerPrice" class="flex items-center my-1">
-						<p id="price" class="text-gray-500 line-through text-[13px] ">
-							{{detailsProduct()?.price}}
-						</p>
-						<p class="text-gray-600   text-[13px] mx-1">
-							وفر ({{detailsProduct()?.discount}} جنيه)
-						</p>
-					</div> -->
-
-
-					<div class="flex justify-center flex-col">
-						<p class="text-2xl py-4">Delivery details</p>
-						<div>
-							<div class="flex flex-col space-x-1 ">
-								<div class="flex items-center py-1.5  space-x-3">
-									<img class="w-10 h-10"
-										src="../../../assets/trust_icon_free_shipping_81px._CB590597072_.png" alt>
-									<p class="font-thin text-[12px]  md:text-[15px] ">Delivers to: <span
-											class="text-blue-500">04750</span>
-										Not available</p>
-								</div>
-								<div class="flex py-1.5  space-x-3">
-									<i class='bx bxs-store text-3xl text-orange-200 font-thin'></i>
-									<div class=" flex flex-col justify-center space-y-2">
-										<span class="text-black text-sm font-thin">Free in-store pickup now available
-											near you</span>
-										<p class="font-thin text-gray-500 text-[12px]">Buy online and pickup same day at
-											nearby Samsung or Best Buy stores. Check availability by changing your store
-											or zip code below, and finalize during checkou</p>
-									</div>
-								</div>
+				<div class="my-4 ">
+					<!-- Price Display Section -->
+					<div class="flex flex-col space-y-2">
+						<!-- Offer Price Display -->
+						<div *ngIf="detailsProduct()?.offerPrice" class="flex flex-col">
+							<div class="flex items-baseline gap-3">
+								<span class="text-3xl font-semibold text-gray-900">
+									{{detailsProduct()?.offerPrice | number}} EGP
+								</span>
+								<span class="text-lg text-gray-500 line-through">
+									{{detailsProduct()?.price | number}} EGP
+								</span>
+								<span class="text-sm px-2 py-1 bg-red-100 text-red-700 rounded-full">
+									Save {{detailsProduct()?.discount}}%
+								</span>
 							</div>
+							<span class="text-sm text-gray-600 mt-1">Includes Value Added Tax</span>
+						</div>
+
+						<!-- Regular Price Display -->
+						<div *ngIf="!detailsProduct()?.offerPrice" class="flex flex-col">
+							<span class="text-3xl font-semibold text-gray-900">
+								{{detailsProduct()?.price | number}} EGP
+							</span>
+							<span class="text-sm text-gray-600 mt-1">Includes Value Added Tax</span>
+						</div>
+					</div>
+
+
+					<!-- Enhanced Shipping Information Card -->
+					<div class="mt-4 bg-white rounded-lg border border-gray-200 overflow-hidden">
+
+						<!-- Delivery Options -->
+						<div class="p-4 border-t border-gray-200">
+							<div class="flex items-center gap-2 text-sm">
+								<svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24"
+									stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										d="M5 13l4 4L19 7" />
+								</svg>
+								<span class="text-gray-600">Express Delivery Available</span>
+							</div>
+							<div class="flex items-center gap-2 text-sm mt-2">
+								<svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24"
+									stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										d="M5 13l4 4L19 7" />
+								</svg>
+								<span class="text-gray-600">Free Returns within 30 days</span>
+							</div>
+						</div>
+
+						<!-- Estimated Delivery -->
+						<div class="p-4 bg-gray-50 border-t border-gray-200">
+							<p class="text-sm text-gray-600">Estimated Delivery Time:</p>
+							<p class="text-lg font-medium text-gray-800">2-4 Business Days</p>
 						</div>
 					</div>
 				</div>
-
-
-
-				<div class="mt-2 flex flex-col   border-t border-b py-4 ">
-					<button type="button"
-						class="my-2 md:mx-2 inline-flex w-full items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base   text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
-						<svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
-							viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-							<path stroke-linecap="round" stroke-linejoin="round"
-								d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+			</div>
+			<div class="lg:col-span-2 md:ml-5  px-1 relative w-full bg-[#f7f7f7] rounded-lg">
+				<p *ngIf="detailsProduct()?.offerPrice !=null"
+					class="text-[22px] relative py-4 merriweather-bold border-gray-300 border-b px-2">
+					EGP {{detailsProduct()?.offerPrice | number}} <span class="text-sm  absolute top-4 mx-1 ">00</span>
+				</p>
+				<p *ngIf="detailsProduct()?.offerPrice ===null"
+					class="text-[22px] relative py-4 merriweather-bold border-gray-300 border-b px-2">
+					EGP {{detailsProduct()?.price | number}} <span class="text-sm  absolute top-4 mx-1 ">00</span>
+				</p>
+				<div class="px-2 py-1 ">
+					<div class="relative group w-fit flex items-center space-x-1 cursor-pointer">
+						<p class="text-blue-800 text-[15px]">FREE Returns</p>
+						<!-- Info Icon -->
+						<svg xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4 text-blue-600 group-hover:text-blue-800 transition" fill="none"
+							viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
 						</svg>
-						<span class="mx-4">Buy Now</span>
-					</button>
+
+						<!-- Tooltip on hover -->
+						<div class="absolute top-6 left-0 w-80 p-4 bg-white border border-gray-300 rounded shadow-md text-[13px] text-gray-700 
+										opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+							<p class="font-semibold mb-1">Easy and Hassle-Free Returns</p>
+							<p class="mb-1">
+								As per our return policy, we need to verify your identity to process your return. This
+								is a one-time process, and takes 2–3 minutes to complete.
+							</p>
+							<p>
+								You can return this item for <strong>FREE</strong> within the allowed return period for
+								any reason and without any shipping charges. The item must be returned in new and unused
+								condition.
+							</p>
+						</div>
+					</div>
+
+					<p class="text-green-700 py-1 text-[15px] font-medium">
+						FREE delivery {{ deliveryDate }}
+					</p>
+
 				</div>
+
 				<div class="flex items-center  justify-center mt-1 py-1">
 					<div class="flex flex-col justify-center items-center mx-3">
-						<img class="w-10 h-10" src="../../../assets/trust_icon_free_shipping_81px._CB590597072_.png"
-							alt>
+						<img class="w-10 h-10" src="assets/trust_icon_free_shipping_81px._CB590597072_.png" alt>
 						<p class=" text-[10px] text-slate-800 ">Free Shipping</p>
 					</div>
 					<div class="flex  flex-col justify-center items-center">
-						<img class="w-10 h-10" src="../../../assets/icon-returns._CB403797073_.png" alt>
+						<img class="w-10 h-10" src="assets/icon-returns._CB403797073_.png" alt>
 						<p class=" text-[10px] text-slate-800 ">15 Days Return</p>
 					</div>
 					<div class="flex mx-3  flex-col justify-center items-center">
-						<img class="w-10 h-10" src="../../../assets/icon-ePay._CB589360495_.png" alt>
+						<img class="w-10 h-10" src="assets/icon-ePay._CB589360495_.png" alt>
 						<p class=" text-[10px] text-center text-slate-800 ">Can Cash on Delivery</p>
 					</div>
 				</div>
-				<div class="flex items-center justify-center">
-					<i class='bx bx-car text-2xl text-[#3f8f6794]'></i>
-					<p class="py-3 px-2 text-sm">
-						Delivery to your location during Wednesday, October 23
-						<span class="text-blue-800 font-semibold">
-							Wednesday, October 23
-						</span>
-					</p>
-				</div>
-			</div>
 
-			<div *ngIf="detailsProduct()?.productAttributes?.length!=0" #detailsSection
-				class="lg:col-span-full  md:px-10" id="details">
-				<div class="mt-8 flow-root sm:mt-12">
-					<div class="flex flex-col mt-8">
-						<div class="-m-1.5 overflow-x-auto">
-							<div class="p-1.5 min-w-full inline-block align-middle">
-								<div class="overflow-hidden">
-									<table class="min-w-full divide-y divide-gray-200">
-										<thead>
-											<tr>
-												<th scope="col"
-													class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-													اسم
-													الخاصية
-												</th>
-												<th scope="col"
-													class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-													التفاصيل
-												</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="odd:bg-white even:bg-gray-100 overflow-x-hidden"
-												*ngFor="let attribute  of detailsProduct()?.productAttributes">
-												<td
-													class="px-6 py-4 w-[50%] whitespace-nowrap text-sm font-medium text-gray-800">
-													{{attribute.attributeName}}</td>
-												<td class="px-6 py-4 w-[50%] whitespace-nowrap text-sm text-gray-800">
-													{{attribute.attributeValue}}</td>
-											</tr>
-										</tbody>
-									</table>
+				<ul class="space-y-2 mt-5 px-2 py-2 border-gray-300 border-b font-semibold">
+					<p *ngIf="stockMessage" class="text-red-600 text-[15px] font-medium">
+						{{ stockMessage }}
+					</p>
+
+
+					<li class="">
+						<button class="text-center bg-[#f2ba36] text-[20px] py-1 font-bold rounded-full w-full">
+							<span class="text-[#002e80]">BUY</span><span class="text-[#002e80]">Now</span>
+						</button>
+
+					</li>
+				</ul>
+				<div class="flex justify-center flex-col">
+					<div>
+						<div class="flex flex-col space-x-1 mt-2">
+							<div class="flex py-1.5 space-x-3">
+								<i class='bx bxs-store text-3xl text-orange-200 font-thin'></i>
+								<div class="flex flex-col justify-center ">
+									<span class="text-black text-sm font-blod">
+										Free in-store pickup now available
+									</span>
+									<p class="font-thin text-gray-500 text-[12px]">
+										Buy online and pick up the same day at nearby Samsung or Best Buy stores.
+										Check availability by changing your store or zip code below, and finalize
+										during checkout.
+									</p>
 								</div>
 							</div>
 						</div>
+
+
 					</div>
+				</div>
+			</div>
 
 
+
+		</div>
+		<app-attribute-details [productId]="productId!"></app-attribute-details> <!-- this must match selector -->
+	</div>
+
+
+</section>
+
+<!-- 
+	<div class="py-8 bg-gradient-to-b px-4 from-gray-50 to-white">
+		<div class="container mx-auto px-3">
+			<div class="flex flex-col md:flex-row items-start gap-6 mb-12">
+				<div class="w-full md:w-2/5">
+					<div class="relative">
+						<img [src]="'https://m.media-amazon.com/images/I/51xyZWcLvtL._AC_UF350,350_QL80_.jpg'"
+							alt="Product Feature" class="rounded w-[90%] object-cover">
+						<div
+							class="absolute -bottom-3 -right-3 bg-blue-50 px-3 py-1 rounded-full text-xs text-blue-600">
+							Premium Quality</div>
+					</div>
+				</div>
+				<div class="w-full md:w-3/5 md:pl-8">
+					<span class="text-blue-600 text-sm font-medium tracking-wider">ADVANCED TECHNOLOGY</span>
+					<h3 class="text-xl font-bold mt-2 mb-3">Exceptional Performance & Innovation</h3>
+					<p class="text-gray-600 text-sm leading-relaxed">The {{detailsProduct()?.name}} represents the
+						pinnacle of technological advancement, combining cutting-edge features with unparalleled
+						efficiency. Our latest innovation delivers superior performance while maintaining optimal energy
+						consumption levels.</p>
+
+					<div class="mt-4 grid grid-cols-2 gap-3">
+						<div class="border-l-2 border-blue-500 pl-3">
+							<h4 class="text-sm font-semibold">Precision Engineering</h4>
+							<p class="text-xs text-gray-500 mt-1">Advanced components designed for maximum efficiency
+								and durability</p>
+						</div>
+						<div class="border-l-2 border-green-500 pl-3">
+							<h4 class="text-sm font-semibold">Smart Technology</h4>
+							<p class="text-xs text-gray-500 mt-1">Intelligent features that adapt to your usage patterns
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex flex-col md:flex-row-reverse items-start gap-6">
+				<div class="w-full md:w-2/5">
+					<div class="relative">
+						<img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5tVnNABYXBGgrnjdLgKCm3GRJAEdq0_t_Mg&s'"
+							alt="Product Design" class="rounded w-[80%] object-cover">
+						<div
+							class="absolute -bottom-3 -left-3 bg-purple-50 px-3 py-1 rounded-full text-xs text-purple-600">
+							Elegant Design</div>
+					</div>
+				</div>
+				<div class="w-full md:w-3/5 md:pr-8">
+					<span class="text-purple-600 text-sm font-medium tracking-wider">SOPHISTICATED DESIGN</span>
+					<h3 class="text-xl font-bold mt-2 mb-3">Aesthetic Excellence</h3>
+					<p class="text-gray-600 text-sm leading-relaxed">Every aspect of the {{detailsProduct()?.name}} has
+						been meticulously crafted to deliver both visual appeal and functional superiority. The seamless
+						integration of form and function creates an unparalleled user experience.</p>
+
+					<div class="mt-4 space-y-3">
+						<div class="flex items-center gap-3 bg-gray-50 p-2 rounded">
+							<div class="text-purple-500">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+										d="M5 13l4 4L19 7"></path>
+								</svg>
+							</div>
+							<div>
+								<h4 class="text-sm font-medium">Premium Build Quality</h4>
+								<p class="text-xs text-gray-500">Constructed with high-grade materials for lasting
+									durability</p>
+							</div>
+						</div>
+						<div class="flex items-center gap-3 bg-gray-50 p-2 rounded">
+							<div class="text-purple-500">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+										d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+								</svg>
+							</div>
+							<div>
+								<h4 class="text-sm font-medium">Responsive Performance</h4>
+								<p class="text-xs text-gray-500">Lightning-fast response times for seamless operation
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<div class="mt-10 px-2 md:px-16">
 		<h3 class="py-3 text-xl md:text-2xl font-semibold px-1">Other products</h3>
 		<app-owl-carousel [service]="_productService" [methodName]="'getAllProduct'"
 			[params]='params'></app-owl-carousel>
 	</div>
 
-</section>
+-->

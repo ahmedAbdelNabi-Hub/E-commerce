@@ -1,31 +1,48 @@
-<div class="hs-accordion-group border shadow-sm " data-hs-accordion-always-open>
-    <!-- Display Size Accordion -->
-     <div class="flex items-center justify-between py-3 px-4  ">
-        <p class="  text-xl py-1">Filter Products</p>
-        <button class="px-6 py-1 rounded-full bg-blue-500 text-white">Apply</button>  
-     </div>
-    <div *ngFor="let filter of filterItem" class=" border-t  px-3 py-2 my-2  relative hs-accordion active" id="hs-basic-always-open-heading-one">
-        <div>
-            <p class="font-semibold uppercase text-[16px] py-3  ">{{filter.filterName }}</p>
+<div class="filter-sidebar bg-white rounded-lg shadow-sm border">
+    <div *ngFor="let filter of filterItem" class="filter-group px-4 py-3 border-b last:border-b-0">
+        <!-- Filter Header -->
+        <div class="flex items-center justify-between cursor-pointer">
+            <h3 class="font-semibold capitalize text-gray-800 text-lg">{{filter.filterName}}</h3>
+            <button class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
         </div>
-     
-        <div  id="hs-basic-always-open-collapse-one" class=" hs-accordion-content w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-always-open-heading-one">
-            <div class="flex-col px-3 space-y-2 justify-center py-1">
-                <div *ngFor="let item of filter.filterValues" class="flex space-x-2 items-center">
-                    <input 
-                    type="radio" 
-                    [ngModel]="selectedFilters[filter.filterName]" 
-                    [value]="item" 
-                    (change)="onChange(filter.filterName, item)"
-                    [checked]="selectedFilters[filter.filterName] === item"
-                    [name]="filter.filterName"  
-                    class="w-4 h-4 accent-black"
+
+        <!-- Search Input -->
+        <div class="mt-3">
+            <div class="relative">
+                <input 
+                    type="text" 
+                    [placeholder]="'Search ' + filter.filterName"
+                    class="w-full px-3 py-2 text-sm border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
                 >
-                    <p class="text-sm text-gray-950">{{item}}</p>
+                <span class="absolute right-3 top-2.5 text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+
+        <!-- Filter Options -->
+        <div class="mt-1 max-h-48 overflow-y-auto custom-scrollbar">
+            <div class="space-y-1">
+                <div *ngFor="let item of filter.filterValues" 
+                    class="flex items-center hover:bg-gray-50 p-2 rounded-md transition-colors duration-150">
+                    <input 
+                        type="checkbox" 
+                        [ngModel]="selectedFilters[filter.filterName]" 
+                        [value]="item" 
+                        (change)="onChange(filter.filterName, item)"
+                        [checked]="selectedFilters[filter.filterName] === item"
+                        [name]="filter.filterName"  
+                        class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    >
+                    <label class="ml-3 text-sm text-gray-700 cursor-pointer select-none">{{item}}</label>
                 </div>
             </div>
         </div>
     </div>
-
-    
 </div>

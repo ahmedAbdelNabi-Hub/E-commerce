@@ -9,7 +9,7 @@ namespace Ecommerce.Core
     public interface IUnitOfWork
     {
         Task BeginTransactionAsync();
-        Task CommitAsync();
+        Task<bool> CommitAsync();
         Task RollbackAsync();
         Task<int> CompleteAsync();
         IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity;

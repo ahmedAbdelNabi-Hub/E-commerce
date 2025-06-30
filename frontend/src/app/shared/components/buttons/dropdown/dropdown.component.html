@@ -1,12 +1,17 @@
-<div class="dropdown" (click)="toggleDropdown()">
-    <button class="btn btn-secondary dropdown-toggle" type="button">
-      {{ menu ? menu.name : 'Select an option' }}
-    </button>
-    
-    <div class="dropdown-menu" [ngClass]="{'show': isOpen, 'fade-in': isOpen, 'fade-out': !isOpen}">
-      <button class="dropdown-item" *ngFor="let option of Links" (click)="selectOption(option)">
-        {{ option.name }}
-      </button>
+<div class="dropdown">
+  <!-- Dropdown Button -->
+  <button (click)="toggleDropdown($event)">
+    <ng-content select="[dropdown-button]"></ng-content> 
+  </button>
+
+  <!-- Dropdown Body -->
+  <div *ngIf="isOpen" @dropdownAnimation class="dropdown-menu" #dropdownMenu>
+    <div class="hs-dropdown relative inline-flex">    
+      <div class="duration hs-dropdown-open:opacity-100 min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200" role="menu">
+        
+        <ng-content select="[dropdown-body]"></ng-content>
+
+      </div>
     </div>
   </div>
-  
+</div>

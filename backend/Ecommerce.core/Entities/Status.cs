@@ -15,6 +15,5 @@ namespace Ecommerce.core.Entities
         public string AssignableBy { get; set; }
         public ICollection<ProductStatus> ProductStatus { get; set; }
 
-
     }
 }

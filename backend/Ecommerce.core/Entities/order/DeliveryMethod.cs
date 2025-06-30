@@ -9,9 +9,9 @@ namespace Ecommerce.Core.Entities.order
 {
     public class DeliveryMethod : BaseEntity
     {
-        public string ShortName { get; set; } // Short code or name (e.g., "DHL", "Aramex")
-        public string Description { get; set; } // Full name or additional details
-        public decimal Cost { get; set; } // Shipping cost
+        public string ShortName { get; set; } 
+        public string Description { get; set; } 
+        public decimal Cost { get; set; } 
     }
 
 }

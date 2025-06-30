@@ -1,4 +1,4 @@
-<section class="my-5 py-5 bg-[#f9fafa] container mx-auto overflow-hidden">
+<section class="py-5 bg-[#f9fafa]  container mx-auto overflow-hidden">
   <div class=" text-black py-4 rounded-lg">
     <p class="text-sm font-thin text-blue-400 underline  text-center">See All</p>
 
@@ -15,22 +15,20 @@
     </nav>
 
   </div>
-  <div class="flex  flex-none overflow-hidden scrollbar-hidden snap-x snap-mandatory scrollbar-none" #slider>
+  <div class="flex   flex-none  overflow-hidden scrollbar-hidden snap-x snap-mandatory scrollbar-none" #slider>
     <div *ngFor="let product of containtTag() " class="flex w-full flex-col items-center">
       <!-- Image Animation -->
-      <div *ngIf="showAnimation" class="image flex justify-center w-full" [@imageAnimation]>
-        <img loading="lazy" class="max-w-[300px] max-h-[500px]" [src]="product.imageUrl" alt="Product Image">
+      <div *ngIf="showAnimation" class="image flex  justify-center w-full" [@imageAnimation]>
+        <img loading="lazy" class="max-w-[500px] w-[400px] px-4 h-[300px] max-h-[400px]" [src]="product.imageUrl" alt="Product Image">
       </div>
 
       <div *ngIf="showAnimation" class="mt-4 flex flex-col items-center justify-center" [@contentAnimation]>
         <div >
           <!-- Text Animation -->
-          <div class="text-center text-sm md:text-2xl font-semibold">
+          <div class="text-center text-xl md:text-2xl font-semibold">
             {{ containtTag()[0].name }}
           </div>
-          <div class="text-[10px] text-center md:text-sm text-gray-600">
-            <p>Get up to $1,200 instant trade-in or up to $300 off. Plus, $300 off online exclusive colors.</p>
-          </div>
+        
         </div>
         <div  class="flex mt-4 items-center space-x-5">
           <a class="text-gray-600 text-[14px]">Learn More</a>

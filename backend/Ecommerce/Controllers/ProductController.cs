@@ -1,26 +1,20 @@
 ﻿using AutoMapper;
 using Ecommerce.Contracts.DTOs;
 using Ecommerce.Contracts.DTOs.product;
-using Ecommerce.core;
 using Ecommerce.core.Entities;
 using Ecommerce.core.Specifications;
 using Ecommerce.Core;
 using Ecommerce.Core.Entities;
 using Ecommerce.Core.Repositories;
 using Ecommerce.Core.Specifications;
+using Ecommerce.Extensions;
 using Ecommerce.Helpers;
-using Ecommerce.Repository;
 using EcommerceContract.ErrorResponses;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using Org.BouncyCastle.Asn1.Ocsp;
-using System.Data;
 using System.Diagnostics;
-using System.Net;
+using System.Text.Json;
+
 
 namespace Ecommerce.Controllers
 {
@@ -40,52 +34,41 @@ namespace Ecommerce.Controllers
         }
 
         [HttpGet]
-        [Route("GetProduct/{id}")]
-        public async Task<ActionResult<ProductReadDto>> GetProduct(int id, [FromQuery] string viewId,[FromQuery] bool isStoreInRedis)
-       {
-            var product = await GetExistingProduct(id);
+        [Route("/api/products/{id}")]
+        public async Task<ActionResult<ProductReadDto>> GetProduct(int id, [FromQuery] string viewId, [FromQuery] bool isStoreInRedis)
+        {
+            var product = await _unitOfWork.Repository<Product>().GetByIdSpecAsync(new ProductWithSpecifcations(id));
             if (product == null)
                 return NotFound(new BaseApiResponse(404, "Product not found."));
-            var DeepCopyFromProduct = ProductHelper.DeepCopy(product);
-            DeepCopyFromProduct.ProductAttributes.Clear(); 
-             
+            var fullProductDto = _mapper.Map<Product, ProductReadDto>(product);
             if (isStoreInRedis && !string.IsNullOrEmpty(viewId))
             {
                 var productViews = await _basketRepository.GetBasketAsync(viewId);
-                if (productViews != null)
-                {
-                    var productView = productViews.ProductReadDto.FirstOrDefault(p => p.Id == product.id);
-                    if (productView == null)
-                    {
-                        productViews.ProductReadDto.Add(_mapper.Map<Product, ProductReadDto>(DeepCopyFromProduct));
-                        
-                    }
-                    await _basketRepository.UpdateBasketAsync(productViews.viewId, productViews);
-                }
-                else
-                {
 
-                    var newProductViews = new ProductViewDto
+                if (productViews == null)
+                {
+                    productViews = new ProductViewDto
                     {
                         viewId = viewId,
-                        ProductReadDto = new List<ProductReadDto>
-                        {
-                         _mapper.Map<Product, ProductReadDto>(DeepCopyFromProduct)
-                        }
+                        ProductReadDto = new List<ProductReadDto>()
                     };
-
-                    await _basketRepository.UpdateBasketAsync(viewId, newProductViews);
                 }
 
+                var exists = productViews.ProductReadDto.Any(p => p.Id == product.id);
+                if (!exists)
+                {
+                    var redisDto = _mapper.Map<Product, ProductReadDto>(product);
+                    redisDto.ProductAttributes = new List<ProductAttributeDto>();
+                    productViews.ProductReadDto.Add(redisDto);
+                    await _basketRepository.UpdateBasketAsync(viewId, productViews);
+                }
             }
-       
 
-            var mappedProduct = _mapper.Map<Product, ProductReadDto>(product);
-            return Ok(mappedProduct);
+            return Ok(fullProductDto);
         }
 
         [HttpGet]
-        [Route("GetRecentlyProducts/{id}")]
+        [Route("/api/products/recent/{id}")]
         public async Task<ActionResult<PaginationDto<ProductReadDto>>> GetRecentlyViewedProducts(string id)
         {
             var RecentlyProducts =  await _basketRepository.GetBasketAsync(id);
@@ -102,7 +85,7 @@ namespace Ecommerce.Controllers
         }
 
         [HttpGet]
-        [Route("all/prorduct")]
+        [Route("/api/products")]
         public async Task<ActionResult<PaginationDto<ProductReadDto>>> GetAllProduct([FromQuery] ProductSpecParams Params)
         {
             var productRepo = _unitOfWork.Repository<Product>();
@@ -117,10 +100,21 @@ namespace Ecommerce.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
+        [Route("/api/products")]
         public async Task<ActionResult<BaseApiResponse>> CreateProduct([FromForm] ProductCreateDto request)
         {
-           
+
+            var attributesJson = Request.Form["ProductAttributes"];
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            if (!string.IsNullOrWhiteSpace(attributesJson))
+            {
+                request.ProductAttributes = JsonSerializer.Deserialize<List<ProductAttributeDto>>(attributesJson, options)!;
+            }
 
             var existCategory = await _unitOfWork.Repository<Category>().GetByIdSpecAsync(new CategoryWithSpecictions(request.CategoryId));
             if(existCategory is null)
@@ -137,67 +131,103 @@ namespace Ecommerce.Controllers
             return await SaveChangesAsync(_unitOfWork, "Product added successfully form server", "Failed to added product");
         }
 
-        [HttpPost]
-        [Route("{id}/update")]
-        public async Task UpdateProductAsync(int id,[FromForm] ProductCreateDto product)
+        [HttpPut]
+        [Route("/api/products/{id}")]
+        public async Task<ActionResult<BaseApiResponse>> UpdateProductAsync(int id, [FromForm] ProductCreateDto productDto)
         {
-            if (product == null)
-                throw new ArgumentNullException(nameof(product));
-
-            // Get the repository for Product and ProductAttributes
-            var productRepository = _unitOfWork.Repository<Product>();
-            var productAttributesRepository = _unitOfWork.Repository<ProductAttributes>();
-
-            // Fetch the existing product from the database to check if it exists
-            var existingProduct = await productRepository.GetByIdSpecAsync( new ProductWithSpecifcations(id));
-            if (existingProduct == null)
+            var attributesJson = Request.Form["ProductAttributes"];
+            var options = new JsonSerializerOptions
             {
-                throw new Exception($"Product with ID not found.");
+                PropertyNameCaseInsensitive = true
+            };
+            if (!string.IsNullOrWhiteSpace(attributesJson))
+            {
+                productDto.ProductAttributes = JsonSerializer.Deserialize<List<ProductAttributeDto>>(attributesJson, options)!;
             }
-            if(existingProduct.Discount !=0)
-            {
-                existingProduct.OfferPrice = ProductHelper.CalculateOfferPrice(product.Price, product.Discount);
-            }
-            string imageName = DocumentSettings.UploadFile(product.ImageFile!, "product");
-            existingProduct.ImageUrl = imageName;
-            existingProduct.LinkImage = imageName;
-            existingProduct.SKU = ProductHelper.GenerateSKU(product.CategoryId, product.Brand, DateTime.Now, id);
-            existingProduct.Name = product.Name;
-            existingProduct.Description = product.Description;
-            existingProduct.Brand = product.Brand;
-            existingProduct.Price = product.Price;
-            existingProduct.Discount = product.Discount;
-            existingProduct.StockQuantity = product.StockQuantity;
-            existingProduct.Weight = product.Weight;
-            existingProduct.Dimensions = product.Dimensions!;   
-            existingProduct.OfferStartDate = product.OfferStartDate;
-            existingProduct.OfferEndDate = product.OfferEndDate;
-            existingProduct.DeliveryTimeInDays = product.DeliveryTimeInDays;
 
-            // Update the ProductAttributes
-            foreach (var attribute in product.ProductAttributes!)
+            var productRepo = _unitOfWork.Repository<Product>();
+            var productAttributesRepo = _unitOfWork.Repository<ProductAttributes>();
+
+            var existingProduct = await productRepo.GetByIdSpecAsync(new ProductWithSpecifcations(id));
+            if (existingProduct is null)
+                return NotFound(new BaseApiResponse(404, "Product not found"));
+
+            existingProduct.UpdateFromDto(productDto);
+            if (productDto.ImageFile != null)
             {
-                var existingAttribute = await productAttributesRepository.GetByIdSpecAsync(new ProductAttributesWithSpecification(attribute.id));
-                if (existingAttribute != null)
+                existingProduct.ImageUrl = DocumentSettings.UploadFile(productDto.ImageFile!, "product", existingProduct.ImageUrl); existingProduct.LinkImage = existingProduct.ImageUrl;
+                existingProduct.LinkImage = existingProduct.ImageUrl;
+            }
+           await _unitOfWork.BeginTransactionAsync();
+            existingProduct.OfferPrice = ProductHelper.CalculateOfferPrice(productDto.Price, productDto.Discount);
+            var oldAttributes = await productAttributesRepo
+                .GetAllWithTrackingAsync(new ProductAttributesWithSpecification(id));
+
+            if (oldAttributes.Any())
+            {
+                await productAttributesRepo.DeleteRangeAsync(oldAttributes);
+            }
+
+            if (productDto.ProductAttributes?.Any() == true)
+            {
+                var newAttributes = productDto.ProductAttributes.Select(attrDto => new ProductAttributes
                 {
-                    existingAttribute.AttributeValue = attribute.AttributeValue;    
-                    existingAttribute.AttributeName = attribute.AttributeName;
-                    existingAttribute.IsFilterable = attribute.IsFilterable;
-                }
-                else
-                {
-                    var productA = _mapper.Map<Ecommerce.Core.Entities.ProductAttributes>(attribute);
-                    existingProduct.ProductAttributes.Add(productA);
-                }
-            }
+                    ProductId = id,
+                    AttributeId = attrDto.AttributeId,
+                    AttributeValueId = attrDto.AttributeValueId
+                });
 
-            // Save the changes within a transaction
-            await _unitOfWork.CompleteAsync();
+                await productAttributesRepo.AddRangeAsync(newAttributes); 
+            }
+            try
+            {
+                await _unitOfWork.CompleteAsync();
+                await _unitOfWork.CommitAsync();
+
+                return Ok(new BaseApiResponse(200, "Attribute updated successfully"));
+            }
+            catch (DbUpdateException ex)
+            {
+                var res = ex.InnerException?.Message ?? ex.Message;
+                return StatusCode(500, new BaseApiResponse(500, $"Database error: {ex.InnerException?.Message ?? ex.Message}"));
+            }
         }
 
 
+
+        [HttpPatch]
+        [Route("/api/products/{id}/activate")]
+        public async Task<ActionResult<BaseApiResponse>> activeProduct(int id)
+        {
+            var product = await _unitOfWork.Repository<Product>().GetByIdAsync(id);   
+            if(product is null) return NotFound(new BaseApiResponse(404, "products not found."));
+            await _unitOfWork.BeginTransactionAsync();
+            product.IsActive = !product.IsActive;
+            await  _unitOfWork.CompleteAsync();    
+            await _unitOfWork.CommitAsync();
+            
+            return Ok(new BaseApiResponse(200,"The Product Is Active")); 
+
+        }
+
+
+     
+
+        [HttpGet("/api/products/{productId}/attributes")]
+        public async Task<ActionResult<List<ProductAttributeDto>>> GetProductAttributes(int productId)
+        {
+            var spec = new ProductAttributesWithSpecification(productId);
+            var productAttributes = await _unitOfWork.Repository<ProductAttributes>().GetAllWithSpecAsync(spec);
+
+            if (productAttributes == null || !productAttributes.Any())
+                return NotFound(new BaseApiResponse(404, "No attributes found for this product."));
+
+            var mapped = _mapper.Map<IReadOnlyList<ProductAttributes>, IReadOnlyList<ProductAttributeDto>>(productAttributes);
+            return Ok(mapped);
+        }
+
         [HttpDelete]
-        [Route("{id}")]
+        [Route("/api/products/{id}")]
         public async Task<ActionResult<BaseApiResponse>> DeleteProduct(int id)
         {
             var existingProduct = await GetExistingProduct(id);
@@ -210,7 +240,8 @@ namespace Ecommerce.Controllers
             return await SaveChangesAsync(_unitOfWork, "Product deleted successfully", "Failed to delete product");
         }
 
-        [HttpDelete("{id}/RemoveStatus/{statusId}")]
+        [HttpDelete]
+        [Route("/api/products/{id}/status/{statusId}")]
         public async Task<ActionResult<BaseApiResponse>> DeleteproductStatus(int id, int statusId)
         {
             var productStatusRepo = _unitOfWork.Repository<ProductStatus>();
@@ -223,8 +254,9 @@ namespace Ecommerce.Controllers
             return BadRequest(new BaseApiResponse(StatusCodes.Status400BadRequest,"Not Found the Product with Statues"));
 
         }
-
-        [HttpGet("Offers/Grouped")]
+       
+        [HttpGet]
+        [Route("/api/products/offers/grouped")]
         public async Task<ActionResult<IEnumerable<GroupByDto<string, ProductReadDto>>>> GetProductsOnOfferGroupedByCategory()
         {
             var spec = new ProductWithSpecifcations().OnOffer();
@@ -238,32 +270,6 @@ namespace Ecommerce.Controllers
 
             return Ok(groupedProducts);
         }
-
-        
-        [HttpGet("NewArrivals")]
-        public async Task<ActionResult<IReadOnlyList<ProductReadDto>>> GetAllNewArrive()
-        {
-
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            var spc = new ProductWithSpecifcations().newArrive();
-            var productIsArrive = await _unitOfWork.Repository<Product>().GetAllWithSpecAsync(spc);
-
-            if (productIsArrive == null)
-            {
-                stopwatch.Stop();
-                Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
-
-                return NotFound(new BaseApiResponse(StatusCodes.Status404NotFound, "No Product is new Arrive"));
-            }
-
-            var mappingAllProductIsArrive = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductReadDto>>(productIsArrive);
-            stopwatch.Stop();
-            Console.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
-            return Ok(mappingAllProductIsArrive);
-        }
-
-
-
 
         private async Task<Product> GetExistingProduct(int id)
         {

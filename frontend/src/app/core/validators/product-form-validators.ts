@@ -45,7 +45,7 @@ export function strongBrandValidator(): ValidatorFn {
     const value = control.value as string;
 
     const Brands = [
-      'Samsung', 'LG','Haier ', 'Jac','Sony', 'Tornado','Panasonic', 'Philips', 'Sharp', 'Toshiba', 'Hisense', 'Vizio', 'Haier',
+      'Samsung','Vivo','realme','AOC','LG','Haier ', 'Jac','Sony', 'Tornado','Panasonic', 'Philips', 'Sharp', 'Toshiba', 'Hisense', 'Vizio', 'Haier',
       'Electrolux', 'Whirlpool', 'GE Appliances', 'Bosch', 'Siemens', 'Miele', 'Frigidaire', 'Maytag', 'Kenmore', 'Amana',
       'Smeg', 'KitchenAid', 'Sub-Zero', 'Thermador', 'Viking', 'Samsung Appliances', 'Dyson', 'Hoover', 'Bissell', 'Eureka',
       'Midea', 'Hitachi', 'Fujitsu', 'Daikin', 'Carrier', 'Trane', 'Honeywell', 'Nest', 'Rheem', 'Lennox',

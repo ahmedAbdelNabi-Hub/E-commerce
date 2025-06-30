@@ -1,32 +1,23 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  ChartComponent,
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexXAxis,
-  ApexDataLabels,
-  ApexTooltip,
-  ApexStroke,
-  ApexYAxis,
-  ApexTitleSubtitle,
-  ApexFill,
-  ApexGrid
-} from "ng-apexcharts";
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { DashboardService } from '../../../core/services/dashboard.service';
+import { ChartData } from '../../../core/models/interfaces/IChartData';
+import { Perform } from '../../../core/models/classes/Perform';
+import { delay, Subject, takeUntil } from 'rxjs';
 
-export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-  tooltip: ApexTooltip;
-  dataLabels: ApexDataLabels;
-  yaxis: ApexYAxis;
-  fill: ApexFill;
-  title: ApexTitleSubtitle;
-  grid: ApexGrid;
-};
-//PS E:\E-commerce> npm install -S apexcharts ng-apexcharts@latest --legacy-peer-deps
+interface RecentOrder {
+  customerName: {
+    firstName: string;
+    lastName: string;
+  };
+  email: string;
+  itemImages: string[];
+  orderId: string;
+  status: 'Completed' | 'Pending';
+  date: string;
+  items: number;
+  total: number;
+}
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -35,336 +26,83 @@ export type ChartOptions = {
   providers: [DatePipe]
 
 })
-export class AdminDashboardComponent {
-  selectedDate: string;
-  @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions: Partial<ChartOptions>;
-  public chartOptions2: Partial<ChartOptions>;
+export class AdminDashboardComponent implements OnInit, OnDestroy {
+  icons: string[] = ["<i class='bx bx-credit-card-alt text-[#4a5654] text-[22px]'></i>",
+    "<i class='bx bxs-user-circle text-[#4a5654] text-[22px]'></i>"
+    , "<i class='bx bxs-truck text-[#4a5654] text-[22px]'></i>",
+    "<i class='bx bxs-component text-[#4a5654] text-[22px]'></i>"
+  ];
 
-  // In your Angular component's TypeScript file
-items = [
-  {
-      label: 'المنتجات', 
-      icon: 'bx bxs-coffee',
-      items: [
-          {
-              label: ' إضافة منتج', 
-              icon: 'bx bx-plus',
-              command: () => {
-                
-              }
-          },
-          {
-              label: 'عرض الكل', // View All
-              icon: 'bx bx-list',
-              command: () => {
-                  // Logic for viewing all products
-              }
-          }
-      ]
-  }
-];
-
-
-  public generateData(baseval: any, count: any, yrange: any) {
-    var i = 0;
-    var series = [];
-    while (i < count) {
-      var x = Math.floor(Math.random() * (750 - 1 + 1)) + 1;
-      var y =
-        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-      var z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
-
-      series.push([x, y, z]);
-      baseval += 86400000;
-      i++;
+  recentOrders: RecentOrder[] = [
+    {
+      customerName: {
+        firstName: 'John',
+        lastName: 'Doe'
+      },
+      email: 'john.doe@example.com',
+      itemImages: [
+        'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=1000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1572635196184-84e35138cf62?q=80&w=1000&auto=format&fit=crop'
+      ],
+      orderId: 'ORD001',
+      status: 'Completed',
+      date: '2024-03-20',
+      items: 3,
+      total: 299.99
+    },
+    {
+      customerName: {
+        firstName: 'Jane',
+        lastName: 'Smith'
+      },
+      email: 'jane.smith@example.com',
+      itemImages: [
+        'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=1000&auto=format&fit=crop'
+      ],
+      orderId: 'ORD002',
+      status: 'Pending',
+      date: '2024-03-19',
+      items: 2,
+      total: 149.99
+    },
+    {
+      customerName: {
+        firstName: 'Mike',
+        lastName: 'Johnson'
+      },
+      email: 'mike.johnson@example.com',
+      itemImages: [
+        'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=1000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1584735175315-9d5df23860e6?q=80&w=1000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1000&auto=format&fit=crop'
+      ],
+      orderId: 'ORD003',
+      status: 'Completed',
+      date: '2024-03-18',
+      items: 5,
+      total: 499.99
     }
-    return series;
-  }
-
-  constructor(private datePipe: DatePipe) {
-    this.selectedDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd') || '';
-
-
-    this.chartOptions2 = {
-      series: [
-        {
-          name: "series1",
-          data: [31, 40, 28, 51, 42, 109, 100]
-        },
-        {
-          name: "series2",
-          data: [11, 32, 45, 32, 34, 52, 41]
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "area"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "smooth"
-      },
-      xaxis: {
-        type: "datetime",
-        categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z"
-        ]
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm"
-        }
+  ];
+  dashboardApi = new Perform<ChartData>();
+  private dashboardService = inject(DashboardService);
+  chartData = signal<ChartData | null>(null);
+  private destroy$ = new Subject<void>();
+  ngOnInit(): void {
+    this.dashboardApi.load(this.dashboardService.getChartData());
+    this.dashboardApi.data$.pipe(takeUntil(this.destroy$)).subscribe(
+      response => {
+        this.chartData.set(response!)
+        console.log(response)
       }
-    };
-
-
-    this.chartOptions = {
-      series: [
-        {
-          name: "north",
-          data: [
-            {
-              x: 1996,
-              y: 322
-            },
-            {
-              x: 1997,
-              y: 324
-            },
-            {
-              x: 1998,
-              y: 329
-            },
-            {
-              x: 1999,
-              y: 342
-            },
-            {
-              x: 2000,
-              y: 348
-            },
-            {
-              x: 2001,
-              y: 334
-            },
-            {
-              x: 2002,
-              y: 325
-            },
-            {
-              x: 2003,
-              y: 316
-            },
-            {
-              x: 2004,
-              y: 318
-            },
-            {
-              x: 2005,
-              y: 330
-            },
-            {
-              x: 2006,
-              y: 355
-            },
-            {
-              x: 2007,
-              y: 366
-            },
-            {
-              x: 2008,
-              y: 337
-            },
-            {
-              x: 2009,
-              y: 352
-            },
-            {
-              x: 2010,
-              y: 377
-            },
-            {
-              x: 2011,
-              y: 383
-            },
-            {
-              x: 2012,
-              y: 344
-            },
-            {
-              x: 2013,
-              y: 366
-            },
-            {
-              x: 2014,
-              y: 389
-            },
-            {
-              x: 2015,
-              y: 334
-            }
-          ]
-        },
-        {
-          name: "south",
-          data: [
-            {
-              x: 1996,
-              y: 162
-            },
-            {
-              x: 1997,
-              y: 90
-            },
-            {
-              x: 1998,
-              y: 50
-            },
-            {
-              x: 1999,
-              y: 77
-            },
-            {
-              x: 2000,
-              y: 35
-            },
-            {
-              x: 2001,
-              y: -45
-            },
-            {
-              x: 2002,
-              y: -88
-            },
-            {
-              x: 2003,
-              y: -120
-            },
-            {
-              x: 2004,
-              y: -156
-            },
-            {
-              x: 2005,
-              y: -123
-            },
-            {
-              x: 2006,
-              y: -88
-            },
-            {
-              x: 2007,
-              y: -66
-            },
-            {
-              x: 2008,
-              y: -45
-            },
-            {
-              x: 2009,
-              y: -29
-            },
-            {
-              x: 2010,
-              y: -45
-            },
-            {
-              x: 2011,
-              y: -88
-            },
-            {
-              x: 2012,
-              y: -132
-            },
-            {
-              x: 2013,
-              y: -146
-            },
-            {
-              x: 2014,
-              y: -169
-            },
-            {
-              x: 2015,
-              y: -184
-            }
-          ]
-        }
-      ],
-      chart: {
-        type: "area",
-        height: 350
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "straight"
-      },
-
-      title: {
-        text: "Area with Negative Values",
-        align: "left",
-        style: {
-          fontSize: "14px"
-        }
-      },
-      xaxis: {
-        type: "datetime",
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        }
-      },
-      yaxis: {
-        tickAmount: 4,
-        floating: false,
-
-        labels: {
-          offsetY: -7,
-          offsetX: 0
-        },
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        }
-      },
-      fill: {
-        opacity: 0.5
-      },
-      tooltip: {
-        x: {
-          format: "yyyy"
-        },
-        fixed: {
-          enabled: false,
-          position: "topRight"
-        }
-      },
-      grid: {
-        yaxis: {
-          lines: {
-            offsetX: -30
-          }
-        },
-        padding: {
-          left: 20
-        }
-      }
-    };
+    )
   }
-
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.dashboardApi.unsubscribe();
+  }
 }

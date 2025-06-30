@@ -43,10 +43,13 @@
         <p class="text-[22px]">{{ total() | number}} EGP</p>
       </li>
       <li class="pt-2">
-        <button
+        <button (click)="_checkout()"
           class="text-center bg-blue-500 text-white text-[15px] py-2 font-semibold rounded-full w-full"
         >
-          Checkout
+        <p *ngIf="!Isloading" >Checkout </p>
+        <div *ngIf="Isloading" class="flex items-center justify-center space-x-4 px-3 ">
+            <span class="loader"></span>
+        </div>
         </button>
       </li>
       <li class="">

@@ -12,6 +12,7 @@ using Ecommerce.service;
 using Ecommerce.Core.Repositories;
 using Ecommerce.Contracts.DTOs;
 using Ecommerce.Core;
+using Ecommerce.Service;
 
 namespace EcommerceContract.Extensions
 {
@@ -23,35 +24,35 @@ namespace EcommerceContract.Extensions
             {
                 Options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
-            Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            Services.AddScoped<IUnitOfWork, UnitOfWork>();
-            Services.AddScoped<IProductAttributeRepository,ProductAttributeRepository>();
-            Services.AddAutoMapper(typeof(MappingProfiles));
-
-            Services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.InvalidModelStateResponseFactory = (context) =>
-                {
-                    var errors = context.ModelState
-                        .Where(m => m.Value.Errors.Count > 0)
-                        .ToDictionary(
-                            kvp => kvp.Key, // Property name (e.g., "email")
-                            kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).AsEnumerable() // Use AsEnumerable() to match IEnumerable<string>
-                        );
-
-                    var validationErrorApiResponse = new ErrorApiResponse(errors);
-                    return new BadRequestObjectResult(validationErrorApiResponse);
-                };
-            });
-
-
             Services.Configure<IISServerOptions>(options =>
             {
                 options.AutomaticAuthentication = false;
             });
-
+            Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            Services.AddScoped<IProductAttributeRepository,ProductAttributeRepository>();
+            Services.AddAutoMapper(typeof(MappingProfiles));
             Services.AddScoped<IAuthService, AuthService>();
             Services.AddTransient<IEmailService, EmailService>();
+            Services.AddScoped<IOrderService, OrderService>();
+            Services.AddScoped<IPaymentService, PaymentService>();
+
+            /*            Services.Configure<ApiBehaviorOptions>(options =>
+                        {
+                            options.InvalidModelStateResponseFactory = (context) =>
+                            {
+                                var errors = context.ModelState
+                                    .Where(m => m.Value.Errors.Count > 0)
+                                    .ToDictionary(
+                                        kvp => kvp.Key, // Property name (e.g., "email")
+                                        kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).AsEnumerable() // Use AsEnumerable() to match IEnumerable<string>
+                                    );
+
+                                var validationErrorApiResponse = new ErrorApiResponse(errors);
+                                return new BadRequestObjectResult(validationErrorApiResponse);
+                            };
+                        });*/
+
             return Services;
         }
 

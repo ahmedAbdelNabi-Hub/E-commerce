@@ -24,14 +24,17 @@ namespace Ecommerce.Contracts.DTOs.product
         public decimal Weight { get; set; }
         public int DeliveryTimeInDays { get; set; }
         public int StockQuantity { get; set; } = 0;
+        public bool IsActive { get; set; } = false;
+        public string Dimensions { get; set; }
+
         public string? ImageUrl { get; set; }
         public string? LinkImage { get; set; }
         public decimal? OfferPrice { get; set; } 
         public DateTime? OfferStartDate { get; set; } 
         public DateTime? OfferEndDate { get; set; } 
-        public IReadOnlyList<ProductAttributeDto>? ProductAttributes { get; set; } 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public List<ProductAttributeDto> ProductAttributes { get; set; }
 
     }
 }

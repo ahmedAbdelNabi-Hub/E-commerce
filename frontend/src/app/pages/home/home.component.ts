@@ -1,9 +1,6 @@
-import { isPlatformBrowser } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, Inject, OnDestroy, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { ProductService } from '../../core/services/Product.service';
-import { catchError, delay, of, Subject, take, takeUntil, tap } from 'rxjs';
-import { ProductOffersComponent } from './components/product-offers/product-offers.component';
-import { CategoryCardComponent } from '../../shared/components/card/category-card/category-card.component';
+import { delay, Subject, take } from 'rxjs';
 import { BasketService } from '../../core/services/shipping/Basket.service';
 import { StatusService } from '../../core/services/Status/status.service';
 
@@ -11,10 +8,10 @@ import { StatusService } from '../../core/services/Status/status.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  productOffersComponent = ProductOffersComponent;
-  categoryCardComponent = CategoryCardComponent;
 
   private destroy$ = new Subject<void>();
   private dataSignal = signal<any>(null);

@@ -1,3 +1,228 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="-mt-px">
+    <!-- Breadcrumb -->
+    <div class="sticky top-0 py-4 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 lg:px-8 lg:hidden">
+        <div class="flex items-center py-2">
+            <!-- Navigation Toggle -->
+            <button type="button"
+                class="size-8 flex justify-center items-center gap-x-2 border border-gray-200 text-gray-800 hover:bg-gray-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-200 disabled:opacity-50 disabled:pointer-events-none"
+                aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-application-sidebar"
+                aria-label="Toggle navigation" data-hs-overlay="#hs-application-sidebar">
+                <span class="sr-only">Toggle Navigation</span>
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                    <path d="M15 3v18"></path>
+                    <path d="m8 9 3 3-3 3"></path>
+                </svg>
+            </button>
+            <!-- End Navigation Toggle -->
+
+            <!-- Breadcrumb -->
+            <ol class="flex items-center whitespace-nowrap">
+                <li class="flex items-center text-sm text-gray-800">
+                    Application Layout
+                    <svg class="shrink-0 mx-3 overflow-visible size-2.5 text-gray-400" width="16" height="16"
+                        viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </li>
+                <li class="text-sm font-semibold text-gray-800 truncate" aria-current="page">
+                    Dashboard
+                </li>
+            </ol>
+            <!-- End Breadcrumb -->
+        </div>
+    </div>
+    <!-- End Breadcrumb -->
+</div>
+
+<!-- Sidebar -->
+<div
+    class="translate-x-full pb-10 transition-all duration-300 transform w-[230px] top-14 h-full hidden md:fixed inset-y-0 start-0 z-0 bg-white border-e border-gray-200 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
+    <div class="relative flex flex-col h-full max-h-full">
+
+        <div
+            class="h-full overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+            <nav class="hs-accordion-group p-3 w-full flex flex-col flex-wrap">
+                <ul class="flex flex-col  gap-x-3.5 py-2 px-1">
+                    <!-- Orders & Reports Section -->
+                    <p class="uppercase text-[11px] text-slate-500 my-2">Orders & Reports</p>
+                    <li>
+                        <a routerLink="/admin/reports"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-bar-chart-alt text-xl'></i>
+                            <span class="text-[14px] mx-2">Report</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/orders"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-cart text-xl'></i>
+                            <span class="text-[14px] mx-2">Orders</span>
+                            <span class="ml-auto bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full">9</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/incomplete-orders"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-error text-xl'></i>
+                            <span class="text-[14px] mx-2">Incomplete Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/order-returns"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-rotate-left text-xl'></i>
+                            <span class="text-[14px] mx-2">Order Returns</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/shipments"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-package text-xl'></i>
+                            <span class="text-[14px] mx-2">Shipments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/invoices"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-receipt text-xl'></i>
+                            <span class="text-[14px] mx-2">Invoices</span>
+                        </a>
+                    </li>
+
+                    <!-- Product Management Expanded -->
+                    <p class="uppercase text-[11px] text-slate-500 my-3">Product Management</p>
+                    <li>
+                        <a routerLink="/admin/products"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-box text-xl'></i>
+                            <span class="text-[14px] mx-2">Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/product-prices"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-dollar text-xl'></i>
+                            <span class="text-[14px] mx-2">Product Prices</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/product-inventory"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-home text-xl'></i>
+                            <span class="text-[14px] mx-2">Product Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/product-categories"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-category text-xl'></i>
+                            <span class="text-[14px] mx-2">Product Categories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/product-tags"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-purchase-tag text-xl'></i>
+                            <span class="text-[14px] mx-2">Product Tags</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/product-attributes"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-detail text-xl'></i>
+                            <span class="text-[14px] mx-2">Product Attributes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/product-options"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-slider text-xl'></i>
+                            <span class="text-[14px] mx-2">Product Options</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/product-collections"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-layer text-xl'></i>
+                            <span class="text-[14px] mx-2">Product Collections</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/product-labels"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-purchase-tag-alt text-xl'></i>
+                            <span class="text-[14px] mx-2">Product Labels</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/brands"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-registered text-xl'></i>
+                            <span class="text-[14px] mx-2">Brands</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/reviews"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-star text-xl'></i>
+                            <span class="text-[14px] mx-2">Reviews</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/admin/flash-sales"
+                            class="flex items-center py-1.5 px-2 rounded-lg focus:outline-none focus:bg-gray-100">
+                            <i class='bx bx-bolt-circle text-xl'></i>
+                            <span class="text-[14px] mx-2">Flash Sales</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- End Content -->
+</div>
+<!-- End Sidebar -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <form enctype="multipart/form-data" (ngSubmit)="onSubmit()" [formGroup]="productForm">
     <div class="container mx-auto mt-10 px-5">
       <div class="flex items-center justify-between">

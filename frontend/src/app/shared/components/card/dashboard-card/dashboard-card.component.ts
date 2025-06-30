@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-card',
@@ -7,8 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class DashboardCardComponent {
   @Input("label") label!: string ;  
-  @Input("amount") amount: number = 0;                   // Amount to display
-  @Input("currency") currency: string = 'ج.م';             // Currency symbol
-  @Input("percentageChange") percentageChange: number = 0;         // Percentage change
-  @Input("isPositiveChange") isPositiveChange: boolean = true;     // Determines trend icon and color
+  @Input("amount") amount: number = 0;                 
+  @Input("currency") currency: string = 'ج.م';             
+  @Input("percentageChange") percentageChange: number = 0;       
+  @Input("isPositiveChange") isPositiveChange: boolean = true; 
+  @Input("icon") icon: string = ''; 
+  @Input("isLoading") isLoading :boolean=true; 
+  
 }

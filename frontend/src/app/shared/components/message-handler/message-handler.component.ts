@@ -50,9 +50,9 @@ export class MessageHandlerComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       const updatedQueue = [...this.messageQueue()];
-      updatedQueue.shift(); // Remove the displayed message
-      this.messageQueue.set(updatedQueue); // Update the reactive queue
-      this.showNextMessage(); // Show the next message if available
-    }, 3000);
+      updatedQueue.shift(); 
+      this.messageQueue.set(updatedQueue);
+      this.showNextMessage(); 
+    }, 9000);
   }
 }

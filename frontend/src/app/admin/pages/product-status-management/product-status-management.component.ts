@@ -14,10 +14,8 @@ import { Subscription } from 'rxjs';
 })
 export class ProductStatusManagementComponent implements OnInit, OnDestroy {
   statuses = signal<IStatus[] | null>(null);
-  groupedStatuses: IGroupedStatuses = { admin: [], system: [] };
   selectedStatusId!: number;
   private perform: Perform<IStatus[]>;
-  private subscriptions: Subscription = new Subscription();
   private isLoading = false;
 
   constructor(private statusService: StatusService) {
@@ -33,17 +31,16 @@ export class ProductStatusManagementComponent implements OnInit, OnDestroy {
       return;
     }
     this.isLoading = true;
-    this.perform.load(this.statusService.getStatuses().pipe(share()));
-    const subscription = this.perform.data$.pipe(
+    this.perform.load(this.statusService.getStatuses());
+     this.perform.data$.pipe(
       tap(data => {
         if (data) {
           this.statuses.set(data);
           this.isLoading = false;
+          this.selectedStatusId = data[0].id;
         }
       })
     ).subscribe();
-
-    this.subscriptions.add(subscription);
   }
 
   handleStatusSelection(statusId: number): void {
@@ -52,6 +49,5 @@ export class ProductStatusManagementComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.perform.unsubscribe();
-    this.subscriptions.unsubscribe();
   }
 }

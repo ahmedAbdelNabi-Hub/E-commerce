@@ -103,7 +103,7 @@ namespace Ecommerce.Controllers
 
         private async Task<Product> GetExistingProduct(int id)
         {
-            return await _unitOfWork.Repository<Product>().GetByIdSpecAsync(new ProductWithSpecifcations(id));
+            return await _unitOfWork.Repository<Product>().GetByIdAsync(id);
         }
     }
 }

@@ -2,9 +2,7 @@ import { Component, OnInit, OnDestroy, signal, inject, ChangeDetectionStrategy }
 import { catchError, delay, Observable, of, Subject, takeUntil, tap } from "rxjs";
 import { IBasket } from "../../core/models/interfaces/Basket/IBasket";
 import { BasketService } from "../../core/services/shipping/Basket.service";
-import { Router } from "@angular/router";
 import { ProductService } from "../../core/services/Product.service";
-import { IProduct } from "../../core/models/interfaces/IProduct";
 import { IPaginationDto } from "../../core/models/interfaces/IPaginationDto";
 
 @Component({
@@ -22,11 +20,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   basketId = localStorage.getItem('basket_id');
   lastViewProduct = signal<IPaginationDto | null>(null);
   loadingState$: Observable<boolean> | undefined;
-  private router = inject(Router);
 
   ngOnInit(): void {
     this.getBasket();
-    this.getResentlyProducts();
   }
 
   getBasket(): void {
@@ -58,11 +54,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       this.getBasket();
     })
   }
-  getResentlyProducts() {
-    this.productService.GetRecentlyProducts().subscribe(response => {
-      this.lastViewProduct.set(response);
-    });
-  }
+
 
   ngOnDestroy(): void {
     this.destroy$.next();

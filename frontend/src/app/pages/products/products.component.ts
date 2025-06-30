@@ -72,7 +72,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
     const actions = {
       products: this._productService.getAllProduct(this.params).pipe(distinctUntilChanged()),
-      filters: this._productService.getAllFilterWithCategoy(this.params?.CategoryName).pipe(distinctUntilChanged())
     };
 
     this.performApi.loadMultiple(actions);

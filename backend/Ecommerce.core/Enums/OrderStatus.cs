@@ -5,8 +5,8 @@ public enum OrderStatus
     [EnumMember(Value = "Pending")]
     Pending, // Awaiting processing
 
-    [EnumMember(Value = "Completed")]
-    Completed, // Order finalized
+    [EnumMember(Value = "Delivered")]
+    Delivered, // Order finalized
 
     [EnumMember(Value = "Canceled")]
     Canceled, // Canceled before shipping
@@ -17,7 +17,10 @@ public enum OrderStatus
     [EnumMember(Value = "Returned")]
     Returned, // Customer returned the order
 
-    [EnumMember(Value = "Awaiting Payment")]
-    AwaitingPayment, // Waiting for payment
+    [EnumMember(Value = "Processing")]
+    Processing, // Customer returned the order
+
+    [EnumMember(Value = "Paid")]
+    Paid, // Waiting for payment
 
 }

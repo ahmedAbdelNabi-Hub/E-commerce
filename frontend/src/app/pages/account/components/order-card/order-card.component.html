@@ -1,32 +1,95 @@
-<div class=" bg-white rounded-md py-2 px-3 border shadow-sm">
-    <div class="flex items-center justify-between ">
-        <div class="flex items-center space-x-2">
-            <i class='bx bx-barcode'></i>
-            <p class="mx-1 font-semibold text-[15px]">Invoice #923</p>
-        </div>
-        <div class="relative flex items-center  justify-center mx-1  text-[13px] rounded-xl text-gray-500  ">
-            <p>DATE : {{'12/15/2025'}} </p>
-        </div>
-    </div>
-    <div class="text-[12px] font-thin text-gray-500">
-        <p>Tracking number : <span class="text-black">IW3475453455</span></p>
-    </div>
-    <div class="flex items-center justify-between ">
-        <div class="text-[12px] font-thin text-gray-500">
-            <p>Quantity : <span class="text-black">3 </span></p>
-        </div>
-        <div class="relative  flex items-center  justify-center mx-1  text-[13px]  text-gray-500  ">
-            <p>Total Amount : <span class="text-black">{{20000 | number}}EPG</span></p>
-        </div>
-    </div>
-    <div class="flex items-center justify-between mt-5">
-        <div class="text-[12px] font-thin text-gray-500">
-            <button class="px-5 py-1 rounded-md shadow-sm bg-white border ">Details</button>
-        </div>
-        <div
-            class="relative shadow-sm flex items-center px-3 py-0.5 space-x-2  justify-center   text-[13px] rounded-xl text-[#6a5d21] font-semibold  bg-[#ffed9e]">
-            <i class='bx bxs-time text-black' ></i>
-            <p>Panding </p>
+<!-- Modal -->
+<div id="hs-ai-modal" class="size-full  overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog"
+    tabindex="-1" aria-labelledby="hs-ai-modal-label">
+    <div class=" mt-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
+        <div class="relative flex flex-col bg-white border rounded-xl pointer-events-auto">
+            <!-- Body -->
+            <div class="p-4 sm:p-7 overflow-y-auto">
+                <div class="text-center">
+          
+                    <h3 id="hs-ai-modal-label" class="text-lg font-semibold text-gray-800">
+                        Invoice from <span class="text-[#606060] font-medium">Breezo</span>
+                    </h3>
+                    <p class="text-sm text-gray-500">
+                        Invoice #{{ orderData.id }}{{ orderData.orderDate| date:'yyyyMMdd' }}
+                    </p>
+                </div>
+
+                <!-- Grid -->
+                <div class="mt-5 sm:mt-10 grid grid-cols-2 sm:grid-cols-2 gap-2">
+                    <div>
+                        <span class="block text-xs uppercase text-gray-500">Amount paid:</span>
+                        <span
+                            class="block text-sm font-medium text-gray-800">{{(orderData.subTotal+orderData.deliveryMethod.cost)
+                            | number}} EGP</span>
+                    </div>
+                    <!-- End Col -->
+
+                    <div>
+                        <span class="block text-xs uppercase text-gray-500">Date paid:</span>
+                        <span class="block text-sm font-medium text-gray-800">{{orderData.orderDate | date }}</span>
+                    </div>
+
+                </div>
+                <!-- End Grid -->
+
+                <div class="mt-5 sm:mt-10">
+                    <h4 class="text-xs font-semibold uppercase text-gray-800">Summary</h4>
+
+                    <ul class="mt-3 flex flex-col">
+                        <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                            <div class="flex items-center justify-between w-full">
+                                <span>Order Status</span>
+                             
+                                <span class="inline-flex justify-center items-center px-4 rounded-full border-4 border-blue-100 bg-[#eee] text-black ">
+                                    {{orderData.status}}
+                                    </span>
+                            </div>
+                        </li>
+                        <div
+                            class="flex flex-col text-sm   text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                            <li *ngFor="let items of orderData.items"
+                                class="inline-flex items-center gap-x-2 border text-sm -mt-px  ">
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="my-1 ">
+                                        <img loading="lazy"
+                                            class=" inline-block w-[60px] h-[50px] max-w-[60px]  px-2 py-1  "
+                                            [src]="'https://localhost:7197/image/Product/'+items.pictureUrl"
+                                            alt="Avatar">
+                                    </div>
+                                    <div class="px-3 flex flex-col space-y-1 justify-end items-end">
+                                        <p class="line-clamp-1 text-[13px] font-medium">{{items.productName}}</p>
+                                        <p class="line-clamp-1 text-[13px] ">Quantity : {{items.quantity}}</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </div>
+                    </ul>
+                </div>
+
+                <!-- Button -->
+                <div class="mt-5 flex justify-end gap-x-2">
+                    
+                    <button class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-[#606060] text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                    (click)="showModal = true"  >
+                        Details
+                    </button>
+                </div>
+                <!-- End Buttons -->
+                <div class="mt-5 sm:mt-10">
+                    <p class="text-sm text-gray-500">If you have any questions, please contact us at <a
+                            class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium"
+                            class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium"
+                            href="tel:+1898345492">+1 898-34-5492</a></p>
+                </div>
+            </div>
+            <!-- End Body -->
         </div>
     </div>
 </div>
+<!-- End Modal -->
+<app-modal [isOpen]="showModal" (closeModal)="showModal = false">
+    <app-order-details></app-order-details>
+</app-modal>

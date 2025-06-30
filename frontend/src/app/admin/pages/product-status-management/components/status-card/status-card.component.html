@@ -4,13 +4,9 @@
 </div>
 <div class=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 px-0 md:px-4 gap-2">
     <div (click)="selectStatus(status.id,index)"  [ngClass]="{'active':currentStatusIndex==index}"
-        *ngFor="let status of statusData; trackBy: trackById;let index=index" class="relative bg-white border  shadow-sm py-3
+    *ngFor="let status of statusData; trackBy: trackById;let index=index" class="relative bg-white border  shadow-sm py-3
      w-52 max-w-52 rounded-md px-10 transition-all cursor-pointer hover:bg-[#f9fafa]">
-        <p class="text-[13px] font-semibold ">{{ status.statusName }}</p>
+     <p class="text-[13px] font-semibold ">{{ status.statusName }}</p>
         <p class="text-[12px] line-clamp-1 text-gray-700">{{ status.statusDescription }}</p>
-
-        <div class="absolute top-1 right-1">
-            <app-switch></app-switch>
-        </div>
     </div>
 </div>

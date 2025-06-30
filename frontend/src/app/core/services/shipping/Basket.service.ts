@@ -31,8 +31,6 @@ export class BasketService {
         }
         return this.basket$;
     }
-
-
     setBasketInRedis(basket: IBasket): Observable<IBasket | null> {
         return this._http.put<IBasket>(`${API_URLS.Localhost + API_URLS.Basket}`, basket).pipe(
             tap(response => {
@@ -94,8 +92,7 @@ export class BasketService {
     getCurrentBasket(): IBasket | null {
         return this._basketSource.value;
     }
-
-
+    
     private createBasket(): IBasket {
         const basket = new Basket();
         localStorage.setItem('basket_id', basket.id);

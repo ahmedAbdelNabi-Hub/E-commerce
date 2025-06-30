@@ -21,6 +21,7 @@ export class ProductCardWithDiscoundComponent implements OnDestroy {
   perform = new Perform<IBasket | null>();
   private messageService = inject(MessageService);
   @Input('Recently') Recently: boolean = false;
+  @Input('gift') gift: boolean = false;
   navigateToProduct(productData: any) {
     this.router.navigate(
       ['/product', productData.categoryName, productData.nameEn],
@@ -36,6 +37,22 @@ export class ProductCardWithDiscoundComponent implements OnDestroy {
       }
     })));
   }
+  isOfferValid(): boolean {
+    if (!this.productData?.offerStartDate || !this.productData?.offerEndDate) {
+      return false; // No offer dates, so it's not valid
+    }
+    const now = new Date(); // Current Date
+    const offerStart = new Date(this.productData.offerStartDate);
+    const offerEnd = new Date(this.productData.offerEndDate);
+    return offerStart < offerEnd && now < offerEnd;
+  }
+  
+  getProductPrice(): number {
+    return this.isOfferValid() && this.productData.offerPrice !== null
+      ? this.productData.offerPrice // Return offer price if valid
+      : this.productData.price; // Otherwise, return regular price
+  }
+  
 
   ngOnDestroy(): void {
     this.perform.unsubscribe();

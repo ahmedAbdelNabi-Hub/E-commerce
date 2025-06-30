@@ -1,0 +1,6 @@
+.chart-container {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap;
+  }
+  

@@ -1,15 +1,15 @@
 ﻿using Ecommerce.core.Entities;
+using Ecommerce.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
-//builder.Service.add
-// product -- category 
-//    m     --    1      is have one (collection)
+
 namespace Ecommerce.Repository.Configruations
 {
     public class ProductConfigruation : IEntityTypeConfiguration<Product>
@@ -18,8 +18,6 @@ namespace Ecommerce.Repository.Configruations
         {
 
             builder.Property(p => p.DeliveryTimeInDays).IsRequired().HasDefaultValue(4);
-
-     
 
             builder.Property(p => p.Name)
                 .IsRequired()

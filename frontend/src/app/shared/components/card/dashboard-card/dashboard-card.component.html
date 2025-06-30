@@ -1,31 +1,40 @@
-<!-- --------------------------Dynamic Dashboard Card-------------------------- -->
-<div class="flex flex-col border px-4 overflow-hidden py-5  shadow-sm bg-white relative">
-    <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-            <h2 class="text-gray-600">
-                <p class="text-sm md:text-base">{{ label }}</p> <!-- Dynamic label text -->
-            </h2>
+
+
+
+    <a
+      class="block p-4 md:p-5 relative bg-white hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 before:absolute before:top-0 before:start-0 before:w-full before:h-px md:before:w-px md:before:h-full before:bg-gray-200 first:before:bg-transparent"
+      href="#"
+    >
+      <div
+        class="absolute overflow-hidden inset-0 blur-xl h-[580px]"
+        style="
+          background: linear-gradient(
+            143.6deg,
+            rgba(192, 132, 252, 0) 20.79%,
+            rgba(38, 129, 198, 0.062) 10.92%,
+            rgba(204, 171, 238, 0) 70.35%
+          );
+        "
+      ></div>
+      <div class="flex md:flex flex-col lg:flex-row gap-y-3 gap-x-5">
+        <!-- You can use <svg> or <i [class]="card.icon"> if using icon libraries -->
+        <i
+          class="shrink-0 size-8 text-gray-600"
+          [class]="'bx ' + icon"
+        ></i>
+
+        <div class="grow">
+          <p class="text-xs uppercase font-medium text-gray-800">
+            {{ label }}
+          </p>
+          <div class="mt-1 ">
+            <h3 *ngIf="!isLoading" class="text-xl  ">
+              {{ amount | number }} <span class="text-sm" >{{ currency }}</span>
+            </h3>
+            <div *ngIf="isLoading" class="skeleton-container">
+              <div class="skeleton-line"></div>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="flex items-center space-x-2">
-        <h3 class="text-responsive-xsm md:text-responsive-xl py-1 text-emerald-900">
-            {{ amount | number }} {{ currency }}</h3>
-    </div>
-
-</div>
-<!-- -----------------End of Dynamic Dashboard Card----------------------- -->
- <!--         <p class="mx-1 font-thin text-sm md:text-base text-gray-500 ">مقارنة بالشهر الماضي</p> Static text remains the same
- 
-     <div class="flex  md:items-center flex-col md:flex-row">
-        <div class="flex w-[50%] md:w-auto items-center shadow-sm rounded-md px-2 text-sm" [ngClass]="{
-               'bg-[#d7f1ed] text-[#4a5654]': isPositiveChange,
-               'bg-[#f5dbdf] text-red-500': !isPositiveChange
-           }">
-            <span class="text-sm  md:text-base">{{ percentageChange | number:'1.2-2' }}%</span> 
-
-            <i class="text-[#4a5654] text-[15px] bx bx-trending-up" *ngIf="isPositiveChange"></i>
-            <i class="text-red-700 text-[15px]  bx bx-trending-down" *ngIf="!isPositiveChange"></i>
-
-        </div>
-    </div>
- -->
+      </div>
+    </a>

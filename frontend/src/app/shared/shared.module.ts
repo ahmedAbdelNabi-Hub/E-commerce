@@ -16,17 +16,16 @@ import { DropdownComponent } from './components/buttons/dropdown/dropdown.compon
 import { AccordionComponent } from './components/buttons/accordion/accordion.component';
 import { FormsModule } from '@angular/forms';
 import { CountdownTimerComponent } from './components/countdown-timer/countdown-timer.component';
-import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 import { DashboardCardComponent } from './components/card/dashboard-card/dashboard-card.component';
 import { AdminHeaderComponent } from './components/header/admin-header/admin-header.component';
 import { ButtonWithIconComponent } from './components/buttons/button-with-icon/button-with-icon.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MessageHandlerComponent } from './components/message-handler/message-handler.component';
 import { TagNavigationComponent } from './components/tag-navigation/tag-navigation.component';
-import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CustomCarouselComponent } from './components/custom-carousel/custom-carousel.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -43,17 +42,16 @@ import { CustomCarouselComponent } from './components/custom-carousel/custom-car
     DropdownComponent,
     AccordionComponent,
     CountdownTimerComponent,
-    AdminSidebarComponent,
     DashboardCardComponent,
     AdminHeaderComponent,
     ButtonWithIconComponent,
     LoadingComponent,
     MessageHandlerComponent,
     TagNavigationComponent,
-    ImageUploaderComponent,
     NotFoundComponent,
     LayoutComponent,
     CustomCarouselComponent,
+    ModalComponent,
   ],
   imports: [
     CommonModule,
@@ -64,10 +62,9 @@ import { CustomCarouselComponent } from './components/custom-carousel/custom-car
     TagNavigationComponent,
     NavbarComponent,
     SearchComponent,
-    ImageUploaderComponent,
+    DropdownComponent,
     ProductCardWithDiscoundComponent,
     DropdownComponent,
-    AdminSidebarComponent,
     CategoryCardComponent,
     DashboardCardComponent,
     LazyLoadComponentDirective,
@@ -75,6 +72,6 @@ import { CustomCarouselComponent } from './components/custom-carousel/custom-car
     ButtonWithIconComponent,
     LoadingComponent,
     CustomCarouselComponent,
-    MenuComponent, HoverToggleMenuDirective, OwlCarouselComponent]
+    MenuComponent, HoverToggleMenuDirective, OwlCarouselComponent, ModalComponent]
 })
 export class SharedModule { }

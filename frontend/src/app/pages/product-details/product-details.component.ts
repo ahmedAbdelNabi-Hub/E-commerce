@@ -16,10 +16,11 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
   private overviewSectionOffset: number = 0;
   private route = inject(ActivatedRoute);
   _productService = inject(ProductService);
-  detailsProduct = signal<IProduct | null>(null); 
+  detailsProduct = signal<IProduct | null>(null);
   activeSection: string = 'overview';
-  productId?: number;
+  productId: number=0;
   params !: IProductSpecParams;
+  deliveryTimeInDays!: number;
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -34,11 +35,14 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
     this._productService.getProductWithIdAndStoreInRedis(id, true).pipe(
       tap(response => {
         this.detailsProduct.set(response);
-        console.log(this.detailsProduct);
+        console.log(response)
+        this.deliveryTimeInDays = response.deliveryTimeInDays;
+        this._productService.clearCache();
         this.setParams();
       })
     ).subscribe();
   }
+
   setParams(): void {
     if (this.detailsProduct()?.categoryName != null) {
       this.params = {
@@ -64,4 +68,84 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
       this.activeSection = 'overview';
     }
   }
+
+  get deliveryDate(): string {
+    const today = new Date();
+    today.setDate(today.getDate() + this.deliveryTimeInDays);
+    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
+    return today.toLocaleDateString('en-GB', options); 
+  }
+
+  get stockMessage(): string | null {
+    if (this.detailsProduct()?.stockQuantity! <= 3 && this.detailsProduct()?.stockQuantity!> 0) {
+      return `Only ${this.detailsProduct()?.stockQuantity!} left in stock – order soon.`;
+    }
+    return null; 
+  }
+
+
+
+  selectedColor = signal<string>('Blue');
+  selectedStorage = signal<string>('128GB');
+  quantity = signal<number>(1);
+  selectedImage = signal<number>(0);
+  showAllSpecs = signal<boolean>(false);
+  isWishlisted = signal<boolean>(false);
+
+  selectColor(color: string) {
+    this.selectedColor.set(color);
+  }
+
+  selectStorage(storage: string) {
+    this.selectedStorage.set(storage);
+  }
+
+  selectImage(index: number) {
+    this.selectedImage.set(index);
+  }
+
+  incrementQuantity() {
+    this.quantity.set(this.quantity() + 1);
+  }
+
+  decrementQuantity() {
+    if (this.quantity() > 1) {
+      this.quantity.set(this.quantity() - 1);
+    }
+  }
+
+  toggleSpecs() {
+    this.showAllSpecs.set(!this.showAllSpecs());
+  }
+
+  toggleWishlist() {
+    this.isWishlisted.set(!this.isWishlisted());
+  }
+
+  addToCart() {
+    console.log('Added to cart:', {
+      color: this.selectedColor(),
+      storage: this.selectedStorage(),
+      quantity: this.quantity()
+    });
+  }
+
+  buyNow() {
+    console.log('Buy now:', {
+      color: this.selectedColor(),
+      storage: this.selectedStorage(),
+      quantity: this.quantity()
+    });
+  }
+
+  shareProduct() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'iPhone 13',
+        text: 'Check out this iPhone 13!',
+        url: window.location.href
+      });
+    }
+  }
+
 }

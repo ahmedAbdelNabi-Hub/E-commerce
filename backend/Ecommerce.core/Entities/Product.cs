@@ -32,6 +32,7 @@ namespace Ecommerce.core.Entities
         public decimal Weight { get; set; }
         public string Dimensions { get; set; }  
 
+        public bool IsActive { get; set; } = false;
 
         public string ImageUrl { get; set; }
         public string LinkImage {  get; set; }
@@ -39,8 +40,10 @@ namespace Ecommerce.core.Entities
         public DateTime? OfferStartDate { get; set; } 
         public DateTime? OfferEndDate { get; set; }
         public int DeliveryTimeInDays { get; set; }
+
         public ICollection<ProductStatus> ProductStatus { get; set; }
         public ICollection<ProductAttributes> ProductAttributes { get; set; }
+       
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
     }

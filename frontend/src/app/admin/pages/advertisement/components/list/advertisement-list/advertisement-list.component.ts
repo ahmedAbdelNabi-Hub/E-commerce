@@ -35,7 +35,6 @@ export class AdvertisementListComponent implements OnInit {
   toggleStatus(id: number, index: number) {
     this.preformApi.load(
       this.advertisementService.toggleStatusAdvertisement(id).pipe(
-        delay(2000),
         tap(() => {
           const updatedAds = [...this.advertisements()];
           updatedAds[index] = {

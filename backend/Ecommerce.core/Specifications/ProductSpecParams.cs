@@ -10,6 +10,8 @@ namespace Ecommerce.Core.Specifications
     {
         public string? CategoryName { get; set; }    
         public int? StatusId { get; set; }  
+
+        public bool? IsActive { get; set; } 
         public int PageIndex { get; set; } = 1 ;
         private int pageSize = 8;
 

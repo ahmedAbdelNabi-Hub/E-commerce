@@ -7,14 +7,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular
 import { AdvertisementCarouselComponent } from './pages/home/components/advertisement-carousel/advertisement-carousel.component';
 import { ProductOffersComponent } from './pages/home/components/product-offers/product-offers.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollSpyDirective } from './shared/directives/ScrollSpy.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { JwtInterceptor } from './core/interceptors/Jwt.Interceptor';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { FormsModule } from '@angular/forms';
-import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
+import { OrderSuccessComponent } from './pages/order-success/order-success.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,8 @@ import { OrderSummaryComponent } from './pages/order-summary/order-summary.compo
     ProductOffersComponent,
     ScrollSpyDirective,
     CheckoutComponent,
-    OrderSummaryComponent,
-
+    OrderSuccessComponent,
+    
   ],
   imports: [
     BrowserModule,

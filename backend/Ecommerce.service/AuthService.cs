@@ -161,15 +161,23 @@ namespace Ecommerce.service
             {
                 return new BaseApiResponse(StatusCodes.Status400BadRequest, "Email does not exist");
             }
+
             var isOtpValid = await _userManager.VerifyTwoFactorTokenAsync(user, TokenOptions.DefaultEmailProvider, restPasswordDto.OTP);
             if (!isOtpValid)
             {
-                return new BaseApiResponse(StatusCodes.Status400BadRequest, "Invalid or expired OTP. Please request a new one.");
+                return new BaseApiResponse(StatusCodes.Status400BadRequest, "Invalid or expired OTP.");
             }
-            var result = await _userManager.ResetPasswordAsync(user, null, restPasswordDto.Password);
+
+            var result = await _userManager.RemovePasswordAsync(user);
             if (!result.Succeeded)
             {
-                return HandleErrors(result);
+                return new BaseApiResponse(StatusCodes.Status500InternalServerError, "Error removing the old password.");
+            }
+
+            result = await _userManager.AddPasswordAsync(user, restPasswordDto.Password);
+            if (!result.Succeeded)
+            {
+                return new BaseApiResponse(StatusCodes.Status500InternalServerError, "Password reset failed.");
             }
 
             return new BaseApiResponse(StatusCodes.Status200OK, "Password reset successful.");

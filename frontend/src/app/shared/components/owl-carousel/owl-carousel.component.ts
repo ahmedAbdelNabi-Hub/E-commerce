@@ -20,12 +20,14 @@ import { IProductSpecParams } from '../../../core/models/interfaces/IProductSpec
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() service!: any; // Generic service instance
-  @Input() methodName!: string; // Name of the method to call on the service
-  @Input() params!: any; // Parameters to pass to the service method
+  @Input() service!: any;
+  @Input() methodName!: string;
+  @Input() params!: any; 
   @Input('autoPlay') autoPlay: boolean = true;
   @Input('itemLarge') itemLarge: number = 4;
   @Input('Recently') Recently: boolean = false;
+  @Input('gift') gift: boolean = false;
+
   private destroy$ = new Subject<void>();
   private inProgressRequests = new Map<string, Observable<any>>();
   private cache = new Map<string, any>();
@@ -36,7 +38,7 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
   hasErrorSignal = signal<boolean>(false);
 
   customOptions: OwlOptions = {
-    loop: false,
+    loop: true,
     mouseDrag: true,
     autoplay: this.autoPlay,
     touchDrag: true,

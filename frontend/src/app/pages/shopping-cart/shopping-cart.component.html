@@ -23,9 +23,9 @@
         <span class="loader"></span>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-6 gap-4 mt-3">
+    <div class="grid grid-cols-1 lg:grid-cols-8 gap-4 mt-3">
         <!-- Cart Header -->
-        <div class="col-span-1 lg:col-span-4 shrink overflow-hidden space-y-4">
+        <div class="col-span-1 lg:col-span-5 shrink overflow-hidden space-y-4">
             <div class="flex items-center justify-between py-3 px-5 mb-5 border-b text-black text-2xl">
                 <h2 class="spicel-font text-black md:text-3xl">Cart</h2> <!-- Heading for SEO -->
                 <div class="text-sm">
@@ -43,7 +43,7 @@
 
         <!-- Order Total -->
         <div aria-labelledby="order-total-section"
-            class="flex flex-col  col-span-1 lg:col-span-2 md:px-4 flex-none lg:px-8 xl:px-12 mt-10">
+            class="flex flex-col  col-span-1 lg:col-span-3 md:px-4 flex-none lg:px-8 xl:px-12 mt-10">
             <app-order-total [basketItems]="basketItems"></app-order-total>
         </div>
     </div>

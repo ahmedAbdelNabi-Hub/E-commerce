@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\image\\Advertisement\\04e9bd065d4fb46cadaaa25b274ba3011fb4b00a3e791e68b987a57fed7701c4.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\11e80b8351e077d961b2fb8ccf01449012cbaabf5346a5b9b14f182b8085a424.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\11e80b8351e077d961b2fb8ccf01449012cbaabf5346a5b9b14f182b8085a424.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\13b42a5dd5288782ca52f1c5fb2aa3401ee44fa30678bf54cc1b9d072a32c602.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\13b42a5dd5288782ca52f1c5fb2aa3401ee44fa30678bf54cc1b9d072a32c602.webp"
     },
@@ -21,12 +25,20 @@
       "PackagePath": "staticwebassets\\image\\Advertisement\\1440x64015.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1652bc7a77308b44dbefd6a0ce3d118ee3f745ae3b26e77d7c6fd0750db340c1.png",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\1652bc7a77308b44dbefd6a0ce3d118ee3f745ae3b26e77d7c6fd0750db340c1.png"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\1719972763104c5da206e2ea24453b6b3a86d2e2216f3.jpg.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1719996358620010cd07b49b148138b161c85821ff883.jpg.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\1719996358620010cd07b49b148138b161c85821ff883.jpg.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\1e0144bdd744930d5de6adfd488d2c6c2c9df51c0d53b7ace3c878fdf32eca7e.png",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\1e0144bdd744930d5de6adfd488d2c6c2c9df51c0d53b7ace3c878fdf32eca7e.png"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\2024-oled-tv-f03-manifesto-pc.webp",
@@ -43,6 +55,10 @@
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\3be9e27352d81c2d7f23a9c12f2e2d6f.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\3be9e27352d81c2d7f23a9c12f2e2d6f.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\5236bffa9260417b484b32b67290e0c1c15c8f52e0cd5ca9dc47113e715d64c7.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\5236bffa9260417b484b32b67290e0c1c15c8f52e0cd5ca9dc47113e715d64c7.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\720-x-10801.webp",
@@ -117,6 +133,14 @@
       "PackagePath": "staticwebassets\\image\\Advertisement\\Samsung-Symbol.png"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\a097f1fe1d6c5adf132625c9780d46ca71acab876fa552b9c6e684bbb0427cfa.avif",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\a097f1fe1d6c5adf132625c9780d46ca71acab876fa552b9c6e684bbb0427cfa.avif"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\bafe6b8d6616c416a1f76079293079acedc264929ec745beafa0366089cf541e.avif",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\bafe6b8d6616c416a1f76079293079acedc264929ec745beafa0366089cf541e.avif"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\banner-mob-02.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\banner-mob-02.webp"
     },
@@ -161,6 +185,14 @@
       "PackagePath": "staticwebassets\\image\\Advertisement\\collection_sm.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\fbad8ec98b2f79e3a142a8082290b85f20e2575cb6eec4f167a9b2316eca3348.webp",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\fbad8ec98b2f79e3a142a8082290b85f20e2575cb6eec4f167a9b2316eca3348.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\fc2c98468012bc60e2ee38e4a299a1a08bfc40c9e1306f10d3f6cfd4090a9327.jpg",
+      "PackagePath": "staticwebassets\\image\\Advertisement\\fc2c98468012bc60e2ee38e4a299a1a08bfc40c9e1306f10d3f6cfd4090a9327.jpg"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\fcdd214a5546f39ae1c6c47541da03a2133a1f8bd4bee7c397dcaaea19183848.webp",
       "PackagePath": "staticwebassets\\image\\Advertisement\\fcdd214a5546f39ae1c6c47541da03a2133a1f8bd4bee7c397dcaaea19183848.webp"
     },
@@ -199,6 +231,10 @@
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Advertisement\\original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg",
       "PackagePath": "staticwebassets\\image\\Advertisement\\original-dcd8cfa11c69dbaa9695793ed8cc7fd8.jpg"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\GamingMonitors.webp",
+      "PackagePath": "staticwebassets\\image\\Categories\\GamingMonitors.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Categories\\Tablet.jpeg",
@@ -245,12 +281,32 @@
       "PackagePath": "staticwebassets\\image\\Categories\\washingMachines.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\01293666792f749af4d79146662a7d1be6bb4bb217f2cda78b4c8e22765119c7.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\01293666792f749af4d79146662a7d1be6bb4bb217f2cda78b4c8e22765119c7.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\018e95915b53e440dd34c4f929d6049d2b24bfb9ea27fff22804cbb7e5d18264.jpeg",
       "PackagePath": "staticwebassets\\image\\Product\\018e95915b53e440dd34c4f929d6049d2b24bfb9ea27fff22804cbb7e5d18264.jpeg"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\0c7307f535a479618cc451266a5f414ce874feffdf5437e0868bfcc7884a201d.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\0c7307f535a479618cc451266a5f414ce874feffdf5437e0868bfcc7884a201d.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\0e89b9f50b8b4cc05a32c7b5fc7c4a1a6e77b99f57b719d0a06d88ff58ac51e1.webp",
       "PackagePath": "staticwebassets\\image\\Product\\0e89b9f50b8b4cc05a32c7b5fc7c4a1a6e77b99f57b719d0a06d88ff58ac51e1.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\1241b3a384e766ecaf32b69d3a75492436969175e35566953172b06abd5d8be4.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\1241b3a384e766ecaf32b69d3a75492436969175e35566953172b06abd5d8be4.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\194ffe9fb2848cdc4dcdaa5c42d4fdaa45f212211cf54570b80293f4cd24de32.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\194ffe9fb2848cdc4dcdaa5c42d4fdaa45f212211cf54570b80293f4cd24de32.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\1b3d9736be179f01e747143b0bf16236ef5a8e44b148269223fca1ccf27e57df.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\1b3d9736be179f01e747143b0bf16236ef5a8e44b148269223fca1ccf27e57df.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\2415ac8fb7b1d87582bdbbc39f94ded17462370faa7dcd4f7b0393cdaf77ff8c.webp",
@@ -265,20 +321,44 @@
       "PackagePath": "staticwebassets\\image\\Product\\2b4dcf38c0eac0c5e99ed9e0646c614015da312cfb081d2ab3626e1eacd60c33.webp"
     },
     {
-      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3e85b86024f491befeabce56885353c790527a99067bdedb8f77bd3db80148a7.webp",
-      "PackagePath": "staticwebassets\\image\\Product\\3e85b86024f491befeabce56885353c790527a99067bdedb8f77bd3db80148a7.webp"
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\399b5f97c73987200f9e7745a3d990a19c708b199675841e6734f37fc46e0a73.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\399b5f97c73987200f9e7745a3d990a19c708b199675841e6734f37fc46e0a73.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\3dd9d3d43d502a9779f9e5981fc48875e4515933a0fc1ab2b302db3c63d4094b.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\3dd9d3d43d502a9779f9e5981fc48875e4515933a0fc1ab2b302db3c63d4094b.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\400b0e6f1b524a03d0d48fc29b4417a6823037fdfc138539eb70fcd9a92a9896.webp",
       "PackagePath": "staticwebassets\\image\\Product\\400b0e6f1b524a03d0d48fc29b4417a6823037fdfc138539eb70fcd9a92a9896.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\436ad805705e418857c036726eab56c61b53eae758ed5876b5f481739ba5038d.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\436ad805705e418857c036726eab56c61b53eae758ed5876b5f481739ba5038d.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\471ed9dee0c45e61741e5beabeb0cfeab41546f7344e83f9535e79d5ebabb099.webp",
       "PackagePath": "staticwebassets\\image\\Product\\471ed9dee0c45e61741e5beabeb0cfeab41546f7344e83f9535e79d5ebabb099.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\4866f5518763caff5495944652d678ad1037525498bdb83f458e99b65e169e10.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\4866f5518763caff5495944652d678ad1037525498bdb83f458e99b65e169e10.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\539d3b8c7c5e4603a3a789dd59dabf2e4417165cdda1057c56a6aea742615b28.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\539d3b8c7c5e4603a3a789dd59dabf2e4417165cdda1057c56a6aea742615b28.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\54a802b0b61d39073d5aea39713c3faee690605407d8f83a417b44dc10e73113.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\54a802b0b61d39073d5aea39713c3faee690605407d8f83a417b44dc10e73113.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\54a8f72e3b27af3c3cf9e747c4f7daef42d354029b497ecc789a5970d47be3f2.webp",
       "PackagePath": "staticwebassets\\image\\Product\\54a8f72e3b27af3c3cf9e747c4f7daef42d354029b497ecc789a5970d47be3f2.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\5c53977f04dcdb3922a7379d88e574e12324d4b283035e49ba2d1411d4b85d17.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\5c53977f04dcdb3922a7379d88e574e12324d4b283035e49ba2d1411d4b85d17.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\5d505d6ea18f4d384fab179cd6eda502570f4fbcfbf44d9b2bcfdc234cb9e987.webp",
@@ -297,8 +377,24 @@
       "PackagePath": "staticwebassets\\image\\Product\\650669859e1a0f613460c933a375f58185c095d34da30d47b9be262ce544d9e2.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\716ba2889dbe94069e362016c7e20759f3e7672219eff388b5227e156d971d77.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\716ba2889dbe94069e362016c7e20759f3e7672219eff388b5227e156d971d77.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\7fb09be071159b95dd1cb7a25660d4bdb6f7c3b9969100a8d8ca90ccb8d28768.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\7fb09be071159b95dd1cb7a25660d4bdb6f7c3b9969100a8d8ca90ccb8d28768.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\8501b57f8ff3cbf721c2dc8dec0180048f88d4c7ed09ccea7584825446ccfd97.webp",
       "PackagePath": "staticwebassets\\image\\Product\\8501b57f8ff3cbf721c2dc8dec0180048f88d4c7ed09ccea7584825446ccfd97.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\8e688adcadd83165e9191b4708b984c59f072f333f03291b93b548f076e60c59.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\8e688adcadd83165e9191b4708b984c59f072f333f03291b93b548f076e60c59.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\8f998b5fa5056015d236c689d1b147f97bf69801ee169e32bd0d774e84a9141a.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\8f998b5fa5056015d236c689d1b147f97bf69801ee169e32bd0d774e84a9141a.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\92be0bb1227e0db229bc2b69d06268d28bfade7450592f0ef2342f9a3562dac4.webp",
@@ -309,8 +405,16 @@
       "PackagePath": "staticwebassets\\image\\Product\\94698fd734524b8825a258834d68f2962446d3ab5025b263d0e54576a6610de7.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\9a21d794d1fc2f3e33f6e171beaf34bd04f80dfec4b13bb3ad85bd95fe7b72af.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\9a21d794d1fc2f3e33f6e171beaf34bd04f80dfec4b13bb3ad85bd95fe7b72af.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\9e8ea8d91a573460aeb0e701384c9a4d60a1eb5d2ebd51e8b215561f4d3f2943.webp",
       "PackagePath": "staticwebassets\\image\\Product\\9e8ea8d91a573460aeb0e701384c9a4d60a1eb5d2ebd51e8b215561f4d3f2943.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\a24dc4d7a14f01f19bd4aceec35c749d0e9ecaed5e1b3f5b9052ee84f0cfad91.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\a24dc4d7a14f01f19bd4aceec35c749d0e9ecaed5e1b3f5b9052ee84f0cfad91.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\a8d10194379df518508100d11a28d91243054954e6b965a39a0424df188ac009.webp",
@@ -321,12 +425,28 @@
       "PackagePath": "staticwebassets\\image\\Product\\b11256c264cc4626022851fedeac34857057f10427bfcf50ff53479051a3651d.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\b63bfd037e5128eddfe0df8f1c4fe18f9a3c222360e91af684cfc7a8ad35737b.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\b63bfd037e5128eddfe0df8f1c4fe18f9a3c222360e91af684cfc7a8ad35737b.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\c151be42307322782b9d5e82f647faab547ebf028a5ed101ad748ba23b43f330.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\c151be42307322782b9d5e82f647faab547ebf028a5ed101ad748ba23b43f330.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\c9b762d2511eef53bfec8a219fe94ae9605e0b5f59aa6ccb9067f2387f791c97.webp",
       "PackagePath": "staticwebassets\\image\\Product\\c9b762d2511eef53bfec8a219fe94ae9605e0b5f59aa6ccb9067f2387f791c97.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\d72b18d618e30ba1f5aee413c66f2980bfa5d9b007511059e2632b20e8b416ab.webp",
       "PackagePath": "staticwebassets\\image\\Product\\d72b18d618e30ba1f5aee413c66f2980bfa5d9b007511059e2632b20e8b416ab.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\da903f5dc8304d22711ace9d4c5a2faf9e567cc97d43aea06be926a4d8bbbb1f.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\da903f5dc8304d22711ace9d4c5a2faf9e567cc97d43aea06be926a4d8bbbb1f.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\dda5012b5e881a687e927d656341e3c67a481808065ee3cf7bc8312cbf3ac5df.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\dda5012b5e881a687e927d656341e3c67a481808065ee3cf7bc8312cbf3ac5df.webp"
     },
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\dee8c559a3aad476a8c50f0a7028cbef353871f7d6c20fd5b84197043c69c57c.webp",
@@ -341,6 +461,14 @@
       "PackagePath": "staticwebassets\\image\\Product\\e115215ac7f947570fd3ca01ec8cf7c5cfefef6f62656dc50471a402ee5f91bc.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\e66c99d751669d64778b8ce17a524b4f4ed53f91da65dbe8ad2125f75c2ed820.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\e66c99d751669d64778b8ce17a524b4f4ed53f91da65dbe8ad2125f75c2ed820.webp"
+    },
+    {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\e96f7ea35578c2ec1323a21c0ae5471660bf042a1f838c2eaf12f59fdc61ded5.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\e96f7ea35578c2ec1323a21c0ae5471660bf042a1f838c2eaf12f59fdc61ded5.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\f16ba666274b6daea83d5a2bb6905b9088c93b48ae3f2389bb74dbd5976a477d.webp",
       "PackagePath": "staticwebassets\\image\\Product\\f16ba666274b6daea83d5a2bb6905b9088c93b48ae3f2389bb74dbd5976a477d.webp"
     },
@@ -353,6 +481,10 @@
       "PackagePath": "staticwebassets\\image\\Product\\f5d3514762150f5e51b27fe6197202373494f57f8b63f88c975a927f9a9e84f8.webp"
     },
     {
+      "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\f839a6362e59027da1f2508e66ded433b975b06ad5152d8e68d41d917157acee.webp",
+      "PackagePath": "staticwebassets\\image\\Product\\f839a6362e59027da1f2508e66ded433b975b06ad5152d8e68d41d917157acee.webp"
+    },
+    {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fac6cfd2a99f5a705c6e0e20ce2cf24654070695645f2633f5da9328fc3d627f.webp",
       "PackagePath": "staticwebassets\\image\\Product\\fac6cfd2a99f5a705c6e0e20ce2cf24654070695645f2633f5da9328fc3d627f.webp"
     },
@@ -363,6 +495,10 @@
     {
       "Id": "E:\\E-commerce\\backend\\Ecommerce\\wwwroot\\image\\Product\\fd0fd4e23cea5baea02a41b1c383a3b073ff711da936861e9ee316515fd13636.webp",
       "PackagePath": "staticwebassets\\image\\Product\\fd0fd4e23cea5baea02a41b1c383a3b073ff711da936861e9ee316515fd13636.webp"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Ecommerce.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Ecommerce.Microsoft.AspNetCore.StaticWebAssets.props",

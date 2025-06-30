@@ -14,6 +14,8 @@ namespace Ecommerce.Core.Entities.order
         public string PictureUrl { get; set; } // URL of the product image
         public decimal Price { get; set; } // Price per unit
         public int Quantity { get; set; } // Number of items ordered
+        public DateTime CreatedAt { get; set; } 
+        public DateTime UpdatedAt { get; set;}
 
         // Calculated property for total price
         public decimal TotalPrice => Price * Quantity;

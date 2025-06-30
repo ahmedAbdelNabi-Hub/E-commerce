@@ -1,28 +1,13 @@
 <!-- Hero -->
 <div class="overflow-hidden">
 
-    <div class="mx-auto px-4 py-8">
-        <div class="relative mx-auto  grid ">
-
-            <!-- Title -->
-            <div class="text-center flex flex-col items-center">
-                <p class="text-xs font-semibold text-gray-500 tracking-wide uppercase mb-3">
-                    Advertisement Creation
-                </p>
-                <p class="text-[30px] text-gray-800 font-bold max-w-xl  lg:leading-tight">
-                    Create your <span class="text-blue-800">perfect advertisement</span> and boost your business
-                </p>
-            </div>
-
-            <!-- End Title -->
-
             <form [formGroup]="advertisementForm" (ngSubmit)="onSubmit()" class="relative px-1 md:px-2">
-                <div class="text-center py-5 my-2 ">
-                  <p class="text-xl">Basic Informations</p>
-                </div>
+              <p class="text-xs text-center py-1 font-semibold text-gray-500 tracking-wide uppercase mb-3">
+                Advertisement Creation
+            </p>
               
-                <div class="flex items-center space-x-2 w-full ">
-                  <div class="flex justify-center mb-2  w-[75%]">
+                <div class="flex items-center space-x-2 w-full flex-col md:flex-row">
+                  <div class="flex justify-center mb-2 w-full md:w-[75%]">
                     <label for="largeImage"
                       class="flex flex-col items-center justify-center w-full h-96 border-2 border-dashed rounded-lg cursor-pointer">
                       <img *ngIf="largeImageUrl()" [src]="largeImageUrl()" alt="Small Image" class="h-full w-full">
@@ -41,7 +26,7 @@
                     </label>
                   </div>
               
-                  <div class="flex justify-center w-[25%]">
+                  <div class="flex justify-center w-full md:w-[25%]">
                     <label for="smallImage"
                       class="flex flex-col items-center justify-center w-full h-96 border-2 border-dashed rounded-lg cursor-pointer">
                       <img *ngIf="smallImageUrl()" [src]="smallImageUrl()" alt="Small Image" class="h-full w-full">
@@ -127,7 +112,5 @@
               
 
         </div>
-    </div>
-</div>
 
 <!-- End Hero -->

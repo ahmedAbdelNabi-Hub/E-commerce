@@ -23,7 +23,6 @@ export class Perform<T> {
     private destroy$ = new Subject<void>();
     private errorMessage = new BehaviorSubject<string>('');
     private errorHandler = inject(ErrorHandlerService);
-    private messageService = inject(MessageService);
 
     data$ = this.dataSubject.asObservable();
     isLoading$ = this.isLoadingSubject.asObservable();
@@ -40,7 +39,6 @@ export class Perform<T> {
     load(action$: Observable<T>): void {
         this.resetState();
         this.isLoadingSubject.next(true);
-
         action$
             .pipe(
                 takeUntil(this.destroy$),
@@ -95,7 +93,6 @@ export class Perform<T> {
         this.errorHandler.errorMessage$.subscribe({
             next: (message) => {
                 this.errorMessage.next(message);
-                this.messageService.showError(message);
             },
         });
 

@@ -20,7 +20,7 @@ export class AdvertisementService {
      */
     getAdvertisements(): Observable<Iadvertisement[]> {
         if (!this.advertisementCache$) {
-            this.advertisementCache$ = this.http.get<Iadvertisement[]>(`https://localhost:7197${API_URLS.advertisement}`)
+            this.advertisementCache$ = this.http.get<Iadvertisement[]>(`${API_URLS.Localhost}${API_URLS.advertisement}`)
                 .pipe(
                     shareReplay(1),
                     catchError(error => {
@@ -37,7 +37,7 @@ export class AdvertisementService {
      */
     getActiveAdvertisements(): Observable<Iadvertisement[]> {
         if (!this.activeAdvertisementCache$) {
-            this.activeAdvertisementCache$ = this.http.get<Iadvertisement[]>(`https://localhost:7197${API_URLS.advertisement}?isActive=true`)
+            this.activeAdvertisementCache$ = this.http.get<Iadvertisement[]>(`${API_URLS.Localhost}${API_URLS.advertisement}?isActive=true`)
                 .pipe(
                     shareReplay(1),
                     catchError(error => {

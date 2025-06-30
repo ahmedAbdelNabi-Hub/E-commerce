@@ -10,11 +10,9 @@ export function AlphanumericValidator(): ValidatorFn {
         if (!isValid) {
             return { alphanumeric: ' must be alphanumeric with commas allowed' };
         }
-
         return null;
     }
 }
-
 
 export function lettersAndSpacesValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
