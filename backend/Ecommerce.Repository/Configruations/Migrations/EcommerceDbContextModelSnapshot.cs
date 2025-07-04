@@ -496,8 +496,7 @@ namespace Ecommerce.Repository.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Dimensions")
                         .IsRequired()
@@ -590,6 +589,32 @@ namespace Ecommerce.Repository.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductAttributes");
+                });
+
+            modelBuilder.Entity("Ecommerce.Core.Entities.ProductImage", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImage");
                 });
 
             modelBuilder.Entity("Ecommerce.core.Entities.ProductStatus", b =>
@@ -912,6 +937,17 @@ namespace Ecommerce.Repository.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Ecommerce.Core.Entities.ProductImage", b =>
+                {
+                    b.HasOne("Ecommerce.core.Entities.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Ecommerce.core.Entities.ProductStatus", b =>
                 {
                     b.HasOne("Ecommerce.core.Entities.Product", "Product")
@@ -1015,6 +1051,8 @@ namespace Ecommerce.Repository.Migrations
             modelBuilder.Entity("Ecommerce.core.Entities.Product", b =>
                 {
                     b.Navigation("ProductAttributes");
+
+                    b.Navigation("ProductImages");
 
                     b.Navigation("ProductStatus");
                 });

@@ -47,13 +47,14 @@ namespace EcommerceContract.Helpers.profile
                 .ForMember(dest => dest.SmallImage, opt => opt.MapFrom<PictureSmallImageResoIver>());
             CreateMap<AdvertisementCreateDto, Advertisement>();
 
-            // Product Mapping
             CreateMap<Product, ProductReadDto>()
-                .ForMember(dest => dest.OfferEndDate, opt => opt.MapFrom(src => src.OfferEndDate))
-                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
-                .ForMember(dest => dest.DeliveryTimeInDays, opt => opt.MapFrom(src => src.DeliveryTimeInDays))
-                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom<PictureProductImageResolver>());
-                
+            .ForMember(dest => dest.OfferEndDate, opt => opt.MapFrom(src => src.OfferEndDate))
+            .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName))
+            .ForMember(dest => dest.DeliveryTimeInDays, opt => opt.MapFrom(src => src.DeliveryTimeInDays))
+            .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom<PictureProductImageResolver>())
+            .ForMember(dest => dest.Thumbnails, opt => opt.MapFrom(src => src.ProductImages.Select(i => i.ImageUrl).ToList())); 
+
+
 
             CreateMap<ProductReadDto, Product>()
                 .ForMember(dest => dest.OfferEndDate, opt => opt.MapFrom(src => src.OfferEndDate))

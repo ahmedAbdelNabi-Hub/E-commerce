@@ -1,9 +1,8 @@
 <div class="w-full mt-5">
 	<div
 		class="py-1  px-4 md:px-9 border border-b mt-12 bg-white flex flex-col md:flex-row justify-between md:items-center">
-		<p
-			class="text-[17px] max-h-[73px] md:max-h-[100px] overflow-hidden py-4 sm:text-[25px] font-semibold text-black w-full md:w-[60%] line-clamp-2">
-			{{detailsProduct()?.description}}
+		<p [innerHtml]="detailsProduct()?.description"
+			class="text-[17px] max-h-[73px] md:max-h-[100px] overflow-hidden py-4 sm:text-[25px] font-semibold text-black w-full md:w-[60%] line-clamp-3">
 		</p>
 		<div class="flex md:items-center py-1 flex-col md:flex-row ">
 			<div class="flex flex-col border-r py-3 md:py-0 border-gray-300 px-0 md:px-5">
@@ -68,15 +67,26 @@
 					</p>
 				</div>
 				<div class="flex flex-col lg:flex-row items-center justify-center">
-					<div class="flex justify-center  items-center ">
-						<div class=" overflow-hidden ">
-							<div class="h-full w-[100%] md:w-[100%] mt-5  object-cover ">
-								<img [src]="detailsProduct()?.imageUrl" srcset="
-										{{ detailsProduct()?.imageUrl }} 300w, 
-										{{ detailsProduct()?.imageUrl }} 600w, 
-										{{ detailsProduct()?.imageUrl }} 1000w" sizes="(max-width: 600px) 300px, (max-width:1200px) 600px, 1000px"
-									alt="{{ detailsProduct()?.name }} - Image" width="500" height="500"
-									style="height:100%;" loading="lazy" class="max-w-[360px] max-h-[400px]">
+					<div class="flex flex-row  lg:flex-col justify-center gap-2 mt-4"
+					*ngIf="detailsProduct()?.thumbnails?.length">
+						<button *ngFor="let thumb of detailsProduct()?.thumbnails; let index = index"
+							(click)="chooseImage(thumb,index)"
+							class="w-16 h-16 border-2 rounded-lg overflow-hidden transition-colors"
+							[ngClass]="{ 'border-blue-500': thumb === currentImage, 'border-gray-300': thumb !== currentImage }">
+							<img [src]="'https://localhost:7197/image/Product/thumbnails/' + thumb"
+								class="w-full h-full object-cover" loading="lazy" alt="Product thumbnail">
+						</button>
+					</div>
+
+					<!-- Main Product Image -->
+					<div class="relative group w-full max-w-2xl">
+						<div class="overflow-hidden">
+							<div class="aspect-square">
+								<img [src]="getFullImageUrl(currentImage)"
+									[srcset]="getResponsiveImageSet(currentImage)"
+									sizes="(max-width: 600px) 300px, (max-width:1200px) 600px, 1000px"
+									class="w-full h-full object-contain transition duration-300 ease-in-out transform group-hover:scale-105"
+									width="800" height="800" loading="lazy" decoding="async">
 							</div>
 						</div>
 					</div>
@@ -84,9 +94,8 @@
 			</div>
 			<div class="lg:col-span-4 lg:row-span-2 lg:row-end-2 px-0 md:px-2">
 				<div class="tite-page  lg:block">
-
-					<p class="text-[22px] hidden md:block mt-2 line-clamp-3">
-						{{detailsProduct()?.description}}
+					<p [innerHTML]="detailsProduct()?.description"
+						class="text-[20px] hidden md:block mt-2 whitespace-pre-wrap break-words">
 					</p>
 				</div>
 

@@ -31,7 +31,9 @@ namespace Ecommerce.Contracts.DTOs.product
         public string? LinkImage { get; set; }
         public decimal? OfferPrice { get; set; } 
         public DateTime? OfferStartDate { get; set; } 
-        public DateTime? OfferEndDate { get; set; } 
+        public DateTime? OfferEndDate { get; set; }
+        public List<string> Thumbnails { get; set; } = new();
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public List<ProductAttributeDto> ProductAttributes { get; set; }

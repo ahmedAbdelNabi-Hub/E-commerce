@@ -24,14 +24,17 @@ namespace Ecommerce.Repository.Configruations
                 .HasMaxLength(200);
 
             builder.Property(p => p.Description)
-                .HasMaxLength(1000);
-
-        
-
-         
+             .HasColumnType("nvarchar(max)");
+ 
             builder.Property(p => p.Brand)
                 .IsRequired()
                 .HasMaxLength(100);
+
+                builder
+                     .HasMany(p => p.ProductImages)
+                    .WithOne(i => i.Product)
+                    .HasForeignKey(i => i.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(p => p.SKU)
                 .HasMaxLength(50)

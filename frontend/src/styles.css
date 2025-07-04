@@ -1,13 +1,22 @@
+@import "../node_modules/quill/dist/quill.core.css";
+@import "../node_modules/quill/dist/quill.snow.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @font-face {
   font-family: 'Samsung Sharp Sans Medium';
   font-style: normal;
   font-weight: normal;
   src: local('Samsung Sharp Sans Medium'), url('assets/fonts/samsungsharpsans.woff') format('woff');
+}
+
+
+.description-content p:empty:before {
+  content: '\00a0';
+  display: block;
+  height: 10px;
 }
 
 .blur-glass {

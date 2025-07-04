@@ -6,7 +6,7 @@ export const API_URLS = {
     menulink: '/api/menulink',
     advertisement: '/api/Advertisement',
     prodcut: '/api/products/',
-    category: '/api/Category/',
+    category: '/api/categories/',
     Basket: '/api/Basket',
     Status: '/api/ProductStatus/',
     filter: '/api/ProductAttributes/filters'

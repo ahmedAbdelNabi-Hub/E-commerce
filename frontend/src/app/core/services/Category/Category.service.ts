@@ -10,11 +10,10 @@ export class CategoryService {
   constructor(private _Http: HttpClient) { }
 
   getAllCategories(): Observable<ICategory[]> {
-    return this._Http.get<ICategory[]>(API_URLS.Localhost + API_URLS.category + 'GetAllCategorys').pipe(
+    return this._Http.get<ICategory[]>(API_URLS.Localhost + API_URLS.category).pipe(
       tap(response => {
         if (response != null) {
           this.Categories = response;
-          console.log(response)
         }
       }),
       catchError(error => {

@@ -31,7 +31,7 @@ export function strongDescriptionValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value || '';
     const minLength = 10;
-    const maxLength = 200;
+    const maxLength = 10000;
     if (value && (value.length < minLength || value.length > maxLength)) {
       return { strongDescription: `Description must be between ${minLength} and ${maxLength} characters` };
     }

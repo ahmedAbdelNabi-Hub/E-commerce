@@ -105,32 +105,66 @@ namespace Ecommerce.Controllers
         [Route("/api/products")]
         public async Task<ActionResult<BaseApiResponse>> CreateProduct([FromForm] ProductCreateDto request)
         {
-
             var attributesJson = Request.Form["ProductAttributes"];
-
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
             if (!string.IsNullOrWhiteSpace(attributesJson))
             {
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                 request.ProductAttributes = JsonSerializer.Deserialize<List<ProductAttributeDto>>(attributesJson, options)!;
             }
 
-            var existCategory = await _unitOfWork.Repository<Category>().GetByIdSpecAsync(new CategoryWithSpecictions(request.CategoryId));
-            if(existCategory is null)
-            {
-                return NotFound(new BaseApiResponse());
-            }
-            var product = _mapper.Map<ProductCreateDto,Product>(request);
-            string imageName = DocumentSettings.UploadFile(request.ImageFile!, "product");
-            product.ImageUrl = imageName;
-            product.LinkImage = imageName;
+            var existCategory = await _unitOfWork.Repository<Category>()
+                .GetByIdSpecAsync(new CategoryWithSpecictions(request.CategoryId));
+
+            if (existCategory is null)
+                return NotFound(new BaseApiResponse(404, "Category not found."));
+
+            var product = _mapper.Map<ProductCreateDto, Product>(request);
+
+            var mainImageName = DocumentSettings.UploadFile(request.ImageFile!, "product");
+            product.ImageUrl = mainImageName;
+            product.LinkImage = mainImageName;
+
             product.SKU = ProductHelper.GenerateSKU(product.CategoryId, product.Brand, product.CreatedAt, product.id);
             product.OfferPrice = ProductHelper.CalculateOfferPrice(product.Price, product.Discount);
+
+           
             await _unitOfWork.Repository<Product>().AddAsync(product);
-            return await SaveChangesAsync(_unitOfWork, "Product added successfully form server", "Failed to added product");
+            await _unitOfWork.CompleteAsync();
+
+            // ✅ Add thumbnails (if any) using AddRangeAsync
+            if (request.Thumbnails?.Any() == true)
+            {
+                var productImages = request.Thumbnails
+                    .Select(thumbnail =>
+                    {
+                        var imageName = DocumentSettings.UploadFile(thumbnail, "product/thumbnails");
+                        return new ProductImage
+                        {
+                            ProductId = product.id,
+                            ImageUrl = imageName,
+                            LinkImage = imageName
+                        };
+                    }).ToList();
+
+                await _unitOfWork.Repository<ProductImage>().AddRangeAsync(productImages);
+            }
+
+            // ✅ Add product attributes (if any) using AddRangeAsync
+            if (request.ProductAttributes?.Any() == true)
+            {
+                var attributes = request.ProductAttributes
+                    .Select(attr => new ProductAttributes
+                    {
+                        ProductId = product.id,
+                        AttributeId = attr.AttributeId,
+                        AttributeValueId = attr.AttributeValueId
+                    }).ToList();
+
+                await _unitOfWork.Repository<ProductAttributes>().AddRangeAsync(attributes);
+            }
+
+            // Save all changes together
+            return await SaveChangesAsync(_unitOfWork, "Product added successfully", "Failed to add product");
         }
 
         [HttpPut]
@@ -138,59 +172,94 @@ namespace Ecommerce.Controllers
         public async Task<ActionResult<BaseApiResponse>> UpdateProductAsync(int id, [FromForm] ProductCreateDto productDto)
         {
             var attributesJson = Request.Form["ProductAttributes"];
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
             if (!string.IsNullOrWhiteSpace(attributesJson))
             {
                 productDto.ProductAttributes = JsonSerializer.Deserialize<List<ProductAttributeDto>>(attributesJson, options)!;
             }
-
             var productRepo = _unitOfWork.Repository<Product>();
-            var productAttributesRepo = _unitOfWork.Repository<ProductAttributes>();
-
             var existingProduct = await productRepo.GetByIdSpecAsync(new ProductWithSpecifcations(id));
             if (existingProduct is null)
                 return NotFound(new BaseApiResponse(404, "Product not found"));
 
             existingProduct.UpdateFromDto(productDto);
+
             if (productDto.ImageFile != null)
             {
-                existingProduct.ImageUrl = DocumentSettings.UploadFile(productDto.ImageFile!, "product", existingProduct.ImageUrl); existingProduct.LinkImage = existingProduct.ImageUrl;
+                existingProduct.ImageUrl = DocumentSettings.UpdateFile(productDto.ImageFile!, "product", existingProduct.ImageUrl);
                 existingProduct.LinkImage = existingProduct.ImageUrl;
             }
-           await _unitOfWork.BeginTransactionAsync();
-            existingProduct.OfferPrice = ProductHelper.CalculateOfferPrice(productDto.Price, productDto.Discount);
-            var oldAttributes = await productAttributesRepo
-                .GetAllWithTrackingAsync(new ProductAttributesWithSpecification(id));
-
-            if (oldAttributes.Any())
+            if (productDto.Thumbnails != null && productDto.Thumbnails.Any())
             {
-                await productAttributesRepo.DeleteRangeAsync(oldAttributes);
-            }
 
-            if (productDto.ProductAttributes?.Any() == true)
-            {
-                var newAttributes = productDto.ProductAttributes.Select(attrDto => new ProductAttributes
+
+                if (existingProduct.ProductImages?.Any() == true)
                 {
-                    ProductId = id,
-                    AttributeId = attrDto.AttributeId,
-                    AttributeValueId = attrDto.AttributeValueId
-                });
+                    foreach (var image in existingProduct.ProductImages) {
+                        DocumentSettings.DeleteFile("Product/thumbnails", image.ImageUrl);
+                    }
+                    existingProduct.ProductImages.Clear();
+                }
 
-                await productAttributesRepo.AddRangeAsync(newAttributes); 
+                foreach (var thumbnail in productDto.Thumbnails)
+                {
+                    string thumbImageName = DocumentSettings.UploadFile(thumbnail, "product/thumbnails");
+
+                    existingProduct.ProductImages!.Add(new ProductImage
+                    {
+                        ImageUrl = thumbImageName,
+                        LinkImage = thumbImageName,
+                        ProductId = id
+                    });
+                }
             }
+
+
+            existingProduct.OfferPrice = ProductHelper.CalculateOfferPrice(productDto.Price, productDto.Discount);
+            if (productDto.ProductAttributes is not null)
+            {
+                var existingAttributes = existingProduct.ProductAttributes.ToList();
+
+                // Remove attributes not in the new list
+                var toRemove = existingAttributes
+                    .Where(old => !productDto.ProductAttributes.Any(newAttr => newAttr.AttributeId == old.AttributeId))
+                    .ToList();
+
+                foreach (var attr in toRemove)
+                {
+                    existingProduct.ProductAttributes.Remove(attr);
+                }
+
+                // Update or add attributes
+                foreach (var newAttr in productDto.ProductAttributes)
+                {
+                    var match = existingAttributes.FirstOrDefault(a => a.AttributeId == newAttr.AttributeId);
+                    if (match != null)
+                    {
+                        // Update value
+                        match.AttributeValueId = newAttr.AttributeValueId;
+                    }
+                    else
+                    {
+                        // Add new attribute
+                        existingProduct.ProductAttributes.Add(new ProductAttributes
+                        {
+                            ProductId = id,
+                            AttributeId = newAttr.AttributeId,
+                            AttributeValueId = newAttr.AttributeValueId
+                        });
+                    }
+                }
+            }
+
             try
             {
                 await _unitOfWork.CompleteAsync();
-                await _unitOfWork.CommitAsync();
-
-                return Ok(new BaseApiResponse(200, "Attribute updated successfully"));
+                return Ok(new BaseApiResponse(200, "Product updated successfully"));
             }
             catch (DbUpdateException ex)
             {
-                var res = ex.InnerException?.Message ?? ex.Message;
                 return StatusCode(500, new BaseApiResponse(500, $"Database error: {ex.InnerException?.Message ?? ex.Message}"));
             }
         }

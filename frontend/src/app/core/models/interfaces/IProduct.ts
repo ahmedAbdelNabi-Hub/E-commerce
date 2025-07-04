@@ -22,5 +22,6 @@ export interface IProduct {
   offerStartDate: string | null;
   offerEndDate: string | null;
   createdAt: string;
+  thumbnails?: string[];
   updatedAt: string;
 }

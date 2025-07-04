@@ -1,16 +1,14 @@
-import { AfterViewInit, Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { distinctUntilChanged, map, Subject, Subscription, takeUntil } from 'rxjs';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from '../../../core/models/interfaces/ICategory';
 import { IProduct } from '../../../core/models/interfaces/IProduct';
 import { IProductAttribute } from '../../../core/models/interfaces/IProductAttribute';
 import { CategoryService } from '../../../core/services/Category/Category.service';
-import { ErrorHandlerService } from '../../../core/services/ErrorHandler.service';
 import { MessageService } from '../../../core/services/Message.service';
 import { Perform } from '../../../core/services/PerformMultiple.service';
 import { ProductService } from '../../../core/services/Product.service';
-import { ProductDataService } from '../../../core/services/ProductData.service';
 import { getErrorMessage } from '../../../core/utils/form-error-messages';
 import { strongNameValidator, strongDescriptionValidator, strongBrandValidator, positiveNumberValidator, dimensionsFormatValidator } from '../../../core/validators/product-form-validators';
 import { SelectedAttribute } from './components/Attribute/attribute.component';
@@ -18,9 +16,11 @@ import { SelectedAttribute } from './components/Attribute/attribute.component';
 @Component({
   selector: 'app-add-product',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.css'],
+
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
+
   private destroy$ = new Subject<void>();
   private categoryService = inject(CategoryService);
   private productService = inject(ProductService);
@@ -29,8 +29,9 @@ export class ProductFormComponent implements OnInit, OnDestroy {
 
 
   productForm!: FormGroup;
-  thumbnailUrls: (string | ArrayBuffer | null)[] = [];
-  thumbnailFiles: (File | null)[] = [];
+  thumbnailUrls = signal<(string | ArrayBuffer | null)[]>([]);
+  thumbnailFiles = signal<File[]>([]);
+
   selectedImage: string | ArrayBuffer | null = null;
   categories!: ICategory[];
   productAttributes: SelectedAttribute[] = [];
@@ -139,6 +140,40 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.extractImageFromImageFile(image);
     }
   }
+
+  setSubImage(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const newFiles = Array.from(input.files);
+      const currentFiles = this.thumbnailFiles();
+      const currentUrls = this.thumbnailUrls();
+
+      newFiles.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.thumbnailUrls.set([...this.thumbnailUrls(), reader.result]);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      this.thumbnailFiles.set([...currentFiles, ...newFiles]);
+      this.productForm.get('thumbnails')?.setValue(this.thumbnailFiles());
+    }
+  }
+
+
+  removeThumbnail(index: number): void {
+    const urls = [...this.thumbnailUrls()];
+    const files = [...this.thumbnailFiles()];
+    urls.splice(index, 1);
+    files.splice(index, 1);
+    this.thumbnailUrls.set(urls);
+    this.thumbnailFiles.set(files);
+    this.productForm.get('thumbnails')?.setValue(files);
+  }
+
+
+
   extractImageFromImageFile(image: File) {
     const reader = new FileReader();
     reader.onload = (e) => this.selectedImage = e.target?.result ?? null;
@@ -158,9 +193,11 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     this.productForm.get('ImageFile')?.setValue(null);
     this.selectedImage = null;
   }
+  
   submitForm() {
     if (this.productForm.valid && this.productAttributes?.length > 0) {
       const formData = new FormData();
+
       formData.append('name', this.productForm.get('name')?.value);
       formData.append('description', this.productForm.get('description')?.value);
       formData.append('brand', this.productForm.get('brand')?.value);
@@ -173,26 +210,35 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       formData.append('offerEndDate', this.productForm.get('offerEndDate')?.value ?? '');
       formData.append('categoryId', this.productForm.get('categoryId')?.value);
       formData.append('deliveryTimeInDays', this.productForm.get('deliveryTimeInDays')?.value);
+
       const attributesJson = JSON.stringify(
         this.productAttributes.map(attr => ({
           attributeId: attr.attributeId,
           attributeValueId: attr.attributeValueId
         }))
       );
-      console.log(attributesJson)
       formData.append('ProductAttributes', attributesJson);
+
+      // Append main image
       const imageFile = this.productForm.get('ImageFile')?.value;
       if (imageFile && imageFile instanceof File) {
         formData.append('ImageFile', imageFile, imageFile.name);
       }
 
+      // ✅ Append thumbnails
+      const thumbnails = this.thumbnailFiles();
+      thumbnails.forEach((thumb, index) => {
+        if (thumb instanceof File) {
+          formData.append('Thumbnails', thumb, thumb.name); // or `Thumbnails[${index}]` if backend expects indexed keys
+        }
+      });
+
       if (this.paramsValue.includes("Update")) {
         this.updateProduct(this.productId, formData);
       } else if (this.paramsValue.includes("Create")) {
-        if (this.productForm.get('ImageFile')?.value != null) {
+        if (imageFile != null) {
           this.createProduct(formData);
-        }
-        else {
+        } else {
           this.errorMessage = "The Image is Required";
         }
       }
@@ -202,6 +248,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.errorMessage = "The Attributes are Required";
     }
   }
+
 
 
   createProduct(formData: FormData): void {
@@ -216,6 +263,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   updateProduct(productId: string, formData: FormData): void {
     this.productService.updateProduct(productId, formData).pipe(
       takeUntil(this.destroy$)

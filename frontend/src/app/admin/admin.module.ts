@@ -30,6 +30,7 @@ import { ProductAttributeComponent } from './pages/product-Attribute/product-att
 import { ProductFormComponent } from './pages/product-from/product-form.component';
 import { AttributeComponent } from './pages/product-from/components/Attribute/attribute.component';
 import { TopSellerTableComponent } from './pages/admin-dashboard/components/top-seller-table/top-seller-table.component';
+import { EditorModule } from 'primeng/editor';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { TopSellerTableComponent } from './pages/admin-dashboard/components/top-
     AdminRoutingModule,
     FormsModule,
     SharedModule,
+    EditorModule,
     ReactiveFormsModule
   ],
 

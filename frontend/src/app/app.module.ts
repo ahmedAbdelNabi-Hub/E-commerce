@@ -24,7 +24,7 @@ import { OrderSuccessComponent } from './pages/order-success/order-success.compo
     ScrollSpyDirective,
     CheckoutComponent,
     OrderSuccessComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -49,6 +49,7 @@ import { OrderSuccessComponent } from './pages/order-success/order-success.compo
       useClass: JwtInterceptor,
       multi: true
     }
+
   ],
 
   bootstrap: [AppComponent]

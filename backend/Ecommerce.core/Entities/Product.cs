@@ -43,7 +43,8 @@ namespace Ecommerce.core.Entities
 
         public ICollection<ProductStatus> ProductStatus { get; set; }
         public ICollection<ProductAttributes> ProductAttributes { get; set; }
-       
+        public ICollection<ProductImage> ProductImages { get; set; } = new HashSet<ProductImage>();
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
     }

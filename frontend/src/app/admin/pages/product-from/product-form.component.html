@@ -1,5 +1,5 @@
 <form enctype="multipart/form-data" (ngSubmit)="submitForm()" [formGroup]="productForm">
-  <div class="container mx-auto mt-10 px-5">
+  <div class="container mx-auto mt-4 mb-5 px-5">
     <div class="flex items-center justify-between">
       <div class="flex items-center space-x-2 px-5">
         <p class="text-2xl">{{paramsValue}} New Product</p>
@@ -22,8 +22,8 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-7 gap-2 mt-1">
-      <div class="flex flex-col gap-1 md:px-10 py-4 col-span-1 md:col-span-4 rounded-md ">
-        <!-- Product Name Field -->
+      <div
+        class="flex bg-white py-3 border border-gray-200  flex-col gap-1 md:px-4  col-span-1 md:col-span-5 rounded-md ">
         <div class="flex flex-col justify-center space-y-1 mt-5">
           <div class="flex items-center space-x-1">
             <i class='bx bxl-product-hunt text-xl text-emerald-400'></i>
@@ -38,10 +38,9 @@
         <!-- Product Description Field -->
         <div class="flex flex-col justify-center space-y-1 mt-5">
           <label class="text-[14px] md:text-[16px]" for="description">Product Description</label>
-          <textarea id="descriptionEn" formControlName="description"
-            class="bg-[#ffffff] border text-[15px] outline-none rounded-md "
-            placeholder="Enter a detailed description of the product..."
-            style="padding-top: 0.5rem; padding-left: 1rem;" maxlength="500"></textarea>
+          <div class="flex flex-col gap-1">
+            <p-editor formControlName="description" [style]="{ height: '320px' }" />
+          </div>
           <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('description')">{{
             getErrorMessage('description') }}</div>
         </div>
@@ -114,80 +113,92 @@
       </div>
 
       <!-- Image Upload and Category Selection -->
-      <div class="col-span-1 md:col-span-3 py-3">
-        <!-- Main Image Upload -->
-        <app-image-uploader [image]="selectedImage" (imageFileChange)="onImageFileChange($event)"></app-image-uploader>
-        <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('ImageFile')">
-          {{getErrorMessage('ImageFile') }}
+
+      <div class="col-span-1 md:col-span-2  p-4 border border-gray-100 rounded-lg ">
+        <!-- Image Upload Section -->
+        <div class="border rounded-lg p-3 bg-white">
+          <p class="text-sm font-medium mb-3">Upload Image</p>
+          <app-image-uploader [image]="selectedImage" (imageFileChange)="onImageFileChange($event)"
+            class="block w-full"></app-image-uploader>
+          <div class="text-red-500 text-xs px-1 font-thin mt-1" *ngIf="isControlInvalid('ImageFile')">
+            {{getErrorMessage('ImageFile') }}
+          </div>
         </div>
 
+        <!-- Thumbnail Preview Section -->
+        <div class="mt-4 border rounded-lg p-3 bg-white">
+          <p class="text-sm font-medium mb-2">Thumbnail Previews</p>
+          <div class="grid grid-cols-4 gap-2">
+            <div *ngFor="let thumbnail of thumbnailUrls(); let i = index"
+              class="relative group hover:scale-105 transition-transform duration-200">
+              <img [src]="thumbnail" class="w-16 h-16 object-cover rounded-md shadow-sm" alt="Product Thumbnail" />
+              <button type="button" (click)="removeThumbnail(i)" class="absolute -top-1 -right-1 bg-red-500 hover:bg-red-600 text-white w-5 h-5 rounded-full 
+                flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <i class='bx bx-x text-sm'></i>
+              </button>
+            </div>
 
-
-        <!-- Thumbnail Previews
-        <div *ngIf="productForm.get('ImageFile')?.value" class="mt-4 flex flex-wrap">
-          <div *ngFor="let thumbnail of thumbnailUrls" class="mt-2">
-            <img [src]="thumbnail" class="w-20 h-20 rounded-md" alt="Thumbnail Preview" />
-          </div>
-          <div class="flex items-center justify-center flex-row-reverse">
-            <label for="dropzone-file"
-              class="flex flex-col items-center justify-center w-14 h-14 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
-              <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <i class="bx bx-plus text-3xl"></i>
+            <label class="flex flex-col items-center justify-center w-16 h-16 border border-gray-300 
+                        border-dashed rounded-md cursor-pointer bg-white hover:bg-gray-50 
+                        transition-colors duration-200">
+              <div class="flex flex-col items-center justify-center">
+                <i class='bx bx-image-add text-xl text-gray-400'></i>
+                <span class="text-[10px] text-gray-500">Add</span>
               </div>
-              <input id="dropzone-file" type="file" class="hidden" accept="image/*" (change)="setSubImage($event)" />
+              <input type="file" class="hidden" accept="image/*" (change)="setSubImage($event)" />
             </label>
           </div>
-        </div> -->
+        </div>
 
-        <div class="border rounded-md shadow-sm border-gray-100 px-2 py-2 mt-3">
-          <div class="py-3  rounded-md">
+        <!-- Product Details Section -->
+        <div class="mt-4 border rounded-lg p-3 bg-white">
+          <div class="space-y-3">
+            <!-- Category Selection -->
             <div>
-              <p class="font-thin py-1">Product Category</p>
-              <select formControlName="categoryId" class="border rounded-md w-full bg-[#ffffff] px-3 py-2">
-                <option value="null" selected>Categories</option>
-                <option *ngFor="let category of categories" [value]="category.id">{{ category.categoryName }}</option>
+              <p class="text-sm font-medium mb-1">Product Category</p>
+              <select formControlName="categoryId"
+                class="w-full text-sm border rounded-md px-2 py-1.5 bg-white focus:ring-1 focus:ring-blue-500">
+                <option value="null" selected>Select Category</option>
+                <option *ngFor="let category of categories" [value]="category.id">
+                  {{ category.categoryName }}
+                </option>
               </select>
             </div>
-          </div>
 
-          <div class="flex flex-col py-3 justify-center space-y-1 mt-5">
-            <p class="text-[14px] md:text-[16px]">Delivery Time In Days</p>
-            <input formControlName="deliveryTimeInDays" placeholder="Please enter the Delivery Time In Days "
-              type="number" class="px-4 text-[12px] rounded-md outline-none py-2 border bg-[#ffffff]" />
-            <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('deliveryTimeInDays')">{{
-              getErrorMessage('deliveryTimeInDays') }}</div>
-          </div>
-          <div class="flex  flex-col ">
-            <!-- Weight -->
-            <div class="w-full flex flex-col justify-center space-y-1 mt-2">
-              <p class="font-semibold text-[14px]">Weight</p>
-              <span class="text-[10px] text-gray-400">
-                Weight in kg (e.g., 1.5)
-              </span>
-              <input placeholder="Enter product weight" type="number" min="0" step="0.01" formControlName="weight"
-                class="px-4 w-full text-[12px] rounded-md outline-none py-2 bg-[#eeeeee]">
-              <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('weight')">
-                {{
-                getErrorMessage('weight') }}</div>
+            <!-- Delivery Time -->
+            <div>
+              <p class="text-sm font-medium mb-1">Delivery Time (Days)</p>
+              <input formControlName="deliveryTimeInDays" placeholder="Enter delivery time" type="number"
+                class="w-full text-sm border rounded-md px-2 py-1.5 bg-white focus:ring-1 focus:ring-blue-500" />
+              <div class="text-red-500 text-xs mt-1" *ngIf="isControlInvalid('deliveryTimeInDays')">
+                {{ getErrorMessage('deliveryTimeInDays') }}
+              </div>
             </div>
-            <!-- Dimensions (Length, Width, Height) -->
-            <div class="w-full flex flex-col justify-center space-y-1 mt-2">
-              <p class="font-semibold text-[14px]">Dimensions</p>
-              <span class="text-[10px] text-gray-400">
-                Enter dimensions in cm (Length x Width x Height)
-              </span>
-              <div class="flex flex-col  gap-1 flex-shrink">
-                <input placeholder="Dimensions in the format 'Width x Height x Length'" type="text" min="0" step="0.1"
-                  formControlName="dimensions"
-                  class="px-4 w-full md:w-auto text-[12px] rounded-md outline-none py-2 bg-[#eeeeee] my-1" required>
-                <div class="text-red-500 text-[13px] px-1 font-thin my-1" *ngIf="isControlInvalid('dimensions')">{{
-                  getErrorMessage('dimensions') }}</div>
+
+            <!-- Weight Input -->
+            <div>
+              <p class="text-sm font-medium mb-1">Weight (kg)</p>
+              <input placeholder="e.g., 1.5" type="number" min="0" step="0.01" formControlName="weight"
+                class="w-full text-sm border rounded-md px-2 py-1.5 bg-white focus:ring-1 focus:ring-blue-500">
+              <div class="text-red-500 text-xs mt-1" *ngIf="isControlInvalid('weight')">
+                {{ getErrorMessage('weight') }}
+              </div>
+            </div>
+
+            <!-- Dimensions Input -->
+            <div>
+              <p class="text-sm font-medium mb-1">Dimensions (cm)</p>
+              <input placeholder="Width x Height x Length" type="text" formControlName="dimensions"
+                class="w-full text-sm border rounded-md px-2 py-1.5 bg-white focus:ring-1 focus:ring-blue-500">
+              <div class="text-red-500 text-xs mt-1" *ngIf="isControlInvalid('dimensions')">
+                {{ getErrorMessage('dimensions') }}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <app-product-attribute [existingAttributes]="productAttributes" (attributesSelected)="handleProductAttributes($event)"></app-product-attribute>
+    <app-product-attribute [existingAttributes]="productAttributes"
+      (attributesSelected)="handleProductAttributes($event)"></app-product-attribute>
   </div>
 </form>

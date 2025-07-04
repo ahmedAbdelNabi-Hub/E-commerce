@@ -44,6 +44,8 @@ namespace Ecommerce.core.Specifications
             AddCriteria(p=>p.id==id && p.IsActive == true);
             AddInclude(p => p.Category);
             AddInclude(p => p.ProductAttributes);
+            AddInclude(p => p.ProductImages);
+
         }
 
 

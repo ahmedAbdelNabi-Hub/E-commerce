@@ -22,6 +22,7 @@ namespace Ecommerce.Contracts.DTOs.product
         public int CategoryId { get; set; }
         public int DeliveryTimeInDays { get; set; }
         public IFormFile? ImageFile { get; set; }
+        public List<IFormFile>? Thumbnails { get; set; } 
 
         public List<ProductAttributeDto> ProductAttributes { get; set; }
 

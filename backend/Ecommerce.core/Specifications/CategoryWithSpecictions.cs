@@ -9,10 +9,14 @@ namespace Ecommerce.core.Specifications
 {
     public class CategoryWithSpecictions:Specification<Category>
     {
-       public CategoryWithSpecictions() { }   
+        public CategoryWithSpecictions() { }   
         public CategoryWithSpecictions(int id)
         {
             AddCriteria(c=>c.id == id); 
+        }
+        public CategoryWithSpecictions(string name)
+        {
+            AddCriteria(c=>c.CategoryName == name);
         }
     }
 }
