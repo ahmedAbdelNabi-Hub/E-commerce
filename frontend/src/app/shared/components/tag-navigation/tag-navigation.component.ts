@@ -29,7 +29,7 @@ export class TagNavigationComponent implements OnInit, OnDestroy {
     this.productParams.set({
       CategoryName: 'gaming_monitors',
       PageIndex: 1,
-      PageSize: 4,
+      PageSize: 8,
       StatusId: 0
     });
   }

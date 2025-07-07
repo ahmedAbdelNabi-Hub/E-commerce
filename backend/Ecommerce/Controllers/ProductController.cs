@@ -131,7 +131,6 @@ namespace Ecommerce.Controllers
             await _unitOfWork.Repository<Product>().AddAsync(product);
             await _unitOfWork.CompleteAsync();
 
-            // ✅ Add thumbnails (if any) using AddRangeAsync
             if (request.Thumbnails?.Any() == true)
             {
                 var productImages = request.Thumbnails
@@ -149,7 +148,6 @@ namespace Ecommerce.Controllers
                 await _unitOfWork.Repository<ProductImage>().AddRangeAsync(productImages);
             }
 
-            // ✅ Add product attributes (if any) using AddRangeAsync
             if (request.ProductAttributes?.Any() == true)
             {
                 var attributes = request.ProductAttributes
@@ -162,9 +160,8 @@ namespace Ecommerce.Controllers
 
                 await _unitOfWork.Repository<ProductAttributes>().AddRangeAsync(attributes);
             }
-
-            // Save all changes together
-            return await SaveChangesAsync(_unitOfWork, "Product added successfully", "Failed to add product");
+            await _unitOfWork.CompleteAsync();
+            return Ok(new {ProductId = product.id });
         }
 
         [HttpPut]
@@ -279,6 +276,7 @@ namespace Ecommerce.Controllers
 
         }
 
+
         [HttpGet("/api/products/{productId}/attributes")]
         public async Task<ActionResult<List<ProductAttributeDto>>> GetProductAttributes(int productId)
         {
@@ -361,6 +359,10 @@ namespace Ecommerce.Controllers
 
             return (orderItem);
         }
+        
+        
+        
+        
         private async Task<Product> GetExistingProduct(int id)
         {
             return await _unitOfWork.Repository<Product>().GetByIdSpecAsync(new ProductWithSpecifcations(id));

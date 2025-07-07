@@ -11,9 +11,9 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/services/Product.service';
 import { IProduct } from '../../core/models/interfaces/IProduct';
-import { tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
 import { IProductSpecParams } from '../../core/models/interfaces/IProductSpecParams';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { combineLatest } from 'rxjs';
 
 @Component({
@@ -24,14 +24,16 @@ import { combineLatest } from 'rxjs';
 export class ProductDetailsComponent implements AfterViewInit, OnInit {
   @ViewChild('detailsSection', { static: true }) detailsSection!: ElementRef;
   @ViewChild('overviewSection', { static: true }) overviewSection!: ElementRef;
+  videoUrl: SafeResourceUrl;
 
   private detailsSectionOffset: number = 0;
   private overviewSectionOffset: number = 0;
 
   productDescription!: SafeHtml;
   private route = inject(ActivatedRoute);
-  private _productService = inject(ProductService);
+  _productService = inject(ProductService);
 
+  isLoading = signal<boolean>(false);
   detailsProduct = signal<IProduct | any>([]);
   activeSection: string = 'overview';
   productId: number = 0;
@@ -45,6 +47,39 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
   selectedImage = signal<number>(0);
   showAllSpecs = signal<boolean>(false);
   isWishlisted = signal<boolean>(false);
+  features = [
+  
+    {
+      title: 'Powerful S Pen for Creativity & Productivity',
+      description: 'You ll go hours before you need to put your device on the charger thanks to its 10,090mAh (typical) battery. This battery keeps the tablet powered for up to 13 hours, whether you re watching videos or spending a lot of time streaming. And with 45W Super Fast Charging, you ll be able to quickly restore your battery to full charge—in about 90 minutes.',
+      imageCoverUrl: 'assets/eg-feature-galaxy-tab-s-492877722.webp',
+      videoUrl: ''
+    },
+    {
+      title: 'Immersive Display with 120Hz Refresh Rate',
+      description: 'Experience ultra-smooth scrolling and immersive visuals with the Galaxy Tab S7’s stunning 11-inch LTPS TFT display. Whether gaming, reading, or watching movies, the 120Hz refresh rate delivers unmatched clarity and responsiveness.',
+      imageCoverUrl: 'assets/eg-feature-galaxy-tab-s-492877720.jpg',
+      videoUrl: 'https://www.youtube.com/watch?v=ReU8wUzYxGg'
+    },
+    {
+      title: 'PC-Like Performance with Samsung DeX',
+      description: 'With Samsung DeX, turn your tablet into a PC-like workstation. Pair it with a keyboard and enjoy seamless multitasking, enhanced productivity, and the flexibility of working from anywhere.',
+      imageCoverUrl: 'assets/eg-feature-galaxy-tab-s-492877730.jpg',
+      videoUrl: ''
+    }
+  ];
+
+  constructor(private sanitizer: DomSanitizer) {
+    const url = 'https://www.youtube.com/embed/ReU8wUzYxGg?autoplay=1&controls=0&rel=0&modestbranding=1&mute=0';
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+
+  getSafeVideoUrl(url: string): SafeResourceUrl {
+    const videoId = url.split('v=')[1];
+    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&rel=0&modestbranding=1&mute=0`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+  }
 
   ngOnInit(): void {
     combineLatest([
@@ -57,6 +92,7 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
   }
 
   getDetailsOfProduct(id: number): void {
+    this.isLoading.set(true);
     this._productService.getProductWithIdAndStoreInRedis(id, true).pipe(
       tap(response => {
         this.detailsProduct.set(response);
@@ -64,10 +100,10 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
         this.currentImage = response.imageUrl;
         this._productService.clearCache();
         this.setParams();
-      })
+      }),
+      finalize(() => this.isLoading.set(false))
     ).subscribe();
   }
-
 
   chooseImage(thumb: string, index: number): void {
     this.currentImage = 'https://localhost:7197/image/Product/thumbnails/' + thumb;
@@ -82,7 +118,6 @@ export class ProductDetailsComponent implements AfterViewInit, OnInit {
     const fullUrl = this.getFullImageUrl(imagePath);
     return `${fullUrl} 300w, ${fullUrl} 600w, ${fullUrl} 1000w`;
   }
-
 
   choiesImage(image: string): void {
     this.currentImage = image;

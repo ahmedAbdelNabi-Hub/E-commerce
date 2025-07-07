@@ -36,9 +36,12 @@ namespace Ecommerce.Repository.Configruations
                     .HasForeignKey(i => i.ProductId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(p => p.SKU)
-                .HasMaxLength(50)
-                .IsRequired();
+                  builder.HasMany(p=>p.ProductFeatures).WithOne(i => i.Product)
+                         .HasForeignKey(i => i.ProductId) .OnDelete(DeleteBehavior.Cascade);
+
+                builder.Property(p => p.SKU)
+                    .HasMaxLength(50)
+                    .IsRequired();
 
             
             builder.HasOne(p => p.Category)

@@ -12,6 +12,7 @@ import { ProductView } from '../models/classes/ProductView';
 import { IProductAttribute } from '../models/interfaces/IProductAttribute';
 import { GoogleTranslateService } from './translation.service';
 import { IOrderItems } from '../models/interfaces/IOrderItems';
+import { IBaseApiResponse } from '../models/interfaces/IBaseApiResponse';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -140,6 +141,10 @@ export class ProductService {
 
   getTopSeller(Params: IProductSpecParams): Observable<IOrderItems[]> {
     return this._Http.get<IOrderItems[]>(`${API_URLS.Localhost}/api/products/top-selling?PageIndex=${Params.PageIndex}&PageSize=${Params.PageSize}`);
+  }
+
+  createFeature(productId: number, formData:FormData): Observable<IBaseApiResponse> {
+    return this._Http.post<IBaseApiResponse>(`${API_URLS.Localhost}/api/Features/${productId}`, formData );
   }
 
 

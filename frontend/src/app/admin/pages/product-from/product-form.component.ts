@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { ProductService } from '../../../core/services/Product.service';
 import { getErrorMessage } from '../../../core/utils/form-error-messages';
 import { strongNameValidator, strongDescriptionValidator, strongBrandValidator, positiveNumberValidator, dimensionsFormatValidator } from '../../../core/validators/product-form-validators';
 import { SelectedAttribute } from './components/Attribute/attribute.component';
+import { FeatureComponent } from './components/feature/feature.component';
 
 @Component({
   selector: 'app-add-product',
@@ -20,7 +21,7 @@ import { SelectedAttribute } from './components/Attribute/attribute.component';
 
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
-
+  @ViewChild(FeatureComponent) featureComponent!: FeatureComponent;
   private destroy$ = new Subject<void>();
   private categoryService = inject(CategoryService);
   private productService = inject(ProductService);
@@ -31,7 +32,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   productForm!: FormGroup;
   thumbnailUrls = signal<(string | ArrayBuffer | null)[]>([]);
   thumbnailFiles = signal<File[]>([]);
-
+  activeIndex !: number;
   selectedImage: string | ArrayBuffer | null = null;
   categories!: ICategory[];
   productAttributes: SelectedAttribute[] = [];
@@ -41,8 +42,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   errorMessage!: string | null;
   params !: any;
   paramsValue !: string;
-
-  productId !: string;
+  productId = signal<string>('');
   productUpdated !: IProduct
   constructor(private fb: FormBuilder) { }
 
@@ -50,7 +50,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     this.initialControl();
     this.getAllCategorye();
     this.getParamsFromRoute();
-    if (this.productId) {
+    if (this.productId()) {
       this.getProductInMoodUpdate();
     }
   }
@@ -66,7 +66,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   getProductInMoodUpdate() {
 
     if (this.productId) {
-      this.productService.getProductWithIdAndStoreInRedis(+this.productId, false).pipe(distinctUntilChanged(), takeUntil(this.destroy$)).subscribe(data => {
+      this.productService.getProductWithIdAndStoreInRedis(+this.productId(), false).pipe(distinctUntilChanged(), takeUntil(this.destroy$)).subscribe(data => {
         if (data) {
           this.productUpdated = data;
           this.patchValueInForm(this.productUpdated);
@@ -81,7 +81,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       this.params = params;
       if (params['update'] && params['sku']) {
         this.paramsValue = 'Update '
-        this.productId = params['sku'];
+        this.productId.set(params['sku']);
       }
       else
         this.paramsValue = 'Create '
@@ -112,7 +112,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   patchValueInForm(product: IProduct): void {
     const offerStartDate = product.offerStartDate ? new Date(product.offerStartDate).toISOString().split('T')[0] : null;
     const offerEndDate = product.offerEndDate ? new Date(product.offerEndDate).toISOString().split('T')[0] : null;
-
+   this.thumbnailUrls.set(product.thumbnails!)
     this.productForm.patchValue({
       name: product.name,
       description: product.description,
@@ -146,8 +146,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     if (input.files && input.files.length > 0) {
       const newFiles = Array.from(input.files);
       const currentFiles = this.thumbnailFiles();
-      const currentUrls = this.thumbnailUrls();
-
       newFiles.forEach(file => {
         const reader = new FileReader();
         reader.onload = () => {
@@ -193,11 +191,9 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     this.productForm.get('ImageFile')?.setValue(null);
     this.selectedImage = null;
   }
-  
   submitForm() {
     if (this.productForm.valid && this.productAttributes?.length > 0) {
       const formData = new FormData();
-
       formData.append('name', this.productForm.get('name')?.value);
       formData.append('description', this.productForm.get('description')?.value);
       formData.append('brand', this.productForm.get('brand')?.value);
@@ -218,51 +214,47 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         }))
       );
       formData.append('ProductAttributes', attributesJson);
-
-      // Append main image
       const imageFile = this.productForm.get('ImageFile')?.value;
       if (imageFile && imageFile instanceof File) {
         formData.append('ImageFile', imageFile, imageFile.name);
       }
-
-      // ✅ Append thumbnails
       const thumbnails = this.thumbnailFiles();
       thumbnails.forEach((thumb, index) => {
         if (thumb instanceof File) {
-          formData.append('Thumbnails', thumb, thumb.name); // or `Thumbnails[${index}]` if backend expects indexed keys
+          formData.append('Thumbnails', thumb, thumb.name);
         }
       });
-
       if (this.paramsValue.includes("Update")) {
-        this.updateProduct(this.productId, formData);
+        this.updateProduct(this.productId(), formData);
       } else if (this.paramsValue.includes("Create")) {
         if (imageFile != null) {
           this.createProduct(formData);
         } else {
-          this.errorMessage = "The Image is Required";
+          this.messageService.showError("The Image is Required");
         }
       }
-
     } else {
       this.productForm.markAllAsTouched();
-      this.errorMessage = "The Attributes are Required";
+      this.messageService.showError("The Attributes are Required or entry all Faild in the Form");
     }
   }
-
-
 
   createProduct(formData: FormData): void {
     this.productService.createProduct(formData).pipe(
       takeUntil(this.destroy$)
     ).subscribe({
       next: (response) => {
-        this.messageService.showSuccess("Product created successfully")
+        const createdProductId = response.id || response.productId;
+        this.messageService.showSuccess("Product created successfully");
+        this.productId.set(createdProductId);
+        this.featureComponent.onSubmit(createdProductId);
       },
-      error: (error) => {
-        this.errorMessage = 'An error occurred while creating the product. Please try again.';
+      error: () => {
+        this.messageService.showError('An error occurred while creating the product. Please try again.');
       }
     });
   }
+
 
   updateProduct(productId: string, formData: FormData): void {
     this.productService.updateProduct(productId, formData).pipe(
@@ -272,8 +264,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         this.messageService.showSuccess("Product Updated successfully")
       },
       error: (error) => {
-        this.errorMessage = 'An error occurred while Updated the product. Please try again.';
-        this.messageService.showError(this.errorMessage);
+        this.messageService.showError('An error occurred while Updated the product. Please try again.');
       }
     });
   }

@@ -49,11 +49,10 @@ public static class DocumentSettings
         return false;
     }
 
-    public static string UpdateFile(IFormFile newFile, string folderName, string? oldFileName = null)
+    public static string UpdateFile(IFormFile newFile, string folderName, string oldFileName )
     {
         string newFileName = UploadFile(newFile, folderName);
 
-        // Only delete if old and new file names are different
         if (!string.IsNullOrWhiteSpace(oldFileName) &&
             !string.Equals(oldFileName, newFileName, StringComparison.OrdinalIgnoreCase))
         {

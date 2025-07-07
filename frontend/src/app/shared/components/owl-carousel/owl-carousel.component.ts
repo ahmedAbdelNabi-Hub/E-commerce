@@ -99,16 +99,12 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     const cacheKey = this.generateCacheKey(this.params);
-
-    // Return cached data if available
     if (this.cache.has(cacheKey)) {
       this.productsSignal.set(this.cache.get(cacheKey));
       this.isLoadingSignal.set(false);
       this.hasErrorSignal.set(false);
       return;
     }
-
-    // Prevent duplicate requests for the same data
     if (this.inProgressRequests.has(cacheKey)) {
       this.inProgressRequests.get(cacheKey)!.subscribe((data) => {
         this.productsSignal.set(data);
@@ -121,7 +117,6 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
 
     const method = this.service[this.methodName];
     if (typeof method !== 'function') {
-      console.error(`Method ${this.methodName} is not a function on the provided service.`);
       this.isLoadingSignal.set(false);
       this.hasErrorSignal.set(true);
       return;
@@ -129,7 +124,6 @@ export class OwlCarouselComponent implements OnInit, OnChanges, OnDestroy {
 
     const observable$: Observable<any> = method.call(this.service, this.params).pipe(shareReplay(1));
     this.inProgressRequests.set(cacheKey, observable$);
-
     observable$.pipe(takeUntil(this.destroy$)).subscribe({
       next: (data) => {
         this.cache.set(cacheKey, data);

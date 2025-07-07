@@ -1,265 +1,354 @@
-<div class="w-full mt-5">
-	<div
-		class="py-1  px-4 md:px-9 border border-b mt-12 bg-white flex flex-col md:flex-row justify-between md:items-center">
-		<p [innerHtml]="detailsProduct()?.description"
-			class="text-[17px] max-h-[73px] md:max-h-[100px] overflow-hidden py-4 sm:text-[25px] font-semibold text-black w-full md:w-[60%] line-clamp-3">
-		</p>
-		<div class="flex md:items-center py-1 flex-col md:flex-row ">
-			<div class="flex flex-col border-r py-3 md:py-0 border-gray-300 px-0 md:px-5">
-				<span class="text-[17px] text-gray-500">From Total</span>
-				<div class="flex items-center leading-4">
-					<p class="text-orange-500 text-[18px] md:text-2xl">
-						{{detailsProduct()?.offerPrice | number}} ج.م.
-					</p>
-					<p class="text-[17px] md:tex-xl mt-4 mx-1 line-through text-gray-400">
-						{{detailsProduct()?.price | number}} ج.م.
-					</p>
+<div *ngIf="isLoading()==false">
+	<div class="w-full mt-5" *ngIf="detailsProduct();">
+		<header
+			class="py-1  px-4 md:px-9 border border-b mt-12 bg-white flex flex-col md:flex-row justify-between md:items-center">
+			<p [innerHtml]="detailsProduct()?.description"
+				class=" text-[17px] max-h-[73px] md:max-h-[84px] overflow-hidden py-4 sm:text-[20px] font-semibold text-black w-full md:w-[55%] break-words line-clamp-2">
+			</p>
+			<div class="flex md:items-center py-1 flex-col md:flex-row ">
+				<div class="flex flex-col border-r py-3 md:py-0 border-gray-300 px-0 md:px-5">
+					<span class="text-[17px] text-gray-500">From Total</span>
+					<div class="flex items-center leading-4">
+						<p class="text-orange-500 text-[18px] md:text-2xl">
+							{{detailsProduct()?.offerPrice | number}} ج.م.
+						</p>
+						<p class="text-[17px] md:tex-xl mt-4 mx-1 line-through text-gray-400">
+							{{detailsProduct()?.price | number}} ج.م.
+						</p>
+					</div>
 				</div>
+				<button
+					class="bg-[#006bea] mx-5  my-3 md:my-0 text-sm text-gray-100 font-semibold px-8 py-3 rounded-full">Add
+					To
+					Cart</button>
 			</div>
-			<button
-				class="bg-[#006bea] mx-5  my-3 md:my-0 text-sm text-gray-100 font-semibold px-8 py-3 rounded-full">Add
-				To
-				Cart</button>
-		</div>
+		</header>
 	</div>
-</div>
 
 
-<section #overviewSection class="py-4 px-1 md:px-10 lg:px-8" id="overview">
-	<div class="container mx-auto px-4">
-		<div class=" mt-8 grid grid-cols-1  lg:mt-12 lg:grid-cols-9 ">
-			<div class="lg:col-span-3 lg:row-end-1">
-				<div class="header-logo  block lg:hidden">
-					<div class="mt-5 flex items-center">
-						<div class="flex items-center">
-							<svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 20 20" fill="currentColor">
-								<path
-									d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-									class></path>
-							</svg>
-							<svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 20 20" fill="currentColor">
-								<path
-									d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-									class></path>
-							</svg>
-							<svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 20 20" fill="currentColor">
-								<path
-									d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-									class></path>
-							</svg>
-							<svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 20 20" fill="currentColor">
-								<path
-									d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-									class></path>
-							</svg>
-						</div>
-						<p class="ml-2 text-sm font-medium text-gray-500">4.5</p>
-					</div>
-					<h1 class="text-[17px] sm:text-[20px]   text-gray-900 ">
-						{{detailsProduct()?.name}}
-					</h1>
-					<p class="text-[15px] mt-2 line-clamp-3">
-						{{detailsProduct()?.description}}
-					</p>
-				</div>
-				<div class="flex flex-col lg:flex-row items-center justify-center">
-					<div class="flex flex-row  lg:flex-col justify-center gap-2 mt-4"
-					*ngIf="detailsProduct()?.thumbnails?.length">
-						<button *ngFor="let thumb of detailsProduct()?.thumbnails; let index = index"
-							(click)="chooseImage(thumb,index)"
-							class="w-16 h-16 border-2 rounded-lg overflow-hidden transition-colors"
-							[ngClass]="{ 'border-blue-500': thumb === currentImage, 'border-gray-300': thumb !== currentImage }">
-							<img [src]="'https://localhost:7197/image/Product/thumbnails/' + thumb"
-								class="w-full h-full object-cover" loading="lazy" alt="Product thumbnail">
-						</button>
-					</div>
-
-					<!-- Main Product Image -->
-					<div class="relative group w-full max-w-2xl">
-						<div class="overflow-hidden">
-							<div class="aspect-square">
-								<img [src]="getFullImageUrl(currentImage)"
-									[srcset]="getResponsiveImageSet(currentImage)"
-									sizes="(max-width: 600px) 300px, (max-width:1200px) 600px, 1000px"
-									class="w-full h-full object-contain transition duration-300 ease-in-out transform group-hover:scale-105"
-									width="800" height="800" loading="lazy" decoding="async">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="lg:col-span-4 lg:row-span-2 lg:row-end-2 px-0 md:px-2">
-				<div class="tite-page  lg:block">
-					<p [innerHTML]="detailsProduct()?.description"
-						class="text-[20px] hidden md:block mt-2 whitespace-pre-wrap break-words">
-					</p>
-				</div>
-
-				<div class="my-4 ">
-					<!-- Price Display Section -->
-					<div class="flex flex-col space-y-2">
-						<!-- Offer Price Display -->
-						<div *ngIf="detailsProduct()?.offerPrice" class="flex flex-col">
-							<div class="flex items-baseline gap-3">
-								<span class="text-3xl font-semibold text-gray-900">
-									{{detailsProduct()?.offerPrice | number}} EGP
-								</span>
-								<span class="text-lg text-gray-500 line-through">
-									{{detailsProduct()?.price | number}} EGP
-								</span>
-								<span class="text-sm px-2 py-1 bg-red-100 text-red-700 rounded-full">
-									Save {{detailsProduct()?.discount}}%
-								</span>
-							</div>
-							<span class="text-sm text-gray-600 mt-1">Includes Value Added Tax</span>
-						</div>
-
-						<!-- Regular Price Display -->
-						<div *ngIf="!detailsProduct()?.offerPrice" class="flex flex-col">
-							<span class="text-3xl font-semibold text-gray-900">
-								{{detailsProduct()?.price | number}} EGP
-							</span>
-							<span class="text-sm text-gray-600 mt-1">Includes Value Added Tax</span>
-						</div>
-					</div>
-
-
-					<!-- Enhanced Shipping Information Card -->
-					<div class="mt-4 bg-white rounded-lg border border-gray-200 overflow-hidden">
-
-						<!-- Delivery Options -->
-						<div class="p-4 border-t border-gray-200">
-							<div class="flex items-center gap-2 text-sm">
-								<svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24"
-									stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-										d="M5 13l4 4L19 7" />
+	<section #overviewSection class="py-4 px-1 md:px-4 lg:px-4" id="overview">
+		<div class="container mx-auto px-4">
+			<div class=" mt-8 grid grid-cols-1  lg:mt-12 lg:grid-cols-10 ">
+				<div class="lg:col-span-4 lg:row-end-1">
+					<div class="header-logo  block lg:hidden">
+						<div class="mt-5 flex items-center">
+							<div class="flex items-center">
+								<svg class="block h-4 w-4 align-middle text-yellow-500"
+									xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+									<path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+										class></path>
 								</svg>
-								<span class="text-gray-600">Express Delivery Available</span>
-							</div>
-							<div class="flex items-center gap-2 text-sm mt-2">
-								<svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24"
-									stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-										d="M5 13l4 4L19 7" />
+								<svg class="block h-4 w-4 align-middle text-yellow-500"
+									xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+									<path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+										class></path>
 								</svg>
-								<span class="text-gray-600">Free Returns within 30 days</span>
+								<svg class="block h-4 w-4 align-middle text-yellow-500"
+									xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+									<path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+										class></path>
+								</svg>
+								<svg class="block h-4 w-4 align-middle text-yellow-500"
+									xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+									<path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+										class></path>
+								</svg>
 							</div>
+							<p class="ml-2 text-sm font-medium text-gray-500">4.5</p>
+						</div>
+						<h1 class="text-[17px] sm:text-[20px]   text-gray-900 ">
+							{{detailsProduct()?.name}}
+						</h1>
+						<p [innerHtml]="detailsProduct()?.description" class="text-[15px] mt-2 break-words "></p>
+					</div>
+					<div class="flex flex-col lg:flex-row  mt-4">
+						<div *ngIf="detailsProduct()?.thumbnails?.length" class="flex flex-row md:flex-col flex-wrap gap-2">
+							<button *ngFor="let thumb of detailsProduct()?.thumbnails; let index = index"
+								(click)="chooseImage(thumb,index)"
+								class="w-12 h-12 border-2 rounded-lg overflow-hidden transition-all duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+								[ngClass]="{ 
+				'border-blue-500 shadow-sm scale-105': thumb === currentImage,
+				'border-gray-300 hover:border-blue-300': thumb !== currentImage 
+			}">
+								<img [src]="'https://localhost:7197/image/Product/thumbnails/' + thumb"
+									class="w-full h-full object-cover transform transition-transform duration-200 hover:scale-110"
+									loading="lazy" [alt]="'Product thumbnail ' + (index + 1)">
+							</button>
 						</div>
 
-						<!-- Estimated Delivery -->
-						<div class="p-4 bg-gray-50 border-t border-gray-200">
-							<p class="text-sm text-gray-600">Estimated Delivery Time:</p>
-							<p class="text-lg font-medium text-gray-800">2-4 Business Days</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="lg:col-span-2 md:ml-5  px-1 relative w-full bg-[#f7f7f7] rounded-lg">
-				<p *ngIf="detailsProduct()?.offerPrice !=null"
-					class="text-[22px] relative py-4 merriweather-bold border-gray-300 border-b px-2">
-					EGP {{detailsProduct()?.offerPrice | number}} <span class="text-sm  absolute top-4 mx-1 ">00</span>
-				</p>
-				<p *ngIf="detailsProduct()?.offerPrice ===null"
-					class="text-[22px] relative py-4 merriweather-bold border-gray-300 border-b px-2">
-					EGP {{detailsProduct()?.price | number}} <span class="text-sm  absolute top-4 mx-1 ">00</span>
-				</p>
-				<div class="px-2 py-1 ">
-					<div class="relative group w-fit flex items-center space-x-1 cursor-pointer">
-						<p class="text-blue-800 text-[15px]">FREE Returns</p>
-						<!-- Info Icon -->
-						<svg xmlns="http://www.w3.org/2000/svg"
-							class="h-4 w-4 text-blue-600 group-hover:text-blue-800 transition" fill="none"
-							viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
-						</svg>
-
-						<!-- Tooltip on hover -->
-						<div class="absolute top-6 left-0 w-80 p-4 bg-white border border-gray-300 rounded shadow-md text-[13px] text-gray-700 
-										opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-							<p class="font-semibold mb-1">Easy and Hassle-Free Returns</p>
-							<p class="mb-1">
-								As per our return policy, we need to verify your identity to process your return. This
-								is a one-time process, and takes 2–3 minutes to complete.
-							</p>
-							<p>
-								You can return this item for <strong>FREE</strong> within the allowed return period for
-								any reason and without any shipping charges. The item must be returned in new and unused
-								condition.
-							</p>
-						</div>
-					</div>
-
-					<p class="text-green-700 py-1 text-[15px] font-medium">
-						FREE delivery {{ deliveryDate }}
-					</p>
-
-				</div>
-
-				<div class="flex items-center  justify-center mt-1 py-1">
-					<div class="flex flex-col justify-center items-center mx-3">
-						<img class="w-10 h-10" src="assets/trust_icon_free_shipping_81px._CB590597072_.png" alt>
-						<p class=" text-[10px] text-slate-800 ">Free Shipping</p>
-					</div>
-					<div class="flex  flex-col justify-center items-center">
-						<img class="w-10 h-10" src="assets/icon-returns._CB403797073_.png" alt>
-						<p class=" text-[10px] text-slate-800 ">15 Days Return</p>
-					</div>
-					<div class="flex mx-3  flex-col justify-center items-center">
-						<img class="w-10 h-10" src="assets/icon-ePay._CB589360495_.png" alt>
-						<p class=" text-[10px] text-center text-slate-800 ">Can Cash on Delivery</p>
-					</div>
-				</div>
-
-				<ul class="space-y-2 mt-5 px-2 py-2 border-gray-300 border-b font-semibold">
-					<p *ngIf="stockMessage" class="text-red-600 text-[15px] font-medium">
-						{{ stockMessage }}
-					</p>
-
-
-					<li class="">
-						<button class="text-center bg-[#f2ba36] text-[20px] py-1 font-bold rounded-full w-full">
-							<span class="text-[#002e80]">BUY</span><span class="text-[#002e80]">Now</span>
-						</button>
-
-					</li>
-				</ul>
-				<div class="flex justify-center flex-col">
-					<div>
-						<div class="flex flex-col space-x-1 mt-2">
-							<div class="flex py-1.5 space-x-3">
-								<i class='bx bxs-store text-3xl text-orange-200 font-thin'></i>
-								<div class="flex flex-col justify-center ">
-									<span class="text-black text-sm font-blod">
-										Free in-store pickup now available
-									</span>
-									<p class="font-thin text-gray-500 text-[12px]">
-										Buy online and pick up the same day at nearby Samsung or Best Buy stores.
-										Check availability by changing your store or zip code below, and finalize
-										during checkout.
-									</p>
+						<!-- Main Product Image -->
+						<div class="relative group w-full max-w-2xl md:ml-4 mt-4 md:mt-0">
+							<div class="overflow-hidden">
+								<div class="aspect-square">
+									<img [src]="getFullImageUrl(currentImage)"
+										[srcset]="getResponsiveImageSet(currentImage)"
+										sizes="(max-width: 600px) 300px, (max-width:1200px) 600px, 1000px"
+										class="w-full h-full object-contain transition duration-300 ease-in-out transform group-hover:scale-105"
+										width="800" height="800" loading="lazy" decoding="async">
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div class="lg:col-span-4  lg:row-span-2 lg:row-end-2 px-0 md:px-2">
+					<div class="tite-page  lg:block">
+						<p [innerHTML]="detailsProduct()?.description"
+							class="text-[20px] hidden md:block mt-2 whitespace-pre-wrap break-words">
+						</p>
+					</div>
+
+					<div class="my-4 ">
+						<!-- Price Display Section -->
+						<div class="flex flex-col space-y-2">
+							<!-- Offer Price Display -->
+							<div *ngIf="detailsProduct()?.offerPrice" class="flex flex-col">
+								<div class="flex items-baseline gap-3">
+									<span class="text-3xl font-semibold text-gray-900">
+										{{detailsProduct()?.offerPrice | number}} EGP
+									</span>
+									<span class="text-lg text-gray-500 line-through">
+										{{detailsProduct()?.price | number}} EGP
+									</span>
+									<span class="text-sm px-2 py-1 bg-red-100 text-red-700 rounded-full">
+										Save {{detailsProduct()?.discount}}%
+									</span>
+								</div>
+								<span class="text-sm text-gray-600 mt-1">Includes Value Added Tax</span>
+							</div>
+
+							<!-- Regular Price Display -->
+							<div *ngIf="!detailsProduct()?.offerPrice" class="flex flex-col">
+								<span class="text-3xl font-semibold text-gray-900">
+									{{detailsProduct()?.price | number}} EGP
+								</span>
+								<span class="text-sm text-gray-600 mt-1">Includes Value Added Tax</span>
+							</div>
+						</div>
 
 
+						<!-- Enhanced Shipping Information Card -->
+						<div class="mt-4 bg-white rounded-lg border border-gray-200 overflow-hidden">
+
+							<!-- Delivery Options -->
+							<div class="p-4 border-t border-gray-200">
+								<div class="flex items-center gap-2 text-sm">
+									<svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24"
+										stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+											d="M5 13l4 4L19 7" />
+									</svg>
+									<span class="text-gray-600">Express Delivery Available</span>
+								</div>
+								<div class="flex items-center gap-2 text-sm mt-2">
+									<svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24"
+										stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+											d="M5 13l4 4L19 7" />
+									</svg>
+									<span class="text-gray-600">Free Returns within 30 days</span>
+								</div>
+							</div>
+
+							<!-- Estimated Delivery -->
+							<div class="p-4 bg-gray-50 border-t border-gray-200">
+								<p class="text-sm text-gray-600">Estimated Delivery Time:</p>
+								<p class="text-lg font-medium text-gray-800">2-4 Business Days</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="lg:col-span-2 md:ml-5 max-h-[450px] border border-gray-200  px-1 relative w-full bg-[#fdfcfc] rounded-lg">
+					<p *ngIf="detailsProduct()?.offerPrice !=null"
+						class="text-[22px] relative py-4 merriweather-bold border-gray-300 border-b px-2">
+						EGP {{detailsProduct()?.offerPrice | number}} <span
+							class="text-sm  absolute top-4 mx-1 ">00</span>
+					</p>
+					<p *ngIf="detailsProduct()?.offerPrice ===null"
+						class="text-[22px] relative py-4 merriweather-bold border-gray-300 border-b px-2">
+						EGP {{detailsProduct()?.price | number}} <span class="text-sm  absolute top-4 mx-1 ">00</span>
+					</p>
+					<div class="px-2 py-1 ">
+						<div class="relative group w-fit flex items-center space-x-1 cursor-pointer">
+							<p class="text-blue-800 text-[15px]">FREE Returns</p>
+							<!-- Info Icon -->
+							<svg xmlns="http://www.w3.org/2000/svg"
+								class="h-4 w-4 text-blue-600 group-hover:text-blue-800 transition" fill="none"
+								viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+							</svg>
+
+							<!-- Tooltip on hover -->
+							<div class="absolute top-6 left-0 w-80 p-4 bg-white border border-gray-300 rounded shadow-md text-[13px] text-gray-700 
+											opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+								<p class="font-semibold mb-1">Easy and Hassle-Free Returns</p>
+								<p class="mb-1">
+									As per our return policy, we need to verify your identity to process your return.
+									This
+									is a one-time process, and takes 2–3 minutes to complete.
+								</p>
+								<p>
+									You can return this item for <strong>FREE</strong> within the allowed return period
+									for
+									any reason and without any shipping charges. The item must be returned in new and
+									unused
+									condition.
+								</p>
+							</div>
+						</div>
+
+						<p class="text-green-700 py-1 text-[15px] font-medium">
+							FREE delivery {{ deliveryDate }}
+						</p>
+
+					</div>
+
+					<div class="flex items-center  justify-center mt-1 py-1">
+						<div class="flex flex-col justify-center items-center mx-3">
+							<img class="w-10 h-10" src="assets/trust_icon_free_shipping_81px._CB590597072_.png" alt>
+							<p class=" text-[10px] text-slate-800 ">Free Shipping</p>
+						</div>
+						<div class="flex  flex-col justify-center items-center">
+							<img class="w-10 h-10" src="assets/icon-returns._CB403797073_.png" alt>
+							<p class=" text-[10px] text-slate-800 ">15 Days Return</p>
+						</div>
+						<div class="flex mx-3  flex-col justify-center items-center">
+							<img class="w-10 h-10" src="assets/icon-ePay._CB589360495_.png" alt>
+							<p class=" text-[10px] text-center text-slate-800 ">Can Cash on Delivery</p>
+						</div>
+					</div>
+
+					<ul class="space-y-2 mt-5 px-2 py-2 border-gray-300 border-b font-semibold">
+						<p *ngIf="stockMessage" class="text-red-600 text-[15px] font-medium">
+							{{ stockMessage }}
+						</p>
+
+
+						<li class="">
+							<button class="text-center bg-[#f2ba36] text-[20px] py-1 font-bold rounded-full w-full">
+								<span class="text-[#002e80]">BUY</span><span class="text-[#002e80]">Now</span>
+							</button>
+
+						</li>
+					</ul>
+					<div class="flex justify-center flex-col">
+						<div>
+							<div class="flex flex-col space-x-1 mt-2">
+								<div class="flex py-1.5 space-x-3">
+									<i class='bx bxs-store text-3xl text-orange-200 font-thin'></i>
+									<div class="flex flex-col justify-center ">
+										<span class="text-black text-sm font-blod">
+											Free in-store pickup now available
+										</span>
+										<p class="font-thin text-gray-500 text-[12px]">
+											Buy online and pick up the same day at nearby Samsung or Best Buy stores.
+											Check availability by changing your store or zip code below, and finalize
+											during checkout.
+										</p>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+			<app-attribute-details [productId]="productId!"></app-attribute-details> <!-- this must match selector -->
+		</div>
+
+
+	</section>
+</div>
+
+<div *ngIf="isLoading()==true">
+	<div class="container mx-auto px-4 animate-pulse">
+		<!-- Header Skeleton -->
+		<div class="w-full mt-5">
+			<div class="py-3 px-4 md:px-9 border border-b mt-12 bg-white">
+				<div class="h-6 bg-gray-200 rounded-md w-4/5 mb-4"></div>
+				<div class="flex justify-between items-center">
+					<div class="h-10 bg-gray-200 rounded-md w-1/3"></div>
+					<div class="h-12 bg-gray-200 rounded-lg w-40"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Enhanced Main Content Skeleton -->
+		<div class="mt-8 grid grid-cols-1 lg:mt-12 lg:grid-cols-10 gap-8">
+			<!-- Improved Image Section Skeleton -->
+			<div class="lg:col-span-4 lg:row-end-1">
+				<div class="aspect-square bg-gray-200 rounded-xl shadow-sm"></div>
+				<div class="flex gap-3 mt-6">
+					<div class="w-16 h-16 bg-gray-200 rounded-lg shadow-sm"></div>
+					<div class="w-16 h-16 bg-gray-200 rounded-lg shadow-sm"></div>
+					<div class="w-16 h-16 bg-gray-200 rounded-lg shadow-sm"></div>
+					<div class="w-16 h-16 bg-gray-200 rounded-lg shadow-sm"></div>
+				</div>
+			</div>
+
+			<!-- Enhanced Details Section Skeleton -->
+			<div class="lg:col-span-4 lg:row-span-2 lg:row-end-2 px-0 md:px-4">
+				<div class="space-y-6">
+					<div class="space-y-3">
+						<div class="h-8 bg-gray-200 rounded-md w-4/5"></div>
+						<div class="h-5 bg-gray-200 rounded-md w-2/3"></div>
+						<div class="h-5 bg-gray-200 rounded-md w-3/4"></div>
+					</div>
+
+					<!-- Enhanced Price Skeleton -->
+					<div class="my-8">
+						<div class="flex items-center gap-4">
+							<div class="h-10 bg-gray-200 rounded-md w-1/2"></div>
+							<div class="h-6 bg-gray-200 rounded-full w-24"></div>
+						</div>
+						<div class="h-5 bg-gray-200 rounded-md w-1/3 mt-3"></div>
+					</div>
+
+					<!-- Improved Shipping Info Skeleton -->
+					<div class="mt-6 bg-white rounded-xl border border-gray-200 p-6">
+						<div class="space-y-4">
+							<div class="flex items-center gap-3">
+								<div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+								<div class="h-5 bg-gray-200 rounded-md w-3/4"></div>
+							</div>
+							<div class="flex items-center gap-3">
+								<div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+								<div class="h-5 bg-gray-200 rounded-md w-2/3"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
-
-
+			<!-- Enhanced Buy Section Skeleton -->
+			<div
+				class="lg:col-span-2 md:ml-5 h-[450px] border border-gray-200 p-4 relative w-full bg-[#fdfcfc] rounded-xl shadow-sm">
+				<div class="space-y-6">
+					<div class="h-10 bg-gray-200 rounded-lg w-3/4"></div>
+					<div class="h-12 bg-gray-200 rounded-full w-full"></div>
+					<div class="space-y-3">
+						<div class="h-5 bg-gray-200 rounded-md w-2/3"></div>
+						<div class="h-5 bg-gray-200 rounded-md w-3/4"></div>
+					</div>
+					<div class="flex justify-center gap-4 mt-8">
+						<div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+						<div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+						<div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<app-attribute-details [productId]="productId!"></app-attribute-details> <!-- this must match selector -->
 	</div>
-
-
-</section>
+</div>
 
 <!-- 
 	<div class="py-8 bg-gradient-to-b px-4 from-gray-50 to-white">
@@ -346,10 +435,47 @@
 			</div>
 		</div>
 	</div>
-	<div class="mt-10 px-2 md:px-16">
-		<h3 class="py-3 text-xl md:text-2xl font-semibold px-1">Other products</h3>
-		<app-owl-carousel [service]="_productService" [methodName]="'getAllProduct'"
-			[params]='params'></app-owl-carousel>
-	</div>
+
 
 -->
+<div class=" mx-auto px-4  py-4" *ngFor="let feature of features; let i = index">
+	<div *ngIf="i==0">
+		<div class="bg-white  overflow-hidden ">
+			<div class="p-6 sm:p-8">
+				<h2 class="text-xl md:text-2xl lg:text-4xl text-center font-bold text-gray-800 mb-4">{{ feature.title }}
+				</h2>
+				<p class="text-gray-600 text-center line-clamp-3  mb-6">{{ feature.description }}</p>
+				<div *ngIf="feature.videoUrl" class="aspect-video rounded-lg overflow-hidden shadow-md">
+					<iframe class="w-full h-full" [src]="getSafeVideoUrl(feature.videoUrl)" frameborder="0"
+						allow="autoplay; encrypted-media" allowfullscreen>
+					</iframe>
+				</div>
+				<div *ngIf="!feature.videoUrl" class="order-first md:order-last">
+					<img [src]="feature.imageCoverUrl" [alt]="feature.title"
+						class="w-full h-full object-cover  transform " />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="i !== 0">
+		<div class="bg-white overflow-hidden">
+			<div class="grid md:grid-cols-2 gap-7">
+				<div [ngClass]="i % 2 === 0 ? 'order-1 md:order-1' : 'order-1 md:order-2'">
+					<img [src]="feature.imageCoverUrl" [alt]="feature.title"
+						class="w-full h-full object-cover transform" />
+				</div>
+				<div [ngClass]="i % 2 === 0 ? 'order-2 md:order-2' : 'order-2 md:order-1'"
+					class="flex px-2 md:ml-10 flex-col justify-center">
+					<h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-gray-800 mb-4">{{ feature.title }}</h2>
+					<p class="text-gray-600 line-clamp-3">{{ feature.description }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="mt-10 px-2 md:px-16">
+	<h3 class="py-3 text-xl md:text-2xl font-semibold px-1">Other products</h3>
+	<app-owl-carousel [service]="_productService" [methodName]="'getAllProduct'" [params]='params'></app-owl-carousel>
+</div>

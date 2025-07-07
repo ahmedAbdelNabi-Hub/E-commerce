@@ -1,4 +1,23 @@
 .tree-gradient {
-    background: linear-gradient(19deg, #f2fbfc, #ffffff,#ffffff, #e5f53979);
-  }
+    background: linear-gradient(19deg, #f2fbfc, #ffffff, #ffffff, #e5f53979);
+}
 
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.animate-pulse {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+.animate-pulse>div {
+    background: #e0e0e0;
+}

@@ -591,6 +591,40 @@ namespace Ecommerce.Repository.Migrations
                     b.ToTable("ProductAttributes");
                 });
 
+            modelBuilder.Entity("Ecommerce.Core.Entities.ProductFeature", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageCoverUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VideoUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductFeature");
+                });
+
             modelBuilder.Entity("Ecommerce.Core.Entities.ProductImage", b =>
                 {
                     b.Property<int>("id")
@@ -937,6 +971,17 @@ namespace Ecommerce.Repository.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Ecommerce.Core.Entities.ProductFeature", b =>
+                {
+                    b.HasOne("Ecommerce.core.Entities.Product", "Product")
+                        .WithMany("ProductFeatures")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Ecommerce.Core.Entities.ProductImage", b =>
                 {
                     b.HasOne("Ecommerce.core.Entities.Product", "Product")
@@ -1051,6 +1096,8 @@ namespace Ecommerce.Repository.Migrations
             modelBuilder.Entity("Ecommerce.core.Entities.Product", b =>
                 {
                     b.Navigation("ProductAttributes");
+
+                    b.Navigation("ProductFeatures");
 
                     b.Navigation("ProductImages");
 

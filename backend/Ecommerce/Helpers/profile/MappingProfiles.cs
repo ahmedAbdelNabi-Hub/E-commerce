@@ -75,15 +75,11 @@ namespace EcommerceContract.Helpers.profile
                   .ForMember(dest => dest.OfferPrice, opt => opt.Ignore())
                   .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null))
 ;
-
-
-            // Product Status Mapping
             CreateMap<ProductStatus, ProductStatusDTO>()
                 .ReverseMap();
 
             CreateMap<Status,StatusDto>().ReverseMap();
 
-            // Category Mapping
             CreateMap<Category, CategoryRequestDto>()
                 .ForMember(dest => dest.Image, opt => opt.MapFrom<PictureCategoryImageResolver>())
                 .ReverseMap();
@@ -93,7 +89,7 @@ namespace EcommerceContract.Helpers.profile
               .ForMember(dest => dest.AttributeValue, opt => opt.MapFrom(src => src.AttributeValue.Value));
 
 
-
+            CreateMap<ProductFeature, ProductFeatureDTO>().ReverseMap();
         }
     }
 }

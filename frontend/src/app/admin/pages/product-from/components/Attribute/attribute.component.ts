@@ -18,7 +18,7 @@ export interface SelectedAttribute {
   attributeName: string;
   attributeValueId: number | null;
   valueName: string;
-  attributeValue? : string;
+  attributeValue?: string;
 }
 
 @Component({
@@ -126,8 +126,7 @@ export class AttributeComponent implements OnInit, OnChanges {
       this.selectedAttributes[index].attributeValueId = null;
       this.selectedAttributes[index].valueName = '';
     }
-
-    this.clearMessages();
+    this.onSubmit();
   }
 
   getAvailableAttributes(currentIndex: number): Attribute[] {
